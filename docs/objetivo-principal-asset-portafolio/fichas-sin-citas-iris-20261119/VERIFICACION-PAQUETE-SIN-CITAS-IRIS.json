@@ -1,0 +1,398 @@
+{
+  "schemaVersion": 1,
+  "kind": "VERIFICACION_INDEPENDIENTE_DE_OVERLAY_21_FICHAS_SIN_CITAS_IRIS",
+  "verifiedAtUTC": "2026-11-19T08:13:15.115172+00:00",
+  "verdict": "APROBADO",
+  "blockingFindings": 0,
+  "baselineDeployment": "dpl_FkyZZgpki5HSpKMRJQFgJE451d3G",
+  "baselineSHA": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+  "baselineManifest": {
+    "path": "/private/tmp/sollahms-fichas-iris-release-20261119/fuentes-certificadas/MANIFIESTO-PAQUETE-PUBLICO-21.json",
+    "bytes": 470330,
+    "sha256": "f0fa6e13c6d41f62325f0b7ab7487e5c6a7dbe445a0c3148e60cff2ac3862f5e"
+  },
+  "candidateManifest": {
+    "path": "/private/tmp/sollahms-fichas-iris-release-20261119/MANIFIESTO-CANDIDATO-SIN-CITAS-IRIS.json",
+    "bytes": 447588,
+    "sha256": "cfe487b63024752090ceb80e16c2e26259a2913beeaa8249b9fa9a2ee313d14c"
+  },
+  "prebuiltOutputPath": "/private/tmp/sollahms-fichas-iris-release-20261119/stage/.vercel/output",
+  "filesVerified": 1721,
+  "bytes": 227566261,
+  "inventorySHA256": "c3ed5ef73ecc9cbad23732970b3e5bb54f8df1c92b6027fe3fac3848e7e2bd04",
+  "pathsMatchBaselineExactly": true,
+  "allActualFilesMatchCandidateSizeSHA1SHA256": true,
+  "onlyChangedFiles": [
+    "static/alameda-4719.html",
+    "static/altos-del-mirador.html",
+    "static/balmaceda.html",
+    "static/centro-santa-ana.html",
+    "static/compania-1735.html",
+    "static/condominio-altos-del-penon.html",
+    "static/condominio-hacienda-junquillar.html",
+    "static/condominio-hacienda-santa-clara.html",
+    "static/condominio-hacienda-volcanes.html",
+    "static/condominio-plaza-nos.html",
+    "static/condominio-reserva-santa-clara.html",
+    "static/condominio-sendero-santa-clara.html",
+    "static/edificio-ambar-urbano.html",
+    "static/edificio-botanico.html",
+    "static/espacio-v.html",
+    "static/kiez.html",
+    "static/mirador-capital.html",
+    "static/nuevo-vivaceta.html",
+    "static/prat.html",
+    "static/terrazas-del-mirador.html",
+    "static/vicuna-mackenna-capital.html"
+  ],
+  "changedFiles": 21,
+  "unchangedFiles": 1700,
+  "changedFilesExactlyPrevious21ExpansionHTML": true,
+  "original131FichesVerifiedByteIdentical": 131,
+  "original131IndexSource": {
+    "path": "static/data/proyectos.json",
+    "sha256": "aff5a08f8abe9f4bafa2924a29a2f5f79e6a5724767d15f6b4b059dba2e4b59b"
+  },
+  "catalogDataJSONPreserved": 14,
+  "allBrowserModulesPreserved": 63,
+  "functionFilesPreserved": 57,
+  "functionBundlesPreserved": [
+    "functions/api/advisory.func",
+    "functions/api/booking-availability.func",
+    "functions/api/booking-create.func",
+    "functions/api/collaboration.func",
+    "functions/api/contact.func",
+    "functions/api/orientation-contact.func",
+    "functions/api/uf.func"
+  ],
+  "configurationPreserved": true,
+  "symlinks": [],
+  "privateRawInputsAdded": false,
+  "details": [
+    {
+      "path": "static/alameda-4719.html",
+      "before": {
+        "path": "static/alameda-4719.html",
+        "size": 11183,
+        "sha1": "e6b8365edda3613b2219d2c02362002cc499db28",
+        "sha256": "19d9fc457bf09cb9778f06bcd50629052482dd53b35ea077b468a776fc7aba2b"
+      },
+      "after": {
+        "path": "static/alameda-4719.html",
+        "size": 10329,
+        "sha1": "6b6119a9ac0696b70aefe95278c77b4f85908c9a",
+        "sha256": "7e82692b366d60a56808e94f4959a79e5be60556e18b6c8da388b4fc5af80606"
+      }
+    },
+    {
+      "path": "static/altos-del-mirador.html",
+      "before": {
+        "path": "static/altos-del-mirador.html",
+        "size": 10783,
+        "sha1": "9d8dcef03bf28f2e24305b0658444c9ec41cd16c",
+        "sha256": "08191cc862799787118c1aa36970a0b75001530d26700d479549fb131955717c"
+      },
+      "after": {
+        "path": "static/altos-del-mirador.html",
+        "size": 9927,
+        "sha1": "8ea4ff43378f48123072c34d22fe86b7f5da67bf",
+        "sha256": "15cb4b54d8fe6de602e3aefb037379048cae1b536851ef8648deb93aedcf0a3f"
+      }
+    },
+    {
+      "path": "static/balmaceda.html",
+      "before": {
+        "path": "static/balmaceda.html",
+        "size": 13042,
+        "sha1": "44fec11e0450684077ef7d1440986066ab830a07",
+        "sha256": "b93a10338c10c21620969c65427d67604aef9598f94efcedf08979135392480d"
+      },
+      "after": {
+        "path": "static/balmaceda.html",
+        "size": 12186,
+        "sha1": "4a26c1f9c150f7e9f569bcfa16160c69e5bd0b28",
+        "sha256": "29dd5c02e7f1f06e53830cf78aba661e2291cac75e2d75170c2ab3610c3bc92e"
+      }
+    },
+    {
+      "path": "static/centro-santa-ana.html",
+      "before": {
+        "path": "static/centro-santa-ana.html",
+        "size": 14516,
+        "sha1": "293c592faa247988d43e2ec7b3e7f505f611a6ef",
+        "sha256": "65fd246c5f6922db17e83d81e1d7677c4dedc8ef882d1c9922f29d95d22ab559"
+      },
+      "after": {
+        "path": "static/centro-santa-ana.html",
+        "size": 13660,
+        "sha1": "0874033169075584015ba0ab62d21c48b8e23607",
+        "sha256": "c010f5b2b61d6d6b34d70e9c1bcb6d842f2d7023e3533377d658aee1bef20911"
+      }
+    },
+    {
+      "path": "static/compania-1735.html",
+      "before": {
+        "path": "static/compania-1735.html",
+        "size": 10405,
+        "sha1": "9fbeac34c3d98e269fb068a3c1692e8fc9d0bbe3",
+        "sha256": "4e163a9f3ec119ed375298cbd3457e159557d9be6520328cccd8c0d33107f536"
+      },
+      "after": {
+        "path": "static/compania-1735.html",
+        "size": 9556,
+        "sha1": "297a55ed07c46492f38348306ed0a97d94153373",
+        "sha256": "c44bd5ff60a5425388ba91a6d92dd6a38b9e654560e7399d41179c82dfa6ee77"
+      }
+    },
+    {
+      "path": "static/condominio-altos-del-penon.html",
+      "before": {
+        "path": "static/condominio-altos-del-penon.html",
+        "size": 11270,
+        "sha1": "ea85333794356f0e5dfdac373d3cceef0a76761b",
+        "sha256": "4dc8a2233cd1fa4bfa79e04110cc5779e0fc3528c67b0e7680e0e86e9a6dfd11"
+      },
+      "after": {
+        "path": "static/condominio-altos-del-penon.html",
+        "size": 10414,
+        "sha1": "d8c15dbaa4049d98c7156ee7f3d930178b578097",
+        "sha256": "5cb31e536bbad5719e16b1f3db37691436e5434ac38d03edb9327451a2ca47b9"
+      }
+    },
+    {
+      "path": "static/condominio-hacienda-junquillar.html",
+      "before": {
+        "path": "static/condominio-hacienda-junquillar.html",
+        "size": 11848,
+        "sha1": "71d2180f6015ed287cb9c918bf7b67553f991f51",
+        "sha256": "f73b221fd1fecafb164c5f524f855d0953ee8d500987bdefa733e52d5b66db0f"
+      },
+      "after": {
+        "path": "static/condominio-hacienda-junquillar.html",
+        "size": 10992,
+        "sha1": "768df7e125beb5f04b2cc4fb6745b783313375ee",
+        "sha256": "6ecaaa2bb163ddfcbc74f682b01c83cd7c458cd7ea0308971376acee786f903c"
+      }
+    },
+    {
+      "path": "static/condominio-hacienda-santa-clara.html",
+      "before": {
+        "path": "static/condominio-hacienda-santa-clara.html",
+        "size": 10497,
+        "sha1": "e2ae0b0658a08d3ae1301dd3b917ee11e35dc02c",
+        "sha256": "dde17b86547f0e40bc31602c3d597559088ac6619fb16476565c7654599a3e9e"
+      },
+      "after": {
+        "path": "static/condominio-hacienda-santa-clara.html",
+        "size": 9641,
+        "sha1": "397e6f433240eb3ef7cb1c345b3313d6e1a11c90",
+        "sha256": "bd84e0e9168e511518b9751532b2f8f7b51707ed640327a3071ef9d8f5c15c03"
+      }
+    },
+    {
+      "path": "static/condominio-hacienda-volcanes.html",
+      "before": {
+        "path": "static/condominio-hacienda-volcanes.html",
+        "size": 10850,
+        "sha1": "d478f8c309901565486eff874c68f8b45aebd606",
+        "sha256": "c7587a52fea871083d463eed77a4c207ce98016fe3eaf475888b06688da4aaae"
+      },
+      "after": {
+        "path": "static/condominio-hacienda-volcanes.html",
+        "size": 9994,
+        "sha1": "741535235bc40b5e7c57d27a7080e615b38884d0",
+        "sha256": "34320de45e86890bc246d109f5f08bd5b8340a46c15dd15963b47153c6829821"
+      }
+    },
+    {
+      "path": "static/condominio-plaza-nos.html",
+      "before": {
+        "path": "static/condominio-plaza-nos.html",
+        "size": 11576,
+        "sha1": "f787fbb40505dd7b31ade107120c7337f23e15aa",
+        "sha256": "a17b820f1786cc124edf58b907b4a9339b074ea2b101aa61a38eb5e3662689b5"
+      },
+      "after": {
+        "path": "static/condominio-plaza-nos.html",
+        "size": 10720,
+        "sha1": "1935a6260762140d10487eeca5eccd60af1fa72e",
+        "sha256": "5e3e3e4161b6729385b2323b259c471a6d343412e9e3f05df19a54e4b026f62d"
+      }
+    },
+    {
+      "path": "static/condominio-reserva-santa-clara.html",
+      "before": {
+        "path": "static/condominio-reserva-santa-clara.html",
+        "size": 10459,
+        "sha1": "c7e13081a079ac5af6acca1f99e9532bbf3cf65b",
+        "sha256": "f297fd93b755521588b7e6bc05a658533a166b232d9d313bd1b6c0e96e70678f"
+      },
+      "after": {
+        "path": "static/condominio-reserva-santa-clara.html",
+        "size": 9603,
+        "sha1": "b2f01f738ed7ba4a9db84b5830a67badb307339b",
+        "sha256": "af2ea06cb742ff645cdee2d668c39313042fe932de8714121096f7265432f423"
+      }
+    },
+    {
+      "path": "static/condominio-sendero-santa-clara.html",
+      "before": {
+        "path": "static/condominio-sendero-santa-clara.html",
+        "size": 12039,
+        "sha1": "f2b59967d261b2fae3c894d8abac3b62dea3383d",
+        "sha256": "807417a14852f516bd05a37899112d29af586fd536887016aaec7a50f421e073"
+      },
+      "after": {
+        "path": "static/condominio-sendero-santa-clara.html",
+        "size": 11183,
+        "sha1": "68202e060c46a2ade3a67b052b756c093b80c755",
+        "sha256": "6afb1f5d1a7c2695c7981044bf17d6676192716d0013c24d394283faa01c88d6"
+      }
+    },
+    {
+      "path": "static/edificio-ambar-urbano.html",
+      "before": {
+        "path": "static/edificio-ambar-urbano.html",
+        "size": 9523,
+        "sha1": "710963d5cc0354efdb11a91e902af954d90d9daa",
+        "sha256": "4833c309784819442a596c4765f6e962590c6d88ee49d25c62b5ef985367bba8"
+      },
+      "after": {
+        "path": "static/edificio-ambar-urbano.html",
+        "size": 8667,
+        "sha1": "4129197ee879a5495fc239c7f543f529fcd4b8c1",
+        "sha256": "9e59d694e1294d98f5d18012ede1be47754d3af416f467b563cc586ecd24692a"
+      }
+    },
+    {
+      "path": "static/edificio-botanico.html",
+      "before": {
+        "path": "static/edificio-botanico.html",
+        "size": 11155,
+        "sha1": "e58bd16983087c61b8e0a50dbbc83a84004768b4",
+        "sha256": "e28774a42afec1a670682173c5d423bb3f50c6b058cc942e4b6cb79d2fa2ad41"
+      },
+      "after": {
+        "path": "static/edificio-botanico.html",
+        "size": 10299,
+        "sha1": "b52d6ef868b9be99a7206c9b4d1189c70a36ae94",
+        "sha256": "b99665811eb84ec2a83dc5c760bd2a3491e26f21c4a994a48c196f3608eebccd"
+      }
+    },
+    {
+      "path": "static/espacio-v.html",
+      "before": {
+        "path": "static/espacio-v.html",
+        "size": 10564,
+        "sha1": "ec9b26c64af8329f55eb02ad36e6779d249cd775",
+        "sha256": "8ec3bbfee718669d16c664e1a290ff1087bec1e9639db2553aa3829b6fe993cc"
+      },
+      "after": {
+        "path": "static/espacio-v.html",
+        "size": 9708,
+        "sha1": "679fa417d5a12496c714a91385823c30b5c33c58",
+        "sha256": "4e99eb618da96c41f36da754e61ee041ac270c0d09675ef4a159448886eccf41"
+      }
+    },
+    {
+      "path": "static/kiez.html",
+      "before": {
+        "path": "static/kiez.html",
+        "size": 9561,
+        "sha1": "95a659913907707a9b9cf1eaa1fa11a2fc88f4dd",
+        "sha256": "6fdfa9ed2564900145c86513e7e8627c4e287162ccdcd4ec27101065500c7af1"
+      },
+      "after": {
+        "path": "static/kiez.html",
+        "size": 8705,
+        "sha1": "8207f23a05984ac27337c5fa08bbd663b0945b7a",
+        "sha256": "b75b9b02954fe7c2a175d9fbf15bb4a5f4a5cd29ebd4abf12da931dfe1a9a131"
+      }
+    },
+    {
+      "path": "static/mirador-capital.html",
+      "before": {
+        "path": "static/mirador-capital.html",
+        "size": 11671,
+        "sha1": "eb87681762d265d5a1ba495dab8d8c3991240cd8",
+        "sha256": "edaf904020931972159b58eae2c117cd4c93d24eea240800b524e00e5f7d3abe"
+      },
+      "after": {
+        "path": "static/mirador-capital.html",
+        "size": 10815,
+        "sha1": "3f09339364ccc40862dc1aecda9510ee831845e8",
+        "sha256": "db055d76e9919a07ab6c3daa8ea06378920a4aa0976aa67c8dadb052bd170711"
+      }
+    },
+    {
+      "path": "static/nuevo-vivaceta.html",
+      "before": {
+        "path": "static/nuevo-vivaceta.html",
+        "size": 13236,
+        "sha1": "bb53af8e81aafade622cb23b1f6a5a682a29667b",
+        "sha256": "d1b99e48e9744ae8dad99d12093ce5fb2bfe2a6f009fd484bcc59bd0c958f1bb"
+      },
+      "after": {
+        "path": "static/nuevo-vivaceta.html",
+        "size": 12385,
+        "sha1": "c3c220d33d4540372de9dce202775ad109f7d1b0",
+        "sha256": "c6d0937a5cef0bfa08ae8568ef160f66ca70da4abf1a55d666af4dd429842048"
+      }
+    },
+    {
+      "path": "static/prat.html",
+      "before": {
+        "path": "static/prat.html",
+        "size": 12561,
+        "sha1": "23b7cd7f3cc37e73cded23862960a086cdad63c4",
+        "sha256": "ff937da20b47565ae288ae7a43218e1f4a709ef2ac9be7f5ab8da7528ae295b8"
+      },
+      "after": {
+        "path": "static/prat.html",
+        "size": 11705,
+        "sha1": "6401875c834d6cffaa2b5072c0b7b88a1b0e807b",
+        "sha256": "a907e94bc0970a671c8df6936df604115a4106f36fdaddbbb5300521f0224bd3"
+      }
+    },
+    {
+      "path": "static/terrazas-del-mirador.html",
+      "before": {
+        "path": "static/terrazas-del-mirador.html",
+        "size": 10826,
+        "sha1": "c83fb907262a0f405d5bc9ea9d43591273f0d156",
+        "sha256": "9a8fbc666baa73012db000a4a2b5f35639b5875781203990fb5a9d57deb29207"
+      },
+      "after": {
+        "path": "static/terrazas-del-mirador.html",
+        "size": 9970,
+        "sha1": "dc3a30f8cd799db900715754759bad4b31468f15",
+        "sha256": "6d549444915d76eb3e47f222b78cb6c340c4cdbcc4a6c04b47cd8ba65b552a3a"
+      }
+    },
+    {
+      "path": "static/vicuna-mackenna-capital.html",
+      "before": {
+        "path": "static/vicuna-mackenna-capital.html",
+        "size": 13107,
+        "sha1": "9b91c5caf6463768264ff3548e13e7616fdc1a2b",
+        "sha256": "3d9ccb3728abad72647c9e9410b2b9c3f9d4d82458da9dbe44ccd355043b662c"
+      },
+      "after": {
+        "path": "static/vicuna-mackenna-capital.html",
+        "size": 12251,
+        "sha1": "24455d1ff724bcb61c59d8c4f1413a517079a8af",
+        "sha256": "2a41ea7e4363d97834858135c774ba7039fe8832c51d71091861360bab479447"
+      }
+    }
+  ],
+  "method": "Read every actual output file, compare size/raw SHA1/SHA256 to frozen Fky baseline and current candidate manifest. No rematerialization, application execution, generator, suite, function call, network or Git mutation.",
+  "applicationExecuted": false,
+  "applicationTestsExecuted": false,
+  "applicationBuilds": 0,
+  "applicationGenerators": 0,
+  "networkRequests": 0,
+  "GitMutations": 0,
+  "deploymentOrPromotionActions": 0,
+  "credentialsOrEnvironmentOrSSORead": false,
+  "scopeLimitation": "This receipt checks byte preservation and overlay boundaries. The separate DOM reviewer certifies the exact removal of Iris citation/link presentation; it is not rerun here."
+}

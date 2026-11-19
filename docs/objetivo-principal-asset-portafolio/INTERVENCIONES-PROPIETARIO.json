@@ -477,6 +477,13 @@
         "keepOriginalCandidateFrozen": true,
         "doesNotAuthorizeRebaseOrNewPush": true,
         "doNotRepeatPendingQuestion": true
+      },
+      "productionChangedByAuthorizedCitationRemoval": {
+        "productionSHA": "49312fd708ccd9e319511432e4b657788f5734f9",
+        "sourceBranch": "codex/fichas-sin-citas-iris-20261119",
+        "targetFooterStillAt": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+        "requiresReconciliationBeforeAnyExecution": true,
+        "doesNotAnswerPendingQuestion": true
       }
     },
     {
@@ -761,6 +768,44 @@
       "publicProjects": 152,
       "publicGPRProjects": 9,
       "evidence": "ampliacion-iris-chile-20261118/candidato-21-gpr/deployment-revision/PROMOCION-PR36.json"
+    },
+    {
+      "id": "AUTH-FICHAS-SIN-CITAS-IRIS-PUBLICACION-20261119-01",
+      "kind": "Instrucción directa específica de modificación y publicación autónoma",
+      "status": "AUTORIZADO_EJECUTADO_VERIFICADO",
+      "ownerInstruction": [
+        "sacar todo lo que tenga relacion con iris de la fichas de proyecto ( me refiero a las citas o links)",
+        "hacerlo auotonomamente y sin parar entre fases hasta que este listo y publicado"
+      ],
+      "authorizedByDirectOwnerInstruction": true,
+      "questionAlreadyPresented": false,
+      "pendingOwnerAction": null,
+      "doNotRequestRepeatedApproval": true,
+      "scope": "Remove public Iris citations/links from project fiches; preserve commercial facts and internal evidence.",
+      "notAuthorized": [
+        "main",
+        "newCommercialFacts",
+        "catalogChange",
+        "CRM360",
+        "AI Lab",
+        "Resend",
+        "forms",
+        "financialFunctions",
+        "DNS",
+        "SSO",
+        "environmentVariables",
+        "supplement24a"
+      ],
+      "evidence": "fichas-sin-citas-iris-20261119/PUBLICACION-SIN-CITAS-IRIS.json",
+      "recordedAtUTC": "2026-11-19T08:14:14.914724+00:00",
+      "technicalSHA": "49312fd708ccd9e319511432e4b657788f5734f9",
+      "deploymentId": "dpl_FhxqQpX3EZNDBg2AFPSsK3mJNhwr",
+      "deploymentAttempts": 1,
+      "promotionAttempts": 1,
+      "publicFichesVerified": 21,
+      "existingAliasesVerified": 5,
+      "verifiedAtUTC": "2026-11-19T08:18:53.935146+00:00",
+      "remainingCreationOrPromotionAuthorizations": 0
     }
   ],
   "otherPriorWaitsUnchanged": true
