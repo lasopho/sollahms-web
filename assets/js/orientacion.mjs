@@ -184,6 +184,7 @@ contactForm.addEventListener('submit',async event=>{
     const providerAccepted=result?.ok===true&&result.providerAccepted===true&&result.deliveryConfirmed===false&&result.persisted===undefined;
     if(!persisted&&!providerAccepted)throw new Error('No pudimos confirmar el envío. Conserva tus datos al reintentar.');
     operation.complete();contactForm.reset();rutField.clear();startedAt=Date.now();contactStatus.textContent=persisted?'Solicitud registrada correctamente. El equipo responderá a tu correo.':'Solicitud aceptada para envío. La recepción por Sollahms aún no está confirmada.';
+    try { window.dispatchEvent(new CustomEvent('sollahms:measurement',{detail:{name:'contact_request_accepted',parameters:{form_kind:'orientation',acceptance_kind:persisted?'crm_persisted':'provider_accepted'}}})); } catch { /* Optional measurement never changes the contact outcome. */ }
   }catch(error){operation.uncertain();contactStatus.textContent=error.name==='TimeoutError'?'No pudimos confirmar el envío a tiempo. Conserva los mismos datos al reintentar.':error.message;}
   finally{sending=false;button.disabled=false;button.textContent='Solicitar orientación →';}
 });

@@ -502,6 +502,7 @@ $('lead-form').addEventListener('submit', async event => {
       ? 'Solicitud registrada correctamente. Sollahms se pondrá en contacto contigo para conversar sobre tu financiamiento.'
       : 'Solicitud aceptada para envío. La recepción por Sollahms aún no está confirmada.';
     // CONTACT_ACKNOWLEDGEMENT_COPY_END
+    try { window.dispatchEvent(new CustomEvent('sollahms:measurement',{detail:{name:'contact_request_accepted',parameters:{form_kind:'mortgage',acceptance_kind:persisted?'crm_persisted':'provider_accepted'}}})); } catch { /* Optional measurement never changes the contact outcome. */ }
   } catch (error) {
     contactOperation.uncertain();
     // FORM_UNCERTAIN_JSON_RESPONSE_START

@@ -31,6 +31,29 @@
 <meta name="twitter:image" content="https://sollahms.cl/assets/branding/og-sollahms-square-v3.png">
 <meta name="twitter:image:alt" content="Sollahms — información y asesoría inmobiliaria">
 <link rel="stylesheet" href="/assets/css/guide-navigation.css?v=20261029-1">
+<style id="comparator-footer-style">
+    /* Approved corporate footer, isolated to this page. */
+    #comparator-footer { background: var(--s-soft); padding: 64px 0 48px; color: var(--s-muted); font: 400 14px/1.625 'Inter', sans-serif; }
+    #comparator-footer .comparator-footer__columns { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 48px; max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+    #comparator-footer .sollahms-brand { margin-bottom: 16px; }
+    #comparator-footer p { margin: 0; }
+    #comparator-footer .comparator-footer__copyright { letter-spacing: .025em; }
+    #comparator-footer .home-seo-footer-about { margin-top: 16px; }
+    #comparator-footer h2 { margin: 0 0 16px; color: var(--s-green); font: 600 14px/20px 'Inter', sans-serif; text-transform: uppercase; letter-spacing: .1em; }
+    #comparator-footer ul { list-style: none; margin: 0; padding: 0; }
+    #comparator-footer li + li { margin-top: 8px; }
+    #comparator-footer nav a { text-decoration: none; color: var(--s-muted); letter-spacing: .025em; }
+    #comparator-footer nav a:hover { color: var(--s-green-hover); }
+    #comparator-footer .home-seo-contact { margin-top: 16px; }
+    #comparator-footer .home-seo-footer-about { line-height: 1.7; }
+    #comparator-footer .home-seo-contact { display: grid; gap: 8px; font-style: normal; color: var(--s-green); overflow-wrap: anywhere; }
+    #comparator-footer .home-seo-contact a { text-decoration: underline; text-underline-offset: .2em; }
+    #comparator-footer a:focus-visible { outline: 3px solid var(--s-gold-ink); outline-offset: 5px; }
+    @media (max-width: 767px) {
+      #comparator-footer .comparator-footer__columns { grid-template-columns: minmax(0, 1fr); gap: 32px; padding: 0 24px; }
+    }
+</style>
+<link rel="stylesheet" href="/assets/css/site-measurement.css">
 <link rel="stylesheet" href="/assets/css/sollahms-theme.css?v=20261026-scroll-3">
 <script src="/assets/js/scroll-presence.js?v=20261026-3" defer></script>
 <link rel="stylesheet" href="/assets/css/sollahms-brand.css?v=20261026-1">
@@ -183,9 +206,31 @@
   </div>
   <noscript><p class="container notice">Activa JavaScript para realizar cálculos. Puedes solicitar asesoría en <a href="/contacto.html">Contacto</a> o consultar el <a href="https://servicios.cmfchile.cl/simuladorhipotecario">simulador de la CMF</a>.</p></noscript>
 <aside class="orientation-entry" style="padding:32px;text-align:center" data-scroll-static><p>Planifica tu compra con nuestras herramientas educativas.</p><a href="/centro-orientacion.html">Abrir el Centro de Orientación Inmobiliaria →</a><p data-tax-context>Comparar dividendos y tasas no determina un ahorro tributario. Revisa los requisitos y límites en la <a href="/beneficios-tributarios-inmobiliarios.html">guía de beneficios tributarios inmobiliarios</a>.</p></aside></main>
-<footer class="site-footer"><div class="container footer-inner"><a class="brand sollahms-brand" href="/" aria-label="Sollahms"><img class="sollahms-brand__image" src="/assets/branding/sollahms-logo.svg" width="114" height="22" alt="" decoding="async"></a><div><a href="/proyectos.html">Asset Portafolio</a><a data-guide-nav="" href="/guia-hipotecaria.html">Guía hipotecaria</a>
-<a data-purchase-guide-footer="" href="/cuando-comprar-propiedad.html">Cuándo comprar</a>
-<a href="/contacto.html">Contacto</a><a href="/trabaja-con-nosotros.html">Trabaja con nosotros</a><a data-sollahms-whatsapp href="https://wa.me/56948502440?text=Hola%2C%20quisiera%20recibir%20asesor%C3%ADa%20inmobiliaria%20de%20Sollahms%20para%20encontrar%20una%20propiedad%20seg%C3%BAn%20mis%20necesidades.">WhatsApp: +56 9 4850 2440</a>
-<span data-documental-legal style="display:inline-flex;flex-wrap:wrap;align-items:baseline;gap:12px;max-width:100%"><strong>Legal</strong><a href="/privacidad.html">Privacidad</a><a href="/fuentes-respaldo-documental.html">Fuentes y respaldo documental</a></span></div><p>© 2026 Sollahms</p></div></footer>
+<footer id="comparator-footer" data-scroll-static>
+<div class="comparator-footer__columns">
+<div>
+<a aria-label="Sollahms" class="sollahms-brand" href="/"><img alt="" class="sollahms-brand__image" decoding="async" height="22" src="/assets/branding/sollahms-logo.svg" width="114"/></a>
+<p class="comparator-footer__copyright">© 2026 Sollahms. Todos los derechos reservados.</p>
+<p class="home-seo-footer-about">Asesoría e inversión inmobiliaria en Chile.</p>
+<address class="home-seo-contact"><a href="mailto:contacto@sollahms.cl">contacto@sollahms.cl</a><a data-sollahms-whatsapp href="https://wa.me/56948502440">+56 9 4850 2440</a></address>
+</div>
+<nav aria-labelledby="comparator-footer-sections">
+<h2 id="comparator-footer-sections">Secciones</h2>
+<ul>
+<li><a href="/#expertise">Expertise</a></li>
+<li><a href="/proyectos.html">Asset Portafolio</a></li>
+<li><a data-guide-nav="" href="/guia-hipotecaria.html">Guía hipotecaria</a></li>
+<li><a data-purchase-guide-footer="" href="/cuando-comprar-propiedad.html">Cuándo comprar</a></li>
+<li><a href="/contacto.html">Contacto</a></li>
+<li><a href="/trabaja-con-nosotros.html">Trabaja con nosotros</a></li>
+</ul>
+</nav>
+<nav aria-labelledby="comparator-footer-legal">
+<h2 id="comparator-footer-legal">Legal</h2>
+<ul><li><a href="/privacidad.html">Privacidad</a></li><li><a href="/fuentes-respaldo-documental.html">Fuentes y respaldo documental</a></li></ul>
+</nav>
+</div>
+</footer>
+<script type="module" src="/assets/js/site-measurement.mjs" data-sollahms-measurement></script>
 </body>
 </html>
