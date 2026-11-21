@@ -1,0 +1,565 @@
+{
+  "format": "crm360.actual-postgresql-control-additional-cases.v1",
+  "startedAt": "2026-11-20T23:04:22.612Z",
+  "tests": [
+    {
+      "name": "C01-eight-OS-processes-native-connections-and-idempotent-reservation",
+      "passed": true,
+      "durationMs": 378.26587500000005,
+      "observation": {
+        "actualOSProcesses": 8,
+        "nativeConnections": 8,
+        "observedLockWaiters": 8,
+        "winners": 1,
+        "issued": 1,
+        "markers": 1
+      }
+    },
+    {
+      "name": "C02-immutable-counter-window-and-closed-terminal",
+      "passed": true,
+      "durationMs": 20.74304099999995,
+      "observation": {
+        "counter": 1,
+        "terminal": "closed",
+        "forbiddenUpdatesRejected": 3
+      }
+    },
+    {
+      "name": "C03-read-only-route-and-rollback-on-forbidden-write",
+      "passed": true,
+      "durationMs": 48.838874999999916,
+      "observation": {
+        "readOnlySelect": 42,
+        "committedForbiddenMarkers": 0,
+        "permittedApiMarkers": 1
+      }
+    },
+    {
+      "name": "C04-row-lock-close-barrier-and-no-writes-after-confirmed-close",
+      "passed": true,
+      "durationMs": 78.25937499999998,
+      "observation": {
+        "observedLock": "Lock",
+        "closedAfterAdmittedCommit": true,
+        "markersBeforeAndAfterClose": 1
+      }
+    },
+    {
+      "name": "C05-expiry-during-transaction-rolls-back-initial-time-fixture",
+      "passed": true,
+      "durationMs": 422.76204099999995,
+      "observation": {
+        "initialFixtureRemainingMs": 250,
+        "callbackWaitMs": 400,
+        "insertedBeforeExpiry": true,
+        "committedMarkers": 0,
+        "realHourSubstitute": false
+      }
+    },
+    {
+      "name": "C06-real-child-SIGKILL-after-reserve-and-fresh-process-recovery",
+      "passed": true,
+      "durationMs": 211.17525,
+      "observation": {
+        "actualSignal": "SIGKILL",
+        "registeredBackendClosed": true,
+        "freshChildRequiresReview": true,
+        "issued": 1,
+        "markers": 0
+      }
+    },
+    {
+      "name": "C07-real-child-SIGTERM-rolls-back-uncommitted-marker",
+      "passed": true,
+      "durationMs": 109.00199999999995,
+      "observation": {
+        "actualSignal": "SIGTERM",
+        "registeredBackendClosed": true,
+        "committedMarkers": 0,
+        "reservationPreserved": true
+      }
+    },
+    {
+      "name": "C08-real-TCP-COMMIT-response-loss-reconciled-without-replay",
+      "passed": true,
+      "durationMs": 51.350167000000056,
+      "observation": {
+        "realSocketDestroyed": true,
+        "serverCommitIndependentlyObserved": true,
+        "issued": 1,
+        "markers": 1,
+        "replayed": false
+      }
+    },
+    {
+      "name": "C09-own-PostgreSQL-stop-restart-persistence-and-fail-closed",
+      "passed": true,
+      "durationMs": 402.874333,
+      "observation": {
+        "serverActuallyStoppedAndRestarted": true,
+        "previousPid": "LAB-PID-05",
+        "restartedPid": "LAB-PID-06",
+        "persistedSnapshotUnchanged": true,
+        "issued": 1,
+        "markers": 0
+      }
+    },
+    {
+      "name": "C10-real-finish-acknowledgement-loss-keeps-completed-history-and-no-replay",
+      "passed": true,
+      "durationMs": 62.16020800000024,
+      "observation": {
+        "finishSocketActuallyDropped": true,
+        "serverCompletionIndependentlyObserved": true,
+        "issued": 1,
+        "completedHistoryPreserved": true,
+        "markers": 1,
+        "replayed": false
+      }
+    },
+    {
+      "name": "C11-abandoned-reservation-fences-the-following-slot-in-initial-time-fixture",
+      "passed": true,
+      "durationMs": 661.3342090000001,
+      "observation": {
+        "initialFixture": true,
+        "realHourSubstitute": false,
+        "nextSlotRejected": "busy",
+        "issued": 1,
+        "markers": 0
+      }
+    }
+  ],
+  "accepted": false,
+  "certifiedLocal11Repeated": false,
+  "faultMechanism": "Real sockets/processes/PostgreSQL; no fabricated query results",
+  "finalSnapshots": [
+    {
+      "runs": [
+        {
+          "id": "SYNTHETIC-UUID-0212",
+          "slot": 0,
+          "state": "completed",
+          "ordinal": 1
+        }
+      ],
+      "audit": [
+        {
+          "at": "2026-11-20T23:04:22.672997+00:00",
+          "id": 39,
+          "kind": "activated",
+          "runId": null
+        },
+        {
+          "at": "2026-11-20T23:04:22.944939+00:00",
+          "id": 40,
+          "kind": "reserved",
+          "runId": "SYNTHETIC-UUID-0212"
+        },
+        {
+          "at": "2026-11-20T23:04:22.996135+00:00",
+          "id": 41,
+          "kind": "started",
+          "runId": "SYNTHETIC-UUID-0212"
+        },
+        {
+          "at": "2026-11-20T23:04:23.005822+00:00",
+          "id": 42,
+          "kind": "completed",
+          "runId": "SYNTHETIC-UUID-0212"
+        },
+        {
+          "at": "2026-11-20T23:04:23.011822+00:00",
+          "id": 43,
+          "kind": "closed_operator",
+          "runId": null
+        }
+      ],
+      "issued": 1,
+      "status": "closed",
+      "expired": false,
+      "pilotId": "SYNTHETIC-UUID-0213",
+      "activeId": null,
+      "expiresAt": 1795219462672,
+      "startedAt": 1795215862672
+    },
+    {
+      "runs": [
+        {
+          "id": "SYNTHETIC-UUID-0214",
+          "slot": 0,
+          "state": "completed",
+          "ordinal": 1
+        }
+      ],
+      "audit": [
+        {
+          "at": "2026-11-20T23:04:23.013755+00:00",
+          "id": 44,
+          "kind": "activated",
+          "runId": null
+        },
+        {
+          "at": "2026-11-20T23:04:23.014787+00:00",
+          "id": 45,
+          "kind": "reserved",
+          "runId": "SYNTHETIC-UUID-0214"
+        },
+        {
+          "at": "2026-11-20T23:04:23.01596+00:00",
+          "id": 46,
+          "kind": "started",
+          "runId": "SYNTHETIC-UUID-0214"
+        },
+        {
+          "at": "2026-11-20T23:04:23.016568+00:00",
+          "id": 47,
+          "kind": "completed",
+          "runId": "SYNTHETIC-UUID-0214"
+        },
+        {
+          "at": "2026-11-20T23:04:23.017593+00:00",
+          "id": 48,
+          "kind": "closed_operator",
+          "runId": null
+        }
+      ],
+      "issued": 1,
+      "status": "closed",
+      "expired": false,
+      "pilotId": "SYNTHETIC-UUID-0215",
+      "activeId": null,
+      "expiresAt": 1795219463013,
+      "startedAt": 1795215863013
+    },
+    {
+      "runs": [],
+      "audit": [
+        {
+          "at": "2026-11-20T23:04:23.035356+00:00",
+          "id": 49,
+          "kind": "activated",
+          "runId": null
+        },
+        {
+          "at": "2026-11-20T23:04:23.08347+00:00",
+          "id": 50,
+          "kind": "closed_operator",
+          "runId": null
+        }
+      ],
+      "issued": 0,
+      "status": "closed",
+      "expired": false,
+      "pilotId": "SYNTHETIC-UUID-0216",
+      "activeId": null,
+      "expiresAt": 1795219463035,
+      "startedAt": 1795215863035
+    },
+    {
+      "runs": [
+        {
+          "id": "SYNTHETIC-UUID-0217",
+          "slot": 0,
+          "state": "indeterminate",
+          "ordinal": 1
+        }
+      ],
+      "audit": [
+        {
+          "at": "2026-11-20T23:04:23.085039+00:00",
+          "id": 51,
+          "kind": "activated",
+          "runId": null
+        },
+        {
+          "at": "2026-11-20T23:04:23.085924+00:00",
+          "id": 52,
+          "kind": "reserved",
+          "runId": "SYNTHETIC-UUID-0217"
+        },
+        {
+          "at": "2026-11-20T23:04:23.086809+00:00",
+          "id": 53,
+          "kind": "started",
+          "runId": "SYNTHETIC-UUID-0217"
+        },
+        {
+          "at": "2026-11-20T23:04:23.158848+00:00",
+          "id": 54,
+          "kind": "closed_operator",
+          "runId": "SYNTHETIC-UUID-0217"
+        }
+      ],
+      "issued": 1,
+      "status": "closed",
+      "expired": false,
+      "pilotId": "SYNTHETIC-UUID-0218",
+      "activeId": "SYNTHETIC-UUID-0217",
+      "expiresAt": 1795219463085,
+      "startedAt": 1795215863085
+    },
+    {
+      "runs": [],
+      "audit": [
+        {
+          "at": "2026-11-20T23:04:23.585659+00:00",
+          "id": 55,
+          "kind": "closed_operator",
+          "runId": null
+        }
+      ],
+      "issued": 0,
+      "status": "closed",
+      "expired": true,
+      "pilotId": "SYNTHETIC-UUID-0219",
+      "activeId": null,
+      "expiresAt": 1795215863414,
+      "startedAt": 1795212263414
+    },
+    {
+      "runs": [
+        {
+          "id": "SYNTHETIC-UUID-0220",
+          "slot": 0,
+          "state": "indeterminate",
+          "ordinal": 1
+        }
+      ],
+      "audit": [
+        {
+          "at": "2026-11-20T23:04:23.587179+00:00",
+          "id": 56,
+          "kind": "activated",
+          "runId": null
+        },
+        {
+          "at": "2026-11-20T23:04:23.686606+00:00",
+          "id": 57,
+          "kind": "reserved",
+          "runId": "SYNTHETIC-UUID-0220"
+        },
+        {
+          "at": "2026-11-20T23:04:23.797624+00:00",
+          "id": 58,
+          "kind": "closed_uncertain",
+          "runId": "SYNTHETIC-UUID-0220"
+        }
+      ],
+      "issued": 1,
+      "status": "closed",
+      "expired": false,
+      "pilotId": "SYNTHETIC-UUID-0221",
+      "activeId": "SYNTHETIC-UUID-0220",
+      "expiresAt": 1795219463587,
+      "startedAt": 1795215863587
+    },
+    {
+      "runs": [
+        {
+          "id": "SYNTHETIC-UUID-0222",
+          "slot": 0,
+          "state": "indeterminate",
+          "ordinal": 1
+        }
+      ],
+      "audit": [
+        {
+          "at": "2026-11-20T23:04:23.798869+00:00",
+          "id": 59,
+          "kind": "activated",
+          "runId": null
+        },
+        {
+          "at": "2026-11-20T23:04:23.896057+00:00",
+          "id": 60,
+          "kind": "reserved",
+          "runId": "SYNTHETIC-UUID-0222"
+        },
+        {
+          "at": "2026-11-20T23:04:23.899172+00:00",
+          "id": 61,
+          "kind": "started",
+          "runId": "SYNTHETIC-UUID-0222"
+        },
+        {
+          "at": "2026-11-20T23:04:23.907345+00:00",
+          "id": 62,
+          "kind": "closed_uncertain",
+          "runId": "SYNTHETIC-UUID-0222"
+        }
+      ],
+      "issued": 1,
+      "status": "closed",
+      "expired": false,
+      "pilotId": "SYNTHETIC-UUID-0223",
+      "activeId": "SYNTHETIC-UUID-0222",
+      "expiresAt": 1795219463798,
+      "startedAt": 1795215863798
+    },
+    {
+      "runs": [
+        {
+          "id": "SYNTHETIC-UUID-0224",
+          "slot": 0,
+          "state": "indeterminate",
+          "ordinal": 1
+        }
+      ],
+      "audit": [
+        {
+          "at": "2026-11-20T23:04:23.90846+00:00",
+          "id": 63,
+          "kind": "activated",
+          "runId": null
+        },
+        {
+          "at": "2026-11-20T23:04:23.909298+00:00",
+          "id": 64,
+          "kind": "reserved",
+          "runId": "SYNTHETIC-UUID-0224"
+        },
+        {
+          "at": "2026-11-20T23:04:23.910418+00:00",
+          "id": 65,
+          "kind": "started",
+          "runId": "SYNTHETIC-UUID-0224"
+        },
+        {
+          "at": "2026-11-20T23:04:23.957233+00:00",
+          "id": 66,
+          "kind": "closed_uncertain",
+          "runId": "SYNTHETIC-UUID-0224"
+        }
+      ],
+      "issued": 1,
+      "status": "closed",
+      "expired": false,
+      "pilotId": "SYNTHETIC-UUID-0225",
+      "activeId": "SYNTHETIC-UUID-0224",
+      "expiresAt": 1795219463908,
+      "startedAt": 1795215863908
+    },
+    {
+      "runs": [
+        {
+          "id": "SYNTHETIC-UUID-0226",
+          "slot": 0,
+          "state": "indeterminate",
+          "ordinal": 1
+        }
+      ],
+      "audit": [
+        {
+          "at": "2026-11-20T23:04:23.96037+00:00",
+          "id": 67,
+          "kind": "activated",
+          "runId": null
+        },
+        {
+          "at": "2026-11-20T23:04:23.960986+00:00",
+          "id": 68,
+          "kind": "reserved",
+          "runId": "SYNTHETIC-UUID-0226"
+        },
+        {
+          "at": "2026-11-20T23:04:24.362422+00:00",
+          "id": 69,
+          "kind": "closed_uncertain",
+          "runId": "SYNTHETIC-UUID-0226"
+        }
+      ],
+      "issued": 1,
+      "status": "closed",
+      "expired": false,
+      "pilotId": "SYNTHETIC-UUID-0227",
+      "activeId": "SYNTHETIC-UUID-0226",
+      "expiresAt": 1795219463960,
+      "startedAt": 1795215863960
+    },
+    {
+      "runs": [
+        {
+          "id": "SYNTHETIC-UUID-0228",
+          "slot": 0,
+          "state": "completed",
+          "ordinal": 1
+        }
+      ],
+      "audit": [
+        {
+          "at": "2026-11-20T23:04:24.373942+00:00",
+          "id": 70,
+          "kind": "activated",
+          "runId": null
+        },
+        {
+          "at": "2026-11-20T23:04:24.378509+00:00",
+          "id": 71,
+          "kind": "reserved",
+          "runId": "SYNTHETIC-UUID-0228"
+        },
+        {
+          "at": "2026-11-20T23:04:24.379706+00:00",
+          "id": 72,
+          "kind": "started",
+          "runId": "SYNTHETIC-UUID-0228"
+        },
+        {
+          "at": "2026-11-20T23:04:24.393728+00:00",
+          "id": 73,
+          "kind": "completed",
+          "runId": "SYNTHETIC-UUID-0228"
+        },
+        {
+          "at": "2026-11-20T23:04:24.423926+00:00",
+          "id": 74,
+          "kind": "closed_uncertain",
+          "runId": null
+        }
+      ],
+      "issued": 1,
+      "status": "closed",
+      "expired": false,
+      "pilotId": "SYNTHETIC-UUID-0229",
+      "activeId": null,
+      "expiresAt": 1795219464373,
+      "startedAt": 1795215864373
+    },
+    {
+      "runs": [
+        {
+          "id": "SYNTHETIC-UUID-0230",
+          "slot": 0,
+          "state": "indeterminate",
+          "ordinal": 1
+        }
+      ],
+      "audit": [
+        {
+          "at": "2026-11-20T23:04:24.427727+00:00",
+          "id": 75,
+          "kind": "reserved",
+          "runId": "SYNTHETIC-UUID-0230"
+        },
+        {
+          "at": "2026-11-20T23:04:25.08689+00:00",
+          "id": 76,
+          "kind": "closed_uncertain",
+          "runId": "SYNTHETIC-UUID-0230"
+        }
+      ],
+      "issued": 1,
+      "status": "closed",
+      "expired": false,
+      "pilotId": "SYNTHETIC-UUID-0231",
+      "activeId": "SYNTHETIC-UUID-0230",
+      "expiresAt": 1795219164927,
+      "startedAt": 1795215564927
+    }
+  ],
+  "markerCleanupConfirmed": false,
+  "endedAt": "2026-11-20T23:04:25.102Z",
+  "public_copy_note": "Sanitized review copy: synthetic UUIDs/roles/databases/PIDs are consistent aliases; measurements, outcomes and original failure are unchanged. Original local receipt retained."
+}

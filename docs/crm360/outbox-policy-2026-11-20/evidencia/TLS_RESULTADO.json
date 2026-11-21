@@ -1,0 +1,127 @@
+{
+  "format": "crm360.actual-pg17-tls-admission.v1",
+  "startedAt": "2026-11-20T22:01:26.407Z",
+  "checks": [
+    {
+      "name": "outbox_native_tls_identity_durability_and_permissions",
+      "passed": true,
+      "observed": {
+        "db": "LAB_DATABASE_SENDER",
+        "session": "LAB_ROLE_OUTBOX",
+        "current": "LAB_ROLE_OUTBOX",
+        "version": 170012,
+        "fsync": "on",
+        "synchronous": "on",
+        "full_page_writes": "on",
+        "ssl": true,
+        "tls": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "bits": 256,
+        "rolsuper": false,
+        "rolbypassrls": false,
+        "rolcreatedb": false,
+        "rolcreaterole": false
+      }
+    },
+    {
+      "name": "activate_native_tls_identity_durability_and_permissions",
+      "passed": true,
+      "observed": {
+        "db": "LAB_DATABASE_CONTROL",
+        "session": "LAB_ROLE_ACTIVATE",
+        "current": "LAB_ROLE_ACTIVATE",
+        "version": 170012,
+        "fsync": "on",
+        "synchronous": "on",
+        "full_page_writes": "on",
+        "ssl": true,
+        "tls": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "bits": 256,
+        "rolsuper": false,
+        "rolbypassrls": false,
+        "rolcreatedb": false,
+        "rolcreaterole": false
+      }
+    },
+    {
+      "name": "worker_native_tls_identity_durability_and_permissions",
+      "passed": true,
+      "observed": {
+        "db": "LAB_DATABASE_CONTROL",
+        "session": "LAB_ROLE_WORKER",
+        "current": "LAB_ROLE_WORKER",
+        "version": 170012,
+        "fsync": "on",
+        "synchronous": "on",
+        "full_page_writes": "on",
+        "ssl": true,
+        "tls": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "bits": 256,
+        "rolsuper": false,
+        "rolbypassrls": false,
+        "rolcreatedb": false,
+        "rolcreaterole": false
+      }
+    },
+    {
+      "name": "api_native_tls_identity_durability_and_permissions",
+      "passed": true,
+      "observed": {
+        "db": "LAB_DATABASE_CONTROL",
+        "session": "LAB_ROLE_API",
+        "current": "LAB_ROLE_API",
+        "version": 170012,
+        "fsync": "on",
+        "synchronous": "on",
+        "full_page_writes": "on",
+        "ssl": true,
+        "tls": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "bits": 256,
+        "rolsuper": false,
+        "rolbypassrls": false,
+        "rolcreatedb": false,
+        "rolcreaterole": false
+      }
+    },
+    {
+      "name": "wrong_server_hostname",
+      "passed": true,
+      "rejectedCode": "ERR_TLS_CERT_ALTNAME_INVALID"
+    },
+    {
+      "name": "wrong_ca",
+      "passed": true,
+      "rejectedCode": "SELF_SIGNED_CERT_IN_CHAIN"
+    },
+    {
+      "name": "missing_client_certificate",
+      "passed": true,
+      "rejectedCode": "28000"
+    },
+    {
+      "name": "wrong_role_certificate",
+      "passed": true,
+      "rejectedCode": "28000"
+    },
+    {
+      "name": "plaintext_rejected",
+      "passed": true,
+      "rejectedCode": "28000"
+    },
+    {
+      "name": "cross_database_rejected",
+      "passed": true,
+      "rejectedCode": "28000"
+    },
+    {
+      "name": "no_inherited_role_memberships",
+      "passed": true
+    }
+  ],
+  "accepted": true,
+  "endedAt": "2026-11-20T22:01:26.569Z",
+  "public_copy_note": "Sanitized review copy: synthetic UUIDs/roles/databases/PIDs are consistent aliases; measurements, outcomes and original failure are unchanged. Original local receipt retained."
+}

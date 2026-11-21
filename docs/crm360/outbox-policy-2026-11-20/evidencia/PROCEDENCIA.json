@@ -1,0 +1,219 @@
+{
+  "format": "sollahms.outbox.public-review-provenance.v1",
+  "repository": "lasopho/sollahms-web",
+  "visibility": "public",
+  "base_pr": 13,
+  "base_branch": "codex/crm360-integracion-2026-11-02",
+  "base_commit": "137dc93739a94c911e42193b66ddddc584b83085",
+  "base_tree": "532adf2b6594b6000b1ff21074309963cb10a837",
+  "head_branch": "codex/outbox-policy-pg17-2026-11-20",
+  "application_path": "lib/crm-outbox-postgres.mjs",
+  "tested_candidate_sha256": "f086d5247607817be959ec2271e8abdcf3e80f12a8e9fd6c0aedade49db6abe2",
+  "original_module_git_blob": "fd853c30d56bc01ef85c607580af99e41764288f",
+  "postgresql_first_run_passed": 15,
+  "postgresql_tests_repeated_to_publish": false,
+  "cloud_resources_or_credentials_included": false,
+  "original_control_harness": {
+    "path": "historial/control-postgres-casos-ejecutado.mjs.txt",
+    "sha256": "e8915c3b59ec994c3a9391964576b7ed394e9e7e76c9e710296ad9479f57b2cc",
+    "original_process_returncode": 1,
+    "cases_passed": 11,
+    "initial_cleanup": false
+  },
+  "corrected_control_harness": {
+    "path": "control-postgres-casos.mjs",
+    "sha256": "ede77d883c530924093c4cb2a7c0cac4c7c099845cd7f61d508f387135482d55",
+    "executed_after_correction": false,
+    "syntax_check_passed": true,
+    "change": "Correct cleanup array parameter nesting and retain error code on future failures"
+  },
+  "uuid_aliases_count": 234,
+  "pid_aliases_count": 6,
+  "sanitization": "Only allowlisted UTF-8 sources and synthetic receipts; consistent aliases, no personal paths, accounts, keys, certificates or dumps",
+  "files": [
+    {
+      "path": "lib/crm-outbox-postgres.mjs",
+      "sha256": "f086d5247607817be959ec2271e8abdcf3e80f12a8e9fd6c0aedade49db6abe2",
+      "bytes": 4069,
+      "transformation": "none",
+      "source": "crm-outbox-postgres.mjs",
+      "source_sha256": "f086d5247607817be959ec2271e8abdcf3e80f12a8e9fd6c0aedade49db6abe2"
+    },
+    {
+      "path": "vercel.json",
+      "sha256": "e8b1b8a25323663849addb31ba2b0d4885ba68ceae38c706d6335b8deb1cf097",
+      "bytes": 3330,
+      "transformation": "one deny-only deploymentEnabled entry for new branch; all existing settings preserved"
+    },
+    {
+      "path": "docs/crm360/outbox-policy-2026-11-20/base/lib/crm-outbox-postgres.mjs",
+      "sha256": "db95b7f0aa1c23a8725d5f5bb2e9655f28e861480d9b357f00873d035ab2bff7",
+      "bytes": 3462,
+      "transformation": "none",
+      "source": "crm-outbox-postgres.mjs",
+      "source_sha256": "db95b7f0aa1c23a8725d5f5bb2e9655f28e861480d9b357f00873d035ab2bff7"
+    },
+    {
+      "path": "docs/crm360/outbox-policy-2026-11-20/base/lib/crm-delivery.mjs",
+      "sha256": "32f589a57e1b6575ac90dd9b4f1216a16c52eecba03d13f13794c4df0ee7f4a4",
+      "bytes": 3231,
+      "transformation": "none",
+      "source": "crm-delivery.mjs",
+      "source_sha256": "32f589a57e1b6575ac90dd9b4f1216a16c52eecba03d13f13794c4df0ee7f4a4"
+    },
+    {
+      "path": "docs/crm360/outbox-policy-2026-11-20/base/sql/crm-outbox.sql",
+      "sha256": "32cbe7df5317abca01b68596eed63dcf7df15099124e5702dbe43b616e0b938a",
+      "bytes": 1166,
+      "transformation": "none",
+      "source": "crm-outbox.sql",
+      "source_sha256": "32cbe7df5317abca01b68596eed63dcf7df15099124e5702dbe43b616e0b938a"
+    },
+    {
+      "path": "docs/crm360/outbox-policy-2026-11-20/candidato/lib/crm-outbox-postgres.mjs",
+      "sha256": "f086d5247607817be959ec2271e8abdcf3e80f12a8e9fd6c0aedade49db6abe2",
+      "bytes": 4069,
+      "transformation": "none",
+      "source": "crm-outbox-postgres.mjs",
+      "source_sha256": "f086d5247607817be959ec2271e8abdcf3e80f12a8e9fd6c0aedade49db6abe2"
+    },
+    {
+      "path": "docs/crm360/outbox-policy-2026-11-20/pruebas/outbox-policy.postgres.test.mjs",
+      "sha256": "4600f69ce1d8be58e27da64f26f56731a216d0d6a21c4f1b3da08b7868d16ed6",
+      "bytes": 48881,
+      "transformation": "none",
+      "source": "outbox-policy.postgres.test.mjs",
+      "source_sha256": "4600f69ce1d8be58e27da64f26f56731a216d0d6a21c4f1b3da08b7868d16ed6"
+    },
+    {
+      "path": "docs/crm360/outbox-policy-2026-11-20/pruebas/outbox-sweep-options.unit.test.mjs",
+      "sha256": "fe8d7a451655ba31facabc16e8df0ffb916f0fb32e01c1a3721ccfa5302d3470",
+      "bytes": 1589,
+      "transformation": "none",
+      "source": "outbox-sweep-options.unit.test.mjs",
+      "source_sha256": "fe8d7a451655ba31facabc16e8df0ffb916f0fb32e01c1a3721ccfa5302d3470"
+    },
+    {
+      "path": "docs/crm360/outbox-policy-2026-11-20/endurecimiento-outbox.diff",
+      "sha256": "2824715ec6bacc75a013d3277d80f89d17723d16b7b02887113fb073e7b70989",
+      "bytes": 2642,
+      "transformation": "none",
+      "source": "endurecimiento-outbox.diff",
+      "source_sha256": "2824715ec6bacc75a013d3277d80f89d17723d16b7b02887113fb073e7b70989"
+    },
+    {
+      "path": "docs/crm360/outbox-policy-2026-11-20/OUTBOX_POLICY_ANTECEDENTE.md",
+      "sha256": "a0afc6e8b5116e2c2a466b330e29c473db831eb73033f91fefd9520a17faf9b1",
+      "bytes": 4273,
+      "transformation": "none",
+      "source": "OUTBOX_POLICY.md",
+      "source_sha256": "a0afc6e8b5116e2c2a466b330e29c473db831eb73033f91fefd9520a17faf9b1"
+    },
+    {
+      "path": "docs/crm360/outbox-policy-2026-11-20/evidencia/OUTBOX_15.tap",
+      "sha256": "61a2da969361916766227aa2e8fe3d16162c93aa7c69cf8d6cfe7d08182aed84",
+      "bytes": 4782,
+      "transformation": "none",
+      "source": "OUTBOX_15.tap",
+      "source_sha256": "61a2da969361916766227aa2e8fe3d16162c93aa7c69cf8d6cfe7d08182aed84"
+    },
+    {
+      "path": "docs/crm360/outbox-policy-2026-11-20/evidencia/UNITARIOS_4_HISTORICOS.tap",
+      "sha256": "1a6b8ffcf212b4541fb28338bd094f578bf501bf8da72672a1ddb7ae0a8c9c86",
+      "bytes": 1368,
+      "transformation": "none",
+      "source": "unit-run-1.tap",
+      "source_sha256": "1a6b8ffcf212b4541fb28338bd094f578bf501bf8da72672a1ddb7ae0a8c9c86"
+    },
+    {
+      "path": "docs/crm360/outbox-policy-2026-11-20/evidencia/UNITARIO_ALMACENAMIENTO_INCIERTO_HISTORICO.tap",
+      "sha256": "0a5b95374768c07fca9c416904dfb3a660b557ff118d4abed0d5fbc88a38636e",
+      "bytes": 485,
+      "transformation": "none",
+      "source": "uncertain-storage-run-1.tap",
+      "source_sha256": "0a5b95374768c07fca9c416904dfb3a660b557ff118d4abed0d5fbc88a38636e"
+    },
+    {
+      "path": "docs/crm360/outbox-policy-2026-11-20/evidencia/UNITARIO_LOTE_HISTORICO.tap",
+      "sha256": "55cf578a62c0b02d910d61e7b96f351dddf4059a87529837b1df30f54f6c88da",
+      "bytes": 410,
+      "transformation": "none",
+      "source": "sweep-options-run-1.tap",
+      "source_sha256": "55cf578a62c0b02d910d61e7b96f351dddf4059a87529837b1df30f54f6c88da"
+    },
+    {
+      "path": "docs/crm360/outbox-policy-2026-11-20/evidencia/OUTBOX_DISPONIBILIDAD.json",
+      "sha256": "8691277d1c0c361192132351c0e11a673f6e3071045dbb2cc0d235d399a992f2",
+      "bytes": 18438,
+      "transformation": "consistent aliases for synthetic identifiers; no measurement/outcome changes",
+      "source": "OUTBOX_DISPONIBILIDAD.json",
+      "source_sha256": "cce0748b0edff8045b1d72cc814c30d44c128a06b8820b2df3484dd1f42195d2"
+    },
+    {
+      "path": "docs/crm360/outbox-policy-2026-11-20/evidencia/OUTBOX_CONCURRENCIA_MAX.json",
+      "sha256": "1d0f636b77cdfae3667ad01e7a5caf395963c81ee0df6c6d0f333a326d72e699",
+      "bytes": 5322,
+      "transformation": "consistent aliases for synthetic identifiers; no measurement/outcome changes",
+      "source": "OUTBOX_CONCURRENCIA_MAX.json",
+      "source_sha256": "b342fd4baa0db49e6909342735d9fc89b3438d4046c4ca0811521ec6932ab425"
+    },
+    {
+      "path": "docs/crm360/outbox-policy-2026-11-20/evidencia/CONTROL_POSTGRES_CASOS.json",
+      "sha256": "5dd183da2b9100aceef30e163f528d9511e07cd13b53fa7fb61f00f0f7ed0299",
+      "bytes": 14570,
+      "transformation": "consistent aliases for synthetic identifiers; no measurement/outcome changes",
+      "source": "CONTROL_POSTGRES_CASOS.json",
+      "source_sha256": "3c8c132d0c5f2ad7456a05961f6d9d8b502e793101e6a257ac904c020cf505f4"
+    },
+    {
+      "path": "docs/crm360/outbox-policy-2026-11-20/evidencia/LIMPIEZA_RECONCILIADA.json",
+      "sha256": "4a2029788a0c1d9c62406d32a805ff5fc64682c08e8a23e9f86287a7875b0b45",
+      "bytes": 1748,
+      "transformation": "consistent aliases for synthetic identifiers; no measurement/outcome changes",
+      "source": "LIMPIEZA_RECONCILIADA.json",
+      "source_sha256": "10cbf00d3d622563169f1f58443e929bef57c5792db8b5ccd09e49e1b23739f1"
+    },
+    {
+      "path": "docs/crm360/outbox-policy-2026-11-20/evidencia/TLS_RESULTADO.json",
+      "sha256": "7632ff0f1b8e2b11718e53278ae8da9b1f19c375abf4b92c89450a6ed4d1b10c",
+      "bytes": 3481,
+      "transformation": "consistent aliases for synthetic identifiers; no measurement/outcome changes",
+      "source": "TLS_RESULTADO.json",
+      "source_sha256": "e846fae941b8d7f06d81141da09a36b0d3c9b1c35485df55b463c2e814847388"
+    },
+    {
+      "path": "docs/crm360/outbox-policy-2026-11-20/evidencia/RESULTADO_FINAL.json",
+      "sha256": "a69c2fd03b134c254a39252c8629a042d1143b41833abaeb625518795d0c057e",
+      "bytes": 2431,
+      "transformation": "consistent aliases for synthetic identifiers; no measurement/outcome changes",
+      "source": "RESULTADO_FINAL.json",
+      "source_sha256": "db52d0204bd056ffae1989c0b96876855bd4893afe51114149c3b618b111fa24"
+    },
+    {
+      "path": "docs/crm360/outbox-policy-2026-11-20/evidencia/LABORATORIO_CIERRE.json",
+      "sha256": "68aec125b65c400cb84cf6cec7c39b6d5b4d513abb796796f01fea6e5513d455",
+      "bytes": 1181,
+      "transformation": "explicit public field allowlist; local paths, host identity, account and private config omitted",
+      "source": "RECIBO_LABORATORIO.json",
+      "source_sha256": "349c8801927be3e2ec9c87ee59dc99c848eb17aeda1f1516b885f48040461c15"
+    },
+    {
+      "path": "docs/crm360/outbox-policy-2026-11-20/pruebas/README.md",
+      "sha256": "9c8575d2aa2daf2467e6cfc83a2ab598aa146010ce1a31de5e7ab51ceed0db3b",
+      "bytes": 2512,
+      "transformation": "none"
+    },
+    {
+      "path": "docs/crm360/outbox-policy-2026-11-20/INCIDENTE_LIMPIEZA.md",
+      "sha256": "b063c260cc54ee4e2b769bc1ae6e88d17025278e258001949c2fa3965dabb145",
+      "bytes": 1906,
+      "transformation": "none"
+    },
+    {
+      "path": "docs/crm360/outbox-policy-2026-11-20/README.md",
+      "sha256": "4b395044834f0e7be7300c788206cd4323a4d0b521fe28f1c7843da35c0efd61",
+      "bytes": 5144,
+      "transformation": "none"
+    }
+  ]
+}

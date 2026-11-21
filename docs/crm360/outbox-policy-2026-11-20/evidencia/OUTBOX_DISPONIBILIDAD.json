@@ -1,0 +1,549 @@
+{
+  "format": "crm360.actual-pg17-outbox-availability.v1",
+  "startedAt": "2026-11-20T22:05:27.630Z",
+  "transport": "verified TLS; original15 remained Unix",
+  "acceptedWithinMeasuredScope": true,
+  "productionSlaAccepted": false,
+  "uniqueGlobalRowsExamined": null,
+  "cohorts": [
+    {
+      "name": "maximum100",
+      "exhausted": 102,
+      "healthy": 1
+    }
+  ],
+  "sweeps": [
+    {
+      "label": "max100-sequential",
+      "parameters": [
+        1,
+        100
+      ],
+      "durationClientMs": 3.082667000000015,
+      "returnedIds": [
+        "SYNTHETIC-UUID-0001",
+        "SYNTHETIC-UUID-0002",
+        "SYNTHETIC-UUID-0003",
+        "SYNTHETIC-UUID-0004",
+        "SYNTHETIC-UUID-0005",
+        "SYNTHETIC-UUID-0006",
+        "SYNTHETIC-UUID-0007",
+        "SYNTHETIC-UUID-0008",
+        "SYNTHETIC-UUID-0009",
+        "SYNTHETIC-UUID-0010",
+        "SYNTHETIC-UUID-0011",
+        "SYNTHETIC-UUID-0012",
+        "SYNTHETIC-UUID-0013",
+        "SYNTHETIC-UUID-0014",
+        "SYNTHETIC-UUID-0015",
+        "SYNTHETIC-UUID-0016",
+        "SYNTHETIC-UUID-0017",
+        "SYNTHETIC-UUID-0018",
+        "SYNTHETIC-UUID-0019",
+        "SYNTHETIC-UUID-0020",
+        "SYNTHETIC-UUID-0021",
+        "SYNTHETIC-UUID-0022",
+        "SYNTHETIC-UUID-0023",
+        "SYNTHETIC-UUID-0024",
+        "SYNTHETIC-UUID-0025",
+        "SYNTHETIC-UUID-0026",
+        "SYNTHETIC-UUID-0027",
+        "SYNTHETIC-UUID-0028",
+        "SYNTHETIC-UUID-0029",
+        "SYNTHETIC-UUID-0030",
+        "SYNTHETIC-UUID-0031",
+        "SYNTHETIC-UUID-0032",
+        "SYNTHETIC-UUID-0033",
+        "SYNTHETIC-UUID-0034",
+        "SYNTHETIC-UUID-0035",
+        "SYNTHETIC-UUID-0036",
+        "SYNTHETIC-UUID-0037",
+        "SYNTHETIC-UUID-0038",
+        "SYNTHETIC-UUID-0039",
+        "SYNTHETIC-UUID-0040",
+        "SYNTHETIC-UUID-0041",
+        "SYNTHETIC-UUID-0042",
+        "SYNTHETIC-UUID-0043",
+        "SYNTHETIC-UUID-0044",
+        "SYNTHETIC-UUID-0045",
+        "SYNTHETIC-UUID-0046",
+        "SYNTHETIC-UUID-0047",
+        "SYNTHETIC-UUID-0048",
+        "SYNTHETIC-UUID-0049",
+        "SYNTHETIC-UUID-0050",
+        "SYNTHETIC-UUID-0051",
+        "SYNTHETIC-UUID-0052",
+        "SYNTHETIC-UUID-0053",
+        "SYNTHETIC-UUID-0054",
+        "SYNTHETIC-UUID-0055",
+        "SYNTHETIC-UUID-0056",
+        "SYNTHETIC-UUID-0057",
+        "SYNTHETIC-UUID-0058",
+        "SYNTHETIC-UUID-0059",
+        "SYNTHETIC-UUID-0060",
+        "SYNTHETIC-UUID-0061",
+        "SYNTHETIC-UUID-0062",
+        "SYNTHETIC-UUID-0063",
+        "SYNTHETIC-UUID-0064",
+        "SYNTHETIC-UUID-0065",
+        "SYNTHETIC-UUID-0066",
+        "SYNTHETIC-UUID-0067",
+        "SYNTHETIC-UUID-0068",
+        "SYNTHETIC-UUID-0069",
+        "SYNTHETIC-UUID-0070",
+        "SYNTHETIC-UUID-0071",
+        "SYNTHETIC-UUID-0072",
+        "SYNTHETIC-UUID-0073",
+        "SYNTHETIC-UUID-0074",
+        "SYNTHETIC-UUID-0075",
+        "SYNTHETIC-UUID-0076",
+        "SYNTHETIC-UUID-0077",
+        "SYNTHETIC-UUID-0078",
+        "SYNTHETIC-UUID-0079",
+        "SYNTHETIC-UUID-0080",
+        "SYNTHETIC-UUID-0081",
+        "SYNTHETIC-UUID-0082",
+        "SYNTHETIC-UUID-0083",
+        "SYNTHETIC-UUID-0084",
+        "SYNTHETIC-UUID-0085",
+        "SYNTHETIC-UUID-0086",
+        "SYNTHETIC-UUID-0087",
+        "SYNTHETIC-UUID-0088",
+        "SYNTHETIC-UUID-0089",
+        "SYNTHETIC-UUID-0090",
+        "SYNTHETIC-UUID-0091",
+        "SYNTHETIC-UUID-0092",
+        "SYNTHETIC-UUID-0093",
+        "SYNTHETIC-UUID-0094",
+        "SYNTHETIC-UUID-0095",
+        "SYNTHETIC-UUID-0096",
+        "SYNTHETIC-UUID-0097",
+        "SYNTHETIC-UUID-0098",
+        "SYNTHETIC-UUID-0099",
+        "SYNTHETIC-UUID-0100"
+      ]
+    },
+    {
+      "label": "max100-sequential",
+      "parameters": [
+        1,
+        100
+      ],
+      "durationClientMs": 0.46179200000000264,
+      "returnedIds": [
+        "SYNTHETIC-UUID-0101",
+        "SYNTHETIC-UUID-0102"
+      ]
+    },
+    {
+      "label": "max100-sequential",
+      "parameters": [
+        1,
+        100
+      ],
+      "durationClientMs": 0.2659580000000119,
+      "returnedIds": []
+    },
+    {
+      "label": "concurrent-0",
+      "parameters": [
+        1,
+        2
+      ],
+      "durationClientMs": 0.5799999999999841,
+      "returnedIds": [
+        "SYNTHETIC-UUID-0103",
+        "SYNTHETIC-UUID-0104"
+      ]
+    },
+    {
+      "label": "concurrent-1",
+      "parameters": [
+        1,
+        2
+      ],
+      "durationClientMs": 1.7924170000000004,
+      "returnedIds": [
+        "SYNTHETIC-UUID-0105",
+        "SYNTHETIC-UUID-0106"
+      ]
+    },
+    {
+      "label": "concurrent-2",
+      "parameters": [
+        1,
+        2
+      ],
+      "durationClientMs": 1.8299159999999688,
+      "returnedIds": [
+        "SYNTHETIC-UUID-0107",
+        "SYNTHETIC-UUID-0108"
+      ]
+    },
+    {
+      "label": "held-row-skip-locked",
+      "parameters": [
+        1,
+        100
+      ],
+      "durationClientMs": 0.33941600000002836,
+      "returnedIds": []
+    },
+    {
+      "label": "after-row-unlock",
+      "parameters": [
+        1,
+        100
+      ],
+      "durationClientMs": 0.4041670000000295,
+      "returnedIds": [
+        "SYNTHETIC-UUID-0109"
+      ]
+    }
+  ],
+  "explainClientMs": 4.36345799999998,
+  "explain": [
+    {
+      "Plan": {
+        "Node Type": "ModifyTable",
+        "Operation": "Update",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Relation Name": "crm_outbox",
+        "Alias": "o",
+        "Startup Cost": 12.54,
+        "Total Cost": 16.82,
+        "Plan Rows": 1,
+        "Plan Width": 134,
+        "Actual Startup Time": 0.132,
+        "Actual Total Time": 2.677,
+        "Actual Rows": 100,
+        "Actual Loops": 1,
+        "Shared Hit Blocks": 644,
+        "Shared Read Blocks": 0,
+        "Shared Dirtied Blocks": 4,
+        "Shared Written Blocks": 4,
+        "Local Hit Blocks": 0,
+        "Local Read Blocks": 0,
+        "Local Dirtied Blocks": 0,
+        "Local Written Blocks": 0,
+        "Temp Read Blocks": 0,
+        "Temp Written Blocks": 0,
+        "Plans": [
+          {
+            "Node Type": "Limit",
+            "Parent Relationship": "InitPlan",
+            "Subplan Name": "CTE exhausted",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Startup Cost": 8.39,
+            "Total Cost": 8.41,
+            "Plan Rows": 1,
+            "Plan Width": 30,
+            "Actual Startup Time": 0.055,
+            "Actual Total Time": 0.11,
+            "Actual Rows": 100,
+            "Actual Loops": 1,
+            "Shared Hit Blocks": 106,
+            "Shared Read Blocks": 0,
+            "Shared Dirtied Blocks": 0,
+            "Shared Written Blocks": 0,
+            "Local Hit Blocks": 0,
+            "Local Read Blocks": 0,
+            "Local Dirtied Blocks": 0,
+            "Local Written Blocks": 0,
+            "Temp Read Blocks": 0,
+            "Temp Written Blocks": 0,
+            "Plans": [
+              {
+                "Node Type": "LockRows",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Startup Cost": 8.39,
+                "Total Cost": 8.41,
+                "Plan Rows": 1,
+                "Plan Width": 30,
+                "Actual Startup Time": 0.055,
+                "Actual Total Time": 0.103,
+                "Actual Rows": 100,
+                "Actual Loops": 1,
+                "Shared Hit Blocks": 106,
+                "Shared Read Blocks": 0,
+                "Shared Dirtied Blocks": 0,
+                "Shared Written Blocks": 0,
+                "Local Hit Blocks": 0,
+                "Local Read Blocks": 0,
+                "Local Dirtied Blocks": 0,
+                "Local Written Blocks": 0,
+                "Temp Read Blocks": 0,
+                "Temp Written Blocks": 0,
+                "Plans": [
+                  {
+                    "Node Type": "Sort",
+                    "Parent Relationship": "Outer",
+                    "Parallel Aware": false,
+                    "Async Capable": false,
+                    "Startup Cost": 8.39,
+                    "Total Cost": 8.4,
+                    "Plan Rows": 1,
+                    "Plan Width": 30,
+                    "Actual Startup Time": 0.05,
+                    "Actual Total Time": 0.054,
+                    "Actual Rows": 100,
+                    "Actual Loops": 1,
+                    "Sort Key": [
+                      "crm_outbox.created_at",
+                      "crm_outbox.id"
+                    ],
+                    "Sort Method": "quicksort",
+                    "Sort Space Used": 29,
+                    "Sort Space Type": "Memory",
+                    "Shared Hit Blocks": 6,
+                    "Shared Read Blocks": 0,
+                    "Shared Dirtied Blocks": 0,
+                    "Shared Written Blocks": 0,
+                    "Local Hit Blocks": 0,
+                    "Local Read Blocks": 0,
+                    "Local Dirtied Blocks": 0,
+                    "Local Written Blocks": 0,
+                    "Temp Read Blocks": 0,
+                    "Temp Written Blocks": 0,
+                    "Plans": [
+                      {
+                        "Node Type": "Bitmap Heap Scan",
+                        "Parent Relationship": "Outer",
+                        "Parallel Aware": false,
+                        "Async Capable": false,
+                        "Relation Name": "crm_outbox",
+                        "Alias": "crm_outbox",
+                        "Startup Cost": 4.13,
+                        "Total Cost": 8.38,
+                        "Plan Rows": 1,
+                        "Plan Width": 30,
+                        "Actual Startup Time": 0.013,
+                        "Actual Total Time": 0.034,
+                        "Actual Rows": 102,
+                        "Actual Loops": 1,
+                        "Recheck Cond": "(state = ANY ('{pending,leased}'::text[]))",
+                        "Rows Removed by Index Recheck": 0,
+                        "Filter": "((attempts >= 1) AND ((state = 'pending'::text) OR ((state = 'leased'::text) AND (lease_until <= clock_timestamp()))))",
+                        "Rows Removed by Filter": 1,
+                        "Exact Heap Blocks": 5,
+                        "Lossy Heap Blocks": 0,
+                        "Shared Hit Blocks": 6,
+                        "Shared Read Blocks": 0,
+                        "Shared Dirtied Blocks": 0,
+                        "Shared Written Blocks": 0,
+                        "Local Hit Blocks": 0,
+                        "Local Read Blocks": 0,
+                        "Local Dirtied Blocks": 0,
+                        "Local Written Blocks": 0,
+                        "Temp Read Blocks": 0,
+                        "Temp Written Blocks": 0,
+                        "Plans": [
+                          {
+                            "Node Type": "Bitmap Index Scan",
+                            "Parent Relationship": "Outer",
+                            "Parallel Aware": false,
+                            "Async Capable": false,
+                            "Index Name": "crm_outbox_due",
+                            "Startup Cost": 0,
+                            "Total Cost": 4.13,
+                            "Plan Rows": 2,
+                            "Plan Width": 0,
+                            "Actual Startup Time": 0.009,
+                            "Actual Total Time": 0.009,
+                            "Actual Rows": 277,
+                            "Actual Loops": 1,
+                            "Shared Hit Blocks": 1,
+                            "Shared Read Blocks": 0,
+                            "Shared Dirtied Blocks": 0,
+                            "Shared Written Blocks": 0,
+                            "Local Hit Blocks": 0,
+                            "Local Read Blocks": 0,
+                            "Local Dirtied Blocks": 0,
+                            "Local Written Blocks": 0,
+                            "Temp Read Blocks": 0,
+                            "Temp Written Blocks": 0
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "Node Type": "Nested Loop",
+            "Parent Relationship": "Outer",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Join Type": "Inner",
+            "Startup Cost": 4.13,
+            "Total Cost": 8.41,
+            "Plan Rows": 1,
+            "Plan Width": 134,
+            "Actual Startup Time": 0.08,
+            "Actual Total Time": 2.041,
+            "Actual Rows": 100,
+            "Actual Loops": 1,
+            "Inner Unique": false,
+            "Join Filter": "(e.id = o.id)",
+            "Rows Removed by Join Filter": 10100,
+            "Shared Hit Blocks": 112,
+            "Shared Read Blocks": 0,
+            "Shared Dirtied Blocks": 0,
+            "Shared Written Blocks": 0,
+            "Local Hit Blocks": 0,
+            "Local Read Blocks": 0,
+            "Local Dirtied Blocks": 0,
+            "Local Written Blocks": 0,
+            "Temp Read Blocks": 0,
+            "Temp Written Blocks": 0,
+            "Plans": [
+              {
+                "Node Type": "Bitmap Heap Scan",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Relation Name": "crm_outbox",
+                "Alias": "o",
+                "Startup Cost": 4.13,
+                "Total Cost": 8.38,
+                "Plan Rows": 1,
+                "Plan Width": 22,
+                "Actual Startup Time": 0.019,
+                "Actual Total Time": 0.042,
+                "Actual Rows": 102,
+                "Actual Loops": 1,
+                "Recheck Cond": "(state = ANY ('{pending,leased}'::text[]))",
+                "Rows Removed by Index Recheck": 0,
+                "Filter": "((attempts >= 1) AND ((state = 'pending'::text) OR ((state = 'leased'::text) AND (lease_until <= clock_timestamp()))))",
+                "Rows Removed by Filter": 1,
+                "Exact Heap Blocks": 5,
+                "Lossy Heap Blocks": 0,
+                "Shared Hit Blocks": 6,
+                "Shared Read Blocks": 0,
+                "Shared Dirtied Blocks": 0,
+                "Shared Written Blocks": 0,
+                "Local Hit Blocks": 0,
+                "Local Read Blocks": 0,
+                "Local Dirtied Blocks": 0,
+                "Local Written Blocks": 0,
+                "Temp Read Blocks": 0,
+                "Temp Written Blocks": 0,
+                "Plans": [
+                  {
+                    "Node Type": "Bitmap Index Scan",
+                    "Parent Relationship": "Outer",
+                    "Parallel Aware": false,
+                    "Async Capable": false,
+                    "Index Name": "crm_outbox_due",
+                    "Startup Cost": 0,
+                    "Total Cost": 4.13,
+                    "Plan Rows": 2,
+                    "Plan Width": 0,
+                    "Actual Startup Time": 0.011,
+                    "Actual Total Time": 0.011,
+                    "Actual Rows": 277,
+                    "Actual Loops": 1,
+                    "Shared Hit Blocks": 1,
+                    "Shared Read Blocks": 0,
+                    "Shared Dirtied Blocks": 0,
+                    "Shared Written Blocks": 0,
+                    "Local Hit Blocks": 0,
+                    "Local Read Blocks": 0,
+                    "Local Dirtied Blocks": 0,
+                    "Local Written Blocks": 0,
+                    "Temp Read Blocks": 0,
+                    "Temp Written Blocks": 0
+                  }
+                ]
+              },
+              {
+                "Node Type": "CTE Scan",
+                "Parent Relationship": "Inner",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "CTE Name": "exhausted",
+                "Alias": "e",
+                "Startup Cost": 0,
+                "Total Cost": 0.02,
+                "Plan Rows": 1,
+                "Plan Width": 56,
+                "Actual Startup Time": 0.001,
+                "Actual Total Time": 0.015,
+                "Actual Rows": 100,
+                "Actual Loops": 102,
+                "Shared Hit Blocks": 106,
+                "Shared Read Blocks": 0,
+                "Shared Dirtied Blocks": 0,
+                "Shared Written Blocks": 0,
+                "Local Hit Blocks": 0,
+                "Local Read Blocks": 0,
+                "Local Dirtied Blocks": 0,
+                "Local Written Blocks": 0,
+                "Temp Read Blocks": 0,
+                "Temp Written Blocks": 0
+              }
+            ]
+          }
+        ]
+      },
+      "Planning": {
+        "Shared Hit Blocks": 0,
+        "Shared Read Blocks": 0,
+        "Shared Dirtied Blocks": 0,
+        "Shared Written Blocks": 0,
+        "Local Hit Blocks": 0,
+        "Local Read Blocks": 0,
+        "Local Dirtied Blocks": 0,
+        "Local Written Blocks": 0,
+        "Temp Read Blocks": 0,
+        "Temp Written Blocks": 0
+      },
+      "Planning Time": 0.107,
+      "Triggers": [],
+      "Execution Time": 2.716
+    }
+  ],
+  "explainRollbackClientMs": 0.1467909999999506,
+  "explainTransactionClientMs": 5.272666000000015,
+  "healthyClaimClientMs": 3.670333000000028,
+  "max100Progression": [
+    100,
+    2,
+    0
+  ],
+  "concurrentCommitClientMs": [
+    {
+      "commit": 0.35520800000000463,
+      "transactionIncludingBarrier": 3.1872079999999983
+    },
+    {
+      "commit": 0.32979199999999764,
+      "transactionIncludingBarrier": 3.758125000000007
+    },
+    {
+      "commit": 0.2510000000000332,
+      "transactionIncludingBarrier": 4.182875000000024
+    }
+  ],
+  "concurrentDisjointAndOneHealthyOwner": true,
+  "healthyWhileOtherRowLockedClientMs": 0.7439579999999637,
+  "ownBlockerMetadata": [
+    {
+      "pid": "LAB-PID-01",
+      "state": "idle in transaction",
+      "wait_event_type": "Client",
+      "wait_event": "ClientRead",
+      "blocking": []
+    }
+  ],
+  "healthyCommittedBeforeBlockerReleased": true,
+  "cleanupConfirmed": true,
+  "endedAt": "2026-11-20T22:05:27.884Z",
+  "public_copy_note": "Sanitized review copy: synthetic UUIDs/roles/databases/PIDs are consistent aliases; measurements, outcomes and original failure are unchanged. Original local receipt retained."
+}
