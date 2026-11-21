@@ -1,0 +1,74 @@
+{
+  "format": "crm360.final-local-pg17-functional-acceptance.v1",
+  "date": "2026-11-20",
+  "verdict": "LOCAL_FUNCTIONAL_PASS_WITH_RECONCILED_HARNESS_CLEANUP_INCIDENT",
+  "postgresql": "17.12",
+  "outbox_first_postgresql_execution": {
+    "passed": 15,
+    "total": 15,
+    "repeat": false,
+    "transport": "private Unix socket"
+  },
+  "tls_and_permission_checks": {
+    "passed": 11,
+    "total": 11
+  },
+  "real_hour": {
+    "passed": true,
+    "worker_executions": 12,
+    "thirteenth_before_expiry": "limit",
+    "post_expiry_reserve": "expired",
+    "post_expiry_marker_writes_rejected": true,
+    "monotonic_elapsed_ms": 3600267.526083,
+    "server_elapsed_ms": 3600063.1169433594
+  },
+  "additional_postgresql_control_cases": {
+    "functional_passed": 11,
+    "total": 11,
+    "original_harness_exit": 1,
+    "original_harness_accepted": false,
+    "original_source_archived": true,
+    "cleanup_reconciled_separately": true,
+    "corrected_harness_rerun": false
+  },
+  "availability": {
+    "sequential_max100": [
+      100,
+      2,
+      0
+    ],
+    "concurrent_max100": [
+      0,
+      2,
+      100
+    ],
+    "healthy_unique_owner": 1,
+    "production_sla_accepted": false,
+    "global_unique_examined_rows": null
+  },
+  "laboratory": {
+    "duration_seconds": 4342.872828,
+    "maximum_seconds": 5400,
+    "cloud_provider_charges_usd": 0,
+    "vercel_credit_used": 0,
+    "resource_removed": true,
+    "port_has_listener_after_stop": false,
+    "private_keys_removed": true
+  },
+  "certified_local11_repeated": false,
+  "original_control_source_modified": false,
+  "main_v2_ten_migrations_or_project_wrapp_modified": false,
+  "pr_published": false,
+  "hosted_acceptance": false,
+  "phase_060": "BLOCKED",
+  "corporate_account_created_or_invited": false,
+  "remaining_scope": [
+    "CRM hosted runtime wiring and authorized PostgreSQL/TLS reachable from Vercel",
+    "Economic containment protecting Sollahms under shared team credits",
+    "060 secure operational provisioning and hosted Auth/MFA",
+    "Real CRM receiver/ledger/contact deduplication and original commercial worker lifecycle",
+    "External backup/cold restoration and RPO/RTO measurement"
+  ],
+  "historical_outbox_unit_tests_repeated": false,
+  "public_copy_note": "Sanitized review copy: synthetic UUIDs/roles/databases/PIDs are consistent aliases; measurements, outcomes and original failure are unchanged. Original local receipt retained."
+}

@@ -1,0 +1,34 @@
+TAP version 13
+# Subtest: A. receive rejects an existing failed durable receipt for manual review without claiming, delivering or reviving metadata
+ok 1 - A. receive rejects an existing failed durable receipt for manual review without claiming, delivering or reviving metadata
+  ---
+  duration_ms: 2.223416
+  type: 'test'
+  ...
+# Subtest: B. tick forwards the full legitimate review ACK to complete and reports recorded without inventing contact creation
+ok 2 - B. tick forwards the full legitimate review ACK to complete and reports recorded without inventing contact creation
+  ---
+  duration_ms: 1.877375
+  type: 'test'
+  ...
+# Subtest: C. A late ACK refused after storage finalized failed returns failed without enqueue, another transport or metadata revival
+ok 3 - C. A late ACK refused after storage finalized failed returns failed without enqueue, another transport or metadata revival
+  ---
+  duration_ms: 0.280167
+  type: 'test'
+  ...
+# Subtest: D. A losing lease observes another worker's recorded state without enqueue, another delivery or rewriting its receipt/history
+ok 4 - D. A losing lease observes another worker's recorded state without enqueue, another delivery or rewriting its receipt/history
+  ---
+  duration_ms: 0.279375
+  type: 'test'
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 4
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 80.565084

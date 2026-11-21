@@ -1,0 +1,47 @@
+{
+  "format": "crm360.separate-owned-cleanup-reconciliation.v1",
+  "startedAt": "2026-11-20T23:06:54.573Z",
+  "originalHarnessExitRetained": 1,
+  "acceptanceCasesRerun": false,
+  "coreImplementationChanged": false,
+  "cause": "Harness passed [...markers] as multiple query parameters; DELETE expects one uuid[] parameter",
+  "accepted": true,
+  "reconciledOwnedRows": [
+    {
+      "id": "SYNTHETIC-UUID-0224",
+      "pilot_id": "SYNTHETIC-UUID-0225",
+      "writer": "LAB_ROLE_WORKER",
+      "case": "C08-real-TCP-COMMIT-response-loss-reconciled-without-replay"
+    },
+    {
+      "id": "SYNTHETIC-UUID-0228",
+      "pilot_id": "SYNTHETIC-UUID-0229",
+      "writer": "LAB_ROLE_WORKER",
+      "case": "C10-real-finish-acknowledgement-loss-keeps-completed-history-and-no-replay"
+    },
+    {
+      "id": "SYNTHETIC-UUID-0232",
+      "pilot_id": "SYNTHETIC-UUID-0218",
+      "writer": "LAB_ROLE_WORKER",
+      "case": "C04-row-lock-close-barrier-and-no-writes-after-confirmed-close"
+    },
+    {
+      "id": "SYNTHETIC-UUID-0233",
+      "pilot_id": "SYNTHETIC-UUID-0216",
+      "writer": "LAB_ROLE_API",
+      "case": "C03-read-only-route-and-rollback-on-forbidden-write"
+    },
+    {
+      "id": "SYNTHETIC-UUID-0234",
+      "pilot_id": "SYNTHETIC-UUID-0213",
+      "writer": "LAB_ROLE_WORKER",
+      "case": "C01-eight-OS-processes-native-connections-and-idempotent-reservation"
+    }
+  ],
+  "committedDeletedMarkers": 5,
+  "independentRemainingMarkers": 0,
+  "openPilots": 0,
+  "remainingOutboxRows": 0,
+  "endedAt": "2026-11-20T23:06:54.613Z",
+  "public_copy_note": "Sanitized review copy: synthetic UUIDs/roles/databases/PIDs are consistent aliases; measurements, outcomes and original failure are unchanged. Original local receipt retained."
+}

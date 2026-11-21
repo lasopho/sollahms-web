@@ -1,0 +1,190 @@
+{
+  "format": "crm360.actual-pg17-outbox-concurrent-max100.v1",
+  "startedAt": "2026-11-20T22:21:51.425Z",
+  "justification": "Previous maximum100 measurement was sequential; previous simultaneous retained transactions used batch2",
+  "batchSize": 100,
+  "exhaustedRows": 102,
+  "healthyRows": 1,
+  "sweeps": [
+    {
+      "label": "concurrent-max100-1",
+      "parameters": [
+        1,
+        100
+      ],
+      "clientMs": 1.749749999999949,
+      "ids": []
+    },
+    {
+      "label": "concurrent-max100-2",
+      "parameters": [
+        1,
+        100
+      ],
+      "clientMs": 1.8785830000000487,
+      "ids": [
+        "SYNTHETIC-UUID-0110",
+        "SYNTHETIC-UUID-0111"
+      ]
+    },
+    {
+      "label": "concurrent-max100-0",
+      "parameters": [
+        1,
+        100
+      ],
+      "clientMs": 2.9287909999999897,
+      "ids": [
+        "SYNTHETIC-UUID-0112",
+        "SYNTHETIC-UUID-0113",
+        "SYNTHETIC-UUID-0114",
+        "SYNTHETIC-UUID-0115",
+        "SYNTHETIC-UUID-0116",
+        "SYNTHETIC-UUID-0117",
+        "SYNTHETIC-UUID-0118",
+        "SYNTHETIC-UUID-0119",
+        "SYNTHETIC-UUID-0120",
+        "SYNTHETIC-UUID-0121",
+        "SYNTHETIC-UUID-0122",
+        "SYNTHETIC-UUID-0123",
+        "SYNTHETIC-UUID-0124",
+        "SYNTHETIC-UUID-0125",
+        "SYNTHETIC-UUID-0126",
+        "SYNTHETIC-UUID-0127",
+        "SYNTHETIC-UUID-0128",
+        "SYNTHETIC-UUID-0129",
+        "SYNTHETIC-UUID-0130",
+        "SYNTHETIC-UUID-0131",
+        "SYNTHETIC-UUID-0132",
+        "SYNTHETIC-UUID-0133",
+        "SYNTHETIC-UUID-0134",
+        "SYNTHETIC-UUID-0135",
+        "SYNTHETIC-UUID-0136",
+        "SYNTHETIC-UUID-0137",
+        "SYNTHETIC-UUID-0138",
+        "SYNTHETIC-UUID-0139",
+        "SYNTHETIC-UUID-0140",
+        "SYNTHETIC-UUID-0141",
+        "SYNTHETIC-UUID-0142",
+        "SYNTHETIC-UUID-0143",
+        "SYNTHETIC-UUID-0144",
+        "SYNTHETIC-UUID-0145",
+        "SYNTHETIC-UUID-0146",
+        "SYNTHETIC-UUID-0147",
+        "SYNTHETIC-UUID-0148",
+        "SYNTHETIC-UUID-0149",
+        "SYNTHETIC-UUID-0150",
+        "SYNTHETIC-UUID-0151",
+        "SYNTHETIC-UUID-0152",
+        "SYNTHETIC-UUID-0153",
+        "SYNTHETIC-UUID-0154",
+        "SYNTHETIC-UUID-0155",
+        "SYNTHETIC-UUID-0156",
+        "SYNTHETIC-UUID-0157",
+        "SYNTHETIC-UUID-0158",
+        "SYNTHETIC-UUID-0159",
+        "SYNTHETIC-UUID-0160",
+        "SYNTHETIC-UUID-0161",
+        "SYNTHETIC-UUID-0162",
+        "SYNTHETIC-UUID-0163",
+        "SYNTHETIC-UUID-0164",
+        "SYNTHETIC-UUID-0165",
+        "SYNTHETIC-UUID-0166",
+        "SYNTHETIC-UUID-0167",
+        "SYNTHETIC-UUID-0168",
+        "SYNTHETIC-UUID-0169",
+        "SYNTHETIC-UUID-0170",
+        "SYNTHETIC-UUID-0171",
+        "SYNTHETIC-UUID-0172",
+        "SYNTHETIC-UUID-0173",
+        "SYNTHETIC-UUID-0174",
+        "SYNTHETIC-UUID-0175",
+        "SYNTHETIC-UUID-0176",
+        "SYNTHETIC-UUID-0177",
+        "SYNTHETIC-UUID-0178",
+        "SYNTHETIC-UUID-0179",
+        "SYNTHETIC-UUID-0180",
+        "SYNTHETIC-UUID-0181",
+        "SYNTHETIC-UUID-0182",
+        "SYNTHETIC-UUID-0183",
+        "SYNTHETIC-UUID-0184",
+        "SYNTHETIC-UUID-0185",
+        "SYNTHETIC-UUID-0186",
+        "SYNTHETIC-UUID-0187",
+        "SYNTHETIC-UUID-0188",
+        "SYNTHETIC-UUID-0189",
+        "SYNTHETIC-UUID-0190",
+        "SYNTHETIC-UUID-0191",
+        "SYNTHETIC-UUID-0192",
+        "SYNTHETIC-UUID-0193",
+        "SYNTHETIC-UUID-0194",
+        "SYNTHETIC-UUID-0195",
+        "SYNTHETIC-UUID-0196",
+        "SYNTHETIC-UUID-0197",
+        "SYNTHETIC-UUID-0198",
+        "SYNTHETIC-UUID-0199",
+        "SYNTHETIC-UUID-0200",
+        "SYNTHETIC-UUID-0201",
+        "SYNTHETIC-UUID-0202",
+        "SYNTHETIC-UUID-0203",
+        "SYNTHETIC-UUID-0204",
+        "SYNTHETIC-UUID-0205",
+        "SYNTHETIC-UUID-0206",
+        "SYNTHETIC-UUID-0207",
+        "SYNTHETIC-UUID-0208",
+        "SYNTHETIC-UUID-0209",
+        "SYNTHETIC-UUID-0210",
+        "SYNTHETIC-UUID-0211"
+      ]
+    }
+  ],
+  "acceptedWithinMeasuredScope": true,
+  "productionSlaAccepted": false,
+  "ownRetainedTransactionMetadata": [
+    {
+      "pid": "LAB-PID-02",
+      "state": "idle in transaction",
+      "wait_event_type": "Client",
+      "wait_event": "ClientRead",
+      "blockers": []
+    },
+    {
+      "pid": "LAB-PID-03",
+      "state": "idle in transaction",
+      "wait_event_type": "Client",
+      "wait_event": "ClientRead",
+      "blockers": []
+    },
+    {
+      "pid": "LAB-PID-04",
+      "state": "idle in transaction",
+      "wait_event_type": "Client",
+      "wait_event": "ClientRead",
+      "blockers": []
+    }
+  ],
+  "commits": [
+    {
+      "clientMs": 0.46029199999998127,
+      "transactionIncludingDeliberateBarrierMs": 40.078417
+    },
+    {
+      "clientMs": 0.24875000000002956,
+      "transactionIncludingDeliberateBarrierMs": 28.194833000000017
+    },
+    {
+      "clientMs": 0.2736659999999915,
+      "transactionIncludingDeliberateBarrierMs": 18.853334000000018
+    }
+  ],
+  "batchDistribution": [
+    0,
+    2,
+    100
+  ],
+  "disjointUnion": 102,
+  "healthyOwners": 1,
+  "cleanupConfirmed": true,
+  "endedAt": "2026-11-20T22:21:51.707Z",
+  "public_copy_note": "Sanitized review copy: synthetic UUIDs/roles/databases/PIDs are consistent aliases; measurements, outcomes and original failure are unchanged. Original local receipt retained."
+}
