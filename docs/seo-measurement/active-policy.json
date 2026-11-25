@@ -15,8 +15,8 @@
   "legacy_plans_status": "historical_not_for_new_executions",
   "project_fiche_handoffs_allowed": false,
   "inventory_confirmation_required_for_seo": false,
-  "production_record": "../service-coverage-20261119/publication.json",
-  "production_deployment_id": "dpl_GCSXniYKZJdHgNbuW3fNtFqBt9Jn",
+  "production_record": "../footer-global-20261125/release/publication-closure.json",
+  "production_deployment_id": "dpl_8Dn1aquS1i4TeemVamcd5Yga6YZz",
   "production_inferred_from_main": false,
   "candidate_status": "published_and_verified",
   "historical_seo_publication": {
@@ -29,7 +29,7 @@
   },
   "historical_scope": "scope-v2.json",
   "scope_comparison_rule": "Reimport original page-level or exact-native-filter data with identical v3 URLs; v2 domain totals include catalogue and cannot measure v3 impact.",
-  "publication_t0": "2026-11-19T16:56:11.782000-03:00",
+  "publication_t0": "2026-11-25T17:38:41.676-03:00",
   "publication_timezone": "America/Santiago",
   "publication_authorized_commit": "d7ad0795a561a9b69999b421fd9eef519adfee26",
   "current_gsc_measurement": "runs/2026-11-19-weekly-comparison/google-comparison.json",
@@ -110,7 +110,7 @@
     "authorized_commit": "df78d77f31c8da946623e586634998e151ed237e",
     "description": "Four corporate improvements published07:54; preserved by the later measurement/appearance release"
   },
-  "publication_executed_commit": "d7ad0795a561a9b69999b421fd9eef519adfee26",
+  "publication_executed_commit": "15c07de8be8bf6255c1b431ab191127269fefdc9",
   "publication_execution_precision": "../measurement-20261119/publication/privacy-clarification.json",
   "latest_public_technical_verification": "../service-coverage-20261119/public-http-verification.json",
   "previous_measurement_publication": {
@@ -140,5 +140,19 @@
     "t0": "2026-11-19T15:50:03.998-03:00"
   },
   "current_change_followup": "../service-coverage-20261119/README.md",
-  "previous_chatgpt_observation": "runs/2026-11-19-weekly-comparison/chatgpt-observation.json"
+  "previous_chatgpt_observation": "runs/2026-11-19-weekly-comparison/chatgpt-observation.json",
+  "previous_coverage_publication": {
+    "production_record": "../service-coverage-20261119/publication.json",
+    "production_deployment_id": "dpl_GCSXniYKZJdHgNbuW3fNtFqBt9Jn",
+    "publication_t0": "2026-11-19T16:56:11.782000-03:00"
+  },
+  "autonomous_improvements_20261125": {
+    "status": "implemented_tested_not_yet_published",
+    "authorization": "../seo-geo-20261125/authorization.json",
+    "candidateProof": "../seo-geo-20261125/artifact-proof.json",
+    "baseline": "dpl_8Dn1aquS1i4TeemVamcd5Yga6YZz",
+    "scopeChanged": false,
+    "effectOfNewPublicationMeasured": false
+  },
+  "current_measurement_20261125": "runs/2026-11-25-autonomous-improvements/"
 }

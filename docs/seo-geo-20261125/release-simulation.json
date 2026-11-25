@@ -1,0 +1,63 @@
+{
+  "recordedAtUTC": "2026-11-25T20:59:26.968184+00:00",
+  "mode": "offline in-memory model with sockets disabled by existing harness",
+  "baseline": "dpl_8Dn1aquS1i4TeemVamcd5Yga6YZz",
+  "baseFiles": 1729,
+  "candidateFiles": 1730,
+  "candidateInventorySHA256": "b6d232c0447a18ef544655650164d39d173862806bd6deadd7a2be6fedc727d2",
+  "checks": [
+    {
+      "name": "Exact validated ID promoted in memory",
+      "passed": true
+    },
+    {
+      "name": "Rollback restores previous1729files and routing in memory",
+      "passed": true,
+      "restoredFiles": 1729
+    },
+    {
+      "name": "Different ID",
+      "passed": true,
+      "stateUnchanged": true
+    },
+    {
+      "name": "Inventory changed",
+      "passed": true,
+      "stateUnchanged": true
+    },
+    {
+      "name": "Function changed",
+      "passed": true,
+      "stateUnchanged": true
+    },
+    {
+      "name": "Concurrent publication",
+      "passed": true,
+      "stateUnchanged": true
+    },
+    {
+      "name": "Autoassignment changed",
+      "passed": true,
+      "stateUnchanged": true
+    },
+    {
+      "name": "Redirect changed",
+      "passed": true,
+      "stateUnchanged": true
+    },
+    {
+      "name": "Preview substituted",
+      "passed": true,
+      "stateUnchanged": true
+    },
+    {
+      "name": "Rollback refuses later publication",
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "networkRequests": 0,
+  "realPromotions": 0,
+  "realRollbacks": 0,
+  "limitation": "Local guard behavior is not control-plane atomicity or a real exercise of future recovery permission."
+}

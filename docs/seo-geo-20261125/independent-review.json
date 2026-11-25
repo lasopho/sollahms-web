@@ -1,0 +1,187 @@
+{
+  "schemaVersion": 1,
+  "reviewedAtUTC": "2026-11-25T20:46:04Z",
+  "reviewMode": "Independent local read-only review; only this receipt was written",
+  "decision": "PASS; content_artifact_and_corrected_notifier_guards",
+  "remoteMutations": 0,
+  "networkRequestsByReview": 0,
+  "reviewedAgainst": {
+    "productionDeployment": "dpl_ADQD9qtMpZMDFzkTmbWN8GbX52be",
+    "productionSource": "e866ce7ac0d7b6df968ecd011fa78d6aec335828",
+    "artifactInventorySHA256": "fdc28233a83fb11cc1e269d4b3b2963e6711f796973ac714247cea93d80aaf79",
+    "baselineFiles": 1729,
+    "productionFreshness": "Baseline artifact pinned by parent; no live deployment/account state was read by this review"
+  },
+  "candidateArtifact": {
+    "inventorySHA256": "b6d232c0447a18ef544655650164d39d173862806bd6deadd7a2be6fedc727d2",
+    "files": 1730,
+    "changed": [
+      "static/assets/css/urban-works.css",
+      "static/centro-orientacion.html",
+      "static/entorno-desarrollo-urbano.html",
+      "static/sitemap.xml"
+    ],
+    "added": [
+      "static/indexnow-ownership.txt"
+    ],
+    "removed": [],
+    "unchanged": 1725,
+    "allFileBytesAndSHA256IndependentlyRecomputed": true,
+    "noSymlinks": true,
+    "functionBundlesUnchanged": 7,
+    "functionFilesUnchanged": 57,
+    "outputConfigurationByteIdentical": true,
+    "existingMarketingURLFilesUnchanged": true
+  },
+  "preservation": {
+    "entorno": {
+      "formsByteIdentical": 1,
+      "scriptsByteIdentical": 5,
+      "footerByteIdentical": true,
+      "metadataAndJSONLDIdentical": true
+    },
+    "centro": {
+      "formsByteIdentical": 4,
+      "scriptsByteIdentical": 6,
+      "footerByteIdentical": true,
+      "metadataAndJSONLDIdentical": true
+    },
+    "runtimeControllersAndAPIsUnchanged": true,
+    "privacyAndConsentConfigurationUnchanged": true,
+    "worksAndProjectDataUnchanged": true,
+    "catalogueFichesDocumentalAndAllOtherHTMLUnchanged": true,
+    "sitemap": {
+      "sameURLsAndOrder": true,
+      "newOrRemovedURLs": 0,
+      "onlyChanges": "Add truthful 2026-11-25 lastmod to Centro and Entorno; neither entry previously had lastmod",
+      "excludedEntriesBytePreserved": true
+    },
+    "sourceVercelChange": "Only disables automatic deployment for the new branch; built output config remains identical"
+  },
+  "studyAlignment": {
+    "referencesRead": [
+      "docs/seo-measurement/STRATEGY-v3.md",
+      "docs/seo-measurement/active-policy.json",
+      "docs/home-seo-20261025/research-and-decisions.md",
+      "docs/seo-corporate-20261029/README.md"
+    ],
+    "scopeCorporateURLs": 12,
+    "observedProblem": "GSC Entorno still reports crawled/currently not indexed, with last crawl 11 November; Centro previously lacked a body link to Entorno",
+    "criterion": "Useful original static content, explicit source/date limitations, and educational path toward a real advisory request",
+    "implemented": "Extend the existing Entorno methodology, explain actual Information/Reviewed fields, link guide/comparator/advisory, and link Entorno from Centro; no credential, office, new URL or new schema claims",
+    "dateFieldCopyVerifiedAgainstRenderer": true,
+    "google": "Check post-publication crawl and indexation separately; the edit does not establish why Google excluded the page or guarantee inclusion",
+    "openAI": "Readable owned HTML is available; no specific mention/citation effect established and no claim about OpenAI indexation",
+    "bingMicrosoft": "IndexNow notification is separate from account access or private metrics; protocol acknowledgement is not crawl/indexation/Copilot citation proof"
+  },
+  "offlineTests": {
+    "command": "node --test tests/orientation-20261031.mjs tests/urban-works.test.mjs",
+    "passed": 28,
+    "failed": 0,
+    "jsonLDGuard": "Valid application/ld+json accepted, executable or malformed inline scripts rejected; existing structured data was not removed",
+    "notifierDefaultDryRun": {
+      "defaultURLs": 2,
+      "networkRequests": 0
+    },
+    "notifierEightRejectionCases": [
+      "host alias",
+      "query",
+      "fragment",
+      "http",
+      "catalogue",
+      "documental",
+      "project fiche",
+      "extensionless alias"
+    ],
+    "notifierEightCasesPassed": true,
+    "notifierNetworkSentinelUsed": true,
+    "realSubmissionsOrSDKRequests": 0
+  },
+  "notifierFindings": [
+    {
+      "severity": "required_before_send",
+      "file": "scripts/notify-corporate-indexnow.py",
+      "lines": [
+        17,
+        18,
+        26,
+        43,
+        44,
+        48,
+        49
+      ],
+      "finding": "Host, scope, public ownership response and exact published HTML checks use assert, which Python optimization removes, including response.read() calls inside the assertion",
+      "requestedFix": "Use explicit conditional exceptions so python -O cannot bypass publication/ownership guards",
+      "status": "closed_by_notifierFixAddendum"
+    },
+    {
+      "severity": "required_before_send_or_explicitly_bound_operationally",
+      "file": "scripts/notify-corporate-indexnow.py",
+      "lines": [
+        19,
+        20
+      ],
+      "finding": "--url accepts all twelve included URLs, although only two were changed; this was demonstrated offline",
+      "requestedFix": "For this release restrict overrides to the configured changed URL list, or bind and review the exact two URLs in the actual notification command/receipt; do not describe the existing twelve-URL guard as a two-changed-URL guard",
+      "status": "closed_by_notifierFixAddendum"
+    }
+  ],
+  "notifierFixAddendum": {
+    "reviewedAtUTC": "2026-11-25T20:52:30Z",
+    "decision": "PASS; both prior notifier findings closed",
+    "scope": "Focused notifier follow-up only; no repeat full app/inventory/browser tests",
+    "currentProductionBaselineReportedByParent": {
+      "deploymentId": "dpl_8Dn1aquS1i4TeemVamcd5Yga6YZz",
+      "sourceCommit": "15c07de8be8bf6255c1b431ab191127269fefdc9",
+      "files": 1729,
+      "inventorySHA256": "fdc28233a83fb11cc1e269d4b3b2963e6711f796973ac714247cea93d80aaf79",
+      "basis": "Parent reports later footer closure changes only source/docs; runtime inventory identical to baseline independently recomputed above. No platform state request by reviewer."
+    },
+    "fix": {
+      "explicitConditionalExceptions": true,
+      "zeroAssertNodes": true,
+      "publicResponseReadsOutsideAssertions": true,
+      "overrideMustBelongToConfiguredTwoChangedURLsAndExactCorporateScope": true,
+      "keyPathSymlinkRejected": true
+    },
+    "offlineVerification": {
+      "pythonOptimization": 1,
+      "passed": 18,
+      "cases": [
+        "default_exact_two_changed_URLs",
+        "reject_host_alias",
+        "reject_query",
+        "reject_fragment",
+        "reject_http",
+        "reject_catalogue",
+        "reject_documental",
+        "reject_project_fiche",
+        "reject_extensionless_alias",
+        "reject_included_but_unchanged",
+        "default_dry_run_zero_requests",
+        "public_proof_wrong_bytes_stops_POST",
+        "public_proof_non200_stops_POST",
+        "published_HTML_wrong_bytes_stops_POST",
+        "published_HTML_redirect_stops_POST",
+        "mocked_200_receipt_after_three_GET_validations",
+        "mocked_202_remains_key_validation_pending",
+        "zero_assert_AST"
+      ],
+      "realNetworkRequests": 0,
+      "realReceiptWrites": 0,
+      "scriptSHA256": "2f702980ecb8437a3bdf194a7dc911f61093f28c9eaa5487dc0c5daef0e60733"
+    },
+    "testExecution": "PYTHONDONTWRITEBYTECODE=1 python3 -O; in-memory monkeypatch of urlopen and receipt I/O. GET/POST methods are mocks, not remote calls.",
+    "testedGuardOrdering": "Ownership proof and both exact public HTML responses verified before writing attempt receipt and mocked POST; mismatch/non200/redirect blocks POST and receipt writes. Mocked 200/202 remain distinct from indexation.",
+    "unresolvedFindings": [],
+    "unchangedLimitations": "Technical release gating, primary-source protocol record, live publication/ownership availability, remote metrics and post-publication effects remain the parent workflow's separate checks; no account access or real notification performed here."
+  },
+  "limits": [
+    "The app/artifact and corrected notifier guards pass this technical review. The two findings below are preserved as history and closed by the focused addendum.",
+    "No browser rendering or production/stage requests were repeated by this review",
+    "IndexNow API contract was not re-fetched by this offline review; primary-source verification belongs to the parent release record",
+    "OpenSEO context and historical policy production pointers predate current ADQD production; this review uses the pinned current artifact, not historical GCS pointers",
+    "No owner identity, professional credential, lead delivery, search ranking or AI result was inferred",
+    "Any subsequent artifact or notifier change requires focused revalidation; this receipt does not perform or itself authorize a deployment"
+  ]
+}

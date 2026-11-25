@@ -68,9 +68,22 @@ test('orientation endpoint delegates synthetic success with the existing idempot
  const r=await f.handler.fetch(request(payload,{'Idempotency-Key':`sollahms-v1-${now}-12345678-1234-4123-8123-123456789abc`}));
  assert.equal(r.status,200);assert.equal((await r.json()).ok,true);assert.ok(received);assert.equal(received.url,'https://api.resend.com/emails');assert.ok(!JSON.stringify(received).includes('monthlySavings'));
 });
-test('new page and endpoint contain explicit consent, no inline scripts and shared mathematics',()=>{
+function assertNoExecutableInlineScripts(html) {
+ for (const tag of html.matchAll(/<script\b([^>]*)>/gi)) {
+  if (/(?:^|\s)src\s*=/i.test(tag[1])) continue;
+  assert.match(tag[1],/(?:^|\s)type\s*=\s*(?:"application\/ld\+json"|'application\/ld\+json')/i);
+  const start=tag.index+tag[0].length,end=html.toLowerCase().indexOf('</script>',start);
+  assert.ok(end>=start,'JSON-LD data block must be closed');
+  assert.doesNotThrow(()=>JSON.parse(html.slice(start,end)));
+ }
+}
+test('script guard permits valid JSON-LD data while rejecting executable or malformed inline blocks',()=>{
+ assert.doesNotThrow(()=>assertNoExecutableInlineScripts('<script type="application/ld+json">{"@type":"WebPage"}</script>'));
+ for(const html of ['<script>alert(1)</script>','<script type="module">run()</script>','<script data-src="/fake.js">run()</script>','<script data-type="application/ld+json">{}</script>','<script type="application/ld+json">invalid</script>'])assert.throws(()=>assertNoExecutableInlineScripts(html));
+});
+test('new page and endpoint contain explicit consent, no executable inline scripts and shared mathematics',()=>{
  const html=readFileSync(new URL('../centro-orientacion.html',import.meta.url),'utf8'),script=readFileSync(new URL('../assets/js/orientacion.mjs',import.meta.url),'utf8');
- assert.match(html,/name="consent" required/);assert.equal((html.match(/<fieldset disabled data-interactive>/g)||[]).length,4);assert.match(html,/action="\/api\/orientation-contact"/);assert.doesNotMatch(html,/<script(?![^>]*src=)[^>]*>/);assert.doesNotMatch(script,/\.innerHTML\s*=/);assert.match(script,/attempt\.key/);assert.match(script,/operation\.uncertain/);
+ assert.match(html,/name="consent" required/);assert.equal((html.match(/<fieldset disabled data-interactive>/g)||[]).length,4);assert.match(html,/action="\/api\/orientation-contact"/);assertNoExecutableInlineScripts(html);assert.doesNotMatch(script,/\.innerHTML\s*=/);assert.match(script,/attempt\.key/);assert.match(script,/operation\.uncertain/);
 });
 
 
