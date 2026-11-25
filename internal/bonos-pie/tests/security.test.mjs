@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { createHandler, Conflict, validateRecord, presentData } from '../server.mjs';
+import { createHandler, createBlobStore, Conflict, validateRecord, presentData } from '../server.mjs';
 
 class MemoryStore {
   rows = new Map();
@@ -50,7 +50,7 @@ function setup() {
   return { request, login, store, messages, advance(ms) { time += ms; }, time: () => time };
 }
 const record = () => ({ id: 'example', status: 'conditional', percentage: 20, amountUf: null,
-  irisUrl: 'https://iris.yapo.cl/proyecto/1282?operation=Venta', checkedAt: '2026-11-25T19:00:00Z',
+  irisUrl: 'https://iris.yapo.cl/proyecto/999999999?operation=Venta', checkedAt: '2026-11-25T19:00:00Z',
   conditions: 'Máximo 20%, sujeto a las unidades participantes.', units: 'No se especifican.', validUntil: null,
   identity: { name: 'Ejemplo', developer: 'Prueba', location: 'Santiago', validated: true },
   evidence: [{ quote: '20% Bono pie Máximo', section: 'Formas de pago', capturedAt: '2026-11-25T19:00:00Z' }] });
@@ -111,7 +111,7 @@ test('mutations require origin, JSON, authenticated session and CSRF', async () 
   assert.equal(data.stats.withPercentage, 1);
   assert.equal(data.version, 1);
   assert.equal(data.history.length, 1);
-  assert.equal(data.projects[0].irisUrl, 'https://iris.yapo.cl/proyecto/1282');
+  assert.equal(data.projects[0].irisUrl, 'https://iris.yapo.cl/proyecto/999999999');
   assert.equal((await s.request('op=data', { method: 'PUT', cookie: auth.cookie, csrf: auth.csrf, body: input })).statusCode, 409);
 });
 
@@ -131,7 +131,7 @@ test('discounts cannot become bonuses; identities, current evidence and safe Iri
   for (const input of [
     { ...valid, evidence: [{ quote: '20% descuento', capturedAt: valid.checkedAt }] },
     { ...valid, status: 'promotion_only' },
-    { ...valid, irisUrl: 'https://evil.test/proyecto/1282' },
+    { ...valid, irisUrl: 'https://evil.test/proyecto/999999999' },
     { ...valid, identity: { ...valid.identity, validated: false } },
     { ...valid, checkedAt: '2027-01-01T00:00:00Z' },
     { ...valid, percentage: 101 },
@@ -146,4 +146,21 @@ test('expired promotions are retained with evidence and excluded from active ben
   assert.equal(data.stats.withBonus, 0);
   assert.equal(data.stats.pending, 2);
   assert.equal(data.refresh.automaticIris, false);
+});
+
+test('private storage preserves a strong ETag for atomic updates and refuses compressed weak versions', async () => {
+  let readOptions, writeOptions;
+  const store = createBlobStore({ getBlob: async (path, options) => {
+    readOptions = options;
+    return { statusCode: 200, stream: new Response('{"version":1}').body, blob: { etag: '"strong-version"' } };
+  }, putBlob: async (path, data, options) => { writeOptions = options; return { etag: '"next-version"' }; } });
+  const row = await store.read('data.json');
+  await store.write('data.json', { version: 2 }, row.etag);
+  assert.equal(readOptions.headers['Accept-Encoding'], 'identity');
+  assert.equal(readOptions.useCache, false);
+  assert.equal(writeOptions.ifMatch, '"strong-version"');
+  assert.equal(writeOptions.access, 'private');
+  const weak = createBlobStore({ getBlob: async () => ({ statusCode: 200,
+    stream: new Response('{}').body, blob: { etag: 'W/"weak-version"' } }) });
+  await assert.rejects(() => weak.read('data.json'), /Strong private storage version required/);
 });

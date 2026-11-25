@@ -18,16 +18,20 @@ class HttpError extends Error {
   constructor(status, message) { super(message); this.status = status; }
 }
 
-export const blobStore = {
+export function createBlobStore({ getBlob = get, putBlob = put } = {}) { return {
   async read(key) {
-    const result = await get(PREFIX + key, { access: 'private', useCache: false, storeId: process.env.BONOS_STORE_ID });
+    // A compressed download exposes a weak HTTP ETag (W/...), which cannot be
+    // used for Blob's conditional writes. Read the original representation.
+    const result = await getBlob(PREFIX + key, { access: 'private', useCache: false,
+      storeId: process.env.BONOS_STORE_ID, headers: { 'Accept-Encoding': 'identity' } });
     if (!result) return null;
     if (result.statusCode !== 200 || !result.stream) throw new Error('Private store unavailable');
+    if (!result.blob.etag || result.blob.etag.startsWith('W/')) throw new Error('Strong private storage version required');
     return { value: JSON.parse(await new Response(result.stream).text()), etag: result.blob.etag };
   },
   async write(key, value, previous, temporary = false) {
     try {
-      const result = await put(PREFIX + key, JSON.stringify(value), {
+      const result = await putBlob(PREFIX + key, JSON.stringify(value), {
         access: 'private', storeId: process.env.BONOS_STORE_ID,
         contentType: 'application/json', addRandomSuffix: false,
         allowOverwrite: Boolean(previous), ...(previous ? { ifMatch: previous } : {}),
@@ -39,7 +43,8 @@ export const blobStore = {
       throw error;
     }
   },
-};
+}; }
+export const blobStore = createBlobStore();
 
 function cookies(req) {
   const result = {};
