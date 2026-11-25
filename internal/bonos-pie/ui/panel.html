@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="referrer" content="no-referrer">
+  <title>Bonos pie · Sollahms privado</title>
+  <link rel="icon" href="/assets/branding/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/api/interno-bonos-pie?op=asset&amp;file=panel.css">
+  <script src="/api/interno-bonos-pie?op=asset&amp;file=panel.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Ir al panel</a>
+  <header class="app-header">
+    <div class="header-inner">
+      <a class="brand" href="/interno/bonos-pie" aria-label="Sollahms, panel de bonos pie"><img src="/assets/branding/sollahms-logo.svg" width="132" height="25" alt="Sollahms"></a>
+      <span class="private-label"><span class="lock-mark" aria-hidden="true"></span>Espacio privado</span>
+      <button class="text-button" id="logout" type="button">Cerrar sesión <span aria-hidden="true">↗</span></button>
+    </div>
+  </header>
+  <main id="main" class="app-main">
+    <section class="intro" aria-labelledby="page-title">
+      <div><p class="eyebrow">Gestión comercial</p><h1 id="page-title">Bonos pie</h1><p class="intro-copy">Los beneficios de cada proyecto, con su respaldo y condiciones.</p></div>
+      <div class="intro-actions"><p class="update-label">Última actualización <strong id="last-update">Sin consultas registradas</strong></p><button type="button" class="button secondary" id="reload"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20 7v5h-5M4 17v-5h5M6.2 7a7 7 0 0 1 11.5-1L20 9M4 15l2.3 3A7 7 0 0 0 17.8 17"/></svg>Recargar datos</button></div>
+    </section>
+    <p id="app-status" class="notice" role="status" aria-live="polite">Cargando el inventario privado…</p>
+    <section class="stats" aria-label="Resumen del inventario">
+      <article class="stat"><p>Proyectos publicados</p><strong id="stat-total">—</strong><span>Inventario vigente de Sollahms</span></article>
+      <article class="stat"><p>Revisados en Iris</p><strong id="stat-reviewed">—</strong><span>Con consulta registrada</span></article>
+      <article class="stat stat-featured"><p>Con bono pie</p><strong id="stat-bonus">—</strong><span>Confirmado o con condiciones</span></article>
+      <article class="stat"><p>Con porcentaje</p><strong id="stat-percentage">—</strong><span>Porcentaje identificado</span></article>
+      <article class="stat"><p>Pendientes</p><strong id="stat-pending">—</strong><span>Requieren verificación</span></article>
+      <article class="stat"><p>Promociones vencidas</p><strong id="stat-expired">—</strong><span>Reconfirmar antes de ofrecer</span></article>
+    </section>
+    <div class="source-note"><span class="source-dot" aria-hidden="true"></span><p><strong>Consulta manual en Iris.</strong> Recargar lee las verificaciones guardadas. Las promociones se confirman en la ficha individual; un descuento no acredita bono pie.</p></div>
+    <section class="inventory" aria-labelledby="inventory-title">
+      <div class="section-heading"><div><p class="eyebrow">Inventario de proyectos</p><h2 id="inventory-title">Encontrar un beneficio</h2></div><button class="button secondary" id="export" type="button" disabled><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3v12m-4-4 4 4 4-4M5 15v5h14v-5"/></svg>Exportar CSV</button></div>
+      <form class="filters" id="filters" role="search" aria-label="Filtrar proyectos">
+        <label class="search-field">Buscar proyecto<span class="input-with-icon"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input id="search" name="search" type="search" placeholder="Nombre del proyecto" autocomplete="off"></span></label>
+        <label>Comuna<select id="commune" name="commune"><option value="">Todas las comunas</option></select></label>
+        <label>Inmobiliaria<select id="developer" name="developer"><option value="">Todas las inmobiliarias</option></select></label>
+        <label>Bono pie<select id="bonus" name="bonus"><option value="">Todos los estados</option><option value="verified">Con bono pie</option><option value="confirmed">Bono pie confirmado</option><option value="conditional">Con condiciones</option><option value="promotion_only">Promoción sin bono confirmado</option><option value="no_information">Sin información</option><option value="not_found">No encontrado en Iris</option><option value="pending">Pendiente de verificación</option><option value="expired">Promoción vencida</option></select></label>
+        <label>Porcentaje<select id="percentage" name="percentage"><option value="">Cualquier porcentaje</option><option value="identified">Con porcentaje identificado</option><option value="unknown">Sin porcentaje identificado</option></select></label>
+        <label>Ordenar por<select id="sort" name="sort"><option value="percentage_desc">Mayor porcentaje primero</option><option value="amount_desc">Mayor monto en UF primero</option><option value="name">Nombre de proyecto</option><option value="checked_desc">Consulta más reciente</option></select></label>
+      </form>
+      <div class="results-toolbar"><p id="result-count" aria-live="polite">Preparando proyectos…</p><button type="button" class="text-button" id="reset">Limpiar filtros</button></div>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Proyectos y beneficios comerciales, tabla desplazable"><table class="projects-table"><thead><tr><th scope="col">Proyecto</th><th scope="col">Inmobiliaria</th><th scope="col">Comuna</th><th scope="col">Bono pie</th><th scope="col">Porcentaje</th><th scope="col">Monto UF</th><th scope="col">Condiciones</th><th scope="col">Vigencia</th><th scope="col">Verificación</th><th scope="col">Consultado</th><th scope="col">Fichas</th></tr></thead><tbody id="project-rows"></tbody></table></div>
+      <div class="empty-state" id="empty" hidden><span aria-hidden="true">⌕</span><h3>No hay proyectos con estos filtros</h3><p>Prueba con otro nombre o amplía los criterios de búsqueda.</p><button class="button secondary" type="button" id="empty-reset">Limpiar filtros</button></div>
+    </section>
+    <section class="import-section" aria-labelledby="import-title"><div><p class="eyebrow">Mantener la información</p><h2 id="import-title">Importar una verificación</h2><p>Incorpora consultas realizadas en Iris mediante un archivo JSON. Se actualizan solo los proyectos incluidos y se conserva el historial.</p><details class="import-help"><summary>Formato del archivo</summary><p>Usa un objeto con una lista <code>records</code>. Cada registro identifica <code>id</code>, <code>status</code>, <code>checkedAt</code> y <code>irisUrl</code>. Los porcentajes y montos desconocidos se indican con <code>null</code>; <code>conditions</code> y <code>units</code> son texto.</p><p>Para una coincidencia en Iris, incluye <code>identity</code> con <code>name</code>, <code>developer</code>, <code>location</code> y <code>validated: true</code>. Incluye <code>evidence</code> con objetos que tengan <code>quote</code>, <code>section</code> y <code>capturedAt</code>. El bono pie requiere una mención explícita en la evidencia.</p><p>Estados: <code>confirmed</code>, <code>conditional</code>, <code>promotion_only</code>, <code>no_information</code>, <code>not_found</code>, <code>pending</code>. Usa fechas ISO para la consulta y <code>validUntil</code> cuando la fuente indique vigencia.</p></details></div><div class="import-controls"><label for="import-file">Archivo de verificaciones<input type="file" id="import-file" accept="application/json,.json"></label><p class="field-help" id="import-preview">Selecciona un archivo JSON de hasta 2 MB.</p><button class="button primary" type="button" id="import-button" disabled>Importar verificación</button></div></section>
+    <footer class="app-footer"><p>Información comercial interna · Sollahms</p><p id="account-label">Acceso exclusivo a administración</p></footer>
+  </main>
+  <dialog class="detail-dialog" id="detail-dialog" aria-labelledby="detail-title"><div class="dialog-header"><p class="eyebrow">Detalle de verificación</p><button class="icon-button" id="close-detail" type="button" aria-label="Cerrar detalle">×</button></div><h2 id="detail-title"></h2><p id="detail-location" class="dialog-subtitle"></p><div id="detail-content"></div><div class="dialog-bottom"><button class="button secondary" type="button" id="detail-done">Cerrar detalle</button></div></dialog>
+</body>
+</html>

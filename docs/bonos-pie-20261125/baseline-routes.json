@@ -1,0 +1,178 @@
+{
+  "version": 3,
+  "routes": [
+    {
+      "src": "^/centro-orientacion$",
+      "headers": {
+        "Location": "/centro-orientacion.html"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/(?:patio-brasil(?:\\.html)?/?|410\\.html)$",
+      "dest": "/410.html",
+      "status": 410,
+      "headers": {
+        "X-Robots-Tag": "noindex, follow",
+        "Cache-Control": "public, max-age=0, must-revalidate",
+        "X-Content-Type-Options": "nosniff",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Content-Security-Policy": "base-uri 'self'; object-src 'none'; frame-ancestors 'self'"
+      }
+    },
+    {
+      "src": "^/index\\.html$",
+      "headers": {
+        "Location": "/"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/nucleo-costanera-2$",
+      "headers": {
+        "Location": "/nucleo-costanera.html#etapa-2"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/nucleo-costanera-2\\.html$",
+      "headers": {
+        "Location": "/nucleo-costanera.html#etapa-2"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/ferroparque-2$",
+      "headers": {
+        "Location": "/ferroparque.html#etapa-2"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/ferroparque-2\\.html$",
+      "headers": {
+        "Location": "/ferroparque.html#etapa-2"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/terratolten-1$",
+      "headers": {
+        "Location": "/terratolten.html#etapa-1"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/terratolten-1\\.html$",
+      "headers": {
+        "Location": "/terratolten.html#etapa-1"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/terratolten-2$",
+      "headers": {
+        "Location": "/terratolten.html#etapa-2"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/terratolten-2\\.html$",
+      "headers": {
+        "Location": "/terratolten.html#etapa-2"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/terratolten-3$",
+      "headers": {
+        "Location": "/terratolten.html#etapa-3"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/terratolten-3\\.html$",
+      "headers": {
+        "Location": "/terratolten.html#etapa-3"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/lomas-de-puyai-3$",
+      "headers": {
+        "Location": "/lomas-de-puyai.html#etapa-3"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/lomas-de-puyai-3\\.html$",
+      "headers": {
+        "Location": "/lomas-de-puyai.html#etapa-3"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/alto-san-joaquin-2$",
+      "headers": {
+        "Location": "/alto-san-joaquin.html#etapa-2"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/alto-san-joaquin-2\\.html$",
+      "headers": {
+        "Location": "/alto-san-joaquin.html#etapa-2"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/alto-san-joaquin-3$",
+      "headers": {
+        "Location": "/alto-san-joaquin.html#etapa-3"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/alto-san-joaquin-3\\.html$",
+      "headers": {
+        "Location": "/alto-san-joaquin.html#etapa-3"
+      },
+      "status": 308
+    },
+    {
+      "src": "^(?:/(.*))$",
+      "headers": {
+        "X-Content-Type-Options": "nosniff",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Content-Security-Policy": "base-uri 'self'; object-src 'none'; frame-ancestors 'self'"
+      },
+      "continue": true
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "^/api(/.*)?$",
+      "status": 404
+    },
+    {
+      "handle": "error"
+    },
+    {
+      "status": 404,
+      "src": "^(?!/api).*$",
+      "dest": "/404.html"
+    },
+    {
+      "handle": "miss"
+    },
+    {
+      "src": "^/api/(.+)(?:\\.(?:mjs))$",
+      "dest": "/api/$1",
+      "check": true
+    }
+  ],
+  "crons": []
+}
