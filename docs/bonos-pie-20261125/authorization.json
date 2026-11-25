@@ -1,0 +1,11 @@
+{
+  "userRequestSha256": "bf3feba9be846c173567aaa74a5913c717f7a5069fa49b2e03e40461e6700b01",
+  "explicitOwnerInstructions": [
+    "Autorizo desarrollar, probar y publicar el panel privado, siempre que esté protegido mediante autenticación real.",
+    "Comprobar el acceso autenticado.",
+    "Comprobar que usuarios no autenticados no puedan acceder ni consultar datos."
+  ],
+  "testScope": "Only issue a normal login OTP to the verified existing administrator and verify page/data access; do not mutate commercial records.",
+  "administratorIdentitySource": "Authenticated Vercel user and sole confirmed project team owner",
+  "productionPromotionRequiresVerifiedAuthentication": true
+}
