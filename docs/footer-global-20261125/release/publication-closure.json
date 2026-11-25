@@ -1,0 +1,464 @@
+{
+  "schemaVersion": 1,
+  "status": "published_verified_qa_closed",
+  "passed": true,
+  "deploymentId": "dpl_8Dn1aquS1i4TeemVamcd5Yga6YZz",
+  "sourceCommit": "15c07de8be8bf6255c1b431ab191127269fefdc9",
+  "branch": "codex/footer-global-20261125",
+  "originalFooterImplementationCommit": "e866ce7ac0d7b6df968ecd011fa78d6aec335828",
+  "baselineDeployment": "dpl_ADQD9qtMpZMDFzkTmbWN8GbX52be",
+  "baselineSourceHead": "349b955fcf6d887ac084ed7b673bc78d8a2b52b4",
+  "candidateInventorySHA256": "fdc28233a83fb11cc1e269d4b3b2963e6711f796973ac714247cea93d80aaf79",
+  "aliasAssignedAtUtc": "2026-11-25T20:38:41.676000+00:00",
+  "aliasAssignedAtAmericaSantiago": "2026-11-25T17:38:41.676000-03:00",
+  "qaClosedAtUtc": "2026-11-25T20:45:54.954039+00:00",
+  "qaClosedAtAmericaSantiago": "2026-11-25T17:45:54.954039-03:00",
+  "publicationMethod": "One complete Production prebuilt with --skip-domain; exact validated ID promoted without rebuild",
+  "newProductionDeployments": 1,
+  "aliases": [
+    {
+      "alias": "sollahms.cl",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": null,
+      "redirectStatusCode": null,
+      "updatedAt": 1795639121676,
+      "createdAt": 1790309292830,
+      "deploymentId": "dpl_8Dn1aquS1i4TeemVamcd5Yga6YZz"
+    },
+    {
+      "alias": "www.sollahms.cl",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": "sollahms.cl",
+      "redirectStatusCode": 308,
+      "updatedAt": 1795639121685,
+      "createdAt": 1792966021159,
+      "deploymentId": "dpl_8Dn1aquS1i4TeemVamcd5Yga6YZz"
+    },
+    {
+      "alias": "sollhams.cl",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": "sollahms.cl",
+      "redirectStatusCode": 308,
+      "updatedAt": 1795639121675,
+      "createdAt": 1778007732492,
+      "deploymentId": "dpl_8Dn1aquS1i4TeemVamcd5Yga6YZz"
+    },
+    {
+      "alias": "project-wrapp.vercel.app",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": null,
+      "redirectStatusCode": null,
+      "updatedAt": 1795639121677,
+      "createdAt": 1777497563537,
+      "deploymentId": "dpl_8Dn1aquS1i4TeemVamcd5Yga6YZz"
+    },
+    {
+      "alias": "project-wrapp-lsandoval2-8260s-projects.vercel.app",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": null,
+      "redirectStatusCode": null,
+      "updatedAt": 1795639121675,
+      "createdAt": 1777497563537,
+      "deploymentId": "dpl_8Dn1aquS1i4TeemVamcd5Yga6YZz"
+    }
+  ],
+  "previousProductionRetainedForRollback": true,
+  "reference": {
+    "officialComponent": "templates/corporate-footer.html",
+    "stylesheet": "assets/css/corporate-footer.css",
+    "precedence": "Explicit approved corporate component from PR40, identical to the actual homepage",
+    "sourceCommit": "e866ce7ac0d7b6df968ecd011fa78d6aec335828",
+    "baselineDeployment": "dpl_ADQD9qtMpZMDFzkTmbWN8GbX52be",
+    "footerTemplateSHA256": "75a349c9282f93d61a774ed67ac235c89a49146fdcb9d5142004e8609a6da8ab",
+    "cssSHA256": "f63576c03ad6d3ac15ef96a33fcb45722bdb13e039254c97d8f8b88ee923f0dc"
+  },
+  "audit": {
+    "pagesInspected": 168,
+    "pagesConformingToOfficialReference": 168,
+    "newFooterCorrections": 0,
+    "projectFiches": 152,
+    "exceptionCount": 0,
+    "exceptions": [],
+    "categoryCounts": {
+      "advisory": 1,
+      "catalogue": 1,
+      "collaboration": 1,
+      "contact": 1,
+      "documentary": 1,
+      "education": 2,
+      "education-and-tool": 2,
+      "error-404": 1,
+      "homepage": 1,
+      "legal": 1,
+      "mortgage-tool": 1,
+      "orientation-and-education": 1,
+      "project-fiche": 152,
+      "retired-410": 1,
+      "urban-development": 1
+    },
+    "matrix": "../audit-matrix.json"
+  },
+  "runtime": {
+    "files": 1729,
+    "identicalFiles": 1729,
+    "changedFiles": 0,
+    "addedFiles": 0,
+    "removedFiles": 0,
+    "all168HtmlByteIdentical": true,
+    "all152WholeProjectFichesByteIdentical": true,
+    "functionBundles": 7,
+    "functionFilesByteIdentical": 57,
+    "configV3ByteIdentical": true,
+    "buildersOrLegacyGeneratorsExecuted": 0,
+    "baselineArtifactModified": false
+  },
+  "qa": {
+    "officialHomeReference": {
+      "passed": true,
+      "baselineDeployment": "dpl_ADQD9qtMpZMDFzkTmbWN8GbX52be",
+      "inventorySHA256": "fdc28233a83fb11cc1e269d4b3b2963e6711f796973ac714247cea93d80aaf79",
+      "widths": [
+        1440,
+        1280,
+        768,
+        390,
+        320
+      ],
+      "capturedAt": "2026-11-25T20:20:56.496Z",
+      "screenshots": 5,
+      "method": "Current certified production artifact bytes rendered in Chrome; no local server. Optional metrics rejected in a fresh ephemeral context; no provider SDK or commercial writes.",
+      "referenceSHA256": "73e8103800db30e50c9043748361ff4547feb5954daab64499edc49cec069706"
+    },
+    "browser": {
+      "isolated": {
+        "mode": "isolated",
+        "passed": true,
+        "cases": 840,
+        "pages": 168,
+        "widths": [
+          1440,
+          1280,
+          768,
+          390,
+          320
+        ],
+        "screenshots": 840,
+        "finishedAtUtc": "2026-11-25T20:31:06.377000+00:00",
+        "consentRejectCases": 0,
+        "optionalSDKRequests": 0,
+        "commercialSubmits": 0,
+        "mapIframeFixtures": 117,
+        "api503Fixtures": 4,
+        "uf503Fixtures": 4,
+        "motionCases": 5,
+        "preexistingOutsideFooterOverflow": [],
+        "networkResources": 817
+      },
+      "public": {
+        "mode": "public",
+        "passed": true,
+        "cases": 840,
+        "pages": 168,
+        "widths": [
+          1440,
+          1280,
+          768,
+          390,
+          320
+        ],
+        "screenshots": 840,
+        "finishedAtUtc": "2026-11-25T20:43:45.999000+00:00",
+        "consentRejectCases": 12,
+        "optionalSDKRequests": 0,
+        "commercialSubmits": 0,
+        "mapIframeFixtures": 117,
+        "api503Fixtures": 4,
+        "uf503Fixtures": 4,
+        "motionCases": 5,
+        "preexistingOutsideFooterOverflow": [],
+        "networkResources": 816
+      }
+    },
+    "http": {
+      "baseline": {
+        "mode": "baseline",
+        "passed": true,
+        "finishedAtUtc": "2026-11-25T20:20:19.989887+00:00",
+        "summary": {
+          "plannedRequests": 174,
+          "completedRequests": 174,
+          "passedRequests": 174,
+          "htmlPages": 168,
+          "htmlPassed": 168,
+          "htmlPagesVerified": 168,
+          "sourceBytesExact": 168,
+          "exactToolbarSuffixOnly": 0,
+          "outsideFooterExact": 168,
+          "mainExact": 168,
+          "assetRequests": 3,
+          "redirectRequests": 3,
+          "tlsVerifiedRequests": 174,
+          "footerDestinations": 11,
+          "networkConcurrencyLimit": 4
+        },
+        "methods": [
+          "GET"
+        ],
+        "sourceComparison": "Exact candidate bytes or only the verified deployment-specific administrative toolbar suffix"
+      },
+      "isolated": {
+        "mode": "isolated",
+        "passed": true,
+        "finishedAtUtc": "2026-11-25T20:23:18.762935+00:00",
+        "summary": {
+          "plannedRequests": 172,
+          "completedRequests": 172,
+          "passedRequests": 172,
+          "htmlPages": 168,
+          "htmlPassed": 168,
+          "htmlPagesVerified": 168,
+          "sourceBytesExact": 168,
+          "exactToolbarSuffixOnly": 0,
+          "outsideFooterExact": 168,
+          "mainExact": 168,
+          "assetRequests": 3,
+          "redirectRequests": 1,
+          "tlsVerifiedRequests": 172,
+          "footerDestinations": 11,
+          "networkConcurrencyLimit": 4
+        },
+        "methods": [
+          "GET"
+        ],
+        "sourceComparison": "Exact candidate bytes or only the verified deployment-specific administrative toolbar suffix"
+      },
+      "public": {
+        "mode": "public",
+        "passed": true,
+        "finishedAtUtc": "2026-11-25T20:39:27.578358+00:00",
+        "summary": {
+          "plannedRequests": 174,
+          "completedRequests": 174,
+          "passedRequests": 174,
+          "htmlPages": 168,
+          "htmlPassed": 168,
+          "htmlPagesVerified": 168,
+          "sourceBytesExact": 168,
+          "exactToolbarSuffixOnly": 0,
+          "outsideFooterExact": 168,
+          "mainExact": 168,
+          "assetRequests": 3,
+          "redirectRequests": 3,
+          "tlsVerifiedRequests": 174,
+          "footerDestinations": 11,
+          "networkConcurrencyLimit": 4
+        },
+        "methods": [
+          "GET"
+        ],
+        "sourceComparison": "Exact candidate bytes or only the verified deployment-specific administrative toolbar suffix"
+      }
+    },
+    "manualVisualReviews": {
+      "isolated": {
+        "passed": true,
+        "mode": "isolated",
+        "method": "Actual view_image inspection",
+        "reviewCount": 34,
+        "pages": 17,
+        "categories": [
+          "advisory-service",
+          "business-investment-education",
+          "catalogue-navigation",
+          "contact",
+          "corporate-collaboration",
+          "documentary",
+          "error-404",
+          "homepage",
+          "legal",
+          "mortgage-education",
+          "mortgage-tool",
+          "orientation-and-education",
+          "project-fiche",
+          "purchase-stage-education",
+          "retired-410",
+          "tax-education",
+          "urban-development"
+        ],
+        "widths": [
+          1440,
+          320
+        ],
+        "automatedCases": false,
+        "evidence": "qa/visual-review-isolated.json"
+      },
+      "public": {
+        "passed": true,
+        "mode": "public",
+        "method": "Actual view_image inspection",
+        "reviewCount": 34,
+        "pages": 17,
+        "categories": [
+          "advisory-service",
+          "business-investment-education",
+          "catalogue-navigation",
+          "contact",
+          "corporate-collaboration",
+          "documentary",
+          "error-404",
+          "homepage",
+          "legal",
+          "mortgage-education",
+          "mortgage-tool",
+          "orientation-and-education",
+          "project-fiche",
+          "purchase-stage-education",
+          "retired-410",
+          "tax-education",
+          "urban-development"
+        ],
+        "widths": [
+          1440,
+          320
+        ],
+        "automatedCases": false,
+        "evidence": "qa/visual-review-public.json"
+      }
+    },
+    "matrixCases": 1680,
+    "matrixScreenshotsVerified": 1680,
+    "baselineHomeScreenshots": 5,
+    "nativeFinalChecks": 31,
+    "remoteFilesMatched": 1729,
+    "footerLinks": 11,
+    "commercialSubmits": 0,
+    "messagesSent": 0,
+    "motionScope": "Footer and ancestor opacity in every case; homepage content-motion sample at five widths; other behavior preserved by unchanged bytes",
+    "mapProviderVerified": false,
+    "realUfLookup": false,
+    "fixtures": "Explicit map iframe fixtures and API HTTP503/UF fixtures; no real provider test or new UF value",
+    "consent": "Twelve canonical pages reject optional measurement without SDK/POST; protected-origin matrix has no canonical consent activation"
+  },
+  "preservation": {
+    "allRuntimeBytesUnchanged": true,
+    "seoScope": "corporate-education-v3 / 12 URLs unchanged",
+    "SEORegistryByteIdentical": true,
+    "GA4ClarityConsentByteIdentical": true,
+    "projectSettingsAndEnvironmentMetadataUnchanged": true,
+    "environmentValuesStored": false,
+    "trainingPreferencesUnchanged": true,
+    "formsAndComparatorsUnchanged": true
+  },
+  "searchAndBusinessEvidence": {
+    "Google": "No new crawl, indexation or position result measured",
+    "OpenAIChatGPTSearch": "No mention, link, citation or recommendation measurement performed",
+    "BingMicrosoftCopilot": "No Bing/Copilot result effect measured",
+    "commercialAttribution": false
+  },
+  "pullRequest": {
+    "number": 42,
+    "url": "https://github.com/lasopho/sollahms-web/pull/42",
+    "draft": true,
+    "state": "open",
+    "merged": false,
+    "head": {
+      "ref": "codex/footer-global-20261125",
+      "sha": "15c07de8be8bf6255c1b431ab191127269fefdc9"
+    }
+  },
+  "sourceProof": "source-preservation.json",
+  "closureManifest": "closure-manifest.json",
+  "pendingFooterIssues": [],
+  "merges": 0,
+  "networkCallsByFinalizer": 0,
+  "gitMutationsByFinalizer": 0,
+  "historicalNextPrompt": {
+    "path": "docs/footer-global-20261125/history/NEXT-PROMPT-before-20261125.md",
+    "bytes": 3577,
+    "sha256": "366d1b7c838996d6ebacfa074deb80ba93f11ad754f4b883c0ab28f3ffd95647"
+  },
+  "observedLocalHeadAtClosure": "15c07de8be8bf6255c1b431ab191127269fefdc9",
+  "documentationRule": "The published SHA identifies this certification/guard commit; e866ce7 identifies the unchanged footer implementation. Later closure-only commits need no redeploy.",
+  "rootFinalDocumentationTasks": [
+    "Update README to completed state",
+    "Generate final checksums after closing documentation",
+    "Commit/push documentation only; keep the PR Draft without merging"
+  ],
+  "requestedReportItems": [
+    {
+      "number": 1,
+      "title": "Referencia oficial y justificación",
+      "result": "Componente explícito aprobado templates/corporate-footer.html y su CSS, publicado en PR40; coincide con Inicio actual. La referencia explícita y vigente tiene precedencia. Se capturó Inicio en cinco anchos y se contrastó el HTTP actual."
+    },
+    {
+      "number": 2,
+      "title": "Total de páginas inspeccionadas",
+      "result": "168 HTML públicos auditados individualmente, incluidas 152 fichas; matriz completa audit-matrix.json, sin limitarse a una muestra."
+    },
+    {
+      "number": 3,
+      "title": "Total de páginas homologadas",
+      "result": "168 páginas conformes con el footer oficial. Ya eran conformes al iniciar este encargo: cero nuevas correcciones. El total conforme se distingue de los archivos modificados."
+    },
+    {
+      "number": 4,
+      "title": "Excepciones justificadas",
+      "result": "Cero excepciones al pie corporativo en el inventario actual. Ningún contenido específico, legal o comercial fue eliminado; todos los HTML completos se conservaron."
+    },
+    {
+      "number": 5,
+      "title": "Cambios realizados",
+      "result": "Ningún cambio de runtime, HTML, CSS, contenidos o diseño. Se auditó y certificó nuevamente el componente existente, se añadió el guard false de esta rama en vercel.json y se generó documentación. Se publicó el paquete íntegro validado con los mismos bytes por autorización expresa."
+    },
+    {
+      "number": 6,
+      "title": "Archivos modificados",
+      "result": "Runtime: 0 modificados, 0 añadidos y 0 eliminados; 1.729 archivos idénticos a ADQD. Fuente: únicamente el guard de vercel.json, documentación de esta fase y NEXT-PROMPT. Inventarios completos y hashes en candidate-manifest.json, release/source-preservation.json y release/closure-manifest.json."
+    },
+    {
+      "number": 7,
+      "title": "Pruebas responsive",
+      "result": "1440, 1280, 768, 390 y 320 px: 840 casos en el Production aislado y 840 en público, con 1.680 capturas verificadas. Hay cinco capturas de referencia de Inicio adicionales. Las revisiones visuales manuales por categoría están registradas por separado; no se confunden con los casos automatizados."
+    },
+    {
+      "number": 8,
+      "title": "Pruebas funcionales",
+      "result": "Once destinos/anclas, logo, correo, teléfono +56 9 4850 2440 y WhatsApp wa.me/56948502440 con consulta aprobada, sin enviar mensajes. Funciones: siete bundles/57 archivos íntegros y registrados. Formularios, comparadores y herramientas conservan todos sus bytes; no hubo envíos ni pruebas reales de proveedores. Motion del contenido principal se muestrea únicamente en Inicio a cinco anchos; pie estático y sin desvanecimiento ancestral en cada caso."
+    },
+    {
+      "number": 9,
+      "title": "Preservación SEO/GEO",
+      "result": "Todos los HTML completos, títulos, metadescripciones, canonical, datos estructurados, textos, enlaces, formularios, sitemap y robots son idénticos. Alcance corporativo v3 de doce URL, GA4/Clarity, consentimiento y preferencias de entrenamiento intactos. Google, OpenAI/ChatGPT Search y Bing/Microsoft Copilot se mantienen separados: no se acreditan nuevos resultados de búsqueda, IA o negocio."
+    },
+    {
+      "number": 10,
+      "title": "SHA del commit publicado",
+      "result": "15c07de8be8bf6255c1b431ab191127269fefdc9 identifica la nueva certificación, documentación y guard. La implementación del footer procede de e866ce7ac0d7b6df968ecd011fa78d6aec335828 y no se modificó. Los commits finales de cierre posteriores son documentales y no requieren otro deployment."
+    },
+    {
+      "number": 11,
+      "title": "Deployment anterior y nuevo",
+      "result": "Anterior: dpl_ADQD9qtMpZMDFzkTmbWN8GbX52be, conservado READY/Production y elegible para rollback. Nuevo: dpl_8Dn1aquS1i4TeemVamcd5Yga6YZz, READY/Production/prebuilt; se promovió el mismo ID comprobado sin reconstruir."
+    },
+    {
+      "number": 12,
+      "title": "Fecha y hora de publicación",
+      "result": "Asignación del alias canónico: 2026-11-25T17:38:41.676000-03:00, America/Santiago. Cierre de QA: 2026-11-25T17:45:54.954039-03:00; no se confunden ambos momentos."
+    },
+    {
+      "number": 13,
+      "title": "Dominio en producción",
+      "result": "Los cinco aliases, incluido sollahms.cl, apuntan a dpl_8Dn1aquS1i4TeemVamcd5Yga6YZz. www.sollahms.cl y sollhams.cl conservan 308 hacia sollahms.cl; dominios técnicos mantienen SSO. Fechas de creación, configuración y metadatos de variables preservados."
+    },
+    {
+      "number": 14,
+      "title": "Evidencias post-publicación",
+      "result": "HTTP público: 174/174 GET, 168 HTML y 168 comparaciones de contenido exterior/principal; TLS válido. Chrome público: 840/840 y capturas SHA256. Comprobación nativa final: 31 controles y 1.729 archivos remotos. Revisiones manuales, matrices, recibos y hashes enlazados en el manifiesto de cierre."
+    },
+    {
+      "number": 15,
+      "title": "Incidencias pendientes",
+      "result": "Ninguna incidencia pendiente dentro del alcance del footer después de las pruebas. Los mapas externos se aislaron como fixtures y la API/UF como respuestas503: no se certificaron esos proveedores ni un valor UF. No se probaron entregas comerciales ni SDK opcionales; las doce páginas canónicas rechazaron opcionales sin SDK/POST. No se atribuyen efectos de búsqueda o negocio."
+    }
+  ]
+}
