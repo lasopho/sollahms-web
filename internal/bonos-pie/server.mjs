@@ -323,7 +323,8 @@ export function createHandler({ store = blobStore, clock = Date.now, env = proce
       throw new HttpError(404, 'No encontrado.');
     } catch (error) {
       if (error instanceof Conflict) return send(res, 409, { error: 'Otra solicitud actualizó los datos. Recarga e intenta de nuevo.' });
-      return send(res, error.status ?? 503, { error: error.status ? error.message : 'Servicio privado temporalmente no disponible. Intenta nuevamente.' });
+      return send(res, error instanceof HttpError ? error.status : 503,
+        { error: error instanceof HttpError ? error.message : 'Servicio privado temporalmente no disponible. Intenta nuevamente.' });
     }
   };
 }
