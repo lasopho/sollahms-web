@@ -1,5 +1,9 @@
 # Homologación y publicación de pies — 25/11/2026
 
+**Completado y publicado.** Las 168 páginas están conformes con el footer oficial; la auditoría requirió cero correcciones y la nueva publicación conserva exactamente los 1.729 archivos de runtime. El Production `dpl_8Dn1aquS1i4TeemVamcd5Yga6YZz`, source `15c07de8be8bf6255c1b431ab191127269fefdc9`, quedó asignado el 25/11/2026 a las 17:38:41.676, America/Santiago. El footer conserva su implementación aprobada `e866ce7ac0d7b6df968ecd011fa78d6aec335828`; el nuevo SHA identifica esta certificación y el guard de rama. El [informe de cierre](INFORME-CIERRE.md) entrega los quince puntos del encargo.
+
+Pasaron dos matrices Chrome de 840 casos cada una en 1440/1280/768/390/320, con 1.680 capturas verificadas, y 34 revisiones manuales por entorno sobre todas las páginas no inmobiliarias más una ficha representativa. HTTP aprobó 174 GET antes, 172 aislados y 174 públicos; la verificación nativa final aprobó 31 controles y los 1.729 archivos. Los cinco aliases, redirecciones, SSO y variables se conservan; ADQD queda disponible para recuperación. El [PR #42](https://github.com/lasopho/sollahms-web/pull/42) permanece abierto en Draft, sin merge. No hay incidencias pendientes dentro del alcance del footer.
+
 El encargo adjunto autoriza auditar el 100 % de las páginas públicas, conservar el footer corporativo aprobado y publicar el candidato validado sin aprobaciones intermedias. La rama independiente es `codex/footer-global-20261125`; el workspace original con cambios comerciales ajenos permanece intacto.
 
 La consulta actual de Vercel confirma como base `dpl_ADQD9qtMpZMDFzkTmbWN8GbX52be`, source `e866ce7ac0d7b6df968ecd011fa78d6aec335828`, publicada el 19/11. El HEAD de continuidad de su rama es `349b955fcf6d887ac084ed7b673bc78d8a2b52b4`, posterior únicamente por documentación. No se usa main histórico como base. Los cinco aliases actuales siguen en ADQD y no se ha observado otro Production posterior.
@@ -16,7 +20,7 @@ Los anchos son 1440, 1280, 768, 390 y 320 px. Se captura una referencia de Inici
 
 Los mapas externos y las API/UF usan fixtures explícitas para mantener la prueba dentro del alcance del pie; no se certifica de nuevo su proveedor ni un valor UF. La medición opcional se rechaza mediante su interfaz en las doce páginas canónicas; no se aceptan opcionales ni se ejecutan SDK o POST. El movimiento del contenido principal se muestrea en Inicio a cinco anchos; el resto se preserva por sus bytes idénticos. La comprobación del pie estático y sin desvanecimiento ancestral abarca cada caso.
 
-La publicación crea un único Production prebuilt sin dominios, comprueba su inventario completo y lo promueve sin reconstruir. Se reconsultan los aliases y la concurrencia antes de promover; se conservan las redirecciones, SSO, variables, integraciones y el deployment anterior para recuperación. La publicación solo se declara terminada después del QA público.
+Se creó un único Production prebuilt sin dominios, se comprobó su inventario completo y se promovió sin reconstruir. Se reconsultaron los aliases y la concurrencia antes de promover; se conservaron las redirecciones, SSO, variables, integraciones y el deployment anterior para recuperación. El QA público terminó satisfactoriamente antes del cierre.
 
 ## Continuidad del estudio SEO/GEO
 

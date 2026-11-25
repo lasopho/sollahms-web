@@ -1,0 +1,79 @@
+{
+  "checkedAtUTC": "2026-11-25T20:19:59.450233+00:00",
+  "timezone": "America/Santiago",
+  "approvedReference": {
+    "pullRequest": 40,
+    "pullRequestURL": "https://github.com/lasopho/sollahms-web/pull/40",
+    "currentPrState": "open Draft, unmerged",
+    "head": "349b955fcf6d887ac084ed7b673bc78d8a2b52b4",
+    "implementationCommit": "e866ce7ac0d7b6df968ecd011fa78d6aec335828",
+    "productionDeployment": "dpl_ADQD9qtMpZMDFzkTmbWN8GbX52be",
+    "aliasAssignedAtAmericaSantiago": "2026-11-19T17:58:29.425000-03:00",
+    "qaClosedAtAmericaSantiago": "2026-11-19T18:04:27.261402-03:00",
+    "artifactPin": "fdc28233a83fb11cc1e269d4b3b2963e6711f796973ac714247cea93d80aaf79",
+    "publishedClosurePath": "docs/footer-global-home-20261119/release/publication-closure.json",
+    "publishedClosureSha256": "94b26f77fc34388ea48f97b3015db902c7b00d6199bf805eba8a3ebc657b0980",
+    "templateFile": "templates/corporate-footer.html",
+    "templateFileSha256": "d18cf878a6ed6a3f16b4eba0d1044b6e8c37495fa17c897b74d339fb5e818137",
+    "renderedFooterSha256": "75a349c9282f93d61a774ed67ac235c89a49146fdcb9d5142004e8609a6da8ab",
+    "cssFile": "assets/css/corporate-footer.css",
+    "cssSha256": "f63576c03ad6d3ac15ef96a33fcb45722bdb13e039254c97d8f8b88ee923f0dc",
+    "cssBytes": 4429,
+    "links": [
+      "/",
+      "mailto:contacto@sollahms.cl",
+      "https://wa.me/56948502440?text=Hola%2C%20quisiera%20recibir%20asesor%C3%ADa%20inmobiliaria%20de%20Sollahms%20para%20encontrar%20una%20propiedad%20seg%C3%BAn%20mis%20necesidades.",
+      "/#expertise",
+      "/#portfolio",
+      "/guia-hipotecaria.html",
+      "/cuando-comprar-propiedad.html",
+      "/contacto.html",
+      "/trabaja-con-nosotros.html",
+      "/privacidad.html",
+      "/fuentes-respaldo-documental.html"
+    ]
+  },
+  "currentHomepageObserved": {
+    "observedAtUTC": "2026-11-25T20:15:38.449610+00:00",
+    "url": "https://sollahms.cl/",
+    "status": 200,
+    "sslVerifyResult": 0,
+    "htmlBytes": 58607,
+    "htmlSha256": "0c0b9fda2ad0354120e27f32da15a59092939580fec5316d9e692360bb238a25",
+    "footerSha256": "75a349c9282f93d61a774ed67ac235c89a49146fdcb9d5142004e8609a6da8ab",
+    "footerExactToApproved19Nov": true,
+    "cssURL": "https://sollahms.cl/assets/css/corporate-footer.css",
+    "cssStatus": 200,
+    "cssSslVerifyResult": 0,
+    "cssSha256": "f63576c03ad6d3ac15ef96a33fcb45722bdb13e039254c97d8f8b88ee923f0dc",
+    "cssExactToApproved19Nov": true,
+    "footerCssLinkCount": 1,
+    "footerCssLastStylesheet": true,
+    "inlineFooterRules": 0
+  },
+  "laterApprovedReference": null,
+  "laterApprovedReferenceEvidence": "PR40 path history for template and CSS at HEAD349b each contains only implementation e866. Current homepage footer and CSS have identical hashes. Root coordinated fresh Vercel audit confirms five aliases still ADQD/sourcee866 and no later Production. Repository default-main search is not treated as complete branch history.",
+  "precedenceRule": [
+    "Preserve the footer explicitly approved and actually published most recently, confirmed against current production.",
+    "Current production and approved PR40 evidence coincide, so use the existing 19Nov template/CSS bytes as the canonical 25Nov reference.",
+    "Documentation-only HEAD349b preserves the implemented source e866; do not reconstruct from historical main or use the older pre-unification homepage.",
+    "A later design replaces this reference only with explicit owner authorization and concrete publication evidence; none is identified in the audited current state."
+  ],
+  "result": "All 168 current HTML already match the canonical approved footer. The requested new release can republish the identical certified artifact; do not invent design/content corrections.",
+  "seoContinuity": {
+    "study": "docs/seo-measurement/STRATEGY-v3.md",
+    "policy": "docs/seo-measurement/active-policy.json",
+    "scopePreserved": true,
+    "presentationOnly": true,
+    "Google": "No new crawl/index/ranking effect asserted.",
+    "OpenAIChatGPTSearch": "No new mention/link/citation/recommendation effect asserted.",
+    "BingMicrosoftCopilot": "No platform effect asserted.",
+    "commercialResultsMeasured": false
+  },
+  "mutations": {
+    "runtimeSource": 0,
+    "applicationBuilds": 0,
+    "deployments": 0,
+    "productionChanges": 0
+  }
+}

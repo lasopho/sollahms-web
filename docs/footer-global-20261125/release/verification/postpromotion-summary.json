@@ -1,0 +1,581 @@
+{
+  "phase": "postpromotion",
+  "startedAtUtc": "2026-11-25T20:44:05.398678+00:00",
+  "checkedAtUtc": "2026-11-25T20:44:10.103535+00:00",
+  "timezone": "America/Santiago",
+  "mutations": 0,
+  "apiMethods": [
+    "GET"
+  ],
+  "projectSettings": {
+    "id": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+    "name": "project-wrapp",
+    "accountId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+    "live": false,
+    "ssoProtection": {
+      "deploymentType": "all_except_custom_domains"
+    },
+    "passwordProtection": null,
+    "trustedIps": null,
+    "autoAssignCustomDomains": false,
+    "previewDeploymentsDisabled": true,
+    "autoExposeSystemEnvs": true,
+    "gitProviderOptions": {
+      "createDeployments": "enabled"
+    },
+    "buildCommand": null,
+    "outputDirectory": null,
+    "installCommand": null,
+    "rootDirectory": null,
+    "framework": null,
+    "nodeVersion": "24.x",
+    "repository": {
+      "org": "lasopho",
+      "repo": "sollahms-web",
+      "productionBranch": "main"
+    }
+  },
+  "environmentMetadata": [
+    {
+      "name": "BOOKING_BACKEND_URL",
+      "targets": [
+        "development",
+        "preview",
+        "production"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "name": "BOOKING_SECRET",
+      "targets": [
+        "development"
+      ],
+      "type": "sensitive"
+    },
+    {
+      "name": "BOOKING_SECRET",
+      "targets": [
+        "preview"
+      ],
+      "type": "sensitive"
+    },
+    {
+      "name": "BOOKING_SECRET",
+      "targets": [
+        "production"
+      ],
+      "type": "sensitive"
+    },
+    {
+      "name": "CONTACT_DELIVERY_MODE",
+      "targets": [
+        "preview"
+      ],
+      "type": "plain"
+    },
+    {
+      "name": "CONTACT_DELIVERY_MODE",
+      "targets": [
+        "production"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "name": "RESEND_API_KEY",
+      "targets": [
+        "development",
+        "preview",
+        "production"
+      ],
+      "type": "sensitive"
+    }
+  ],
+  "requestedEnvironmentDecryption": false,
+  "environmentValuesStored": false,
+  "aliases": [
+    {
+      "alias": "sollahms.cl",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": null,
+      "redirectStatusCode": null,
+      "updatedAt": 1795639121676,
+      "createdAt": 1790309292830,
+      "deploymentId": "dpl_8Dn1aquS1i4TeemVamcd5Yga6YZz"
+    },
+    {
+      "alias": "www.sollahms.cl",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": "sollahms.cl",
+      "redirectStatusCode": 308,
+      "updatedAt": 1795639121685,
+      "createdAt": 1792966021159,
+      "deploymentId": "dpl_8Dn1aquS1i4TeemVamcd5Yga6YZz"
+    },
+    {
+      "alias": "sollhams.cl",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": "sollahms.cl",
+      "redirectStatusCode": 308,
+      "updatedAt": 1795639121675,
+      "createdAt": 1778007732492,
+      "deploymentId": "dpl_8Dn1aquS1i4TeemVamcd5Yga6YZz"
+    },
+    {
+      "alias": "project-wrapp.vercel.app",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": null,
+      "redirectStatusCode": null,
+      "updatedAt": 1795639121677,
+      "createdAt": 1777497563537,
+      "deploymentId": "dpl_8Dn1aquS1i4TeemVamcd5Yga6YZz"
+    },
+    {
+      "alias": "project-wrapp-lsandoval2-8260s-projects.vercel.app",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": null,
+      "redirectStatusCode": null,
+      "updatedAt": 1795639121675,
+      "createdAt": 1777497563537,
+      "deploymentId": "dpl_8Dn1aquS1i4TeemVamcd5Yga6YZz"
+    }
+  ],
+  "domains": [
+    {
+      "name": "project-wrapp.vercel.app",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "verified": true,
+      "redirect": null,
+      "redirectStatusCode": null,
+      "gitBranch": null,
+      "customEnvironmentId": null,
+      "createdAt": 1777495937301
+    },
+    {
+      "name": "sollahms.cl",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "verified": true,
+      "redirect": null,
+      "redirectStatusCode": null,
+      "gitBranch": null,
+      "customEnvironmentId": null,
+      "createdAt": 1790309292746
+    },
+    {
+      "name": "sollhams.cl",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "verified": true,
+      "redirect": "sollahms.cl",
+      "redirectStatusCode": 308,
+      "gitBranch": null,
+      "customEnvironmentId": null,
+      "createdAt": 1778007732416
+    },
+    {
+      "name": "www.sollahms.cl",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "verified": true,
+      "redirect": "sollahms.cl",
+      "redirectStatusCode": 308,
+      "gitBranch": null,
+      "customEnvironmentId": null,
+      "createdAt": 1792966021083
+    }
+  ],
+  "deployment": {
+    "id": "dpl_8Dn1aquS1i4TeemVamcd5Yga6YZz",
+    "url": "project-wrapp-3lb8phcg0-lsandoval2-8260s-projects.vercel.app",
+    "readyState": "READY",
+    "state": null,
+    "target": "production",
+    "source": "cli",
+    "createdAt": 1795638089089,
+    "created": null,
+    "ready": 1795638098829,
+    "productionUrl": null,
+    "isRollbackCandidate": null,
+    "prebuilt": true,
+    "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+    "teamId": null,
+    "ownerId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+    "meta": {
+      "githubCommitSha": "15c07de8be8bf6255c1b431ab191127269fefdc9",
+      "githubCommitRef": "codex/footer-global-20261125",
+      "githubOrg": "lasopho",
+      "githubRepo": "sollahms-web",
+      "candidateInventorySHA256": "fdc28233a83fb11cc1e269d4b3b2963e6711f796973ac714247cea93d80aaf79",
+      "baselineDeployment": "dpl_ADQD9qtMpZMDFzkTmbWN8GbX52be"
+    }
+  },
+  "baseline": {
+    "id": "dpl_ADQD9qtMpZMDFzkTmbWN8GbX52be",
+    "url": "project-wrapp-hp2nwo8di-lsandoval2-8260s-projects.vercel.app",
+    "readyState": "READY",
+    "state": null,
+    "target": "production",
+    "source": "cli",
+    "createdAt": 1795121359347,
+    "created": null,
+    "ready": 1795121367015,
+    "productionUrl": null,
+    "isRollbackCandidate": null,
+    "prebuilt": true,
+    "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+    "teamId": null,
+    "ownerId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+    "meta": {
+      "githubCommitSha": "e866ce7ac0d7b6df968ecd011fa78d6aec335828",
+      "githubCommitRef": "codex/footer-global-home-20261119",
+      "githubOrg": "lasopho",
+      "githubRepo": "sollahms-web",
+      "candidateInventorySHA256": "fdc28233a83fb11cc1e269d4b3b2963e6711f796973ac714247cea93d80aaf79",
+      "baselineDeployment": "dpl_GCSXniYKZJdHgNbuW3fNtFqBt9Jn"
+    }
+  },
+  "candidateInventorySHA256": "fdc28233a83fb11cc1e269d4b3b2963e6711f796973ac714247cea93d80aaf79",
+  "runtimeChangesFromPublishedBaseline": 0,
+  "runtimeByteIdenticalToPublishedBaseline": true,
+  "recentProduction": [
+    {
+      "id": "dpl_8Dn1aquS1i4TeemVamcd5Yga6YZz",
+      "url": "project-wrapp-3lb8phcg0-lsandoval2-8260s-projects.vercel.app",
+      "readyState": "READY",
+      "state": "READY",
+      "target": "production",
+      "source": "cli",
+      "createdAt": 1795638089089,
+      "created": 1795638089089,
+      "ready": 1795638098829,
+      "productionUrl": null,
+      "isRollbackCandidate": true,
+      "prebuilt": true,
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "teamId": null,
+      "ownerId": null,
+      "meta": {
+        "githubCommitSha": "15c07de8be8bf6255c1b431ab191127269fefdc9",
+        "githubCommitRef": "codex/footer-global-20261125",
+        "githubOrg": "lasopho",
+        "githubRepo": "sollahms-web",
+        "candidateInventorySHA256": "fdc28233a83fb11cc1e269d4b3b2963e6711f796973ac714247cea93d80aaf79",
+        "baselineDeployment": "dpl_ADQD9qtMpZMDFzkTmbWN8GbX52be"
+      }
+    }
+  ],
+  "productionWindowSinceEpochMs": 1795637855831,
+  "checks": [
+    {
+      "name": "project_and_owner",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "SSO_and_manual_domain_assignment",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "automatic_previews_disabled",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "live_flag_false",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "repository_binding",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "deployment_identity_ready_production_prebuilt",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "four_existing_domains_verified",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "all_five_aliases_on_expected_deployment",
+      "passed": true,
+      "detail": {
+        "expectedDeployment": "dpl_8Dn1aquS1i4TeemVamcd5Yga6YZz"
+      }
+    },
+    {
+      "name": "redirect_preserved_sollahms.cl",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "redirect_preserved_www.sollahms.cl",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "redirect_preserved_sollhams.cl",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "redirect_preserved_project-wrapp.vercel.app",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "redirect_preserved_project-wrapp-lsandoval2-8260s-projects.vercel.app",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "production_window_complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "project_settings_unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "environment_metadata_unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "project_domains_unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "alias_creation_dates_and_redirects_preserved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "exact_authorized_source_and_artifact_metadata",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "one_authorized_new_production_only",
+      "passed": true,
+      "detail": {
+        "expected": "dpl_8Dn1aquS1i4TeemVamcd5Yga6YZz"
+      }
+    },
+    {
+      "name": "old_production_retained_and_rollback_eligible",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "fresh_published_home_reference_at_five_widths",
+      "passed": true,
+      "detail": {
+        "mode": "baseline-home",
+        "path": "docs/footer-global-20261125/qa/baseline-home.json",
+        "sha256": "73e8103800db30e50c9043748361ff4547feb5954daab64499edc49cec069706",
+        "baselineDeployment": "dpl_ADQD9qtMpZMDFzkTmbWN8GbX52be",
+        "widths": 5,
+        "passed": true
+      }
+    },
+    {
+      "name": "840_isolated_browser_cases_and_exact_artifact",
+      "passed": true,
+      "detail": {
+        "mode": "isolated",
+        "path": "docs/footer-global-20261125/qa/isolated/results.json",
+        "sha256": "47649f540064da650530a71d478b8c51ed7a30d37e354a8e62d2ece49e2b5931",
+        "artifactPin": "fdc28233a83fb11cc1e269d4b3b2963e6711f796973ac714247cea93d80aaf79",
+        "deployment": "dpl_8Dn1aquS1i4TeemVamcd5Yga6YZz",
+        "cases": 840,
+        "passedCases": 840,
+        "passed": true
+      }
+    },
+    {
+      "name": "baseline_HTTP168_proof_matches_exact_artifact",
+      "passed": true,
+      "detail": {
+        "mode": "http-baseline",
+        "path": "docs/footer-global-20261125/qa/http-baseline/results.json",
+        "sha256": "d4b7c8bb44c6c4f0bd512152f1cdaf38edc0a0c2cc4f7a6a7a2ed2df9e52f7ec",
+        "deploymentId": "dpl_ADQD9qtMpZMDFzkTmbWN8GbX52be",
+        "artifactPin": "fdc28233a83fb11cc1e269d4b3b2963e6711f796973ac714247cea93d80aaf79",
+        "htmlPagesVerified": 168,
+        "passed": true
+      }
+    },
+    {
+      "name": "isolated_HTTP168_proof_matches_exact_artifact",
+      "passed": true,
+      "detail": {
+        "mode": "http-isolated",
+        "path": "docs/footer-global-20261125/qa/http-isolated/results.json",
+        "sha256": "b98dd7978354854443caecd8b4beb66b6acb437ef930598d4f415ed1427c29e7",
+        "deploymentId": "dpl_8Dn1aquS1i4TeemVamcd5Yga6YZz",
+        "artifactPin": "fdc28233a83fb11cc1e269d4b3b2963e6711f796973ac714247cea93d80aaf79",
+        "htmlPagesVerified": 168,
+        "passed": true
+      }
+    },
+    {
+      "name": "manual_visual_review_all_nonproject_categories_plus_fiche_desktop_mobile_actual_SHA",
+      "passed": true,
+      "detail": {
+        "mode": "visual-review-isolated",
+        "path": "docs/footer-global-20261125/qa/visual-review-isolated.json",
+        "sha256": "da3046877d9a7e7e9d7f77794a8df78ff5c550605d84b6c5a9578c6b433abae4",
+        "deploymentId": "dpl_8Dn1aquS1i4TeemVamcd5Yga6YZz",
+        "reviews": 34,
+        "pages": 17,
+        "actualScreenshotHashesVerified": true,
+        "passed": true
+      }
+    },
+    {
+      "name": "complete_remote_inventory_and_content_addresses",
+      "passed": true,
+      "detail": {
+        "expected": 1729,
+        "actual": 1729,
+        "matched": 1729,
+        "missing": [],
+        "extra": [],
+        "unexpected": []
+      }
+    },
+    {
+      "name": "seven_registered_functions",
+      "passed": true,
+      "detail": {
+        "paths": [
+          "out/api/advisory",
+          "out/api/booking-availability",
+          "out/api/booking-create",
+          "out/api/collaboration",
+          "out/api/contact",
+          "out/api/orientation-contact",
+          "out/api/uf"
+        ]
+      }
+    },
+    {
+      "name": "57_function_source_files_unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "config_v3_source_identity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "immutable_deployment_hostname_requires_SSO_with_valid_TLS",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "baselineRollbackEligibility": [
+    {
+      "id": "dpl_ADQD9qtMpZMDFzkTmbWN8GbX52be",
+      "url": "project-wrapp-hp2nwo8di-lsandoval2-8260s-projects.vercel.app",
+      "readyState": "READY",
+      "state": "READY",
+      "target": "production",
+      "source": "cli",
+      "createdAt": 1795121359347,
+      "created": 1795121359347,
+      "ready": 1795121367015,
+      "productionUrl": null,
+      "isRollbackCandidate": true,
+      "prebuilt": true,
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "teamId": null,
+      "ownerId": null,
+      "meta": {
+        "githubCommitSha": "e866ce7ac0d7b6df968ecd011fa78d6aec335828",
+        "githubCommitRef": "codex/footer-global-home-20261119",
+        "githubOrg": "lasopho",
+        "githubRepo": "sollahms-web",
+        "candidateInventorySHA256": "fdc28233a83fb11cc1e269d4b3b2963e6711f796973ac714247cea93d80aaf79",
+        "baselineDeployment": "dpl_GCSXniYKZJdHgNbuW3fNtFqBt9Jn"
+      }
+    }
+  ],
+  "qaReceipts": [
+    {
+      "mode": "baseline-home",
+      "path": "docs/footer-global-20261125/qa/baseline-home.json",
+      "sha256": "73e8103800db30e50c9043748361ff4547feb5954daab64499edc49cec069706",
+      "baselineDeployment": "dpl_ADQD9qtMpZMDFzkTmbWN8GbX52be",
+      "widths": 5,
+      "passed": true
+    },
+    {
+      "mode": "isolated",
+      "path": "docs/footer-global-20261125/qa/isolated/results.json",
+      "sha256": "47649f540064da650530a71d478b8c51ed7a30d37e354a8e62d2ece49e2b5931",
+      "artifactPin": "fdc28233a83fb11cc1e269d4b3b2963e6711f796973ac714247cea93d80aaf79",
+      "deployment": "dpl_8Dn1aquS1i4TeemVamcd5Yga6YZz",
+      "cases": 840,
+      "passedCases": 840,
+      "passed": true
+    },
+    {
+      "mode": "http-baseline",
+      "path": "docs/footer-global-20261125/qa/http-baseline/results.json",
+      "sha256": "d4b7c8bb44c6c4f0bd512152f1cdaf38edc0a0c2cc4f7a6a7a2ed2df9e52f7ec",
+      "deploymentId": "dpl_ADQD9qtMpZMDFzkTmbWN8GbX52be",
+      "artifactPin": "fdc28233a83fb11cc1e269d4b3b2963e6711f796973ac714247cea93d80aaf79",
+      "htmlPagesVerified": 168,
+      "passed": true
+    },
+    {
+      "mode": "http-isolated",
+      "path": "docs/footer-global-20261125/qa/http-isolated/results.json",
+      "sha256": "b98dd7978354854443caecd8b4beb66b6acb437ef930598d4f415ed1427c29e7",
+      "deploymentId": "dpl_8Dn1aquS1i4TeemVamcd5Yga6YZz",
+      "artifactPin": "fdc28233a83fb11cc1e269d4b3b2963e6711f796973ac714247cea93d80aaf79",
+      "htmlPagesVerified": 168,
+      "passed": true
+    },
+    {
+      "mode": "visual-review-isolated",
+      "path": "docs/footer-global-20261125/qa/visual-review-isolated.json",
+      "sha256": "da3046877d9a7e7e9d7f77794a8df78ff5c550605d84b6c5a9578c6b433abae4",
+      "deploymentId": "dpl_8Dn1aquS1i4TeemVamcd5Yga6YZz",
+      "reviews": 34,
+      "pages": 17,
+      "actualScreenshotHashesVerified": true,
+      "passed": true
+    }
+  ],
+  "t0Utc": "2026-11-25T20:38:41.676000+00:00",
+  "t0AmericaSantiago": "2026-11-25T17:38:41.676000-03:00",
+  "fullInventory": {
+    "expected": 1729,
+    "matched": 1729,
+    "functionFiles": 57,
+    "functionBundles": 7,
+    "configurationMatched": true,
+    "inventorySHA256": "fdc28233a83fb11cc1e269d4b3b2963e6711f796973ac714247cea93d80aaf79",
+    "sizeEvidence": "Remote sizes checked where supplied; UID SHA1 binds the locally certified SHA256 and byte count"
+  },
+  "anonymousSSO": {
+    "status": 302,
+    "sslVerifyResult": 0,
+    "locationHost": "vercel.com",
+    "followedRedirects": 0,
+    "authenticated": false,
+    "bypassUsed": false
+  },
+  "passed": true,
+  "status": "PASS",
+  "finishedAtUtc": "2026-11-25T20:44:10.407076+00:00"
+}

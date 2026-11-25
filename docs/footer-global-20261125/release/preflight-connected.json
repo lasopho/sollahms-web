@@ -1,0 +1,618 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Fresh 25 November connected and native read-only certification of the actual current production",
+  "checkedAtUtc": "2026-11-25T20:18:36.309405+00:00",
+  "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+  "teamId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+  "currentProduction": {
+    "id": "dpl_ADQD9qtMpZMDFzkTmbWN8GbX52be",
+    "url": "project-wrapp-hp2nwo8di-lsandoval2-8260s-projects.vercel.app",
+    "readyState": "READY",
+    "state": null,
+    "target": "production",
+    "source": "cli",
+    "createdAt": 1795121359347,
+    "created": null,
+    "ready": 1795121367015,
+    "productionUrl": null,
+    "isRollbackCandidate": null,
+    "prebuilt": true,
+    "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+    "teamId": null,
+    "ownerId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+    "meta": {
+      "githubCommitSha": "e866ce7ac0d7b6df968ecd011fa78d6aec335828",
+      "githubCommitRef": "codex/footer-global-home-20261119",
+      "githubOrg": "lasopho",
+      "githubRepo": "sollahms-web",
+      "candidateInventorySHA256": "fdc28233a83fb11cc1e269d4b3b2963e6711f796973ac714247cea93d80aaf79",
+      "baselineDeployment": "dpl_GCSXniYKZJdHgNbuW3fNtFqBt9Jn"
+    }
+  },
+  "sourceHead": "349b955fcf6d887ac084ed7b673bc78d8a2b52b4",
+  "mainHead": "86e200ec191b38af355061e21bc0fc1e549cce3b",
+  "sourceHeadReconciliation": {
+    "publishedSource": "e866ce7ac0d7b6df968ecd011fa78d6aec335828",
+    "remoteHead": "349b955fcf6d887ac084ed7b673bc78d8a2b52b4",
+    "changedFiles": 2601,
+    "nonDocumentationChanges": [],
+    "runtimeChanges": 0
+  },
+  "projectSettings": {
+    "id": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+    "name": "project-wrapp",
+    "accountId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+    "live": false,
+    "ssoProtection": {
+      "deploymentType": "all_except_custom_domains"
+    },
+    "passwordProtection": null,
+    "trustedIps": null,
+    "autoAssignCustomDomains": false,
+    "previewDeploymentsDisabled": true,
+    "autoExposeSystemEnvs": true,
+    "gitProviderOptions": {
+      "createDeployments": "enabled"
+    },
+    "buildCommand": null,
+    "outputDirectory": null,
+    "installCommand": null,
+    "rootDirectory": null,
+    "framework": null,
+    "nodeVersion": "24.x",
+    "repository": {
+      "org": "lasopho",
+      "repo": "sollahms-web",
+      "productionBranch": "main"
+    }
+  },
+  "environmentMetadata": [
+    {
+      "name": "BOOKING_BACKEND_URL",
+      "targets": [
+        "development",
+        "preview",
+        "production"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "name": "BOOKING_SECRET",
+      "targets": [
+        "development"
+      ],
+      "type": "sensitive"
+    },
+    {
+      "name": "BOOKING_SECRET",
+      "targets": [
+        "preview"
+      ],
+      "type": "sensitive"
+    },
+    {
+      "name": "BOOKING_SECRET",
+      "targets": [
+        "production"
+      ],
+      "type": "sensitive"
+    },
+    {
+      "name": "CONTACT_DELIVERY_MODE",
+      "targets": [
+        "preview"
+      ],
+      "type": "plain"
+    },
+    {
+      "name": "CONTACT_DELIVERY_MODE",
+      "targets": [
+        "production"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "name": "RESEND_API_KEY",
+      "targets": [
+        "development",
+        "preview",
+        "production"
+      ],
+      "type": "sensitive"
+    }
+  ],
+  "environmentValuesStored": false,
+  "requestedEnvironmentDecryption": false,
+  "aliases": [
+    {
+      "alias": "sollahms.cl",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": null,
+      "redirectStatusCode": null,
+      "updatedAt": 1795121909425,
+      "createdAt": 1790309292830,
+      "deploymentId": "dpl_ADQD9qtMpZMDFzkTmbWN8GbX52be"
+    },
+    {
+      "alias": "www.sollahms.cl",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": "sollahms.cl",
+      "redirectStatusCode": 308,
+      "updatedAt": 1795121909430,
+      "createdAt": 1792966021159,
+      "deploymentId": "dpl_ADQD9qtMpZMDFzkTmbWN8GbX52be"
+    },
+    {
+      "alias": "sollhams.cl",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": "sollahms.cl",
+      "redirectStatusCode": 308,
+      "updatedAt": 1795121909431,
+      "createdAt": 1778007732492,
+      "deploymentId": "dpl_ADQD9qtMpZMDFzkTmbWN8GbX52be"
+    },
+    {
+      "alias": "project-wrapp.vercel.app",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": null,
+      "redirectStatusCode": null,
+      "updatedAt": 1795121909441,
+      "createdAt": 1777497563537,
+      "deploymentId": "dpl_ADQD9qtMpZMDFzkTmbWN8GbX52be"
+    },
+    {
+      "alias": "project-wrapp-lsandoval2-8260s-projects.vercel.app",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": null,
+      "redirectStatusCode": null,
+      "updatedAt": 1795121909428,
+      "createdAt": 1777497563537,
+      "deploymentId": "dpl_ADQD9qtMpZMDFzkTmbWN8GbX52be"
+    }
+  ],
+  "domains": [
+    {
+      "name": "project-wrapp.vercel.app",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "verified": true,
+      "redirect": null,
+      "redirectStatusCode": null,
+      "gitBranch": null,
+      "customEnvironmentId": null,
+      "createdAt": 1777495937301
+    },
+    {
+      "name": "sollahms.cl",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "verified": true,
+      "redirect": null,
+      "redirectStatusCode": null,
+      "gitBranch": null,
+      "customEnvironmentId": null,
+      "createdAt": 1790309292746
+    },
+    {
+      "name": "sollhams.cl",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "verified": true,
+      "redirect": "sollahms.cl",
+      "redirectStatusCode": 308,
+      "gitBranch": null,
+      "customEnvironmentId": null,
+      "createdAt": 1778007732416
+    },
+    {
+      "name": "www.sollahms.cl",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "verified": true,
+      "redirect": "sollahms.cl",
+      "redirectStatusCode": 308,
+      "gitBranch": null,
+      "customEnvironmentId": null,
+      "createdAt": 1792966021083
+    }
+  ],
+  "currentArtifact": {
+    "expected": 1729,
+    "matched": 1729,
+    "functionFiles": 57,
+    "functionBundles": 7,
+    "configurationMatched": true,
+    "inventorySHA256": "fdc28233a83fb11cc1e269d4b3b2963e6711f796973ac714247cea93d80aaf79",
+    "sizeEvidence": "Remote sizes checked where supplied; UID SHA1 binds the locally certified SHA256 and byte count"
+  },
+  "anonymousSSO": {
+    "status": 302,
+    "sslVerifyResult": 0,
+    "locationHost": "vercel.com",
+    "followedRedirects": 0,
+    "authenticated": false,
+    "bypassUsed": false
+  },
+  "productionWindowSinceEpochMs": 1795637855831,
+  "newProductionsSinceAuthorization": [],
+  "offlineCandidate": {
+    "passed": true,
+    "files": 1729,
+    "pin": "fdc28233a83fb11cc1e269d4b3b2963e6711f796973ac714247cea93d80aaf79",
+    "runtimeChanges": 0
+  },
+  "activePRs": {
+    "checkedAtUtc": "2026-11-25T20:13:51.952Z",
+    "count": 26,
+    "records": [
+      {
+        "number": 41,
+        "url": "https://github.com/lasopho/sollahms-web/pull/41",
+        "draft": true,
+        "head": "codex/outbox-policy-pg17-2026-11-20",
+        "sourceCommit": "d00ffc94a1c5b9f215df662b1cb616630418b265",
+        "base": "codex/crm360-integracion-2026-11-02",
+        "updatedAt": "2026-11-21T00:25:48Z"
+      },
+      {
+        "number": 40,
+        "url": "https://github.com/lasopho/sollahms-web/pull/40",
+        "draft": true,
+        "head": "codex/footer-global-home-20261119",
+        "sourceCommit": "349b955fcf6d887ac084ed7b673bc78d8a2b52b4",
+        "base": "codex/cobertura-asesoria-20261119",
+        "updatedAt": "2026-11-19T21:06:07Z"
+      },
+      {
+        "number": 39,
+        "url": "https://github.com/lasopho/sollahms-web/pull/39",
+        "draft": true,
+        "head": "codex/medicion-seo-geo-20261119",
+        "sourceCommit": "19792bd3ff965638d5cac4a4ec04685d36852bef",
+        "base": "codex/seo-apariencia-google-20261119",
+        "updatedAt": "2026-11-19T17:21:06Z"
+      },
+      {
+        "number": 38,
+        "url": "https://github.com/lasopho/sollahms-web/pull/38",
+        "draft": true,
+        "head": "codex/seo-apariencia-google-20261119",
+        "sourceCommit": "192f7cabb1f1a0a4e27ad044d58b895d35d06f33",
+        "base": "codex/seo-geo-corporativo-20261119",
+        "updatedAt": "2026-11-19T14:32:41Z"
+      },
+      {
+        "number": 37,
+        "url": "https://github.com/lasopho/sollahms-web/pull/37",
+        "draft": true,
+        "head": "codex/seo-geo-corporativo-20261119",
+        "sourceCommit": "c159f96e03cdac8246b8ca8de0637c793dda3dea",
+        "base": "codex/mapa-filtros-21-proyectos-20261119",
+        "updatedAt": "2026-11-19T12:01:07Z"
+      },
+      {
+        "number": 31,
+        "url": "https://github.com/lasopho/sollahms-web/pull/31",
+        "draft": true,
+        "head": "codex/footer-sin-frase-20261116",
+        "sourceCommit": "d3fb474f08b81a965d2e0eac927adf88671968c0",
+        "base": "codex/centro-auditoria-integral-20261116",
+        "updatedAt": "2026-11-18T20:43:00Z"
+      },
+      {
+        "number": 30,
+        "url": "https://github.com/lasopho/sollahms-web/pull/30",
+        "draft": true,
+        "head": "codex/centro-auditoria-integral-20261116",
+        "sourceCommit": "67a57b142dd2170c678e75c4c425aabd16579339",
+        "base": "codex/contacto-baseline-productivo-20261116",
+        "updatedAt": "2026-11-16T15:40:36Z"
+      },
+      {
+        "number": 29,
+        "url": "https://github.com/lasopho/sollahms-web/pull/29",
+        "draft": true,
+        "head": "codex/contacto-baseline-productivo-20261116",
+        "sourceCommit": "dffbd310fe0cb34d952bda493140504ec4e1241c",
+        "base": "codex/eliminar-recorridos-global-20261115",
+        "updatedAt": "2026-11-16T14:11:29Z"
+      },
+      {
+        "number": 28,
+        "url": "https://github.com/lasopho/sollahms-web/pull/28",
+        "draft": true,
+        "head": "codex/contacto-selector-320-20261115",
+        "sourceCommit": "967d556730e20ef86bae6ecee11ec6152434c8ae",
+        "base": "codex/contacto-pie-corporativo-20261115",
+        "updatedAt": "2026-11-15T20:43:18Z"
+      },
+      {
+        "number": 27,
+        "url": "https://github.com/lasopho/sollahms-web/pull/27",
+        "draft": true,
+        "head": "codex/eliminar-recorridos-global-20261115",
+        "sourceCommit": "98ba61d103059ab488cb85216c9bc95214aee82a",
+        "base": "codex/agenda-regions-responsive-20261115",
+        "updatedAt": "2026-11-16T04:38:46Z"
+      },
+      {
+        "number": 26,
+        "url": "https://github.com/lasopho/sollahms-web/pull/26",
+        "draft": true,
+        "head": "codex/contacto-pie-corporativo-20261115",
+        "sourceCommit": "055787d9a1dadf35217080e46dbdae1c4ccfe78a",
+        "base": "codex/agenda-regions-responsive-20261115",
+        "updatedAt": "2026-11-15T20:19:32Z"
+      },
+      {
+        "number": 25,
+        "url": "https://github.com/lasopho/sollahms-web/pull/25",
+        "draft": true,
+        "head": "codex/contacto-cobertura-footer-20261115",
+        "sourceCommit": "f4249e9fb0b02a55552d17bcca1e03c4b3cffeb9",
+        "base": "codex/agenda-regions-responsive-20261115",
+        "updatedAt": "2026-11-15T16:36:42Z"
+      },
+      {
+        "number": 24,
+        "url": "https://github.com/lasopho/sollahms-web/pull/24",
+        "draft": true,
+        "head": "codex/comparador-footer-20261115",
+        "sourceCommit": "f4aae954d922cb2f1508f0a8ee2f0a805a43d8f0",
+        "base": "codex/documental-centralization-20261115",
+        "updatedAt": "2026-11-15T13:20:49Z"
+      },
+      {
+        "number": 23,
+        "url": "https://github.com/lasopho/sollahms-web/pull/23",
+        "draft": true,
+        "head": "codex/cta-first-party-lab-20261115",
+        "sourceCommit": "81c90d9837f1652aae9829ae926f90febe117f38",
+        "base": "codex/medicion-cta-tributario-20261115",
+        "updatedAt": "2026-11-15T16:08:51Z"
+      },
+      {
+        "number": 22,
+        "url": "https://github.com/lasopho/sollahms-web/pull/22",
+        "draft": true,
+        "head": "codex/tributarios-cta-sollahms-20261115",
+        "sourceCommit": "3eca9a9874bc97a7dfca28bc84170545760ec961",
+        "base": "codex/corporate-journeys-current-20261115",
+        "updatedAt": "2026-11-15T03:15:31Z"
+      },
+      {
+        "number": 21,
+        "url": "https://github.com/lasopho/sollahms-web/pull/21",
+        "draft": true,
+        "head": "codex/tributarios-integracion-20261115",
+        "sourceCommit": "a2efd10702c4ca201249e95501ab98395c90aa7c",
+        "base": "codex/expertise-release-20261115",
+        "updatedAt": "2026-11-15T02:27:56Z"
+      },
+      {
+        "number": 20,
+        "url": "https://github.com/lasopho/sollahms-web/pull/20",
+        "draft": true,
+        "head": "codex/tributarios-etapa1-20261114",
+        "sourceCommit": "1feabcc76b1cb6132a48769ac05c38f440b4342a",
+        "base": "codex/base-tributarios-etapa1-20261114",
+        "updatedAt": "2026-11-15T01:41:17Z"
+      },
+      {
+        "number": 19,
+        "url": "https://github.com/lasopho/sollahms-web/pull/19",
+        "draft": true,
+        "head": "codex/beneficios-tributarios-20261114",
+        "sourceCommit": "331bbb4c572bca44bfea7218d19384df2b0bd411",
+        "base": "codex/base-tributarios-20261114",
+        "updatedAt": "2026-11-15T01:17:35Z"
+      },
+      {
+        "number": 18,
+        "url": "https://github.com/lasopho/sollahms-web/pull/18",
+        "draft": true,
+        "head": "codex/inversion-empresas-20261114",
+        "sourceCommit": "f5deeb7e0f4ca5d5028278294d3599bd25c528b5",
+        "base": "codex/guia-footer-20261114",
+        "updatedAt": "2026-11-15T00:07:38Z"
+      },
+      {
+        "number": 17,
+        "url": "https://github.com/lasopho/sollahms-web/pull/17",
+        "draft": true,
+        "head": "codex/guia-footer-20261114",
+        "sourceCommit": "9afbd74cd1793533aed8f96de34d273f1ea19cd8",
+        "base": "codex/trabaja-footer-20261114",
+        "updatedAt": "2026-11-14T22:46:33Z"
+      },
+      {
+        "number": 16,
+        "url": "https://github.com/lasopho/sollahms-web/pull/16",
+        "draft": true,
+        "head": "codex/trabaja-footer-20261114",
+        "sourceCommit": "07f6dcd14e01c206990928191fad30636dbca9c6",
+        "base": "codex/centro-footer-20261112",
+        "updatedAt": "2026-11-14T18:48:21Z"
+      },
+      {
+        "number": 15,
+        "url": "https://github.com/lasopho/sollahms-web/pull/15",
+        "draft": true,
+        "head": "codex/centro-footer-20261112",
+        "sourceCommit": "4dccec0bc2de85b632f2518ab612614fd54e6f32",
+        "base": "codex/footer-whatsapp-20261112",
+        "updatedAt": "2026-11-12T23:01:50Z"
+      },
+      {
+        "number": 14,
+        "url": "https://github.com/lasopho/sollahms-web/pull/14",
+        "draft": true,
+        "head": "codex/footer-whatsapp-20261112",
+        "sourceCommit": "39081968c8692cb51df8f18549f992ced13acb4a",
+        "base": "codex/seo-medicion-20261108",
+        "updatedAt": "2026-11-12T15:44:37Z"
+      },
+      {
+        "number": 13,
+        "url": "https://github.com/lasopho/sollahms-web/pull/13",
+        "draft": true,
+        "head": "codex/crm360-integracion-2026-11-02",
+        "sourceCommit": "137dc93739a94c911e42193b66ddddc584b83085",
+        "base": "main",
+        "updatedAt": "2026-11-03T04:22:38Z"
+      },
+      {
+        "number": 12,
+        "url": "https://github.com/lasopho/sollahms-web/pull/12",
+        "draft": true,
+        "head": "codex/ecasa-recovery-20261020",
+        "sourceCommit": "3c6235b6d3ef6a4159ab37d4951cc095758ebd9f",
+        "base": "main",
+        "updatedAt": "2026-10-20T15:43:51Z"
+      },
+      {
+        "number": 7,
+        "url": "https://github.com/lasopho/sollahms-web/pull/7",
+        "draft": false,
+        "head": "codex/ecasa-publicacion-independiente",
+        "sourceCommit": "ed5b4cb2ad4d0a4b2887f8ba5522a379c0026841",
+        "base": "main",
+        "updatedAt": "2026-10-14T20:25:39Z"
+      }
+    ]
+  },
+  "nativeEvidence": {
+    "summary": "verification/preflight-summary.json",
+    "comparisons": "verification/preflight-source-comparisons.json",
+    "checks": [
+      {
+        "name": "project_and_owner",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "SSO_and_manual_domain_assignment",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "automatic_previews_disabled",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "live_flag_false",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "repository_binding",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "deployment_identity_ready_production_prebuilt",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "four_existing_domains_verified",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "all_five_aliases_on_expected_deployment",
+        "passed": true,
+        "detail": {
+          "expectedDeployment": "dpl_ADQD9qtMpZMDFzkTmbWN8GbX52be"
+        }
+      },
+      {
+        "name": "redirect_preserved_sollahms.cl",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "redirect_preserved_www.sollahms.cl",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "redirect_preserved_sollhams.cl",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "redirect_preserved_project-wrapp.vercel.app",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "redirect_preserved_project-wrapp-lsandoval2-8260s-projects.vercel.app",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "production_window_complete",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "published_baseline_source_commit_and_branch",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "remote_baseline_HEAD_reconciled",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "no_concurrent_new_production_since_authorization",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "complete_remote_inventory_and_content_addresses",
+        "passed": true,
+        "detail": {
+          "expected": 1729,
+          "actual": 1729,
+          "matched": 1729,
+          "missing": [],
+          "extra": [],
+          "unexpected": []
+        }
+      },
+      {
+        "name": "seven_registered_functions",
+        "passed": true,
+        "detail": {
+          "paths": [
+            "out/api/advisory",
+            "out/api/booking-availability",
+            "out/api/booking-create",
+            "out/api/collaboration",
+            "out/api/contact",
+            "out/api/orientation-contact",
+            "out/api/uf"
+          ]
+        }
+      },
+      {
+        "name": "57_function_source_files_unchanged",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "config_v3_source_identity",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "immutable_deployment_hostname_requires_SSO_with_valid_TLS",
+        "passed": true,
+        "detail": null
+      }
+    ]
+  },
+  "mutations": 0,
+  "passed": true,
+  "status": "PASS"
+}
