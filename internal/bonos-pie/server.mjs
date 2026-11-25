@@ -182,7 +182,8 @@ export function presentData(state, now) {
   });
   const bonus = projects.filter(p => ['confirmed', 'conditional'].includes(p.status) && !p.expired);
   return { version: state.version, projects, history: state.history ?? [],
-    stats: { total: projects.length, reviewed: projects.filter(p => p.status !== 'pending').length,
+    stats: { total: projects.length, reviewed: projects.filter(p => p.checkedAt).length,
+      matchedInIris: projects.filter(p => p.checkedAt && p.identity?.validated === true && p.irisUrl).length,
       withBonus: bonus.length, withPercentage: bonus.filter(p => p.percentage !== null).length,
       pending: projects.filter(p => p.status === 'pending' || p.status === 'no_information' || p.status === 'not_found' || p.expired || p.stale).length,
       lastUpdated: state.updatedAt ?? null },
