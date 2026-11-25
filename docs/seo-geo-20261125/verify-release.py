@@ -45,9 +45,18 @@ def main():
   old=selected(api('/v13/deployments/'+BASE+'?teamId='+TEAM));assert old['readyState']=='READY' and old['target']=='production' and old['meta']['githubCommitSha']==SOURCE
   report['deployment']=old;report['passed']=True
  else:
-  before=json.loads((DOC/'production-before.json').read_text());assert proj==before['projectSettings'];assert env==before['environmentMetadata']
+  before=json.loads((DOC/'production-before.json').read_text());assert proj==before['projectSettings']
+  expected_env=before['environmentMetadata']
+  drift_file=DOC/'concurrent-environment-additions.json'
+  if drift_file.exists():
+   drift=json.loads(drift_file.read_text());assert drift['baselineDeployment']==BASE
+   assert drift['changes']=='additions_only' and drift['environmentValuesReadOrStored'] is False
+   assert all(row in drift['currentEnvironmentMetadata'] for row in expected_env)
+   expected_env=drift['currentEnvironmentMetadata']
+   report['concurrentEnvironmentAdditions']=drift['additions']
+  assert env==expected_env
   d=selected(data['deployment']);assert d['id']==args.deployment_id and d['readyState']=='READY' and d['target']=='production' and d['meta']['githubCommitSha']==args.source_sha
-  report['deployment']=d;report['projectSettingsUnchanged']=True;report['environmentMetadataUnchanged']=True
+  report['deployment']=d;report['projectSettingsUnchanged']=True;report['baselineEnvironmentMetadataPreserved']=True;report['environmentMetadataMatchesFrozenExpectedState']=True
   if args.phase=='staged':
    assert all(a['deploymentId']==BASE for a in aliases) and d['productionUrl'] is None
    raw=(PRIVATE/'candidate-inventory.json').read_bytes();manifest=json.loads(raw);expected={r['path']:r for r in manifest['inventory']};assert len(expected)==1730

@@ -65,3 +65,11 @@ La documentación y el contexto compartido conservan esta instrucción para conv
 - [Bing: directrices](https://www.bing.com/webmasters/help/webmaster-guidelines-30fba23a) y [Microsoft: AI Performance](https://blogs.bing.com/webmaster/2026/2/Introducing-AI-Performance-in-Bing-Webmaster-Tools-Public-Preview/).
 
 Los informes históricos de octubre y noviembre conservan su fecha y límites. La [última revisión de alineación](../search-appearance-20261119/alignment-review.md) y la política activa muestran qué se ha completado y qué permanece sin medir; comprobar de nuevo su vigencia al retomar trabajo.
+
+## Iteración ejecutada el 25/11/2026
+
+La autorización expresa de autonomía total permitió ejecutar y publicar esta iteración; es distinta de la instrucción permanente de continuidad. Se añadió contenido propio para comparar entornos e interpretar información, revisión y estado; Centro enlaza ahora a esa herramienta y el recorrido usa «Solicitar asesoría». El [cierre](../seo-geo-20261125/publication.json) registra T0 25/11/2026 18:11:35.881 America/Santiago y la promoción del mismo artefacto completo validado, preservando la republicación del pie y las integraciones.
+
+La [medición del 25/11](runs/2026-11-25-autonomous-improvements/report.md) recuperó Google y GA4; Beneficios ya estaba indexada y no se repitió esa mejora. Google sólo devolvió días finales hasta 23/11: la comparación descriptiva usa seis días frente a seis, no una semana incompleta. La nueva muestra real de ChatGPT fue anterior a T0 y con condiciones de modelo diferentes: sin mención/enlace/recomendación de Sollahms, citas propias no cerradas(null), sin tendencia comparable. Las métricas privadas de Bing quedaron bloqueadas por el rechazo automático de un inicio de sesión sin cuenta/método suficientemente especificados.
+
+IndexNow se incorporó como aviso público de cambios limitado a las dos URL modificadas; el acuse 202 significa recepción con validación de propiedad pendiente, no inclusión, posición ni citas. No accede a Bing privado, no sustituye sus métricas y no implica envío a Google/OpenAI. Se conservaron OAI-SearchBot y las preferencias de entrenamiento. El seguimiento semanal existente leerá esta política y estos registros; los resultados de rastreo, búsquedas y negocio posteriores a T0 siguen pendientes.

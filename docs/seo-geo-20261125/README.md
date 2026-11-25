@@ -1,6 +1,6 @@
 # Optimización SEO/GEO ejecutada — 25/11/2026
 
-Estado: implementada y probada; la creación Production sin dominios y su publicación se registran separadamente. La instrucción expresa del titular autoriza editar, probar, integrar y publicar esta iteración sin aprobaciones por etapas. [Autorización](authorization.json).
+Estado: implementada, probada y publicada el 25/11/2026 a las 18:11:35.881 America/Santiago. [Cierre de publicación](publication.json), Production dpl_4tBq9YFz3BKoiXiJE5G5hBjPXMwW, fuente 3f02788b. La creación Production sin dominios y la promoción del mismo ID están verificadas. La instrucción expresa del titular autoriza editar, probar, integrar y publicar esta iteración sin aprobaciones por etapas. [Autorización](authorization.json).
 
 ## Cambios concretos
 
@@ -38,3 +38,9 @@ Se incorporó la republicación concurrente del pie del 25/11 antes de preparar 
 - [IndexNow: protocolo](https://www.indexnow.org/documentation) y [FAQ oficial](https://www.indexnow.org/faq): archivo de propiedad, dos URL públicas, 200 recibido o 202 recibido con validación pendiente. No se cambia una cuenta de Bing.
 
 No hay un cambio de guías que justifique añadir marcado exclusivo para IA o alterar entrenamiento. La restricción de IndexNow en la fase de lectura de noviembre era específica de aquella tarea; la instrucción actual autoriza esta implementación acotada. El seguimiento semanal existente conserva su función de comparación: este documento no autoriza reenvíos o publicaciones automáticas fuera de su encargo.
+
+## Cierre operativo del ciclo
+
+Pasaron el inventario remoto completo de 1730 archivos, las 16 respuestas HTTP del candidato y las 16 públicas, las 12 canonical y los cinco alias, manteniendo redirecciones y fechas de creación. Durante la preparación, el trabajo paralelo del panel privado añadió cuatro metadatos de entorno; se preservaron junto a los siete anteriores, sin consultar valores. La [diferencia explícita](concurrent-environment-additions.json) se fijó antes de promover; no se incluyó código del panel en esta mejora corporativa.
+
+IndexNow recibió el único aviso de las dos URL con HTTP 202: la validación de propiedad está pendiente en el motor. No se reenvió y no se considera indexación. Google completó las dos pruebas en vivo y aceptó exactamente una solicitud de indexación por URL; los [acuses](google-indexing-requests.json) no confirman aún una indexación posterior a T0. La [comparación visible del ciclo](../seo-measurement/runs/2026-11-25-autonomous-improvements/report.html) conserva períodos previos a T0 y no mide el efecto del cambio recién publicado.
