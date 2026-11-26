@@ -7,6 +7,7 @@ const PREFIX = 'bonos-pie/v1/';
 const SESSION = '__Host-sollahms-bonos-session';
 const CHALLENGE = '__Host-sollahms-bonos-challenge';
 const ORIGIN = 'https://sollahms.cl';
+const PANEL_PATH = '/metadatos';
 const STATES = new Set(['confirmed', 'conditional', 'promotion_only', 'no_information', 'not_found', 'pending']);
 const ASSETS = new Set(['panel.css', 'panel.js', 'login.css', 'login.js', 'payment-ui.js', 'payment-plan.mjs']);
 const PUBLIC_ASSETS = new Set(['login.css', 'login.js']);
@@ -210,7 +211,7 @@ export function createHandler({ store = blobStore, clock = Date.now, env = proce
       headers: { Authorization: 'Bearer ' + env.RESEND_API_KEY, 'Content-Type': 'application/json', 'Idempotency-Key': 'bonos-login/' + value.requestId },
       body: JSON.stringify({ from: 'Sollahms Web <formularios@forms.sollahms.cl>', to: [env.BONOS_ADMIN_EMAIL],
         subject: 'Código de acceso al panel privado Sollahms',
-        text: `Tu código de acceso al panel privado de bonos pie es: ${value.code}\n\nVence en 10 minutos. Úsalo únicamente en https://sollahms.cl/bonos-pie/acceso. No lo compartas. Si no solicitaste acceso, ignora este mensaje.` }),
+        text: `Tu código de acceso al panel privado de metadatos es: ${value.code}\n\nVence en 10 minutos. Úsalo únicamente en ${ORIGIN}${PANEL_PATH}/acceso. No lo compartas. Si no solicitaste acceso, ignora este mensaje.` }),
     });
     if (!response.ok) throw new Error('Authentication email unavailable');
   });
@@ -293,8 +294,8 @@ export function createHandler({ store = blobStore, clock = Date.now, env = proce
       if (!op || op === 'login') {
         if (method !== 'GET' && method !== 'HEAD') throw new HttpError(405, 'Método no permitido.');
         const login = op === 'login' || /\/acceso\/?$/.test(url.pathname);
-        if (!currentSession && !login) return redirect(res, '/bonos-pie/acceso');
-        if (currentSession && login) return redirect(res, '/bonos-pie');
+        if (!currentSession && !login) return redirect(res, PANEL_PATH + '/acceso');
+        if (currentSession && login) return redirect(res, PANEL_PATH);
         return send(res, 200, method === 'HEAD' ? '' : await loadAsset(login ? 'login.html' : 'panel.html'), 'text/html; charset=utf-8');
       }
       if (!currentSession) throw new HttpError(401, 'Inicia sesión para consultar el panel.');

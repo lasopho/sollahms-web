@@ -87,7 +87,7 @@
     try {
       await post('verify-code', { code: codeInput.value });
       codeInput.value = '';
-      window.location.replace('/bonos-pie');
+      window.location.replace('/metadatos');
     } catch (error) {
       codeInput.setAttribute('aria-invalid', 'true');
       message(error.message || 'No hay conexión. Inténtalo nuevamente.', true);

@@ -197,7 +197,7 @@ async function loadData() {
   const formValues = Object.fromEntries(fields.map(field => [field, $(`payment-${field}`).value]));
   try {
     const response = await fetch(`${endpoint}?op=payment-data`, { credentials: 'same-origin', cache: 'no-store', headers: { Accept: 'application/json' } });
-    if (response.status === 401) { state.projects = []; state.project = null; state.unit = null; blankForm(); renderSource(); $('payment-project').replaceChildren(option('', 'Sesión terminada')); window.location.replace('/bonos-pie'); return; }
+    if (response.status === 401) { state.projects = []; state.project = null; state.unit = null; blankForm(); renderSource(); $('payment-project').replaceChildren(option('', 'Sesión terminada')); window.location.replace('/metadatos'); return; }
     if (!response.ok) throw new Error('data'); const data = await response.json(); if (!Array.isArray(data.projects)) throw new Error('data');
     state.projects = data.projects; filterProjects(false, false); state.project = null; state.unit = null;
     $('payment-typology').replaceChildren(option('', 'Todas las tipologías')); populateUnits();

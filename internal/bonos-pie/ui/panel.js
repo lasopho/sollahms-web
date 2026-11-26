@@ -30,7 +30,7 @@
     if (response.status === 401) {
       state.projects = []; state.visible = []; state.csrfToken = ''; state.records = null;
       $('project-rows').replaceChildren(); $('detail-dialog').close();
-      window.location.replace('/bonos-pie');
+      window.location.replace('/metadatos');
       throw new Error('La sesión terminó. Vuelve a iniciar sesión.');
     }
     if (!response.ok) {
@@ -213,7 +213,7 @@
   });
   $('logout').addEventListener('click', async () => {
     $('logout').disabled = true;
-    try { await api('logout', { method: 'POST', body: '{}' }); state.projects = []; state.visible = []; state.csrfToken = ''; state.records = null; $('project-rows').replaceChildren(); window.location.replace('/bonos-pie'); }
+    try { await api('logout', { method: 'POST', body: '{}' }); state.projects = []; state.visible = []; state.csrfToken = ''; state.records = null; $('project-rows').replaceChildren(); window.location.replace('/metadatos'); }
     catch (error) { notice(error.message || 'No se pudo cerrar la sesión. Inténtalo nuevamente.', 'error'); $('logout').disabled = false; }
   });
   load();
