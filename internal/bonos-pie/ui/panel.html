@@ -9,6 +9,7 @@
   <link rel="icon" href="/assets/branding/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/api/interno-bonos-pie?op=asset&amp;file=panel.css">
   <script src="/api/interno-bonos-pie?op=asset&amp;file=panel.js" defer></script>
+  <script type="module" src="/api/interno-bonos-pie?op=asset&amp;file=payment-ui.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Ir al panel</a>
@@ -34,6 +35,7 @@
       <article class="stat"><p>Promociones vencidas</p><strong id="stat-expired">—</strong><span>Reconfirmar antes de ofrecer</span></article>
     </section>
     <div class="source-note"><span class="source-dot" aria-hidden="true"></span><p><strong>Consulta manual en Iris.</strong> Recargar lee las verificaciones guardadas. Las promociones se confirman en la ficha individual; un descuento no acredita bono pie.</p></div>
+    <nav class="payment-section-nav" aria-label="Secciones del panel"><a href="#inventory-title">Bonos pie</a><a href="#payment-title">Planes de pago</a></nav>
     <section class="inventory" aria-labelledby="inventory-title">
       <div class="section-heading"><div><p class="eyebrow">Inventario de proyectos</p><h2 id="inventory-title">Encontrar un beneficio</h2></div><button class="button secondary" id="export" type="button" disabled><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3v12m-4-4 4 4 4-4M5 15v5h14v-5"/></svg>Exportar CSV</button></div>
       <form class="filters" id="filters" role="search" aria-label="Filtrar proyectos">
@@ -47,6 +49,51 @@
       <div class="results-toolbar"><p id="result-count" aria-live="polite">Preparando proyectos…</p><button type="button" class="text-button" id="reset">Limpiar filtros</button></div>
       <div class="table-wrap" tabindex="0" role="region" aria-label="Proyectos y beneficios comerciales, tabla desplazable"><table class="projects-table"><thead><tr><th scope="col">Proyecto</th><th scope="col">Inmobiliaria</th><th scope="col">Comuna</th><th scope="col">Bono pie</th><th scope="col">Porcentaje</th><th scope="col">Monto UF</th><th scope="col">Condiciones</th><th scope="col">Vigencia</th><th scope="col">Verificación</th><th scope="col">Consultado</th><th scope="col">Fichas</th></tr></thead><tbody id="project-rows"></tbody></table></div>
       <div class="empty-state" id="empty" hidden><span aria-hidden="true">⌕</span><h3>No hay proyectos con estos filtros</h3><p>Prueba con otro nombre o amplía los criterios de búsqueda.</p><button class="button secondary" type="button" id="empty-reset">Limpiar filtros</button></div>
+    </section>
+    <section class="payment-section" aria-labelledby="payment-title">
+      <div class="section-heading"><div><p class="eyebrow">Entrega futura</p><h2 id="payment-title">Planes de pago</h2><p class="payment-intro">Revisa la información de cada unidad y distribuye el pie entre reserva, pago inicial, cuotas y cuotón.</p></div><button type="button" class="button secondary" id="payment-reload">Recargar planes</button></div>
+      <div class="payment-body">
+        <p class="notice" id="payment-status" role="status" aria-live="polite">Cargando información de entrega y unidades…</p>
+        <div class="payment-selectors">
+          <label>Buscar proyecto<input id="payment-search" type="search" placeholder="Nombre, comuna o inmobiliaria" autocomplete="off"></label>
+          <label>Entrega<select id="payment-delivery-filter"><option value="future">Entrega futura informada</option><option value="all">Todos, incluidos pendientes</option></select></label>
+          <label class="payment-project-field">Proyecto<select id="payment-project"><option value="">Seleccionar proyecto</option></select></label>
+          <label>Tipología<select id="payment-typology"><option value="">Todas las tipologías</option></select></label>
+          <label>Unidad o referencia<select id="payment-unit"><option value="">Seleccionar unidad o tipología</option></select></label>
+        </div>
+        <p class="payment-meta" id="payment-project-count"></p>
+        <div class="payment-source-summary" id="payment-source-summary"><p>Selecciona un proyecto y una unidad para revisar sus condiciones. También puedes crear una simulación personalizada.</p></div>
+        <details class="payment-evidence" id="payment-evidence"><summary>Fuentes, fechas y condiciones</summary><div id="payment-evidence-content"><p>Selecciona un proyecto para consultar su respaldo.</p></div></details>
+        <div class="payment-form-heading"><div><h3 id="payment-form-title">Simulación personalizada</h3><p id="payment-form-context">Ingresa los valores que quieras evaluar. Un campo vacío significa «Sin verificar»; escribe 0 cuando corresponda.</p></div><div class="payment-form-actions"><button type="button" class="text-button" id="payment-restore" disabled>Restablecer datos de la unidad</button><button type="button" class="text-button" id="payment-new">Nueva simulación</button></div></div>
+        <form id="payment-form" class="payment-form" novalidate>
+          <fieldset><legend>Precio y pie</legend><div class="payment-field-grid">
+            <label>Precio de la unidad (UF)<input id="payment-price" name="priceUf" type="number" min="0" step="0.01" inputmode="decimal" placeholder="Sin verificar"></label>
+            <label>Pie requerido (% del precio)<input id="payment-down-payment" name="requiredDownPaymentPercentage" type="number" min="0" max="100" step="any" inputmode="decimal" placeholder="Sin verificar"></label>
+            <div class="payment-compound-field"><label for="payment-bonus">Bono inmobiliario</label><div class="payment-value-unit"><input id="payment-bonus" type="number" min="0" step="any" inputmode="decimal" placeholder="Sin verificar"><select id="payment-bonus-kind" aria-label="Unidad del bono inmobiliario"><option value="percentage">% del precio</option><option value="amountUf">UF</option></select></div></div>
+          </div><p class="field-help">Las cuotas son una proyección sobre el precio seleccionado. El bono debe corresponder a esta unidad; el máximo anunciado para el proyecto no se aplica automáticamente.</p></fieldset>
+          <fieldset><legend>Reserva y pago inicial</legend><div class="payment-field-grid">
+            <label>Reserva (UF)<input id="payment-reservation" type="number" min="0" step="0.01" inputmode="decimal" placeholder="Sin verificar"></label>
+            <label>Tratamiento de la reserva<select id="payment-reservation-treatment"><option value="unknown">Sin verificar</option><option value="credited_to_initial">Se descuenta del pago inicial</option><option value="credited_to_down_payment">Se descuenta del pie</option><option value="additional">Es un pago adicional al pie</option></select></label>
+            <div class="payment-compound-field"><label for="payment-initial">Pago inicial total</label><div class="payment-value-unit"><input id="payment-initial" type="number" min="0" step="any" inputmode="decimal" placeholder="Sin verificar"><select id="payment-initial-kind" aria-label="Unidad del pago inicial"><option value="percentage">% del precio</option><option value="amountUf">UF</option></select></div></div>
+          </div><p class="field-help">El pago inicial incluye la reserva solo cuando su tratamiento indica que se descuenta de ese pago.</p></fieldset>
+          <fieldset><legend>Cuotas hasta la entrega</legend><div class="payment-field-grid">
+            <label>Número de cuotas mensuales<input id="payment-installments" type="number" min="0" step="1" inputmode="numeric" placeholder="Sin verificar"></label>
+            <label>Mes de la primera cuota<input id="payment-start-month" type="month"></label>
+            <label>Mes de entrega<input id="payment-delivery-month" type="month"></label>
+            <div class="payment-compound-field"><label for="payment-balloon">Cuotón al entregar</label><div class="payment-value-unit"><input id="payment-balloon" type="number" min="0" step="any" inputmode="decimal" placeholder="Sin verificar"><select id="payment-balloon-kind" aria-label="Unidad del cuotón"><option value="percentage">% del precio</option><option value="amountUf">UF</option></select></div></div>
+          </div><p class="field-help">Escribe 0 si no hay cuotón. Una entrega por trimestre o semestre no se convierte en un mes sin confirmación.</p><button type="button" class="text-button" id="payment-use-months" disabled>Usar una cuota por mes, desde el inicio hasta la entrega</button></fieldset>
+          <div class="payment-submit"><p>Los escenarios se calculan en este dispositivo y no se guardan. Los valores se expresan en UF.</p><button type="submit" class="button primary" id="payment-calculate" disabled>Calcular plan de pago</button></div>
+        </form>
+        <div id="payment-validation" class="payment-validation" role="status" aria-live="polite" hidden></div>
+        <section class="payment-results" id="payment-results" aria-labelledby="payment-result-title" hidden>
+          <div class="payment-result-heading"><div><span class="payment-mode" id="payment-mode">Simulación</span><h3 id="payment-result-title">Tu plan de pago</h3><p id="payment-result-context"></p></div><button type="button" class="button secondary" id="payment-export">Exportar calendario CSV</button></div>
+          <div class="payment-highlights" id="payment-highlights"></div>
+          <dl class="payment-breakdown" id="payment-breakdown"></dl>
+          <div class="payment-assumptions" id="payment-assumptions"></div>
+          <div class="payment-schedule-wrap" tabindex="0" role="region" aria-label="Calendario de pagos, tabla desplazable"><table class="payment-schedule"><caption>Calendario de pagos en UF</caption><thead><tr><th scope="col">Pago</th><th scope="col">Mes</th><th scope="col">Monto (UF)</th></tr></thead><tbody id="payment-schedule-rows"></tbody></table></div>
+          <p class="payment-meta">Calendario mensual, sin días de pago asignados. La última cuota incorpora el ajuste de centésimas.</p>
+        </section>
+      </div>
     </section>
     <section class="import-section" aria-labelledby="import-title"><div><p class="eyebrow">Mantener la información</p><h2 id="import-title">Importar una verificación</h2><p>Incorpora consultas realizadas en Iris mediante un archivo JSON. Se actualizan solo los proyectos incluidos y se conserva el historial.</p><details class="import-help"><summary>Formato del archivo</summary><p>Usa un objeto con una lista <code>records</code>. Cada registro identifica <code>id</code>, <code>status</code>, <code>checkedAt</code> y <code>irisUrl</code>. Los porcentajes y montos desconocidos se indican con <code>null</code>; <code>conditions</code> y <code>units</code> son texto.</p><p>Para una coincidencia en Iris, incluye <code>identity</code> con <code>name</code>, <code>developer</code>, <code>location</code> y <code>validated: true</code>. Incluye <code>evidence</code> con objetos que tengan <code>quote</code>, <code>section</code> y <code>capturedAt</code>. El bono pie requiere una mención explícita en la evidencia.</p><p>Estados: <code>confirmed</code>, <code>conditional</code>, <code>promotion_only</code>, <code>no_information</code>, <code>not_found</code>, <code>pending</code>. Usa fechas ISO para la consulta y <code>validUntil</code> cuando la fuente indique vigencia.</p></details></div><div class="import-controls"><label for="import-file">Archivo de verificaciones<input type="file" id="import-file" accept="application/json,.json"></label><p class="field-help" id="import-preview">Selecciona un archivo JSON de hasta 2 MB.</p><button class="button primary" type="button" id="import-button" disabled>Importar verificación</button></div></section>
     <footer class="app-footer"><p>Información comercial interna · Sollahms</p><p id="account-label">Acceso exclusivo a administración</p></footer>

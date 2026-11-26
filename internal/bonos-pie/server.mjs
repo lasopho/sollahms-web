@@ -1,13 +1,15 @@
 import { createHash, createHmac, randomBytes, randomInt, timingSafeEqual } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 import { get, put, BlobPreconditionFailedError } from '@vercel/blob';
+import { presentPaymentData } from './payment-data.mjs';
 
 const PREFIX = 'bonos-pie/v1/';
 const SESSION = '__Host-sollahms-bonos-session';
 const CHALLENGE = '__Host-sollahms-bonos-challenge';
 const ORIGIN = 'https://sollahms.cl';
 const STATES = new Set(['confirmed', 'conditional', 'promotion_only', 'no_information', 'not_found', 'pending']);
-const ASSETS = new Set(['panel.css', 'panel.js', 'login.css', 'login.js']);
+const ASSETS = new Set(['panel.css', 'panel.js', 'login.css', 'login.js', 'payment-ui.js', 'payment-plan.mjs']);
+const PUBLIC_ASSETS = new Set(['login.css', 'login.js']);
 const digest = value => createHash('sha256').update(value).digest('hex');
 const equal = (a, b) => typeof a === 'string' && typeof b === 'string' &&
   Buffer.byteLength(a) === Buffer.byteLength(b) && timingSafeEqual(Buffer.from(a), Buffer.from(b));
@@ -200,7 +202,7 @@ export function createHandler({ store = blobStore, clock = Date.now, env = proce
   inventory, asset, sendMail } = {}) {
   let baseInventory;
   const loadInventory = async () => inventory ?? (baseInventory ??= JSON.parse(await readFile(new URL('./inventory.json', import.meta.url), 'utf8')));
-  const loadAsset = asset ?? (file => readFile(new URL('./ui/' + file, import.meta.url), 'utf8'));
+  const loadAsset = asset ?? (file => readFile(new URL(file === 'payment-plan.mjs' ? './payment-plan.mjs' : './ui/' + file, import.meta.url), 'utf8'));
   const hashCode = (challenge, value) => createHmac('sha256', env.BONOS_AUTH_SECRET).update(challenge + ':' + value).digest('hex');
   const mail = sendMail ?? (async value => {
     const response = await fetch('https://api.resend.com/emails', {
@@ -284,7 +286,7 @@ export function createHandler({ store = blobStore, clock = Date.now, env = proce
         if (method !== 'GET') throw new HttpError(405, 'Método no permitido.');
         const file = url.searchParams.get('file');
         if (!ASSETS.has(file)) throw new HttpError(404, 'No encontrado.');
-        if (file.startsWith('panel.') && !await session(req)) throw new HttpError(401, 'Inicia sesión.');
+        if (!PUBLIC_ASSETS.has(file) && !await session(req)) throw new HttpError(401, 'Inicia sesión.');
         return send(res, 200, await loadAsset(file), file.endsWith('.css') ? 'text/css; charset=utf-8' : 'application/javascript; charset=utf-8');
       }
       const currentSession = await session(req);
@@ -308,6 +310,11 @@ export function createHandler({ store = blobStore, clock = Date.now, env = proce
       if (op === 'data' && method === 'GET') {
         const state = await dataState();
         return send(res, 200, { ...presentData(state.value, clock()), csrfToken: currentSession.value.csrfToken, adminEmail: env.BONOS_ADMIN_EMAIL });
+      }
+      if (op === 'payment-data' && method === 'GET') {
+        const current = await store.read('payment-plans.json');
+        const data = current?.value ?? { schemaVersion: 1, version: 0, updatedAt: null, projects: [] };
+        return send(res, 200, { ...presentPaymentData(data, await loadInventory()), csrfToken: currentSession.value.csrfToken });
       }
       if (op === 'data' && method === 'PUT') {
         const input = await body(req), current = await dataState();

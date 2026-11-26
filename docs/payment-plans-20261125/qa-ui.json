@@ -1,0 +1,155 @@
+{
+  "passed": true,
+  "syntheticOnly": true,
+  "checkedAt": "2026-11-25",
+  "scope": "Private payment-plan UI only; production authentication/data validation covered separately by parent. No real commercial/customer data entered or sent.",
+  "harness": "http://127.0.0.1:47831/bonos-pie",
+  "checks": [
+    {
+      "name": "authenticated_asset_contract",
+      "passed": true,
+      "detail": "UI requests only protected same-origin payment-data/payment-plan module; actual access control tested by parent backend tests."
+    },
+    {
+      "name": "project_typology_unit_selection",
+      "passed": true,
+      "detail": "Chrome synthetic project -> 1D1B -> QA-101; source price 3000 UF loaded, unknown terms stay blank."
+    },
+    {
+      "name": "unknowns_fail_closed",
+      "passed": true,
+      "detail": "Blank pie/bonus/reservation/initial/balloon/installment values produced six labelled required errors; no monetary defaults."
+    },
+    {
+      "name": "approximate_delivery_stays_unknown",
+      "passed": true,
+      "detail": "Second-semester source did not populate delivery month; source summary says Sin verificar."
+    },
+    {
+      "name": "literal_iris_conditions",
+      "passed": true,
+      "detail": "Evidence disclosure displayed source link, date, literal CLP reservation and percentage labels without converting or applying them."
+    },
+    {
+      "name": "custom_simulation_and_reservation_reconciliation",
+      "passed": true,
+      "input": {
+        "priceUf": 3000,
+        "requiredDownPaymentPercentage": 20,
+        "bonusPercentage": 5,
+        "initialPercentage": 1,
+        "reservationUf": 10,
+        "reservationTreatment": "credited_to_initial",
+        "balloonPercentage": 2,
+        "startMonth": "2027-01",
+        "deliveryMonth": "2027-12",
+        "installments": 12
+      },
+      "observed": {
+        "mode": "Simulación",
+        "monthlyUf": 30,
+        "initialTotalUf": 30,
+        "initialDueUf": 20,
+        "balloonUf": 60,
+        "buyerOutlayUf": 450,
+        "scheduleRows": 15
+      },
+      "detail": "Reservation was paid once: 10 + 20 + 12*30 + 60 = 450 UF."
+    },
+    {
+      "name": "explicit_month_count",
+      "passed": true,
+      "detail": "User-selected Usar 12 cuotas action counts start and delivery months inclusively; no implicit source term."
+    },
+    {
+      "name": "last_installment_adjustment",
+      "passed": true,
+      "detail": "7 installments on 360 UF produced 6*51.42 + 51.48 = 360; UI showed final adjustment from engine."
+    },
+    {
+      "name": "zero_balance_effective_installments",
+      "passed": true,
+      "detail": "15% initial fully covers buyer pie; UI showed 0.00 UF and Sin saldo para distribuir en cuotas; schedule omitted zero payments."
+    },
+    {
+      "name": "reload_preserves_scenario_and_bonus_filter",
+      "passed": true,
+      "detail": "Recargar planes retained price3000,pie20,reservation10,installments12; original bonus search sintético remained selected."
+    },
+    {
+      "name": "csv_download_and_totals",
+      "passed": true,
+      "detail": "Export button downloaded UTF-8 CSV; 15 payment rows total450 UF. Unit labels subsequently made human-readable (% del precio/UF)."
+    },
+    {
+      "name": "csv_formula_escaping",
+      "passed": true,
+      "detail": "Actual csvCell function passed =,+,-,@,tab prefix neutralization and double-quote escaping checks."
+    },
+    {
+      "name": "responsive_desktop_tablet_mobile",
+      "passed": true,
+      "viewports": [
+        {
+          "width": 1440,
+          "height": 1000,
+          "documentWidth": 1425
+        },
+        {
+          "width": 705,
+          "height": 632,
+          "detail": "tablet visual smoke"
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "documentWidth": 375,
+          "overflowControls": []
+        },
+        {
+          "width": 320,
+          "height": 800,
+          "documentWidth": 305,
+          "overflowControls": []
+        }
+      ],
+      "detail": "Inputs, buttons and cards remain within viewport. Calendar scrolls within its labelled region on narrow widths. UF/% selects widened to140px after visual QA."
+    },
+    {
+      "name": "strict_csp_and_runtime",
+      "passed": true,
+      "detail": "Harness used self-only script/style CSP; Chrome error log empty. No inline JS/CSS or third-party UI dependency."
+    },
+    {
+      "name": "static_validation",
+      "passed": true,
+      "detail": "node --check, git diff --check, unique HTML IDs, all static JS ID references resolve."
+    },
+    {
+      "name": "browser_cleanup",
+      "passed": true,
+      "detail": "Viewport reset and only synthetic tab1642523324 closed; real panel tab1642523312 untouched. CUA completion_summary issued."
+    }
+  ],
+  "artifacts": "/Users/luissandoval/.codex/visualizations/2026/11/25/01a21480-b379-7b73-849a-49478c60920d/payment-plans/qa",
+  "screenshots": [
+    "desktop-simulation.png",
+    "mobile-390-simulation.png",
+    "mobile-320-simulation.png"
+  ],
+  "sourceSha256": {
+    "panel.html": "b75d257cc19cff61e4fdb25fdb0cc726f696f00f7bc563d8609123cb57c4f5dd",
+    "panel.css": "3864cebfca39b2e248d3841e76b13abd57b381993a83ed3e28c1fce04f1c8524",
+    "payment-ui.js": "bd0637ecec8e2be56e0155ed39fddf74d52d5e38ab4dc6ebd0fce70f1e84ab93"
+  },
+  "finalTextChange": "Delivery helper now explicitly names trimestre o semestre.",
+  "limitations": [
+    "All browser scenarios used fictitious unit and payment data. No live OTP/login or financial transaction was exercised."
+  ],
+  "postQATextChange": "Etiqueta Entrega futura informada en vez de confirmada; sin cambio funcional.",
+  "finalSourceSha256": {
+    "panel.html": "a50e6fe50fe75289e8020005b80e6da4fd1cff383f4fa7e21b3acc2fdd62ae76",
+    "panel.css": "3864cebfca39b2e248d3841e76b13abd57b381993a83ed3e28c1fce04f1c8524",
+    "payment-ui.js": "4be63ac8572fd5b4b665abaaf7fadd15faefc20e8cd5ba03fac11e828f5bca31"
+  }
+}
