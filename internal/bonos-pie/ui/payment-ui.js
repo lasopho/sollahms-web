@@ -13,6 +13,8 @@ const treatmentNames = { credited_to_initial: 'Se descuenta del pago inicial', c
 const text = value => value == null ? '' : Array.isArray(value) ? value.map(text).filter(Boolean).join('\n') : typeof value === 'object' ? Object.entries(value).map(([key, val]) => `${key}: ${text(val)}`).join('\n') : String(value);
 const numeric = value => typeof value === 'number' && Number.isFinite(value) && value >= 0 ? value : null;
 const fold = value => text(value).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('es-CL').trim();
+const regionValue = project => text(project.region).trim().replace(/^Región Metropolitana$/iu, 'Metropolitana');
+const regionSearch = project => [project.region, regionValue(project), regionValue(project) === 'Metropolitana' ? 'Región Metropolitana' : ''].filter(Boolean).join(' ');
 const monthValid = value => typeof value === 'string' && /^\d{4}-(0[1-9]|1[0-2])$/.test(value);
 const uf = value => numeric(value) === null ? 'Sin verificar' : `${fmt.format(value)} UF`;
 const pct = value => numeric(value) === null ? 'Sin verificar' : `${percentFmt.format(value)} %`;
@@ -61,7 +63,7 @@ function renderSource() {
   const project = state.project, unit = state.unit, box = $('payment-source-summary'); box.replaceChildren();
   if (!project) { box.append(el('p', '', 'Selecciona un proyecto y una unidad para revisar sus condiciones. También puedes crear una simulación personalizada.')); renderEvidence(); return; }
   const title = el('div', 'payment-source-heading'); title.append(el('h3', '', project.name || 'Proyecto sin nombre'), el('span', `payment-mode${project.delivery?.futureConfirmed ? ' verified' : ''}`, project.delivery?.futureConfirmed ? 'Entrega futura informada' : 'Entrega sin verificar'));
-  const detail = el('p', 'payment-meta', [project.developer, project.commune].filter(Boolean).join(' · ')); box.append(title, detail);
+  const detail = el('p', 'payment-meta', [project.developer, project.commune, regionValue(project)].filter(Boolean).join(' · ')); box.append(title, detail);
   const grid = el('dl', 'payment-source-grid');
   grid.append(sourcePair('Entrega informada', project.delivery?.label || (project.delivery?.precision === 'month' ? month(project.delivery.month) : 'Sin verificar')));
   grid.append(sourcePair('Mes exacto de entrega', project.delivery?.precision === 'month' ? month(project.delivery.month) : 'Sin verificar'));
@@ -110,13 +112,30 @@ function chooseProject() {
   $('payment-typology').replaceChildren(option('', 'Todas las tipologías'), ...types.map(value => option(value, value)));
   populateUnits(); renderSource(); blankForm();
 }
+function geographicOptions(id, values, label) {
+  const select = $(id), previous = select.value;
+  const options = [...new Set(values.filter(Boolean))].sort((a, b) => a.localeCompare(b, 'es'));
+  select.replaceChildren(option('', label), ...options.map(value => option(value, value)));
+  if (options.includes(previous)) select.value = previous;
+}
+function populateGeographicFilters() {
+  geographicOptions('payment-region', state.projects.map(regionValue), 'Todas las regiones');
+  const region = $('payment-region').value;
+  geographicOptions('payment-commune', state.projects.filter(project => !region || regionValue(project) === region).map(project => text(project.commune)), 'Todas las comunas');
+}
 function filterProjects(preserve = true, resetSelection = true) {
   const previous = preserve ? $('payment-project').value : '', search = fold($('payment-search').value), futureOnly = $('payment-delivery-filter').value === 'future';
-  const filtered = state.projects.map((project, index) => ({ project, index })).filter(({ project }) => (!futureOnly || project.delivery?.futureConfirmed === true) && (!search || fold([project.name, project.developer, project.commune].join(' ')).includes(search)));
+  const region = $('payment-region').value, commune = $('payment-commune').value;
+  const filtered = state.projects.map((project, index) => ({ project, index })).filter(({ project }) => (!futureOnly || project.delivery?.futureConfirmed === true) && (!region || regionValue(project) === region) && (!commune || text(project.commune) === commune) && (!search || fold([project.name, project.developer, project.commune, regionSearch(project)].join(' ')).includes(search)));
   $('payment-project').replaceChildren(option('', filtered.length ? 'Seleccionar proyecto' : 'Sin proyectos con estos filtros'), ...filtered.map(({ project, index }) => option(String(index), [project.name || 'Proyecto sin nombre', project.commune].filter(Boolean).join(' · '))));
   if ([...$('payment-project').options].some(item => item.value === previous)) $('payment-project').value = previous;
   $('payment-project-count').textContent = `${filtered.length} de ${state.projects.length} proyectos · La entrega y los términos de pago se verifican por separado.`;
   if (resetSelection && ($('payment-project').value !== previous || !preserve)) chooseProject();
+}
+function clearProjectFilters() {
+  for (const id of ['payment-search', 'payment-region', 'payment-commune']) $(id).value = '';
+  $('payment-delivery-filter').value = 'future';
+  populateGeographicFilters(); filterProjects();
 }
 function buildInput() { return { priceUf: readNumber('price'), requiredDownPaymentPercentage: readNumber('down-payment'), developerBonus: readComponent('bonus'), initialPayment: readComponent('initial'), reservationUf: readNumber('reservation'), reservationTreatment: $('payment-reservation-treatment').value, balloon: readComponent('balloon'), installments: readNumber('installments'), startMonth: $('payment-start-month').value || null, deliveryMonth: $('payment-delivery-month').value || null, scenarioMode: state.unit && !state.dirty && state.project?.delivery?.futureConfirmed === true && state.unit.paymentTerms?.verified === true ? 'verified' : 'simulation' }; }
 function messageText(value) { return typeof value === 'string' ? value : value?.message || text(value); }
@@ -199,7 +218,7 @@ async function loadData() {
     const response = await fetch(`${endpoint}?op=payment-data`, { credentials: 'same-origin', cache: 'no-store', headers: { Accept: 'application/json' } });
     if (response.status === 401) { state.projects = []; state.project = null; state.unit = null; blankForm(); renderSource(); $('payment-project').replaceChildren(option('', 'Sesión terminada')); window.location.replace('/metadatos'); return; }
     if (!response.ok) throw new Error('data'); const data = await response.json(); if (!Array.isArray(data.projects)) throw new Error('data');
-    state.projects = data.projects; filterProjects(false, false); state.project = null; state.unit = null;
+    state.projects = data.projects; populateGeographicFilters(); filterProjects(false, false); state.project = null; state.unit = null;
     $('payment-typology').replaceChildren(option('', 'Todas las tipologías')); populateUnits();
     const index = projectId == null ? -1 : state.projects.findIndex(project => project.id === projectId);
     if (index >= 0 && [...$('payment-project').options].some(item => item.value === String(index))) {
@@ -207,7 +226,8 @@ async function loadData() {
       const types = [...new Set((state.project.units || []).map(unit => text(unit.typology)).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'es')); $('payment-typology').replaceChildren(option('', 'Todas las tipologías'), ...types.map(value => option(value, value))); populateUnits();
       const unitIndex = unitId == null ? -1 : (state.project.units || []).findIndex(unit => unit.id === unitId); if (unitIndex >= 0) { $('payment-unit').value = String(unitIndex); state.unit = state.project.units[unitIndex]; } renderSource();
     }
-    if (wasDirty) { for (const [field, value] of Object.entries(formValues)) $(`payment-${field}`).value = value; state.dirty = true; hideResult(); } else restoreSource();
+    if (projectId != null && !state.project) blankForm();
+    else if (wasDirty) { for (const [field, value] of Object.entries(formValues)) $(`payment-${field}`).value = value; state.dirty = true; hideResult(); } else restoreSource();
     renderSource();
     status(state.projects.length ? `Información privada cargada${data.updatedAt ? ` · actualización: ${date(data.updatedAt)}` : ''}. Los datos no confirmados se muestran como «Sin verificar».` : 'Aún no hay proyectos con información de entrega. Puedes crear una simulación personalizada.');
     try { const engine = await import('/api/interno-bonos-pie?op=asset&file=payment-plan.mjs'); if (typeof engine.calculatePaymentPlan !== 'function' || typeof engine.calculateMortgageEstimate !== 'function') throw new Error('engine'); state.calculate = engine.calculatePaymentPlan; state.calculateMortgage = engine.calculateMortgageEstimate; } catch { status('La información está disponible, pero no se pudo cargar el cálculo. Recarga los planes para volver a intentarlo.', 'error'); }
@@ -216,6 +236,9 @@ async function loadData() {
 }
 $('payment-search').addEventListener('input', () => filterProjects());
 $('payment-delivery-filter').addEventListener('change', () => filterProjects());
+$('payment-region').addEventListener('change', () => { populateGeographicFilters(); filterProjects(); });
+$('payment-commune').addEventListener('change', () => filterProjects());
+$('payment-reset-filters').addEventListener('click', clearProjectFilters);
 $('payment-project').addEventListener('change', chooseProject);
 $('payment-typology').addEventListener('change', () => { populateUnits(); renderSource(); blankForm(); });
 $('payment-unit').addEventListener('change', () => { const units = state.project?.units || []; state.unit = $('payment-unit').value === '' ? null : units[Number($('payment-unit').value)] || null; renderSource(); restoreSource(); });

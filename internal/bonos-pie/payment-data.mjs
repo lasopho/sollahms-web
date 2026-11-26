@@ -65,7 +65,7 @@ export function presentPaymentData(input, inventory) {
     const deliveryMonth = month(delivery.month);
     if (delivery.precision !== 'month' && deliveryMonth !== null) fail();
     const unitIds = new Set();
-    return { id: project.id, name: base.name, developer: base.developer, commune: base.commune,
+    return { id: project.id, name: base.name, developer: base.developer, commune: base.commune, region: base.region ?? null,
       delivery: { label: string(delivery.label, 300), month: deliveryMonth, precision: delivery.precision,
         futureConfirmed: true, sourceUrl: sourceUrl(delivery.sourceUrl), checkedAt: date(delivery.checkedAt) },
       conditions: string(project.conditions ?? '', 20000), evidence: evidence(project.evidence),

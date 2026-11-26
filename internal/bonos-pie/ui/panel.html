@@ -39,8 +39,9 @@
     <section class="inventory" aria-labelledby="inventory-title">
       <div class="section-heading"><div><p class="eyebrow">Inventario de proyectos</p><h2 id="inventory-title">Encontrar un beneficio</h2></div><button class="button secondary" id="export" type="button" disabled><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3v12m-4-4 4 4 4-4M5 15v5h14v-5"/></svg>Exportar CSV</button></div>
       <form class="filters" id="filters" role="search" aria-label="Filtrar proyectos">
-        <label class="search-field">Buscar proyecto<span class="input-with-icon"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input id="search" name="search" type="search" placeholder="Nombre del proyecto" autocomplete="off"></span></label>
-        <label>Comuna<select id="commune" name="commune"><option value="">Todas las comunas</option></select></label>
+        <label class="search-field">Buscar proyecto<span class="input-with-icon"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input id="search" name="search" type="search" placeholder="Nombre, comuna o región" autocomplete="off"></span></label>
+        <label class="geographic-filter">Región<select id="region" name="region"><option value="">Todas las regiones</option></select></label>
+        <label class="geographic-filter">Comuna<select id="commune" name="commune"><option value="">Todas las comunas</option></select></label>
         <label>Inmobiliaria<select id="developer" name="developer"><option value="">Todas las inmobiliarias</option></select></label>
         <label>Bono pie<select id="bonus" name="bonus"><option value="">Todos los estados</option><option value="verified">Con bono pie</option><option value="confirmed">Bono pie confirmado</option><option value="conditional">Con condiciones</option><option value="promotion_only">Promoción sin bono confirmado</option><option value="no_information">Sin información</option><option value="not_found">No encontrado en Iris</option><option value="pending">Pendiente de verificación</option><option value="expired">Promoción vencida</option></select></label>
         <label>Porcentaje<select id="percentage" name="percentage"><option value="">Cualquier porcentaje</option><option value="identified">Con porcentaje identificado</option><option value="unknown">Sin porcentaje identificado</option></select></label>
@@ -55,13 +56,15 @@
       <div class="payment-body">
         <p class="notice" id="payment-status" role="status" aria-live="polite">Cargando información de entrega y unidades…</p>
         <div class="payment-selectors">
-          <label>Buscar proyecto<input id="payment-search" type="search" placeholder="Nombre, comuna o inmobiliaria" autocomplete="off"></label>
+          <label>Buscar proyecto<input id="payment-search" type="search" placeholder="Nombre, comuna, región o inmobiliaria" autocomplete="off"></label>
+          <label>Región<select id="payment-region"><option value="">Todas las regiones</option></select></label>
+          <label>Comuna<select id="payment-commune"><option value="">Todas las comunas</option></select></label>
           <label>Entrega<select id="payment-delivery-filter"><option value="future">Entrega futura informada</option><option value="all">Todos, incluidos pendientes</option></select></label>
           <label class="payment-project-field">Proyecto<select id="payment-project"><option value="">Seleccionar proyecto</option></select></label>
           <label>Tipología<select id="payment-typology"><option value="">Todas las tipologías</option></select></label>
           <label>Unidad o referencia<select id="payment-unit"><option value="">Seleccionar unidad o tipología</option></select></label>
         </div>
-        <p class="payment-meta" id="payment-project-count"></p>
+        <div class="results-toolbar"><p class="payment-meta" id="payment-project-count"></p><button type="button" class="text-button" id="payment-reset-filters">Limpiar filtros de planes</button></div>
         <div class="payment-source-summary" id="payment-source-summary"><p>Selecciona un proyecto y una unidad para revisar sus condiciones. También puedes crear una simulación personalizada.</p></div>
         <details class="payment-evidence" id="payment-evidence"><summary>Fuentes, fechas y condiciones</summary><div id="payment-evidence-content"><p>Selecciona un proyecto para consultar su respaldo.</p></div></details>
         <div class="payment-form-heading"><div><h3 id="payment-form-title">Simulación personalizada</h3><p id="payment-form-context">Ingresa los valores que quieras evaluar. Un campo vacío significa «Sin verificar»; escribe 0 cuando corresponda.</p></div><div class="payment-form-actions"><button type="button" class="text-button" id="payment-restore" disabled>Restablecer datos de la unidad</button><button type="button" class="text-button" id="payment-new">Nueva simulación</button></div></div>

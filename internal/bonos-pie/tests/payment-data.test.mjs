@@ -12,6 +12,14 @@ const sample = () => ({ schemaVersion: 1, version: 1, updatedAt: '2026-11-25T20:
     priceLabel: 'UF 2.500', priceBasis: 'Precio final observado', sourceUrl: 'https://iris.yapo.cl/proyecto/999999',
     checkedAt: '2026-11-25T20:00:00Z', paymentTerms: { reservationTreatment: 'unknown' }, conditions: '', evidence }] }] });
 
+test('payment geography comes from the inventory and never from an unverified commercial import', () => {
+  const input = sample();
+  input.projects[0].region = 'Otra región';
+  const known = { projects: [{ ...inventory.projects[0], region: 'Valparaíso' }] };
+  assert.equal(presentPaymentData(input, known).projects[0].region, 'Valparaíso');
+  assert.equal(presentPaymentData(input, inventory).projects[0].region, null);
+});
+
 test('payment data keeps unknown terms and delivery precision; strips secrets and untrusted names', () => {
   const input = sample();
   input.projects[0].name = 'Untrusted';

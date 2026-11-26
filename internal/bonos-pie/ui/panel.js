@@ -7,10 +7,11 @@
   const fmt = new Intl.NumberFormat('es-CL', { maximumFractionDigits: 2 });
   const dateFormat = new Intl.DateTimeFormat('es-CL', { dateStyle: 'medium', timeZone: 'America/Santiago' });
   const timeFormat = new Intl.DateTimeFormat('es-CL', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'America/Santiago' });
-  const filterFields = ['search', 'commune', 'developer', 'bonus', 'percentage', 'sort'];
+  const filterFields = ['search', 'region', 'commune', 'developer', 'bonus', 'percentage', 'sort'];
   let lastDetailTrigger;
   const text = value => value === null || value === undefined ? '' : Array.isArray(value) ? value.map(text).filter(Boolean).join('\n') : typeof value === 'object' ? Object.entries(value).map(([key, val]) => `${key}: ${text(val)}`).join('\n') : String(value);
   const fold = value => text(value).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('es-CL').trim();
+  const regionOf = project => text(project.region).trim().replace(/^Región Metropolitana$/iu, 'Metropolitana');
   const number = value => typeof value === 'number' && Number.isFinite(value) && value >= 0 ? value : null;
   const statusOf = project => Object.hasOwn(labels, project.status) ? project.status : 'pending';
   const hasBonus = project => ['confirmed', 'conditional'].includes(statusOf(project));
@@ -45,8 +46,13 @@
     [...new Set(values.filter(Boolean))].sort((a, b) => text(a).localeCompare(text(b), 'es')).forEach(value => { const option = el('option', '', value); option.value = text(value); select.append(option); });
     if ([...select.options].some(option => option.value === previous)) select.value = previous;
   }
+  function populateCommunes() {
+    const region = $('region').value;
+    selectOptions('commune', state.projects.filter(project => !region || regionOf(project) === region).map(project => project.commune), [['', 'Todas las comunas']]);
+  }
   function populateFilters() {
-    selectOptions('commune', state.projects.map(project => project.commune), [['', 'Todas las comunas']]);
+    selectOptions('region', state.projects.map(regionOf), [['', 'Todas las regiones']]);
+    populateCommunes();
     selectOptions('developer', state.projects.map(project => project.developer), [['', 'Todas las inmobiliarias']]);
     const percentages = [...new Map(state.projects.filter(project => number(project.percentage) !== null).map(project => [percentageKey(project), project])).values()].sort((a, b) => percentageSort(b) - percentageSort(a));
     const select = $('percentage'), previous = select.value;
@@ -82,9 +88,10 @@
   }
   function applyFilters() {
     const filters = Object.fromEntries(filterFields.map(id => [id, $(id).value]));
-    const search = fold(filters.search);
+    const search = fold(filters.search).replace(/^region\s+/, '');
     state.visible = state.projects.filter(project => {
-      if (search && !fold(project.name).includes(search)) return false;
+      if (search && !fold([project.name, project.commune, regionOf(project), project.developer].filter(Boolean).join(' ')).includes(search)) return false;
+      if (filters.region && regionOf(project) !== filters.region) return false;
       if (filters.commune && text(project.commune) !== filters.commune) return false;
       if (filters.developer && text(project.developer) !== filters.developer) return false;
       if (filters.bonus === 'verified' && (!hasBonus(project) || project.expired)) return false;
@@ -104,7 +111,7 @@
     });
     renderRows();
   }
-  function clearFilters() { $('filters').reset(); applyFilters(); }
+  function clearFilters() { $('filters').reset(); populateCommunes(); applyFilters(); }
   function detailItem(grid, label, value, className = '') { const group = el('div', className); group.append(el('dt', '', label)); const dd = el('dd'); if (value instanceof Node) dd.append(value); else dd.textContent = text(value) || 'Sin información'; group.append(dd); grid.append(group); }
   function showDetail(project, trigger) {
     lastDetailTrigger = trigger;
@@ -171,7 +178,7 @@
     finally { state.loading = false; $('reload').disabled = false; $('reload').removeAttribute('aria-busy'); }
   }
   $('filters').addEventListener('submit', event => event.preventDefault());
-  for (const id of filterFields) $(id).addEventListener(id === 'search' ? 'input' : 'change', applyFilters);
+  for (const id of filterFields) $(id).addEventListener(id === 'search' ? 'input' : 'change', () => { if (id === 'region') populateCommunes(); applyFilters(); });
   $('reset').addEventListener('click', clearFilters); $('empty-reset').addEventListener('click', clearFilters); $('reload').addEventListener('click', () => load());
   $('export').addEventListener('click', () => {
     const columns = [['Identificador', 'id'], ['Proyecto', 'name'], ['Inmobiliaria', 'developer'], ['Comuna', 'commune'], ['Región', 'region'], ['Bono pie', project => bonusLabel(project)], ['Porcentaje informado', project => number(project.percentage) !== null ? percentageText(project) : ''], ['Porcentaje base', 'percentage'], ['Tipo de porcentaje', 'percentageKind'], ['Porcentaje máximo del rango', 'percentageMax'], ['Monto UF', 'amountUf'], ['Condiciones', 'conditions'], ['Unidades participantes', 'units'], ['Vigencia', 'validUntil'], ['Estado de verificación', project => labels[statusOf(project)]], ['Promoción vencida', project => project.expired ? 'Sí' : 'No'], ['Fecha de consulta', 'checkedAt'], ['Ficha Iris', 'irisUrl'], ['Ficha Sollahms', 'publicUrl'], ['Evidencia', 'evidence']];

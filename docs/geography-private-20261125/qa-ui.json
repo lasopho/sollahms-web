@@ -1,0 +1,202 @@
+{
+  "passed": true,
+  "syntheticOnly": true,
+  "checks": [
+    {
+      "name": "inventory_region_commune_cascade",
+      "passed": true,
+      "detail": "Metropolitana limits visible inventory to2 and commune options to Ñuñoa/Santiago."
+    },
+    {
+      "name": "inventory_combined_filters",
+      "passed": true,
+      "detail": "Región+comuna+estado+búsqueda sin tilde produce1 resultado."
+    },
+    {
+      "name": "inventory_invalid_commune_cleared",
+      "passed": true,
+      "detail": "Cambiar a Biobío limpia Ñuñoa, restringe opciones a Concepción y conserva búsqueda/estado como filtros AND."
+    },
+    {
+      "name": "inventory_reset_includes_unknown_location",
+      "passed": true,
+      "detail": "Limpiar restaura4 filas, incluido proyecto ficticio sin región/comuna."
+    },
+    {
+      "name": "inventory_accent_insensitive_geographic_search",
+      "passed": true,
+      "detail": "concepcion/biobio encuentran Río sintético, y region metropolitana encuentra los2 RM."
+    },
+    {
+      "name": "inventory_reload_preserves_filters",
+      "passed": true,
+      "detail": "Recargar conserva Metropolitana+Santiago+conditional y1resultado."
+    },
+    {
+      "name": "inventory_region_alias_unified",
+      "passed": true,
+      "detail": "Fixture incluye Región Metropolitana y Metropolitana; una opción agrupa ambos proyectos."
+    },
+    {
+      "name": "payment_region_alias_and_commune_cascade",
+      "passed": true,
+      "detail": "Planes agrupa ambos alias RM y muestra sólo Ñuñoa/Santiago con2proyectos."
+    },
+    {
+      "name": "payment_combined_and_geographic_text_filters",
+      "passed": true,
+      "detail": "Comuna+región+texto se combinan; concepcion/biobio/region metropolitana funcionan sin tildes."
+    },
+    {
+      "name": "payment_visible_selection_and_scenario_preserved",
+      "passed": true,
+      "detail": "Cambiar a filtros que aún incluyen el proyecto conserva unidad, precio y plan visible."
+    },
+    {
+      "name": "payment_hidden_project_invalidates_references",
+      "passed": true,
+      "detail": "Al pasar a Biobío, se limpian proyecto/unidad/precio/plan y capital hipotecario derivado; búsqueda permanece como AND."
+    },
+    {
+      "name": "payment_reload_preserves_valid_filters_and_scenario",
+      "passed": true,
+      "detail": "Biobío+Concepción+rio, unidad QA-301 y valores personalizados9999/17 sobreviven recarga válida."
+    },
+    {
+      "name": "payment_removed_project_does_not_restore_stale_scenario",
+      "passed": true,
+      "detail": "Tras quitar proyecto ficticio de respuesta de recarga, región/comuna inválidas y proyecto/unidad/precio/N se limpian; resultado oculto."
+    },
+    {
+      "name": "section_filters_independent_and_unknowns_available",
+      "passed": true,
+      "detail": "Inventario RM queda2; planes Biobío queda1. Todos muestra4, incluido caso de ubicación/entrega pendiente."
+    },
+    {
+      "name": "payment_reset_restores_default_geography_and_delivery",
+      "passed": true,
+      "detail": "Limpiar planes vacía región/comuna/búsqueda y retorna a3futuros de4."
+    },
+    {
+      "name": "responsive_filters",
+      "passed": true,
+      "detail": "Ambas secciones verificadas a1440/390/320px, sin controles fuera del viewport."
+    },
+    {
+      "name": "strict_csp_console",
+      "passed": true,
+      "detail": "Fixture self-only CSP; consola de errores vacía."
+    },
+    {
+      "name": "mobile_geographic_labels_full_width",
+      "passed": true,
+      "detail": "Después del ajuste CSS, Región y Comuna tienen ancho completo y selecciónMetropolitana legible a320px."
+    }
+  ],
+  "viewports": [
+    {
+      "documentWidth": 1425,
+      "overflowControls": [],
+      "width": 1440
+    },
+    {
+      "documentWidth": 375,
+      "overflowControls": [],
+      "width": 390
+    },
+    {
+      "documentWidth": 305,
+      "overflowControls": [],
+      "width": 320
+    }
+  ],
+  "mobilePostCss": {
+    "communeWidth": 239,
+    "documentWidth": 305,
+    "formWidth": 271,
+    "overflowControls": [],
+    "regionWidth": 239,
+    "width": 320
+  },
+  "syntheticTabIds": [
+    "1642523356",
+    "1642523366"
+  ],
+  "shots": "/Users/luissandoval/.codex/visualizations/2026/11/25/01a21480-b379-7b73-849a-49478c60920d/bonos-pie-private-20261125/geography/qa",
+  "checkedAtUTC": "2026-11-26T02:13:38.173712+00:00",
+  "harness": "http://127.0.0.1:47835/metadatos",
+  "scope": "Functional and responsive geographic-filter QA with fictitious data only; production authentication, dataset projection and remote release audited by parent.",
+  "fixtures": {
+    "projects": 4,
+    "regions": 2,
+    "communes": 3,
+    "includesUnknownLocation": true,
+    "includesBothMetropolitanRegionSourceLabels": true,
+    "includesProjectRemovedOnReload": true
+  },
+  "sourceProvenance": {
+    "inventoryProjects": 152,
+    "missingRegionCount": 0,
+    "rawRegionLabels": {
+      "Ñuble": 1,
+      "Biobío": 6,
+      "Arica y Parinacota": 3,
+      "Región Metropolitana": 100,
+      "Coquimbo": 13,
+      "O'Higgins": 2,
+      "Los Lagos": 8,
+      "Valparaíso": 2,
+      "La Araucanía": 2,
+      "Los Ríos": 1,
+      "Metropolitana": 14
+    },
+    "canonicalRegionCounts": {
+      "Ñuble": 1,
+      "Biobío": 6,
+      "Arica y Parinacota": 3,
+      "Metropolitana": 114,
+      "Coquimbo": 13,
+      "O'Higgins": 2,
+      "Los Lagos": 8,
+      "Valparaíso": 2,
+      "La Araucanía": 2,
+      "Los Ríos": 1
+    },
+    "aliasNormalization": "Only explicit Región Metropolitana → Metropolitana; no region inferred from commune or address.",
+    "actualCommercialRecordsUsed": false
+  },
+  "sourceSHA256": {
+    "internal/bonos-pie/ui/panel.html": "90d4f4c6caf5206f03e5080ee02c63e8c17a9a69bcad228e55b16468d3a82bb9",
+    "internal/bonos-pie/ui/panel.css": "75271713087635724f2402979ce51b38498756021237ddf654385b1a23d2158e",
+    "internal/bonos-pie/ui/panel.js": "4b87692c1f46ad1158b5ca2e236aeabcad30b061a9146f886c9fc183677e832e",
+    "internal/bonos-pie/ui/payment-ui.js": "9a957c7437d9d053ebfc9b4080488b5295c8553ee2d84c88995db97e3cebb38a"
+  },
+  "visualAdjustment": {
+    "issue": "At320px initial two-column inventory region selection truncated the chosen region.",
+    "resolution": "Geographic labels made full-width at mobile breakpoint; post-change320px check passed with239px fields and no horizontal overflow.",
+    "logicRetestedAfterCss": false,
+    "reason": "Only CSS and two label classes changed; prior17 functional/responsive checks retained as requested."
+  },
+  "cleanup": {
+    "viewportReset": true,
+    "onlySyntheticTabsClosed": [
+      "1642523356",
+      "1642523366"
+    ],
+    "realPanelTab3353Untouched": true,
+    "localServerStopped": true,
+    "cuaCompletionSummariesIssued": true
+  },
+  "screenshots": [
+    "desktop-inventory.png",
+    "desktop-payment.png",
+    "mobile-390-inventory.png",
+    "mobile-390-payment.png",
+    "mobile-320-inventory-final.png",
+    "mobile-320-payment.png"
+  ],
+  "limitations": [
+    "All browser data were fictitious; no real OTP, Blob commercial data, external source page, transaction or production write was used.",
+    "390px and desktop checks preceded the final targeted mobile-only full-width CSS rule;320px was rechecked afterward."
+  ]
+}
