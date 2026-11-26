@@ -15,6 +15,20 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 /* Homepage only: existing brand palette and typography. */
+.home-intro{padding-block:clamp(3.5rem,6vw,6rem)}
+.home-intro-layout{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(2rem,5vw,5rem);align-items:start;max-width:1280px;margin-inline:auto;padding-inline:2rem}
+.home-intro-heading,.home-intro-copy{min-width:0}
+.home-intro-heading::before{content:"";display:block;width:3rem;height:3px;margin-bottom:1.5rem;background:var(--s-gold)}
+.home-intro h2{max-width:20ch;margin:0;color:var(--s-green);font-size:clamp(2rem,3.4vw,3rem);font-weight:700;line-height:1.14;letter-spacing:-.035em;text-wrap:balance}
+.home-intro-copy{max-width:60ch;padding-top:calc(1.5rem + 3px);color:var(--s-muted);font-size:1rem;line-height:1.8}
+.home-intro-copy p{margin:0;text-wrap:pretty}
+.home-intro-copy .home-intro-coverage{margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--s-line)}
+.home-intro-copy a{color:var(--s-green);font-weight:600;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.22em}
+.home-intro-coverage a{display:block;width:fit-content;margin-top:.75rem}
+.home-intro-copy a:hover{color:var(--s-green-hover)}
+.home-intro-copy a:focus-visible{outline:3px solid var(--s-gold-ink);outline-offset:4px}
+@media(max-width:900px){.home-intro-layout{grid-template-columns:minmax(0,1fr);gap:1.75rem}.home-intro h2{max-width:24ch}.home-intro-copy{max-width:65ch;padding-top:0}}
+@media(max-width:480px){.home-intro-layout{padding-inline:1.5rem}.home-intro-heading::before{margin-bottom:1.25rem}}
 .home-seo-hero-copy{max-width:50ch;margin:1.8rem auto 0;color:var(--s-soft);font-size:1.05rem;line-height:1.75}
 .home-seo-hero-actions{display:flex;flex-wrap:wrap;gap:1.2rem;align-items:center;justify-content:center;margin-top:2rem}
 .home-seo-button{display:inline-flex;justify-content:center;background:var(--s-gold);color:var(--s-green);padding:1rem 1.4rem;border-radius:var(--s-radius);font-weight:700;text-align:center;line-height:1.4;transition:background var(--s-duration)}
