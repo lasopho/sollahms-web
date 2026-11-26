@@ -42,10 +42,16 @@ await writeFile(join(destination, '.vc-config.json'), JSON.stringify({ runtime: 
 const configFile = join(output, 'config.json');
 const original = baseline.inventory.find(r => r.path === 'config.json');
 let config = JSON.parse(await readFile(configFile, 'utf8'));
+// The shorter address and previous private links share the same handler.
 // Rebuilding this isolated overlay is idempotent; existing public routes stay exact.
-config.routes = config.routes.filter(r => !['^/interno/bonos-pie(?:/acceso)?/?$', '^/interno/bonos-pie/acceso/?$', '^/interno/bonos-pie/?$'].includes(r.src));
-config.routes.unshift({ src: '^/interno/bonos-pie/acceso/?$', dest: '/api/interno-bonos-pie?op=login' },
-  { src: '^/interno/bonos-pie/?$', dest: '/api/interno-bonos-pie' });
+const panelRoutes = [
+  { src: '^/bonos-pie/acceso/?$', dest: '/api/interno-bonos-pie?op=login' },
+  { src: '^/bonos-pie/?$', dest: '/api/interno-bonos-pie' },
+  { src: '^/interno/bonos-pie/acceso/?$', dest: '/api/interno-bonos-pie?op=login' },
+  { src: '^/interno/bonos-pie/?$', dest: '/api/interno-bonos-pie' },
+];
+config.routes = config.routes.filter(r => !panelRoutes.some(route => route.src === r.src) && r.src !== '^/interno/bonos-pie(?:/acceso)?/?$');
+config.routes.unshift(...panelRoutes);
 await writeFile(configFile, JSON.stringify(config, null, 2) + '\n');
 const inventory = await files(output);
 const current = new Map(inventory.map(r => [r.path, r]));
@@ -53,8 +59,7 @@ const before = baseline.inventory;
 const modified = before.filter(row => current.get(row.path)?.sha256 !== row.sha256);
 if (modified.length !== 1 || modified[0].path !== 'config.json') throw new Error('An existing public file or function changed');
 const reconstructed = JSON.parse(JSON.stringify(config));
-reconstructed.routes.shift();
-reconstructed.routes.shift();
+reconstructed.routes.splice(0, panelRoutes.length);
 const prior = JSON.parse(await readFile(join(proofDir, 'baseline-routes.json'), 'utf8'));
 if (JSON.stringify(reconstructed) !== JSON.stringify(prior)) throw new Error('Existing routes changed');
 const added = inventory.filter(r => !before.some(p => p.path === r.path));
@@ -66,7 +71,7 @@ const proof = { schemaVersion: 1, preparedAt: new Date().toISOString(), baseline
   baselineCommit: baseline.sourceCommit, baselineFiles: before.length,
   existingFilesUnchanged: before.length - 1, modifiedPaths: modified.map(r => r.path), addedPaths: added.map(r => r.path),
   publicFilesByteIdentical: true, existingFunctionFilesByteIdentical: true, originalRoutesPreserved: true,
-  privateRecordsBundled: false, newRoute: '/interno/bonos-pie', inventory,
+  privateRecordsBundled: false, newRoute: '/bonos-pie', compatibleAlias: '/interno/bonos-pie', inventory,
   inventorySHA256: sha(inventory.map(r => `${r.path}\t${r.bytes}\t${r.sha256}\n`).join('')) };
 await writeFile(join(proofDir, 'candidate-manifest.json'), JSON.stringify(proof, null, 2) + '\n');
 console.log(JSON.stringify({ passed: true, files: inventory.length, newFiles: added.length, publicFilesByteIdentical: true,

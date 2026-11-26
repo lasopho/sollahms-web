@@ -1,12 +1,12 @@
 {
-  "observedAtUTC": "2026-11-25T21:27:32.983625+00:00",
+  "observedAtUTC": "2026-11-26T00:37:10.458404+00:00",
   "passed": true,
-  "sourceHeadAtVerification": "253d6f91fb4f238120f45d616657d690850e6381",
+  "sourceHeadAtVerification": "324dab5a214a778da4867dc4207ecc11385b3164",
   "sourceFiles": [
     {
       "path": "internal/bonos-pie/build.mjs",
-      "bytes": 5198,
-      "sha256": "5323f2048729699ba5e2390ed75ef0524f23dfed112b27421b0fcfee4c1bf56f"
+      "bytes": 5459,
+      "sha256": "39b38a43c3c72fcc61d82669ea6a7594fb3b59762321ec5dfbb1b3eaa7b5118a"
     },
     {
       "path": "internal/bonos-pie/inventory.json",
@@ -25,13 +25,13 @@
     },
     {
       "path": "internal/bonos-pie/server.mjs",
-      "bytes": 21248,
-      "sha256": "729cd6da604f8a9639daccad9cee74987f21350822f4296aa50ebecec310bf61"
+      "bytes": 21224,
+      "sha256": "3a0f444c935983bd5c38d889a5e14d75b1fe64d4a9c5cb05754cb68c47f72c23"
     },
     {
       "path": "internal/bonos-pie/tests/security.test.mjs",
-      "bytes": 10636,
-      "sha256": "374de73dedb57b06fecdf359572c2ce429a2f746deeb4428ec01caa00f477b3c"
+      "bytes": 10997,
+      "sha256": "6cf535bc551a012dc2b6a110a50d557d58f16db5b0352cdcfc6729dc4b04dfef"
     },
     {
       "path": "internal/bonos-pie/ui/login.css",
@@ -45,8 +45,8 @@
     },
     {
       "path": "internal/bonos-pie/ui/login.js",
-      "bytes": 4101,
-      "sha256": "4a961978670005a36a716f0f63e181a3e128446e2cb74c5ade005f339e511e21"
+      "bytes": 4093,
+      "sha256": "495df3ff563f8f29b81bcc2174c9bc5d117f1681cd2288aeff0ffd645c0099b4"
     },
     {
       "path": "internal/bonos-pie/ui/panel.css",
@@ -55,17 +55,17 @@
     },
     {
       "path": "internal/bonos-pie/ui/panel.html",
-      "bytes": 8628,
-      "sha256": "1dffb0db3fa9da69fdb2286ce28fc84bd84be6db831d9f73751f80ba879b87ad"
+      "bytes": 8620,
+      "sha256": "c44b60312e22bb853f7aa7bc8032d0cfc548a376f00e711c11de7d1325988fcf"
     },
     {
       "path": "internal/bonos-pie/ui/panel.js",
-      "bytes": 24463,
-      "sha256": "ecf6c9b575775153c1f313b626e3051bd72c73dc743219f99bc56bef94ff6272"
+      "bytes": 24447,
+      "sha256": "503c333ea38109ce30ec6fc0efdbc787beb449799c43b3f0792dca2908b11658"
     }
   ],
   "compiledSourceMatchesArtifact": true,
-  "candidateInventorySHA256": "b38304390fbfc44d769350dcc7c6324940d46bbdc5b484a2662b92e0e648e372",
+  "candidateInventorySHA256": "f011316833dd40dbc4ecbc7bf72e6a29297a2b6b6c5a54c0ea356936851854b9",
   "securityTests": {
     "passed": 8,
     "failed": 0,
@@ -73,5 +73,7 @@
     "sessions": "synthetic memory store only",
     "command": "node --test internal/bonos-pie/tests/security.test.mjs",
     "addedRegression": "Private Blob reads request identity encoding and reject weak ETags before conditional writes"
-  }
+  },
+  "sourceWorkingTreeChanges": true,
+  "verificationScope": "Local friendly URL candidate; not yet deployed"
 }

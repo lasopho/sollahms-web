@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "preparedAt": "2026-11-25T21:26:48.456Z",
+  "preparedAt": "2026-11-26T00:35:39.401Z",
   "baselineDeployment": "dpl_4tBq9YFz3BKoiXiJE5G5hBjPXMwW",
   "baselineCommit": "3f02788b971c2691afbe5c21e269077f00c1ce14",
   "baselineFiles": 1730,
@@ -23,13 +23,14 @@
   "existingFunctionFilesByteIdentical": true,
   "originalRoutesPreserved": true,
   "privateRecordsBundled": false,
-  "newRoute": "/interno/bonos-pie",
+  "newRoute": "/bonos-pie",
+  "compatibleAlias": "/interno/bonos-pie",
   "inventory": [
     {
       "path": "config.json",
-      "bytes": 4114,
-      "sha256": "dd07c9399fd567a09179de0ae9e5868a838d303508f2aefa1dc291e76c580c95",
-      "sha1": "36003b4a6491ba6f3b955ef72dfe94bed9ea55b7"
+      "bytes": 4296,
+      "sha256": "e1cba5f87d73032fd8b31545a03d7cafd129801566213304764c49f493bb5089",
+      "sha1": "793c6c1298a7893a79bd0f69407e66e5fb0b8048"
     },
     {
       "path": "functions/api/advisory.func/.vc-config.json",
@@ -255,9 +256,9 @@
     },
     {
       "path": "functions/api/interno-bonos-pie.func/index.mjs",
-      "bytes": 1334795,
-      "sha256": "557199d47bac810411709dfaa3481347c64900ce3b2d0ebced7a2bd511e207bb",
-      "sha1": "59179834ee33c2ac7c9253681fec2cc3906a9335"
+      "bytes": 1334771,
+      "sha256": "1fe6965d7e2ba50ef3c8904b697154a039e24e15e2094e4d18b0ffa9a2de0c52",
+      "sha1": "c8f98a386cd8b02a56e2d7ecee44d266a3594415"
     },
     {
       "path": "functions/api/interno-bonos-pie.func/inventory.json",
@@ -279,9 +280,9 @@
     },
     {
       "path": "functions/api/interno-bonos-pie.func/ui/login.js",
-      "bytes": 4101,
-      "sha256": "4a961978670005a36a716f0f63e181a3e128446e2cb74c5ade005f339e511e21",
-      "sha1": "758364e99c6bc009cb9b60c35c1d1af876cef2b6"
+      "bytes": 4093,
+      "sha256": "495df3ff563f8f29b81bcc2174c9bc5d117f1681cd2288aeff0ffd645c0099b4",
+      "sha1": "be2edc70cb99ce69daba60947cadf927164aa1ae"
     },
     {
       "path": "functions/api/interno-bonos-pie.func/ui/panel.css",
@@ -291,15 +292,15 @@
     },
     {
       "path": "functions/api/interno-bonos-pie.func/ui/panel.html",
-      "bytes": 8628,
-      "sha256": "1dffb0db3fa9da69fdb2286ce28fc84bd84be6db831d9f73751f80ba879b87ad",
-      "sha1": "833e9c292da00253481a22a448aca952ce0ed185"
+      "bytes": 8620,
+      "sha256": "c44b60312e22bb853f7aa7bc8032d0cfc548a376f00e711c11de7d1325988fcf",
+      "sha1": "4af38290657dc6797a17d168dc612bcfb92f1cf3"
     },
     {
       "path": "functions/api/interno-bonos-pie.func/ui/panel.js",
-      "bytes": 24463,
-      "sha256": "ecf6c9b575775153c1f313b626e3051bd72c73dc743219f99bc56bef94ff6272",
-      "sha1": "85c1c6574e0218675a1676e57fd38ee5ad88d063"
+      "bytes": 24447,
+      "sha256": "503c333ea38109ce30ec6fc0efdbc787beb449799c43b3f0792dca2908b11658",
+      "sha1": "979b818b41da6082c36debf6d0834eeeb6380970"
     },
     {
       "path": "functions/api/orientation-contact.func/.vc-config.json",
@@ -10460,5 +10461,5 @@
       "sha1": "2617684a6ee10676d3fcabb6f793a19633c4562a"
     }
   ],
-  "inventorySHA256": "b38304390fbfc44d769350dcc7c6324940d46bbdc5b484a2662b92e0e648e372"
+  "inventorySHA256": "f011316833dd40dbc4ecbc7bf72e6a29297a2b6b6c5a54c0ea356936851854b9"
 }

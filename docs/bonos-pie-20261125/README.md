@@ -57,3 +57,9 @@ Después de promover **ese mismo ID**, repetir con `--phase production`. El modo
 `create-production.py` realiza un preflight de lectura por defecto y requiere un SHA completo con `--expected-commit`. Solo `--execute` habilita una creación aislada Production. La tarea principal gestiona la creación del candidato corregido: no ejecutar este script para duplicarlo. Antes de cualquier uso futuro hay que reconciliar la base productiva y el historial de intentos; un archivo de intento se crea exclusivamente para impedir repeticiones accidentales. La promoción es una operación posterior, sujeta a las pruebas reales de acceso requeridas por el titular.
 
 Documentación primaria aplicada: [Blob privado](https://vercel.com/docs/vercel-blob/private-storage), [lecturas y escrituras condicionales](https://vercel.com/docs/vercel-blob/using-blob-sdk), [Production sin asignar dominios](https://vercel.com/docs/cli/deploy), [Vercel Authentication](https://vercel.com/docs/deployment-protection/methods-to-protect-deployments/vercel-authentication).
+
+## Dirección corta preparada
+
+Se preparó `/bonos-pie`, con `/bonos-pie/acceso` para el acceso existente. Los enlaces anteriores `/interno/bonos-pie` siguen funcionando como alias. Los ocho controles de seguridad y la reconstrucción aprobaron; 1.672 archivos públicos y 57 fuentes de funciones previas permanecen intactos. La opción de recordar dispositivos no se añadió. Este cambio está preparado localmente y no se ha desplegado: queda pendiente aclarar si el titular quiere retirar toda autenticación, permitiendo el acceso a cualquiera que conozca o descubra la dirección. No se interpreta una URL oculta como acceso exclusivo.
+
+El deployment B2ux y sus pruebas históricas describen la versión anterior. El manifiesto y snapshot actuales corresponden al candidato local de dirección corta; no deben presentarse como una verificación remota de ese deployment. Véase `route-change.json`.

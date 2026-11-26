@@ -57,14 +57,18 @@ const record = () => ({ id: 'example', status: 'conditional', percentage: 20, am
 
 test('anonymous visitors cannot read page, data, scripts, or mutate records', async () => {
   const s = setup();
-  const page = await s.request('', { path: '/interno/bonos-pie' });
+  const page = await s.request('', { path: '/bonos-pie' });
   assert.equal(page.statusCode, 303);
-  assert.equal(page.headers.location, '/interno/bonos-pie/acceso');
+  assert.equal(page.headers.location, '/bonos-pie/acceso');
   assert.equal(page.body, '');
+  const previousURL = await s.request('', { path: '/interno/bonos-pie' });
+  assert.equal(previousURL.statusCode, 303);
+  assert.equal(previousURL.headers.location, '/bonos-pie/acceso');
   for (const op of ['op=data', 'op=csv', 'op=asset&file=panel.js', 'op=asset&file=panel.css'])
     assert.equal((await s.request(op)).statusCode, 401);
   assert.equal((await s.request('op=data', { method: 'PUT', body: { expectedVersion: 0, records: [record()] } })).statusCode, 401);
   assert.equal((await s.request('op=asset&file=../server.mjs')).statusCode, 404);
+  assert.equal((await s.request('', { path: '/bonos-pie/acceso' })).body, 'LOGIN');
   assert.equal((await s.request('', { path: '/interno/bonos-pie/acceso' })).body, 'LOGIN');
   assert.equal(s.messages.length, 0);
 });
@@ -117,6 +121,7 @@ test('mutations require origin, JSON, authenticated session and CSRF', async () 
 
 test('logout revokes the actual server session and sessions expire', async () => {
   const s = setup(), auth = await s.login();
+  assert.equal((await s.request('', { path: '/bonos-pie', cookie: auth.cookie })).body, 'PRIVATE PANEL');
   assert.equal((await s.request('', { path: '/interno/bonos-pie', cookie: auth.cookie })).body, 'PRIVATE PANEL');
   assert.equal((await s.request('op=logout', { method: 'POST', cookie: auth.cookie, csrf: auth.csrf })).statusCode, 200);
   assert.equal((await s.request('op=data', { cookie: auth.cookie })).statusCode, 401);

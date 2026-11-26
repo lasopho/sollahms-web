@@ -183,12 +183,14 @@ def local_candidate():
     prior_config = read(DOCS / 'baseline-routes.json')
     require(config.get('version') == prior_config.get('version') == 3, 'Build Output API v3 required')
     expected_routes = [
+        {'src': '^/bonos-pie/acceso/?$', 'dest': '/api/interno-bonos-pie?op=login'},
+        {'src': '^/bonos-pie/?$', 'dest': '/api/interno-bonos-pie'},
         {'src': '^/interno/bonos-pie/acceso/?$', 'dest': '/api/interno-bonos-pie?op=login'},
         {'src': '^/interno/bonos-pie/?$', 'dest': '/api/interno-bonos-pie'},
     ]
-    require(config['routes'][:2] == expected_routes, 'Private route destinations differ')
+    require(config['routes'][:len(expected_routes)] == expected_routes, 'Private route destinations differ')
     reconstructed = dict(config)
-    reconstructed['routes'] = config['routes'][2:]
+    reconstructed['routes'] = config['routes'][len(expected_routes):]
     require(reconstructed == prior_config, 'An original production route was modified')
     require(sha((DOCS / 'baseline-routes.json').read_bytes()) == previous['config.json']['sha256'],
             'Saved baseline routing file differs from the baseline source')

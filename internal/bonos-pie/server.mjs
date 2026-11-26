@@ -208,7 +208,7 @@ export function createHandler({ store = blobStore, clock = Date.now, env = proce
       headers: { Authorization: 'Bearer ' + env.RESEND_API_KEY, 'Content-Type': 'application/json', 'Idempotency-Key': 'bonos-login/' + value.requestId },
       body: JSON.stringify({ from: 'Sollahms Web <formularios@forms.sollahms.cl>', to: [env.BONOS_ADMIN_EMAIL],
         subject: 'Código de acceso al panel privado Sollahms',
-        text: `Tu código de acceso al panel privado de bonos pie es: ${value.code}\n\nVence en 10 minutos. Úsalo únicamente en https://sollahms.cl/interno/bonos-pie/acceso. No lo compartas. Si no solicitaste acceso, ignora este mensaje.` }),
+        text: `Tu código de acceso al panel privado de bonos pie es: ${value.code}\n\nVence en 10 minutos. Úsalo únicamente en https://sollahms.cl/bonos-pie/acceso. No lo compartas. Si no solicitaste acceso, ignora este mensaje.` }),
     });
     if (!response.ok) throw new Error('Authentication email unavailable');
   });
@@ -285,8 +285,8 @@ export function createHandler({ store = blobStore, clock = Date.now, env = proce
       if (!op || op === 'login') {
         if (method !== 'GET' && method !== 'HEAD') throw new HttpError(405, 'Método no permitido.');
         const login = op === 'login' || /\/acceso\/?$/.test(url.pathname);
-        if (!currentSession && !login) return redirect(res, '/interno/bonos-pie/acceso');
-        if (currentSession && login) return redirect(res, '/interno/bonos-pie');
+        if (!currentSession && !login) return redirect(res, '/bonos-pie/acceso');
+        if (currentSession && login) return redirect(res, '/bonos-pie');
         return send(res, 200, method === 'HEAD' ? '' : await loadAsset(login ? 'login.html' : 'panel.html'), 'text/html; charset=utf-8');
       }
       if (!currentSession) throw new HttpError(401, 'Inicia sesión para consultar el panel.');
