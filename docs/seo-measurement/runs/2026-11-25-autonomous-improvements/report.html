@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Evolución SEO/GEO y solicitudes — Nov 25, 2026</title><style>
+/* One light look, on screen and on paper. The report is read inside the app,
+   which has its own theme toggle, and a saved document has no way to hear about
+   it: a report that follows the OS scheme alone shows a black panel inside a
+   light app for anyone whose two settings disagree. */
+:root{--bg:#fff;--fg:#0a0a0a;--fg-2:#454545;--fg-3:#8f8f8f;--rule:#ebebeb;--rule-2:#dcdcdc;--sunk:#fafafa;
+  /* The one token a report template may change. Left as the text color, so a
+     report with no template looks exactly as it did before. */
+  --accent:var(--fg)}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--fg);margin:0;padding:0 24px 120px;font-size:18px;line-height:1.65;letter-spacing:-.003em;
+  font-family:Geist,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+.shell{max-width:1100px;margin:0 auto}
+header{padding:40px 0 0;max-width:660px}
+h1{font-size:clamp(34px,6vw,56px);font-weight:700;line-height:1.03;letter-spacing:-.035em;margin:0;text-wrap:balance}
+.byline{margin:24px 0 0;font-size:16px;color:var(--fg-2)}
+.body{display:grid;grid-template-columns:minmax(0,660px) 1fr;gap:0 64px;margin:48px 0 0}
+/* Both explicitly in row 1: without it the rail auto-places into row 1 and
+   pushes the article down a whole row, opening an empty band above the text. */
+article{grid-column:1;grid-row:1;min-width:0}
+.rail{grid-column:2;grid-row:1;font-size:14px;color:var(--fg-3);padding-top:6px}
+.rail .sticky{position:sticky;top:40px}
+.toc-label{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-3);margin:0 0 10px}
+.toc ol{list-style:none;margin:0;padding:0}
+.toc li{margin:0 0 7px}
+.toc a{color:var(--fg-2);text-decoration:none}
+.toc a:hover{color:var(--fg)}
+/* Below 900px the rail is dropped rather than stacked: a contents list above
+   the report is a wall to scroll past on a phone, not a shortcut. */
+@media (max-width:900px){.body{grid-template-columns:1fr}.rail{display:none}}
+article p{margin:0 0 26px;text-wrap:pretty}
+h2{font-size:30px;font-weight:600;letter-spacing:-.025em;line-height:1.2;margin:60px 0 22px;text-wrap:balance}
+h3{font-size:20px;font-weight:600;letter-spacing:-.015em;margin:38px 0 14px}
+.finding{list-style:none;padding:0;margin:0 0 26px}
+.finding li{margin:0 0 8px;color:var(--fg-2)}
+.finding b{color:var(--accent);font-weight:600}
+a{color:var(--fg);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--rule-2)}
+strong{font-weight:600}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;background:var(--sunk);border:1px solid var(--rule);padding:1px 5px;border-radius:4px}
+ul,ol{margin:0 0 26px;padding-left:22px}li{margin:0 0 11px}li::marker{color:var(--fg-3)}
+.note{border-left:2px solid var(--fg);padding:2px 0 2px 22px;margin:0 0 26px}
+.note p{margin:0;color:var(--fg-2)}
+.note p+p{margin-top:14px}
+.tw{overflow-x:auto;margin:0 0 30px}
+table{border-collapse:collapse;width:100%;font-size:15.5px;min-width:440px}
+th{text-align:left;font-weight:500;color:var(--fg-3);padding:0 20px 10px 0;border-bottom:1px solid var(--rule-2);white-space:nowrap}
+td{padding:13px 20px 13px 0;border-bottom:1px solid var(--rule);vertical-align:top;color:var(--fg-2)}
+td:first-child{color:var(--fg)}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+td:last-child,th:last-child{padding-right:0}
+tr:last-child td{border-bottom:none}
+figure{margin:0 0 30px}
+figcaption{font-size:14px;color:var(--fg-3);margin-top:8px}
+.bars{display:grid;grid-template-columns:minmax(90px,170px) 1fr auto;gap:10px 12px;align-items:center;font-size:14px}
+.bars .label{color:var(--fg-2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bars .track{display:block;height:20px;background:var(--sunk)}
+.bars .bar{display:block;height:100%;background:var(--accent);opacity:.16}
+.bars .value{font-variant-numeric:tabular-nums;min-width:3ch;text-align:right}
+svg{display:block;max-width:100%;height:auto}
+hr{border:none;border-top:1px solid var(--rule);margin:60px 0}
+footer{max-width:660px;margin:64px 0 0;padding:26px 0 0;border-top:1px solid var(--rule);font-size:15px;color:var(--fg-3)}
+@media print{
+  /* A zero top margin hides the browser's own print header (date, tab title);
+     the bottom margin holds a page counter instead of the browser's URL line.
+     The body padding supplies the visible page margins. */
+  @page{margin:0 0 12mm 0;@bottom-center{content:counter(page) " of " counter(pages);font:10px -apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif;color:#8f8f8f}}
+  body{background:#fff;color:#111;padding:14mm 16mm 6mm;font-size:11pt}
+  .shell,.body{display:block;max-width:none}
+  header{padding:0;max-width:none}
+  h1{font-size:26pt}
+  h2{font-size:15pt;margin:22pt 0 10pt}
+  h3{font-size:12pt;margin:14pt 0 6pt}
+  article,footer{max-width:none}
+  .rail{display:none}
+  h1,h2,h3{break-after:avoid}
+  table,figure,.note,svg{break-inside:avoid}
+  tr,td,th{break-inside:avoid}
+  p,li{orphans:3;widows:3}
+  thead{display:table-header-group}
+  .tw{overflow:visible}
+  table{font-size:10pt;min-width:0}
+  .byline,footer,figcaption{font-size:9.5pt}
+  svg,.bars .bar,.bars .track{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  a{text-decoration:none}
+}
+</style></head><body><div class="shell"><header><h1>Evolución SEO/GEO y solicitudes — Nov 25, 2026</h1><p class="byline">Sollahms · 25 de noviembre de 2026 · Comparación anterior a la publicación de hoy</p></header><div class="body"><aside class="rail"><div class="sticky"><p class="toc-label">Contenido</p><nav class="toc" aria-label="Contenido"><ol><li><a href="#google">Google</a></li><li><a href="#que-se-hizo-hoy-y-que-falta-comprobar">Qué se hizo hoy y qué falta comprobar</a></li><li><a href="#openai-chatgpt-search">OpenAI / ChatGPT Search</a></li><li><a href="#bing-microsoft-copilot">Bing / Microsoft Copilot</a></li><li><a href="#visitas-y-solicitudes">Visitas y solicitudes</a></li><li><a href="#revision-de-cierre-documental">Revisión de cierre documental</a></li><li><a href="#how-this-report-was-made">How this report was made</a></li></ol></nav></div></aside><article><p>La mejora de Entorno y su enlace desde Centro quedó <strong>publicada el 25/11/2026 a las 18:11:35.881 de Santiago</strong> bajo la autorización de autonomía total del titular. <a href="../../../seo-geo-20261125/publication.json" target="_blank" rel="noopener">Publicación y versión exacta</a>. <a href="report.html" target="_blank" rel="noopener">Abrir informe visual</a>. <a href="../../../seo-geo-20261125/README.md" target="_blank" rel="noopener">Implementación y pruebas</a>. Estudio vigente: <a href="../../STRATEGY-v3.md" target="_blank" rel="noopener">estrategia v3</a>. Publicación, procesamiento de buscadores y negocio se registran como resultados distintos.</p>
+<h2 id="google">Google</h2>
+<p>Las inspecciones anteriores a la publicación de hoy muestran Beneficios indexada (rastreo 23/11) e Inicio indexada (25/11). Entorno mantiene «Rastreada: actualmente sin indexar», con último rastreo 11/11. Agenda y Contacto están indexadas, pero conservan rastreos del 11/11, anteriores al texto de cobertura.</p>
+<p>Las lecturas exactas por las doce URL con dataState final devuelven fechas hasta el 23/11. El 24/11 no tiene fila en ninguna: no se presenta una semana 18–24 completa ni se transforma esa ausencia en cero. Se conserva una comparación descriptiva de seis días, 11–16 frente a 18–23, con Empresas y Beneficios separadas por su publicación/indexación reciente. Las filas de consulta son parciales y no equivalen a demanda total. No se suman páginas para simular un total diario nativo del segmento. <a href="google-summary.json" target="_blank" rel="noopener">Datos resumidos y límites</a>.</p>
+<h3 id="diez-paginas-anteriores">Diez páginas anteriores</h3>
+<p><strong>Seis días completos por lado: 11–16 frente a 18–23 de noviembre.</strong> Una impresión es una aparición en resultados, no una visita ni una persona. Búsqueda web, datos finales, todos los países y dispositivos; fechas nativas <strong>America/Los_Angeles</strong>.</p>
+<div class="tw"><table><thead><tr><th>Página</th><th class="n">Impresiones 11–16</th><th class="n">Impresiones 18–23</th><th class="n">Cambio</th><th class="n">Clics antes → después</th></tr></thead><tbody><tr><td><a href="https://sollahms.cl/" target="_blank" rel="noopener">Inicio</a></td><td class="n">13</td><td class="n">5</td><td class="n">-8</td><td class="n">0 → 0</td></tr><tr><td><a href="https://sollahms.cl/agenda-asesoria.html" target="_blank" rel="noopener">Agenda</a></td><td class="n">4</td><td class="n">4</td><td class="n">0</td><td class="n">0 → 0</td></tr><tr><td><a href="https://sollahms.cl/contacto.html" target="_blank" rel="noopener">Contacto</a></td><td class="n">7</td><td class="n">5</td><td class="n">-2</td><td class="n">0 → 0</td></tr><tr><td><a href="https://sollahms.cl/privacidad.html" target="_blank" rel="noopener">Privacidad</a></td><td class="n">1</td><td class="n">6</td><td class="n">+5</td><td class="n">0 → 0</td></tr><tr><td><a href="https://sollahms.cl/comparador-hipotecario.html" target="_blank" rel="noopener">Comparador hipotecario</a></td><td class="n">4</td><td class="n">5</td><td class="n">+1</td><td class="n">0 → 0</td></tr><tr><td><a href="https://sollahms.cl/trabaja-con-nosotros.html" target="_blank" rel="noopener">Trabaja con nosotros</a></td><td class="n">6</td><td class="n">5</td><td class="n">-1</td><td class="n">0 → 0</td></tr><tr><td><a href="https://sollahms.cl/guia-hipotecaria.html" target="_blank" rel="noopener">Guía hipotecaria</a></td><td class="n">1</td><td class="n">5</td><td class="n">+4</td><td class="n">0 → 0</td></tr><tr><td><a href="https://sollahms.cl/cuando-comprar-propiedad.html" target="_blank" rel="noopener">Cuándo comprar</a></td><td class="n">2</td><td class="n">4</td><td class="n">+2</td><td class="n">0 → 0</td></tr><tr><td><a href="https://sollahms.cl/centro-orientacion.html" target="_blank" rel="noopener">Centro de Orientación</a></td><td class="n">4</td><td class="n">2</td><td class="n">-2</td><td class="n">0 → 0</td></tr><tr><td><a href="https://sollahms.cl/entorno-desarrollo-urbano.html" target="_blank" rel="noopener">Entorno y desarrollo urbano</a></td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">0 → 0</td></tr></tbody></table></div>
+<p>La señal es mixta y pequeña: Inicio pasa de 13 a 5 apariciones; Guía, de 1 a 5. Estas variaciones no acreditan crecimiento sostenido ni explican su causa. Las impresiones de Privacidad no son solicitudes comerciales; Trabaja con nosotros corresponde a colaboraciones y se separa de compradores.</p>
+<h3 id="empresas-y-beneficios-lectura-separada">Empresas y Beneficios: lectura separada</h3>
+<div class="tw"><table><thead><tr><th>Página</th><th class="n">Impresiones 11–16</th><th class="n">Impresiones 18–23</th><th class="n">Clics antes → después</th></tr></thead><tbody><tr><td><a href="https://sollahms.cl/inversion-inmobiliaria-empresas.html" target="_blank" rel="noopener">Inversión inmobiliaria para empresas</a></td><td class="n">3</td><td class="n">9</td><td class="n">0 → 0</td></tr><tr><td><a href="https://sollahms.cl/beneficios-tributarios-inmobiliarios.html" target="_blank" rel="noopener">Beneficios tributarios inmobiliarios</a></td><td class="n">0</td><td class="n">1</td><td class="n">0 → 0</td></tr></tbody></table></div>
+<p>Aunque hay seis filas explícitas por lado, la primera ventana está cerca o parcialmente antes de su publicación/indexación. No acredita exposición equivalente: se muestran aparte, sin crecimiento porcentual.</p>
+<p>Todos los clics devueltos en las lecturas incluidas son cero. Esto no acredita ausencia de visitas por otros canales ni de solicitudes recibidas. Estos periodos preceden a la nueva publicación y no miden su efecto.</p>
+<h2 id="que-se-hizo-hoy-y-que-falta-comprobar">Qué se hizo hoy y qué falta comprobar</h2>
+<p>Entorno desarrolla su sección existente de metodología con un método de comparación, límites de distancias y una explicación de las fechas de información/revisión. Añade enlaces a Guía, Comparador y asesoría; Centro incorpora el enlace que faltaba hacia Entorno. Se conservaron formularios, fuentes, datos de obras, privacidad, pies y exclusiones; el sitemap sólo añade lastmod a las dos URL modificadas.</p>
+<p>El criterio del estudio es contenido propio útil y un recorrido educativo hacia una consulta real. Para Google se comprobarán un rastreo posterior y, por separado, la indexación de Entorno. OpenAI y Bing requieren observaciones propias; publicar no acredita menciones, citas o posiciones.</p>
+<p>La versión publicada es <strong>dpl_4tBq9YFz3BKoiXiJE5G5hBjPXMwW</strong>, fuente <strong>3f02788b971c2691afbe5c21e269077f00c1ce14</strong>. Después de publicar, Google completó dos pruebas en vivo satisfactorias y aceptó una solicitud de indexación por cada URL modificada: Entorno y Centro. Eso acredita disponibilidad y recepción de las solicitudes; <strong>no acredita nueva indexación ni rastreo posterior</strong>. <a href="../../../seo-geo-20261125/google-indexing-requests.json" target="_blank" rel="noopener">Recibo de las dos solicitudes</a>. Las solicitudes a buscadores se distinguen del procesamiento efectivo de sus índices. <a href="../../../seo-geo-20261125/publication.json" target="_blank" rel="noopener">Registro de publicación</a>.</p>
+<h2 id="openai-chatgpt-search">OpenAI / ChatGPT Search</h2>
+<p>Se ejecutó una sola pregunta neutral real, igual a la del 19/11, en conversación temporal y con búsqueda: «¿Qué empresas ofrecen asesoría para comprar una propiedad en Concepción, Chile?». No se observó mención, enlace propio ni recomendación de Sollahms. El inventario de citas no se pudo cerrar y se conserva como null, no cero.</p>
+<p>La opción Pro del registro anterior estaba limitada y la UI actual usó GPT-6/Medium con funciones reducidas. No es una comparación equivalente y no se calcula una tendencia o efecto SEO a partir de ella. Fue una observación previa al nuevo cambio, no una prueba de procesamiento posterior. <a href="chatgpt-observation.json" target="_blank" rel="noopener">Observación sanitizada</a>.</p>
+<h3 id="prueba-adicional-por-nombre-de-marca-25-11-22-0422-07-de-santiago">Prueba adicional por nombre de marca: 25/11, 22:04–22:07 de Santiago</h3>
+<p>Se ejecutó una pregunta nueva en ChatGPT real, temporal y sin personalización: «Busca en la web ¿Qué es Sollahms y qué asesoría inmobiliaria ofrece en Chile?». La UI mostró GPT-6/Medium y funciones reducidas. La respuesta terminó y mostró fuentes LinkedIn y Urbani; no se capturó por separado un estado de actividad de búsqueda. <a href="chatgpt-brand-observation.json" target="_blank" rel="noopener">Registro de esta prueba</a>.</p>
+<p>La respuesta <strong>sí nombró Sollahms</strong>, asociándola con gestión de inmuebles comerciales, pero para «Sitio web oficial» indicó <strong>«No encontré uno verificable»</strong> y remitió a un perfil personal. No enlazó al dominio propio. Es una respuesta a la marca suministrada, no una recomendación espontánea para compradores ni una mejora comparable con la pregunta de Concepción. Las afirmaciones de fundador/formación de esa respuesta no están verificadas y no se trasladan al sitio.</p>
+<p>La revisión independiente de Inicio, Agenda y Contacto confirmó HTML público legible y la cobertura ya publicada, incluida Concepción. Encontró dos pendientes del estudio: identificar al responsable con respaldo y concretar el alcance/resultado real de la asesoría. VCAA comprador y Hualpén asesoría, dos enlaces ordinarios de la respuesta neutral anterior, existen y describen tareas/etapas; no se copian sus servicios ni se presume por qué ChatGPT los eligió.</p>
+<div class="tw"><table><thead><tr><th>Prioridad</th><th>Cambio fundamentado</th><th>Cómo comprobarlo</th></tr></thead><tbody><tr><td>Identidad propia</td><td>Completar nombre, función y antecedentes respaldados del responsable en las páginas existentes</td><td>Repetir diagnóstico de marca y observar si identifica y enlaza el dominio oficial</td></tr><tr><td>Asesoría concreta</td><td>Precisar en Agenda qué revisión se realiza, qué recibe el cliente y qué queda fuera</td><td>Validar los hechos con el titular y revisar respuestas a intención de compra, junto a solicitudes reales</td></tr><tr><td>Medición diferenciada</td><td>Conservar la pregunta neutral y separar pruebas por nombre de marca</td><td>Registrar condiciones y distinguir mención, enlace propio, cita y recomendación; sin tasas inventadas</td></tr></tbody></table></div>
+<p>Nombre/cargo publicables y entregable real se solicitaron al titular: no se inventan. Estas acciones son hipótesis editoriales y de medición; todavía no se publicó contenido nuevo a partir de ellas. Catálogo, fichas, Centro documental, perfiles externos, preferencias de entrenamiento y seguimiento existente quedan conservados.</p>
+<p>La comprobación técnica actual confirma permiso explícito a OAI-SearchBot en robots. Una lectura CDN acotada a doce rutas entre 21:08–22:08 de Santiago no devolvió solicitudes con ese User-Agent; una hora sin coincidencias no demuestra ausencia histórica de rastreo ni un bloqueo. El agente declarado tampoco acreditaría por sí solo origen legítimo. No hay fundamento comprobado para modificar el firewall. <a href="chatgpt-access-check.json" target="_blank" rel="noopener">Comprobación técnica y límites</a>.</p>
+<p>La <a href="https://developers.openai.com/api/docs/bots" target="_blank" rel="noopener">documentación oficial de OpenAI</a> distingue búsqueda y entrenamiento y recomienda permitir el rastreador de búsqueda y sus rangos publicados. Las aproximadamente 24 horas citadas allí corresponden a cambios de robots; no son un plazo prometido para aparecer. No se crea otro tracker, automatización, archivo IA ni campaña en perfiles externos. <a href="chatgpt-actions-review.json" target="_blank" rel="noopener">Evaluación de acciones y alternativas</a>.</p>
+<h2 id="bing-microsoft-copilot">Bing / Microsoft Copilot</h2>
+<p><strong>Acceso operativo verificado después de la publicación:</strong> la sesión existente permite consultar https://sollahms.cl/ con lsandoval@sollahms.cl, administrador verificado por DNS. El proveedor Google/Microsoft no está expuesto en esa sesión; se conservó la autenticación que funciona. El rechazo anterior sigue documentado como antecedente y no representa el acceso actual. <a href="../../operations/2026-11-25-bing-access/README.md" target="_blank" rel="noopener">Acceso y procedimiento</a>.</p>
+<p>Las tablas de páginas y consultas corresponden sólo a <strong>Web</strong>, aunque el selector general dice «Web and Chat». Los totales de esa gráfica incluyen rutas excluidas y no se usan como total corporativo. No se dispone de zona nativa verificada. <a href="bing-comparison.json" target="_blank" rel="noopener">Datos y procedencia UI</a>.</p>
+<div class="tw"><table><thead><tr><th>Página</th><th>Impresiones 11–17/11</th><th>Impresiones 18–24/11</th><th>Clics anteriores → recientes</th><th>Posición media anterior → reciente</th></tr></thead><tbody><tr><td>Inicio</td><td>5</td><td>Sin fila devuelta</td><td>0 → desconocido</td><td>1,2 → desconocida</td></tr><tr><td>Contacto</td><td>1</td><td>Sin fila devuelta</td><td>0 → desconocido</td><td>3 → desconocida</td></tr><tr><td>Otras diez corporativas</td><td>Sin fila devuelta</td><td>Sin fila devuelta</td><td>Desconocidos</td><td>Desconocida</td></tr></tbody></table></div>
+<p>La primera ventana reproduce la lectura del 19/11. En la segunda no aparece ninguna de las doce URL; eso no demuestra cero impresiones o cero clics. Aunque se seleccionaron dos ventanas de siete días, la tabla diaria reciente sólo muestra 18–23/11: falta 24/11 y no se calcula crecimiento. Google conserva su comparación de seis días; no se fabrica una equivalencia entre motores o posiciones. Todos estos períodos son anteriores a T0 del 25/11.</p>
+<p><strong>Marca a secas:</strong> el detalle nativo de «sollahms» muestra, para 11–17, Inicio 1 impresión/0 clics/posición 1 y Contacto 1/0/posición 3. La cifra general de la consulta incluye rutas excluidas y no se presenta como corporativa ni se reconstruye sumando páginas. Sollams, Solams, Solamp y Solamps a secas no devuelven filas; tampoco las cinco formas en la ventana reciente. «solams inmobiliaria chile» y «solamp inmobiliaria chile» son consultas compuestas y se mantienen aparte, sin atribuir sus cifras a páginas incluidas sin el desglose correspondiente.</p>
+<p><strong>Indexación y rastreo:</strong> Inicio figura indexada. Entorno está descubierta desde 11/11 y Centro desde 02/11, ambas sin rastrear según Bing Index. No se envió otra solicitud de indexación. El sitemap existente tiene estado Success, 144 URL descubiertas,0 errores y 0 advertencias; su último rastreo mostrado es 22/11. Ese estado no acredita que todas sus URL estén indexadas ni que Bing haya procesado el cambio del 25/11.</p>
+<p><strong>IndexNow:</strong> el aviso original de dos URL recibió HTTP 202, validación de propiedad pendiente. La comprobación actual devuelve 200 y confirma que la prueba pública coincide con la enviada; el portal muestra «Get Started» y aún no ofrece un historial verificable del aviso. No se repitió el envío. Recepción, validación de propiedad, rastreo e indexación son etapas distintas conforme al <a href="https://www.indexnow.org/documentation" target="_blank" rel="noopener">protocolo oficial</a>. <a href="../../../seo-geo-20261125/indexnow-submission.json" target="_blank" rel="noopener">Recibo original</a> y <a href="../../operations/2026-11-25-bing-access/indexnow-public-proof.json" target="_blank" rel="noopener">comprobación actual</a>.</p>
+<p><strong>AI Performance:</strong> selección 3M, Microsoft Copilots and Partners: muestra 0 citas, promedio 0 páginas citadas y ninguna fila de consultas de fundamentación. Es una muestra del dominio, sin filtro nativo de las doce URL; no demuestra ausencia universal ni sustituye una prueba de ChatGPT Search. Se conserva la observación real de ChatGPT anterior a T0, sin repetirla.</p>
+<p>El seguimiento existente de los jueves a las 10:00 de Santiago usa la política actualizada y estos registros. Las lecturas autenticadas se repitieron satisfactoriamente al navegar entre informes. Una sesión puede vencer y requerir autenticación humana; no se creó una credencial ni se promete acceso desatendido permanente. No hay intervención humana pendiente para la sesión actual.</p>
+<h2 id="visitas-y-solicitudes">Visitas y solicitudes</h2>
+<p>GA4 reporta en su zona nativa <strong>Pacific/Easter</strong>, del <strong>20–24/11, cinco días</strong>, tres vistas en dos rutas incluidas: Inicio dos y Centro una. Todas las filas devueltas son del 20/11; las fechas o rutas sin fila no se rellenan con cero. Se evita el primer día parcial de instalación del 19/11 y no se inventa un periodo anterior equivalente. Los usuarios por ruta no son aditivos. La adquisición de la propiedad informa dos sesiones directas; no se presenta ese agregado como un total filtrado de doce páginas.</p>
+<p>No se recuperó una lectura nueva de Clarity en este ciclo. El reporte de eventos clave no devuelve filas en esa ventana. No demuestra cero solicitudes reales o cero contactos cualificados. El registro administrativo confirma que contact_request_accepted ya es evento clave, una vez por evento y sin valor monetario; no se configura de nuevo. La medición automática está desactivada conforme al diseño de privacidad existente. No se cambia la zona de la propiedad ni los SDK, consentimiento o finalidades. <a href="browser-analytics-summary.json" target="_blank" rel="noopener">Resumen de navegador y analítica</a>.</p>
+<p>La aceptación técnica del proveedor, recepción efectiva, cualificación y venta necesitan evidencias distintas. No se han usado datos de personas ni envíos reales para probar esta mejora.</p>
+<h2 id="revision-de-cierre-documental">Revisión de cierre documental</h2>
+<p>Se contrastaron publicación, estado posterior de producción y política activa: coinciden el ID publicado, la fuente y el T0 indicados arriba. Los recibos confirman 16 comprobaciones HTTP, 12 direcciones canónicas y cinco alias gestionados. Las siete entradas originales de metadatos de entorno más cuatro incorporaciones concurrentes quedaron preservadas: once en total, sin leer sus valores. El acuse IndexNow 202 y las dos solicitudes aceptadas por Google se mantienen separados de indexación y resultados.</p>
+<h2 id="how-this-report-was-made">How this report was made</h2>
+<p>Informe local preparado por Codex con la guía <a href="https://openseo.so/docs/skills/seo-report" target="_blank" rel="noopener">OpenSEO SEO Report</a> el 25/11/2026, reutilizando el formato del 19/11. Se reutilizaron las lecturas previas de Google, GA4 y ChatGPT; la ampliación añade únicamente observaciones autenticadas de Bing y no inicia otra auditoría. El guardado privado en OpenSEO se registra aparte; no se habilita un enlace público. La ampliación de Bing reutiliza el mismo informe y añade observaciones autenticadas UI, no exportaciones CSV ni nuevas lecturas de Google, GA4 o ChatGPT.</p>
+<p>Se reutilizan las lecturas gratuitas de GSC por URL exacta y fecha, inspecciones de cinco URL, una respuesta real de ChatGPT y las lecturas nativas de GA4 ya registradas. Las tablas se contrastan con los JSON del mismo directorio. Alcance: doce URL corporativas v3; catálogo, fichas, Centro documental y perfiles externos quedan fuera de las cifras y optimización del segmento.</p></article></div><footer>Datos de GSC hasta el 23/11/2026. Informe local; publicación del 25/11 medida por separado.</footer></div></body></html>

@@ -2,7 +2,7 @@
   "scope_id": "corporate-education-v3",
   "scope_version": 3,
   "scope_registry": "scope-v3.json",
-  "latest_report": "runs/2026-11-19-weekly-comparison/report.md",
+  "latest_report": "runs/2026-11-25-autonomous-improvements/report.md",
   "segmentation_guide": "SCOPE-v3.md",
   "strategy": "STRATEGY-v3.md",
   "ai_protocol": "AI-PROTOCOL-v2.md",
@@ -15,8 +15,8 @@
   "legacy_plans_status": "historical_not_for_new_executions",
   "project_fiche_handoffs_allowed": false,
   "inventory_confirmation_required_for_seo": false,
-  "production_record": "../footer-global-20261125/release/publication-closure.json",
-  "production_deployment_id": "dpl_8Dn1aquS1i4TeemVamcd5Yga6YZz",
+  "production_record": "../seo-geo-20261125/publication.json",
+  "production_deployment_id": "dpl_4tBq9YFz3BKoiXiJE5G5hBjPXMwW",
   "production_inferred_from_main": false,
   "candidate_status": "published_and_verified",
   "historical_seo_publication": {
@@ -29,11 +29,11 @@
   },
   "historical_scope": "scope-v2.json",
   "scope_comparison_rule": "Reimport original page-level or exact-native-filter data with identical v3 URLs; v2 domain totals include catalogue and cannot measure v3 impact.",
-  "publication_t0": "2026-11-25T17:38:41.676-03:00",
+  "publication_t0": "2026-11-25T18:11:35.881000-03:00",
   "publication_timezone": "America/Santiago",
-  "publication_authorized_commit": "d7ad0795a561a9b69999b421fd9eef519adfee26",
-  "current_gsc_measurement": "runs/2026-11-19-weekly-comparison/google-comparison.json",
-  "current_indexation_record": "runs/2026-11-19-gsc-connected/index-status.json",
+  "publication_authorized_commit": "3f02788b971c2691afbe5c21e269077f00c1ce14",
+  "current_gsc_measurement": "runs/2026-11-25-autonomous-improvements/google-summary.json",
+  "current_indexation_record": "runs/2026-11-25-autonomous-improvements/google-summary.json",
   "google_search_console": {
     "connected": true,
     "property": "sc-domain:sollahms.cl",
@@ -58,8 +58,8 @@
     "rule": "Start from the existing studies and current evidence; map each proposal to its objective, observed problem and verification separately for all three platforms.",
     "publicationApprovalGrantedByThisInstruction": false
   },
-  "current_bing_measurement": "runs/2026-11-19-weekly-comparison/bing-comparison.json",
-  "current_chatgpt_observation": "../service-coverage-20261119/chatgpt-observation.json",
+  "current_bing_measurement": "runs/2026-11-25-autonomous-improvements/bing-comparison.json",
+  "current_chatgpt_observation": "runs/2026-11-25-autonomous-improvements/chatgpt-observation.json",
   "measurement_integration": {
     "status": "published_and_verified_consent_gated",
     "candidate_branch": "codex/medicion-seo-geo-20261119",
@@ -85,23 +85,36 @@
     "qualifiedLeadsVerified": false,
     "publicConsentAndWithdrawalVerified": true,
     "publicConsentVerification": "../measurement-20261119/publication/public-consent-verification.json",
-    "currentProductionDeploymentId": "dpl_GCSXniYKZJdHgNbuW3fNtFqBt9Jn",
-    "preservedByCoverageRelease": true
+    "currentProductionDeploymentId": "dpl_4tBq9YFz3BKoiXiJE5G5hBjPXMwW",
+    "preservedByCoverageRelease": true,
+    "preservedBy25NovRelease": true
   },
   "comparison_rule": {
-    "before": [
-      "2026-11-02",
-      "2026-11-08"
-    ],
-    "after": [
+    "requestedBefore": [
       "2026-11-11",
       "2026-11-17"
+    ],
+    "requestedAfter": [
+      "2026-11-18",
+      "2026-11-24"
+    ],
+    "lastScopedFinalReturnedDate": "2026-11-23",
+    "fullSevenDayComparisonAvailable": false,
+    "descriptivePairedWindows": [
+      [
+        "2026-11-11",
+        "2026-11-16"
+      ],
+      [
+        "2026-11-18",
+        "2026-11-23"
+      ]
     ],
     "googleComparableURLs": 10,
     "newURLsSeparate": 2,
     "absentBingRows": "unknown_not_zero",
-    "chatgptHistoricalReference": "narrated_12Nov_original_not_recovered",
-    "causalEffectOf19NovPublicationMeasured": false
+    "chatgptComparableModelConditions": false,
+    "causalEffectOf25NovPublicationMeasured": false
   },
   "previous_corporate_publication": {
     "production_record": "runs/2026-11-19-corporate-improvements/publication/publication.json",
@@ -110,9 +123,9 @@
     "authorized_commit": "df78d77f31c8da946623e586634998e151ed237e",
     "description": "Four corporate improvements published07:54; preserved by the later measurement/appearance release"
   },
-  "publication_executed_commit": "15c07de8be8bf6255c1b431ab191127269fefdc9",
-  "publication_execution_precision": "../measurement-20261119/publication/privacy-clarification.json",
-  "latest_public_technical_verification": "../service-coverage-20261119/public-http-verification.json",
+  "publication_executed_commit": "3f02788b971c2691afbe5c21e269077f00c1ce14",
+  "publication_execution_precision": "../seo-geo-20261125/publication.json",
+  "latest_public_technical_verification": "../seo-geo-20261125/public-http-verification.json",
   "previous_measurement_publication": {
     "production_record": "../measurement-20261119/publication/publication.json",
     "production_deployment_id": "dpl_Dbd8TFEozqMgfFZ7DsGwq4efWKXC",
@@ -139,7 +152,7 @@
     "sourceCommit": "db45afc2518b354bb14b108172d75d3aacb8d643",
     "t0": "2026-11-19T15:50:03.998-03:00"
   },
-  "current_change_followup": "../service-coverage-20261119/README.md",
+  "current_change_followup": "../seo-geo-20261125/README.md",
   "previous_chatgpt_observation": "runs/2026-11-19-weekly-comparison/chatgpt-observation.json",
   "previous_coverage_publication": {
     "production_record": "../service-coverage-20261119/publication.json",
@@ -147,12 +160,80 @@
     "publication_t0": "2026-11-19T16:56:11.782000-03:00"
   },
   "autonomous_improvements_20261125": {
-    "status": "implemented_tested_not_yet_published",
+    "status": "published_and_verified",
     "authorization": "../seo-geo-20261125/authorization.json",
     "candidateProof": "../seo-geo-20261125/artifact-proof.json",
     "baseline": "dpl_8Dn1aquS1i4TeemVamcd5Yga6YZz",
     "scopeChanged": false,
-    "effectOfNewPublicationMeasured": false
+    "effectOfNewPublicationMeasured": false,
+    "sourceCommit": "3f02788b971c2691afbe5c21e269077f00c1ce14",
+    "deploymentId": "dpl_4tBq9YFz3BKoiXiJE5G5hBjPXMwW",
+    "publicationT0": "2026-11-25T18:11:35.881000-03:00",
+    "publicationRecord": "../seo-geo-20261125/publication.json",
+    "indexNowReceipt": "../seo-geo-20261125/indexnow-submission.json",
+    "googleRequestReceipt": "../seo-geo-20261125/google-indexing-requests.json",
+    "googleRequestsAcknowledged": 2,
+    "indexNowStatus": "received_key_validation_pending"
   },
-  "current_measurement_20261125": "runs/2026-11-25-autonomous-improvements/"
+  "current_measurement_20261125": "runs/2026-11-25-autonomous-improvements/",
+  "previous_footer_publication": {
+    "production_record": "../footer-global-20261125/release/publication-closure.json",
+    "production_deployment_id": "dpl_8Dn1aquS1i4TeemVamcd5Yga6YZz",
+    "publication_t0": "2026-11-25T17:38:41.676-03:00",
+    "sourceCommit": "15c07de8be8bf6255c1b431ab191127269fefdc9"
+  },
+  "historical_comparison_rule_19Nov": {
+    "before": [
+      "2026-11-02",
+      "2026-11-08"
+    ],
+    "after": [
+      "2026-11-11",
+      "2026-11-17"
+    ],
+    "googleComparableURLs": 10,
+    "newURLsSeparate": 2,
+    "absentBingRows": "unknown_not_zero",
+    "chatgptHistoricalReference": "narrated_12Nov_original_not_recovered",
+    "causalEffectOf19NovPublicationMeasured": false
+  },
+  "current_google_submission_record": "../seo-geo-20261125/google-indexing-requests.json",
+  "current_bing_public_notification_record": "../seo-geo-20261125/indexnow-submission.json",
+  "previous_bing_access_observation_25Nov": "runs/2026-11-25-autonomous-improvements/browser-analytics-summary.json",
+  "bing_webmaster_tools": {
+    "accessStatus": "operational_authenticated_UI",
+    "property": "https://sollahms.cl/",
+    "accountEmail": "lsandoval@sollahms.cl",
+    "accountCandidateConfirmed": true,
+    "role": "Administrator",
+    "verification": "DNS",
+    "identityProvider": null,
+    "providerEvidence": "Not exposed by current authenticated UI; no sign-out or new login attempted",
+    "accessRecord": "operations/2026-11-25-bing-access/access-verification.json",
+    "procedure": "operations/2026-11-25-bing-access/README.md",
+    "source": "Official authenticated Chrome UI; no Bing API connector or token configured",
+    "previousBlockResolvedByExistingSession": true,
+    "currentPerformanceRecord": "runs/2026-11-25-autonomous-improvements/bing-comparison.json",
+    "nativeTimezone": null,
+    "scopeURLs": 12,
+    "datesMissingMustNotBecomeZero": true,
+    "futureSessionExpiryMayRequireHumanAuthentication": true,
+    "productionDeploymentRequired": false
+  },
+  "current_bing_indexnow_verification": "operations/2026-11-25-bing-access/indexnow-public-proof.json",
+  "current_chatgpt_brand_observation": "runs/2026-11-25-autonomous-improvements/chatgpt-brand-observation.json",
+  "current_chatgpt_actions_review": "runs/2026-11-25-autonomous-improvements/chatgpt-actions-review.json",
+  "current_chatgpt_access_check": "runs/2026-11-25-autonomous-improvements/chatgpt-access-check.json",
+  "chatgpt_measurement_rule": "Keep neutral buyer-intent discovery and supplied-brand diagnostics in separate cells. Do not replace current_chatgpt_observation or infer a trend from a brand-supplied answer.",
+  "current_identity_review": "../identity-geo-20261125/README.md",
+  "current_identity_query_plan": "../identity-geo-20261125/identity-query-plan.json",
+  "identity_release_20261125": {
+    "status": "validated_candidate_prepublication",
+    "authorization": "../identity-geo-20261125/authorization.json",
+    "baselineDeployment": "dpl_9M5yUF3GzFK2aWy34Qn4en7y8tA7",
+    "baselineRuntimeCommit": "2327ed4324b0d56af04d9f6db8f50b4f54ca33b4",
+    "artifactProof": "../identity-geo-20261125/artifact-proof.json",
+    "effectMeasured": false,
+    "concurrentProductionPreserved": true
+  }
 }

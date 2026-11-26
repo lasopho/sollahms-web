@@ -1,0 +1,218 @@
+{
+  "schemaVersion": 1,
+  "kind": "INDEPENDENT_IDENTITY_SOURCE_REVIEW",
+  "reviewedAtUTC": "2026-11-26T01:21:10.632191+00:00",
+  "baselineSourceCommit": "14d99d8fb286950a211b254f5d738b0abe18217e",
+  "filesReviewed": [
+    "index.html",
+    "agenda-asesoria.html",
+    "contacto.html",
+    "scripts/corporate_seo.py",
+    "data/corporate-seo.json"
+  ],
+  "passed": true,
+  "checks": [
+    {
+      "name": "index.html:same-schema-nodes-and-identifiers",
+      "passed": true
+    },
+    {
+      "name": "index.html:only-supported-descriptive-schema-delta",
+      "passed": true,
+      "detail": [
+        [
+          "https://sollahms.cl/#organization",
+          "description"
+        ],
+        [
+          "https://sollahms.cl/#website",
+          "description"
+        ],
+        [
+          "https://sollahms.cl/#asesoria-inmobiliaria",
+          "description"
+        ],
+        [
+          "https://sollahms.cl/#asesoria-inmobiliaria",
+          "serviceType"
+        ]
+      ]
+    },
+    {
+      "name": "index.html:header-preserved",
+      "passed": true
+    },
+    {
+      "name": "index.html:footer-preserved",
+      "passed": true
+    },
+    {
+      "name": "index.html:form-preserved",
+      "passed": true
+    },
+    {
+      "name": "index.html:H1-preserved",
+      "passed": true
+    },
+    {
+      "name": "index.html:executable-scripts-preserved",
+      "passed": true
+    },
+    {
+      "name": "index.html:helper-reconstructs-candidate-from-baseline",
+      "passed": true
+    },
+    {
+      "name": "index.html:helper-idempotent",
+      "passed": true
+    },
+    {
+      "name": "index.html:official-link-in-main",
+      "passed": true
+    },
+    {
+      "name": "index.html:no-new-claims-or-external-profiles",
+      "passed": true
+    },
+    {
+      "name": "index.html:portfolio-preserved",
+      "passed": true
+    },
+    {
+      "name": "agenda-asesoria.html:same-schema-nodes-and-identifiers",
+      "passed": true
+    },
+    {
+      "name": "agenda-asesoria.html:only-supported-descriptive-schema-delta",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "agenda-asesoria.html:header-preserved",
+      "passed": true
+    },
+    {
+      "name": "agenda-asesoria.html:footer-preserved",
+      "passed": true
+    },
+    {
+      "name": "agenda-asesoria.html:form-preserved",
+      "passed": true
+    },
+    {
+      "name": "agenda-asesoria.html:H1-preserved",
+      "passed": true
+    },
+    {
+      "name": "agenda-asesoria.html:executable-scripts-preserved",
+      "passed": true
+    },
+    {
+      "name": "agenda-asesoria.html:helper-reconstructs-candidate-from-baseline",
+      "passed": true
+    },
+    {
+      "name": "agenda-asesoria.html:helper-idempotent",
+      "passed": true
+    },
+    {
+      "name": "agenda-asesoria.html:official-link-in-main",
+      "passed": true
+    },
+    {
+      "name": "agenda-asesoria.html:no-new-claims-or-external-profiles",
+      "passed": true
+    },
+    {
+      "name": "agenda-asesoria.html:coverage-preserved",
+      "passed": true
+    },
+    {
+      "name": "contacto.html:same-schema-nodes-and-identifiers",
+      "passed": true
+    },
+    {
+      "name": "contacto.html:only-supported-descriptive-schema-delta",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "contacto.html:header-preserved",
+      "passed": true
+    },
+    {
+      "name": "contacto.html:footer-preserved",
+      "passed": true
+    },
+    {
+      "name": "contacto.html:form-preserved",
+      "passed": true
+    },
+    {
+      "name": "contacto.html:H1-preserved",
+      "passed": true
+    },
+    {
+      "name": "contacto.html:executable-scripts-preserved",
+      "passed": true
+    },
+    {
+      "name": "contacto.html:helper-reconstructs-candidate-from-baseline",
+      "passed": true
+    },
+    {
+      "name": "contacto.html:helper-idempotent",
+      "passed": true
+    },
+    {
+      "name": "contacto.html:official-link-in-main",
+      "passed": true
+    },
+    {
+      "name": "contacto.html:no-new-claims-or-external-profiles",
+      "passed": true
+    },
+    {
+      "name": "contacto.html:coverage-preserved",
+      "passed": true
+    },
+    {
+      "name": "config-only-three-page-identity-additions",
+      "passed": true
+    },
+    {
+      "name": "helper-existing-functions-changed-only-identity-or-application",
+      "passed": true,
+      "detail": [
+        "align_homepage_graph",
+        "apply_corporate_seo"
+      ]
+    },
+    {
+      "name": "helper-only-one-new-function",
+      "passed": true
+    },
+    {
+      "name": "out-of-scope-rejected:proyectos.html",
+      "passed": true
+    },
+    {
+      "name": "out-of-scope-rejected:fuentes-respaldo-documental.html",
+      "passed": true
+    },
+    {
+      "name": "out-of-scope-rejected:some-new-fiche.html",
+      "passed": true
+    }
+  ],
+  "criticalFindings": [],
+  "nonBlockingNotes": [
+    "corporate-seo.json reformats existing arrays without semantic changes outside the three identity configurations.",
+    "Published @id, name, URLs, logo and contacts already correct; this is descriptive consistency and visible official-domain clarification, not repair of broken identifiers."
+  ],
+  "limitations": [
+    "Source review only: does not certify deployment inventory, real HTTP, Google/Bing indexing or ChatGPT recognition.",
+    "Browser QA is recorded separately in browser-qa.json.",
+    "No new personnel, credentials, sameAs, training preferences, catalogue or commercial integrations introduced."
+  ]
+}

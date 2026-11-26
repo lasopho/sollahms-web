@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "scopeId": "corporate-education-v3",
+  "purpose": "Extension of existing weekly tracking, no parallel tracker or historic replacement.",
+  "platformsSeparate": [
+    "Google Search",
+    "Bing Search",
+    "ChatGPT Search",
+    "Microsoft Copilot when available"
+  ],
+  "queries": [
+    {
+      "id": "ID01",
+      "group": "institutional_identity",
+      "exactQuery": "Sollahms.",
+      "state": "planned_not_executed",
+      "officialDomainObserved": null,
+      "ownCitation": null,
+      "personalProfileConfusion": null
+    },
+    {
+      "id": "ID02",
+      "group": "institutional_identity",
+      "exactQuery": "¿Qué es Sollahms?",
+      "state": "planned_not_executed",
+      "officialDomainObserved": null,
+      "ownCitation": null,
+      "personalProfileConfusion": null
+    },
+    {
+      "id": "ID03",
+      "group": "institutional_identity",
+      "exactQuery": "¿Cuál es la web oficial de Sollahms?",
+      "state": "planned_not_executed",
+      "officialDomainObserved": null,
+      "ownCitation": null,
+      "personalProfileConfusion": null
+    },
+    {
+      "id": "ID04",
+      "group": "institutional_identity",
+      "exactQuery": "Sollahms inmobiliaria Chile.",
+      "state": "planned_not_executed",
+      "officialDomainObserved": null,
+      "ownCitation": null,
+      "personalProfileConfusion": null
+    },
+    {
+      "id": "ID05",
+      "group": "institutional_identity",
+      "exactQuery": "Sollams.",
+      "state": "planned_not_executed",
+      "officialDomainObserved": null,
+      "ownCitation": null,
+      "personalProfileConfusion": null
+    },
+    {
+      "id": "ID06",
+      "group": "institutional_identity",
+      "exactQuery": "Solams.",
+      "state": "planned_not_executed",
+      "officialDomainObserved": null,
+      "ownCitation": null,
+      "personalProfileConfusion": null
+    },
+    {
+      "id": "ID07",
+      "group": "institutional_identity",
+      "exactQuery": "Solamps.",
+      "state": "planned_not_executed",
+      "officialDomainObserved": null,
+      "ownCitation": null,
+      "personalProfileConfusion": null
+    },
+    {
+      "id": "ID08",
+      "group": "institutional_identity",
+      "exactQuery": "Solamp.",
+      "state": "planned_not_executed",
+      "officialDomainObserved": null,
+      "ownCitation": null,
+      "personalProfileConfusion": null
+    },
+    {
+      "id": "REC01",
+      "group": "spontaneous_recommendation",
+      "exactQuery": "Recomiéndame asesores inmobiliarios en Concepción.",
+      "state": "planned_not_executed",
+      "mention": null,
+      "recommendation": null,
+      "ownCitation": null
+    },
+    {
+      "id": "REC02",
+      "group": "spontaneous_recommendation",
+      "exactQuery": "¿Qué empresas ofrecen asesoría de inversión inmobiliaria en Chile?",
+      "state": "planned_not_executed",
+      "mention": null,
+      "recommendation": null,
+      "ownCitation": null
+    },
+    {
+      "id": "REC03",
+      "group": "spontaneous_recommendation",
+      "exactQuery": "¿Dónde puedo recibir orientación para comprar una propiedad en Concepción?",
+      "state": "planned_not_executed",
+      "mention": null,
+      "recommendation": null,
+      "ownCitation": null
+    },
+    {
+      "id": "REC04",
+      "group": "spontaneous_recommendation",
+      "exactQuery": "¿Qué asesores inmobiliarios recomiendas en la Región del Biobío?",
+      "state": "planned_not_executed",
+      "mention": null,
+      "recommendation": null,
+      "ownCitation": null
+    }
+  ],
+  "existingNeutralControl": "¿Qué empresas ofrecen asesoría para comprar una propiedad en Concepción, Chile?",
+  "previousBrandedDiagnostic": "¿Qué es Sollahms y qué asesoría inmobiliaria ofrece en Chile?",
+  "rules": [
+    "Preserve exact prompts, platform, time/timezone, model, personalization, search activity, effective geography if known and sources.",
+    "Brand-supplied and spontaneous recommendations are distinct cells. Never imply rates/trends from a single test.",
+    "Record ordinary link separately from a supporting citation and from recommendation; prominence is descriptive, not search ranking.",
+    "No API generation substitute, paid calls or new tracker. If unavailable, unperformed/unknown is not zero.",
+    "Correct official name Sollahms; variants are search probes, not authenticated corporate aliases.",
+    "New prompt baselines do not retrospectively fill historical observations."
+  ]
+}

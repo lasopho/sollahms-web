@@ -1,0 +1,3802 @@
+{
+  "schemaVersion": 1,
+  "kind": "ISOLATED_BROWSER_QA_IDENTITY_GEO_20261125",
+  "startedAtUTC": "2026-11-26T01:22:17.962Z",
+  "finishedAtUTC": "2026-11-26T01:22:30.119Z",
+  "browserVersion": "159.0.8154.34",
+  "staticRoot": "/Users/luissandoval/.codex/visualizations/2026/11/19/01a1f34f-7346-7b03-850e-9f941c675b6c/sollahms-identity-geo-20261125/candidate/.vercel/output/static",
+  "origin": "https://sollahms.cl",
+  "plannedCases": 18,
+  "completedCases": 18,
+  "passedCases": 18,
+  "failedCases": 0,
+  "cases": [
+    {
+      "page": "index.html",
+      "width": 1440,
+      "javaScriptEnabled": true,
+      "h1": "Sollahms Asesoría e inversión inmobiliaria en Chile",
+      "passed": true,
+      "checks": [
+        {
+          "name": "canonical-apex-exact",
+          "passed": true
+        },
+        {
+          "name": "one-main-H1",
+          "passed": true
+        },
+        {
+          "name": "corporate-brand-and-service-in-main",
+          "passed": true
+        },
+        {
+          "name": "existing-FAQ-present",
+          "passed": true
+        },
+        {
+          "name": "existing-identity-answer-links-official-domain",
+          "passed": true
+        },
+        {
+          "name": "FAQ-opens-with-and-without-JS",
+          "passed": true
+        },
+        {
+          "name": "FAQ-local-anchors-resolve",
+          "passed": true,
+          "detail": []
+        },
+        {
+          "name": "FAQ-connects-advisory-and-contact",
+          "passed": true,
+          "detail": [
+            {
+              "text": "Consulta con Sollahms →",
+              "href": "/contacto.html"
+            },
+            {
+              "text": "sollahms.cl",
+              "href": "https://sollahms.cl/"
+            },
+            {
+              "text": "solicitar asesoría",
+              "href": "/agenda-asesoria.html"
+            },
+            {
+              "text": "compra en blanco, en verde y entrega inmediata",
+              "href": "/cuando-comprar-propiedad.html"
+            }
+          ]
+        },
+        {
+          "name": "official-domain-visible-in-main",
+          "passed": true
+        },
+        {
+          "name": "official-domain-link-exact",
+          "passed": true,
+          "detail": {
+            "href": "https://sollahms.cl/"
+          }
+        },
+        {
+          "name": "official-domain-readable",
+          "passed": true
+        },
+        {
+          "name": "official-link-keyboard-focusable",
+          "passed": true
+        },
+        {
+          "name": "one-existing-advisory-form",
+          "passed": true
+        },
+        {
+          "name": "form-provider-action-and-method-preserved",
+          "passed": true
+        },
+        {
+          "name": "form-controls-enabled-only-with-JS",
+          "passed": true,
+          "detail": {
+            "disabled": false,
+            "controls": [
+              {
+                "type": "text",
+                "name": "website",
+                "disabled": false
+              },
+              {
+                "type": "text",
+                "name": "nombre",
+                "disabled": false
+              },
+              {
+                "type": "text",
+                "name": "rut",
+                "disabled": false
+              },
+              {
+                "type": "email",
+                "name": "correo",
+                "disabled": false
+              },
+              {
+                "type": "tel",
+                "name": "telefono",
+                "disabled": false
+              },
+              {
+                "type": "select-one",
+                "name": "objetivo",
+                "disabled": false
+              },
+              {
+                "type": "textarea",
+                "name": "mensaje",
+                "disabled": false
+              },
+              {
+                "type": "checkbox",
+                "name": "consent",
+                "disabled": false
+              },
+              {
+                "type": "submit",
+                "name": "",
+                "disabled": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "required-form-control:advisory-name",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-rut",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-email",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-phone",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-consent",
+          "passed": true
+        },
+        {
+          "name": "privacy-link-present",
+          "passed": true
+        },
+        {
+          "name": "no-global-horizontal-overflow",
+          "passed": true,
+          "detail": {
+            "viewport": 1440,
+            "documentWidth": 1440,
+            "bodyWidth": 1440,
+            "offenders": [
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "advisory-trap",
+                "left": -10000,
+                "right": -9999
+              },
+              {
+                "tag": "LABEL",
+                "id": "",
+                "className": "",
+                "left": -10000,
+                "right": -9999
+              },
+              {
+                "tag": "INPUT",
+                "id": "advisory-website",
+                "className": "",
+                "left": -10000,
+                "right": -9972
+              }
+            ]
+          }
+        },
+        {
+          "name": "zero-optional-provider-SDK-or-collection-attempts",
+          "passed": true
+        },
+        {
+          "name": "zero-non-GET-requests",
+          "passed": true
+        },
+        {
+          "name": "zero-missing-local-resources",
+          "passed": true,
+          "detail": []
+        },
+        {
+          "name": "no-page-JavaScript-errors",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "measurement": {
+        "enabled": true,
+        "analyticsReady": true,
+        "replayReady": true,
+        "analyticsConsented": false,
+        "replayConsented": false,
+        "analyticsActive": false,
+        "replayStarted": false,
+        "replayUrlAllowed": true,
+        "stopped": false
+      },
+      "trafficSummary": {
+        "total": 36,
+        "localStatic": 36,
+        "local503Fixtures": 0,
+        "externalAborted": [],
+        "optionalProviderAttempts": 0,
+        "realNetworkContinues": 0
+      },
+      "pageErrors": []
+    },
+    {
+      "page": "index.html",
+      "width": 1440,
+      "javaScriptEnabled": false,
+      "h1": "Sollahms Asesoría e inversión inmobiliaria en Chile",
+      "passed": true,
+      "checks": [
+        {
+          "name": "canonical-apex-exact",
+          "passed": true
+        },
+        {
+          "name": "one-main-H1",
+          "passed": true
+        },
+        {
+          "name": "corporate-brand-and-service-in-main",
+          "passed": true
+        },
+        {
+          "name": "existing-FAQ-present",
+          "passed": true
+        },
+        {
+          "name": "existing-identity-answer-links-official-domain",
+          "passed": true
+        },
+        {
+          "name": "FAQ-opens-with-and-without-JS",
+          "passed": true
+        },
+        {
+          "name": "FAQ-local-anchors-resolve",
+          "passed": true,
+          "detail": []
+        },
+        {
+          "name": "FAQ-connects-advisory-and-contact",
+          "passed": true,
+          "detail": [
+            {
+              "text": "Consulta con Sollahms →",
+              "href": "/contacto.html"
+            },
+            {
+              "text": "sollahms.cl",
+              "href": "https://sollahms.cl/"
+            },
+            {
+              "text": "solicitar asesoría",
+              "href": "/agenda-asesoria.html"
+            },
+            {
+              "text": "compra en blanco, en verde y entrega inmediata",
+              "href": "/cuando-comprar-propiedad.html"
+            }
+          ]
+        },
+        {
+          "name": "official-domain-visible-in-main",
+          "passed": true
+        },
+        {
+          "name": "official-domain-link-exact",
+          "passed": true,
+          "detail": {
+            "href": "https://sollahms.cl/"
+          }
+        },
+        {
+          "name": "official-domain-readable",
+          "passed": true
+        },
+        {
+          "name": "one-existing-advisory-form",
+          "passed": true
+        },
+        {
+          "name": "form-provider-action-and-method-preserved",
+          "passed": true
+        },
+        {
+          "name": "form-controls-enabled-only-with-JS",
+          "passed": true,
+          "detail": {
+            "disabled": true,
+            "controls": [
+              {
+                "type": "text",
+                "name": "website",
+                "disabled": true
+              },
+              {
+                "type": "text",
+                "name": "nombre",
+                "disabled": true
+              },
+              {
+                "type": "text",
+                "name": "rut",
+                "disabled": true
+              },
+              {
+                "type": "email",
+                "name": "correo",
+                "disabled": true
+              },
+              {
+                "type": "tel",
+                "name": "telefono",
+                "disabled": true
+              },
+              {
+                "type": "select-one",
+                "name": "objetivo",
+                "disabled": true
+              },
+              {
+                "type": "textarea",
+                "name": "mensaje",
+                "disabled": true
+              },
+              {
+                "type": "checkbox",
+                "name": "consent",
+                "disabled": true
+              },
+              {
+                "type": "submit",
+                "name": "",
+                "disabled": true
+              }
+            ]
+          }
+        },
+        {
+          "name": "required-form-control:advisory-name",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-rut",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-email",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-phone",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-consent",
+          "passed": true
+        },
+        {
+          "name": "privacy-link-present",
+          "passed": true
+        },
+        {
+          "name": "JS-off-contact-fallback-visible",
+          "passed": true
+        },
+        {
+          "name": "no-global-horizontal-overflow",
+          "passed": true,
+          "detail": {
+            "viewport": 1440,
+            "documentWidth": 1440,
+            "bodyWidth": 1440,
+            "offenders": [
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "advisory-trap",
+                "left": -10000,
+                "right": -9999
+              },
+              {
+                "tag": "LABEL",
+                "id": "",
+                "className": "",
+                "left": -10000,
+                "right": -9999
+              },
+              {
+                "tag": "INPUT",
+                "id": "advisory-website",
+                "className": "",
+                "left": -10000,
+                "right": -9972
+              }
+            ]
+          }
+        },
+        {
+          "name": "zero-optional-provider-SDK-or-collection-attempts",
+          "passed": true
+        },
+        {
+          "name": "zero-non-GET-requests",
+          "passed": true
+        },
+        {
+          "name": "zero-missing-local-resources",
+          "passed": true,
+          "detail": []
+        },
+        {
+          "name": "no-page-JavaScript-errors",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "measurement": null,
+      "trafficSummary": {
+        "total": 19,
+        "localStatic": 19,
+        "local503Fixtures": 0,
+        "externalAborted": [],
+        "optionalProviderAttempts": 0,
+        "realNetworkContinues": 0
+      },
+      "pageErrors": []
+    },
+    {
+      "page": "index.html",
+      "width": 390,
+      "javaScriptEnabled": true,
+      "h1": "Sollahms Asesoría e inversión inmobiliaria en Chile",
+      "passed": true,
+      "checks": [
+        {
+          "name": "canonical-apex-exact",
+          "passed": true
+        },
+        {
+          "name": "one-main-H1",
+          "passed": true
+        },
+        {
+          "name": "corporate-brand-and-service-in-main",
+          "passed": true
+        },
+        {
+          "name": "existing-FAQ-present",
+          "passed": true
+        },
+        {
+          "name": "existing-identity-answer-links-official-domain",
+          "passed": true
+        },
+        {
+          "name": "FAQ-opens-with-and-without-JS",
+          "passed": true
+        },
+        {
+          "name": "FAQ-local-anchors-resolve",
+          "passed": true,
+          "detail": []
+        },
+        {
+          "name": "FAQ-connects-advisory-and-contact",
+          "passed": true,
+          "detail": [
+            {
+              "text": "Consulta con Sollahms →",
+              "href": "/contacto.html"
+            },
+            {
+              "text": "sollahms.cl",
+              "href": "https://sollahms.cl/"
+            },
+            {
+              "text": "solicitar asesoría",
+              "href": "/agenda-asesoria.html"
+            },
+            {
+              "text": "compra en blanco, en verde y entrega inmediata",
+              "href": "/cuando-comprar-propiedad.html"
+            }
+          ]
+        },
+        {
+          "name": "official-domain-visible-in-main",
+          "passed": true
+        },
+        {
+          "name": "official-domain-link-exact",
+          "passed": true,
+          "detail": {
+            "href": "https://sollahms.cl/"
+          }
+        },
+        {
+          "name": "official-domain-readable",
+          "passed": true
+        },
+        {
+          "name": "official-link-keyboard-focusable",
+          "passed": true
+        },
+        {
+          "name": "one-existing-advisory-form",
+          "passed": true
+        },
+        {
+          "name": "form-provider-action-and-method-preserved",
+          "passed": true
+        },
+        {
+          "name": "form-controls-enabled-only-with-JS",
+          "passed": true,
+          "detail": {
+            "disabled": false,
+            "controls": [
+              {
+                "type": "text",
+                "name": "website",
+                "disabled": false
+              },
+              {
+                "type": "text",
+                "name": "nombre",
+                "disabled": false
+              },
+              {
+                "type": "text",
+                "name": "rut",
+                "disabled": false
+              },
+              {
+                "type": "email",
+                "name": "correo",
+                "disabled": false
+              },
+              {
+                "type": "tel",
+                "name": "telefono",
+                "disabled": false
+              },
+              {
+                "type": "select-one",
+                "name": "objetivo",
+                "disabled": false
+              },
+              {
+                "type": "textarea",
+                "name": "mensaje",
+                "disabled": false
+              },
+              {
+                "type": "checkbox",
+                "name": "consent",
+                "disabled": false
+              },
+              {
+                "type": "submit",
+                "name": "",
+                "disabled": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "required-form-control:advisory-name",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-rut",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-email",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-phone",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-consent",
+          "passed": true
+        },
+        {
+          "name": "privacy-link-present",
+          "passed": true
+        },
+        {
+          "name": "mobile-menu-keyboard-opens",
+          "passed": true
+        },
+        {
+          "name": "mobile-menu-Escape-restores-focus",
+          "passed": true
+        },
+        {
+          "name": "no-global-horizontal-overflow",
+          "passed": true,
+          "detail": {
+            "viewport": 390,
+            "documentWidth": 390,
+            "bodyWidth": 390,
+            "offenders": [
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "advisory-trap",
+                "left": -10000,
+                "right": -9999
+              },
+              {
+                "tag": "LABEL",
+                "id": "",
+                "className": "",
+                "left": -10000,
+                "right": -9999
+              },
+              {
+                "tag": "INPUT",
+                "id": "advisory-website",
+                "className": "",
+                "left": -10000,
+                "right": -9972
+              }
+            ]
+          }
+        },
+        {
+          "name": "zero-optional-provider-SDK-or-collection-attempts",
+          "passed": true
+        },
+        {
+          "name": "zero-non-GET-requests",
+          "passed": true
+        },
+        {
+          "name": "zero-missing-local-resources",
+          "passed": true,
+          "detail": []
+        },
+        {
+          "name": "no-page-JavaScript-errors",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "measurement": {
+        "enabled": true,
+        "analyticsReady": true,
+        "replayReady": true,
+        "analyticsConsented": false,
+        "replayConsented": false,
+        "analyticsActive": false,
+        "replayStarted": false,
+        "replayUrlAllowed": true,
+        "stopped": false
+      },
+      "trafficSummary": {
+        "total": 34,
+        "localStatic": 34,
+        "local503Fixtures": 0,
+        "externalAborted": [],
+        "optionalProviderAttempts": 0,
+        "realNetworkContinues": 0
+      },
+      "pageErrors": []
+    },
+    {
+      "page": "index.html",
+      "width": 390,
+      "javaScriptEnabled": false,
+      "h1": "Sollahms Asesoría e inversión inmobiliaria en Chile",
+      "passed": true,
+      "checks": [
+        {
+          "name": "canonical-apex-exact",
+          "passed": true
+        },
+        {
+          "name": "one-main-H1",
+          "passed": true
+        },
+        {
+          "name": "corporate-brand-and-service-in-main",
+          "passed": true
+        },
+        {
+          "name": "existing-FAQ-present",
+          "passed": true
+        },
+        {
+          "name": "existing-identity-answer-links-official-domain",
+          "passed": true
+        },
+        {
+          "name": "FAQ-opens-with-and-without-JS",
+          "passed": true
+        },
+        {
+          "name": "FAQ-local-anchors-resolve",
+          "passed": true,
+          "detail": []
+        },
+        {
+          "name": "FAQ-connects-advisory-and-contact",
+          "passed": true,
+          "detail": [
+            {
+              "text": "Consulta con Sollahms →",
+              "href": "/contacto.html"
+            },
+            {
+              "text": "sollahms.cl",
+              "href": "https://sollahms.cl/"
+            },
+            {
+              "text": "solicitar asesoría",
+              "href": "/agenda-asesoria.html"
+            },
+            {
+              "text": "compra en blanco, en verde y entrega inmediata",
+              "href": "/cuando-comprar-propiedad.html"
+            }
+          ]
+        },
+        {
+          "name": "official-domain-visible-in-main",
+          "passed": true
+        },
+        {
+          "name": "official-domain-link-exact",
+          "passed": true,
+          "detail": {
+            "href": "https://sollahms.cl/"
+          }
+        },
+        {
+          "name": "official-domain-readable",
+          "passed": true
+        },
+        {
+          "name": "one-existing-advisory-form",
+          "passed": true
+        },
+        {
+          "name": "form-provider-action-and-method-preserved",
+          "passed": true
+        },
+        {
+          "name": "form-controls-enabled-only-with-JS",
+          "passed": true,
+          "detail": {
+            "disabled": true,
+            "controls": [
+              {
+                "type": "text",
+                "name": "website",
+                "disabled": true
+              },
+              {
+                "type": "text",
+                "name": "nombre",
+                "disabled": true
+              },
+              {
+                "type": "text",
+                "name": "rut",
+                "disabled": true
+              },
+              {
+                "type": "email",
+                "name": "correo",
+                "disabled": true
+              },
+              {
+                "type": "tel",
+                "name": "telefono",
+                "disabled": true
+              },
+              {
+                "type": "select-one",
+                "name": "objetivo",
+                "disabled": true
+              },
+              {
+                "type": "textarea",
+                "name": "mensaje",
+                "disabled": true
+              },
+              {
+                "type": "checkbox",
+                "name": "consent",
+                "disabled": true
+              },
+              {
+                "type": "submit",
+                "name": "",
+                "disabled": true
+              }
+            ]
+          }
+        },
+        {
+          "name": "required-form-control:advisory-name",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-rut",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-email",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-phone",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-consent",
+          "passed": true
+        },
+        {
+          "name": "privacy-link-present",
+          "passed": true
+        },
+        {
+          "name": "JS-off-contact-fallback-visible",
+          "passed": true
+        },
+        {
+          "name": "no-global-horizontal-overflow",
+          "passed": true,
+          "detail": {
+            "viewport": 390,
+            "documentWidth": 390,
+            "bodyWidth": 390,
+            "offenders": [
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "advisory-trap",
+                "left": -10000,
+                "right": -9999
+              },
+              {
+                "tag": "LABEL",
+                "id": "",
+                "className": "",
+                "left": -10000,
+                "right": -9999
+              },
+              {
+                "tag": "INPUT",
+                "id": "advisory-website",
+                "className": "",
+                "left": -10000,
+                "right": -9972
+              }
+            ]
+          }
+        },
+        {
+          "name": "zero-optional-provider-SDK-or-collection-attempts",
+          "passed": true
+        },
+        {
+          "name": "zero-non-GET-requests",
+          "passed": true
+        },
+        {
+          "name": "zero-missing-local-resources",
+          "passed": true,
+          "detail": []
+        },
+        {
+          "name": "no-page-JavaScript-errors",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "measurement": null,
+      "trafficSummary": {
+        "total": 19,
+        "localStatic": 19,
+        "local503Fixtures": 0,
+        "externalAborted": [],
+        "optionalProviderAttempts": 0,
+        "realNetworkContinues": 0
+      },
+      "pageErrors": []
+    },
+    {
+      "page": "index.html",
+      "width": 320,
+      "javaScriptEnabled": true,
+      "h1": "Sollahms Asesoría e inversión inmobiliaria en Chile",
+      "passed": true,
+      "checks": [
+        {
+          "name": "canonical-apex-exact",
+          "passed": true
+        },
+        {
+          "name": "one-main-H1",
+          "passed": true
+        },
+        {
+          "name": "corporate-brand-and-service-in-main",
+          "passed": true
+        },
+        {
+          "name": "existing-FAQ-present",
+          "passed": true
+        },
+        {
+          "name": "existing-identity-answer-links-official-domain",
+          "passed": true
+        },
+        {
+          "name": "FAQ-opens-with-and-without-JS",
+          "passed": true
+        },
+        {
+          "name": "FAQ-local-anchors-resolve",
+          "passed": true,
+          "detail": []
+        },
+        {
+          "name": "FAQ-connects-advisory-and-contact",
+          "passed": true,
+          "detail": [
+            {
+              "text": "Consulta con Sollahms →",
+              "href": "/contacto.html"
+            },
+            {
+              "text": "sollahms.cl",
+              "href": "https://sollahms.cl/"
+            },
+            {
+              "text": "solicitar asesoría",
+              "href": "/agenda-asesoria.html"
+            },
+            {
+              "text": "compra en blanco, en verde y entrega inmediata",
+              "href": "/cuando-comprar-propiedad.html"
+            }
+          ]
+        },
+        {
+          "name": "official-domain-visible-in-main",
+          "passed": true
+        },
+        {
+          "name": "official-domain-link-exact",
+          "passed": true,
+          "detail": {
+            "href": "https://sollahms.cl/"
+          }
+        },
+        {
+          "name": "official-domain-readable",
+          "passed": true
+        },
+        {
+          "name": "official-link-keyboard-focusable",
+          "passed": true
+        },
+        {
+          "name": "one-existing-advisory-form",
+          "passed": true
+        },
+        {
+          "name": "form-provider-action-and-method-preserved",
+          "passed": true
+        },
+        {
+          "name": "form-controls-enabled-only-with-JS",
+          "passed": true,
+          "detail": {
+            "disabled": false,
+            "controls": [
+              {
+                "type": "text",
+                "name": "website",
+                "disabled": false
+              },
+              {
+                "type": "text",
+                "name": "nombre",
+                "disabled": false
+              },
+              {
+                "type": "text",
+                "name": "rut",
+                "disabled": false
+              },
+              {
+                "type": "email",
+                "name": "correo",
+                "disabled": false
+              },
+              {
+                "type": "tel",
+                "name": "telefono",
+                "disabled": false
+              },
+              {
+                "type": "select-one",
+                "name": "objetivo",
+                "disabled": false
+              },
+              {
+                "type": "textarea",
+                "name": "mensaje",
+                "disabled": false
+              },
+              {
+                "type": "checkbox",
+                "name": "consent",
+                "disabled": false
+              },
+              {
+                "type": "submit",
+                "name": "",
+                "disabled": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "required-form-control:advisory-name",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-rut",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-email",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-phone",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-consent",
+          "passed": true
+        },
+        {
+          "name": "privacy-link-present",
+          "passed": true
+        },
+        {
+          "name": "mobile-menu-keyboard-opens",
+          "passed": true
+        },
+        {
+          "name": "mobile-menu-Escape-restores-focus",
+          "passed": true
+        },
+        {
+          "name": "no-global-horizontal-overflow",
+          "passed": true,
+          "detail": {
+            "viewport": 320,
+            "documentWidth": 320,
+            "bodyWidth": 320,
+            "offenders": [
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "advisory-trap",
+                "left": -10000,
+                "right": -9999
+              },
+              {
+                "tag": "LABEL",
+                "id": "",
+                "className": "",
+                "left": -10000,
+                "right": -9999
+              },
+              {
+                "tag": "INPUT",
+                "id": "advisory-website",
+                "className": "",
+                "left": -10000,
+                "right": -9972
+              }
+            ]
+          }
+        },
+        {
+          "name": "zero-optional-provider-SDK-or-collection-attempts",
+          "passed": true
+        },
+        {
+          "name": "zero-non-GET-requests",
+          "passed": true
+        },
+        {
+          "name": "zero-missing-local-resources",
+          "passed": true,
+          "detail": []
+        },
+        {
+          "name": "no-page-JavaScript-errors",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "measurement": {
+        "enabled": true,
+        "analyticsReady": true,
+        "replayReady": true,
+        "analyticsConsented": false,
+        "replayConsented": false,
+        "analyticsActive": false,
+        "replayStarted": false,
+        "replayUrlAllowed": true,
+        "stopped": false
+      },
+      "trafficSummary": {
+        "total": 34,
+        "localStatic": 34,
+        "local503Fixtures": 0,
+        "externalAborted": [],
+        "optionalProviderAttempts": 0,
+        "realNetworkContinues": 0
+      },
+      "pageErrors": []
+    },
+    {
+      "page": "index.html",
+      "width": 320,
+      "javaScriptEnabled": false,
+      "h1": "Sollahms Asesoría e inversión inmobiliaria en Chile",
+      "passed": true,
+      "checks": [
+        {
+          "name": "canonical-apex-exact",
+          "passed": true
+        },
+        {
+          "name": "one-main-H1",
+          "passed": true
+        },
+        {
+          "name": "corporate-brand-and-service-in-main",
+          "passed": true
+        },
+        {
+          "name": "existing-FAQ-present",
+          "passed": true
+        },
+        {
+          "name": "existing-identity-answer-links-official-domain",
+          "passed": true
+        },
+        {
+          "name": "FAQ-opens-with-and-without-JS",
+          "passed": true
+        },
+        {
+          "name": "FAQ-local-anchors-resolve",
+          "passed": true,
+          "detail": []
+        },
+        {
+          "name": "FAQ-connects-advisory-and-contact",
+          "passed": true,
+          "detail": [
+            {
+              "text": "Consulta con Sollahms →",
+              "href": "/contacto.html"
+            },
+            {
+              "text": "sollahms.cl",
+              "href": "https://sollahms.cl/"
+            },
+            {
+              "text": "solicitar asesoría",
+              "href": "/agenda-asesoria.html"
+            },
+            {
+              "text": "compra en blanco, en verde y entrega inmediata",
+              "href": "/cuando-comprar-propiedad.html"
+            }
+          ]
+        },
+        {
+          "name": "official-domain-visible-in-main",
+          "passed": true
+        },
+        {
+          "name": "official-domain-link-exact",
+          "passed": true,
+          "detail": {
+            "href": "https://sollahms.cl/"
+          }
+        },
+        {
+          "name": "official-domain-readable",
+          "passed": true
+        },
+        {
+          "name": "one-existing-advisory-form",
+          "passed": true
+        },
+        {
+          "name": "form-provider-action-and-method-preserved",
+          "passed": true
+        },
+        {
+          "name": "form-controls-enabled-only-with-JS",
+          "passed": true,
+          "detail": {
+            "disabled": true,
+            "controls": [
+              {
+                "type": "text",
+                "name": "website",
+                "disabled": true
+              },
+              {
+                "type": "text",
+                "name": "nombre",
+                "disabled": true
+              },
+              {
+                "type": "text",
+                "name": "rut",
+                "disabled": true
+              },
+              {
+                "type": "email",
+                "name": "correo",
+                "disabled": true
+              },
+              {
+                "type": "tel",
+                "name": "telefono",
+                "disabled": true
+              },
+              {
+                "type": "select-one",
+                "name": "objetivo",
+                "disabled": true
+              },
+              {
+                "type": "textarea",
+                "name": "mensaje",
+                "disabled": true
+              },
+              {
+                "type": "checkbox",
+                "name": "consent",
+                "disabled": true
+              },
+              {
+                "type": "submit",
+                "name": "",
+                "disabled": true
+              }
+            ]
+          }
+        },
+        {
+          "name": "required-form-control:advisory-name",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-rut",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-email",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-phone",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-consent",
+          "passed": true
+        },
+        {
+          "name": "privacy-link-present",
+          "passed": true
+        },
+        {
+          "name": "JS-off-contact-fallback-visible",
+          "passed": true
+        },
+        {
+          "name": "no-global-horizontal-overflow",
+          "passed": true,
+          "detail": {
+            "viewport": 320,
+            "documentWidth": 320,
+            "bodyWidth": 320,
+            "offenders": [
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "advisory-trap",
+                "left": -10000,
+                "right": -9999
+              },
+              {
+                "tag": "LABEL",
+                "id": "",
+                "className": "",
+                "left": -10000,
+                "right": -9999
+              },
+              {
+                "tag": "INPUT",
+                "id": "advisory-website",
+                "className": "",
+                "left": -10000,
+                "right": -9972
+              }
+            ]
+          }
+        },
+        {
+          "name": "zero-optional-provider-SDK-or-collection-attempts",
+          "passed": true
+        },
+        {
+          "name": "zero-non-GET-requests",
+          "passed": true
+        },
+        {
+          "name": "zero-missing-local-resources",
+          "passed": true,
+          "detail": []
+        },
+        {
+          "name": "no-page-JavaScript-errors",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "measurement": null,
+      "trafficSummary": {
+        "total": 19,
+        "localStatic": 19,
+        "local503Fixtures": 0,
+        "externalAborted": [],
+        "optionalProviderAttempts": 0,
+        "realNetworkContinues": 0
+      },
+      "pageErrors": []
+    },
+    {
+      "page": "agenda-asesoria.html",
+      "width": 1440,
+      "javaScriptEnabled": true,
+      "h1": "Asesoría para comprar o invertir",
+      "passed": true,
+      "checks": [
+        {
+          "name": "canonical-apex-exact",
+          "passed": true
+        },
+        {
+          "name": "one-main-H1",
+          "passed": true
+        },
+        {
+          "name": "corporate-brand-and-service-in-main",
+          "passed": true
+        },
+        {
+          "name": "official-domain-visible-in-main",
+          "passed": true
+        },
+        {
+          "name": "official-domain-link-exact",
+          "passed": true,
+          "detail": {
+            "href": "https://sollahms.cl/"
+          }
+        },
+        {
+          "name": "official-domain-readable",
+          "passed": true
+        },
+        {
+          "name": "official-link-keyboard-focusable",
+          "passed": true
+        },
+        {
+          "name": "one-existing-advisory-form",
+          "passed": true
+        },
+        {
+          "name": "form-provider-action-and-method-preserved",
+          "passed": true
+        },
+        {
+          "name": "form-controls-enabled-only-with-JS",
+          "passed": true,
+          "detail": {
+            "disabled": false,
+            "controls": [
+              {
+                "type": "text",
+                "name": "website",
+                "disabled": false
+              },
+              {
+                "type": "text",
+                "name": "nombre",
+                "disabled": false
+              },
+              {
+                "type": "text",
+                "name": "rut",
+                "disabled": false
+              },
+              {
+                "type": "email",
+                "name": "correo",
+                "disabled": false
+              },
+              {
+                "type": "tel",
+                "name": "telefono",
+                "disabled": false
+              },
+              {
+                "type": "select-one",
+                "name": "objetivo",
+                "disabled": false
+              },
+              {
+                "type": "textarea",
+                "name": "mensaje",
+                "disabled": false
+              },
+              {
+                "type": "checkbox",
+                "name": "consent",
+                "disabled": false
+              },
+              {
+                "type": "submit",
+                "name": "",
+                "disabled": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "required-form-control:advisory-name",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-rut",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-email",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-phone",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-consent",
+          "passed": true
+        },
+        {
+          "name": "privacy-link-present",
+          "passed": true
+        },
+        {
+          "name": "no-global-horizontal-overflow",
+          "passed": true,
+          "detail": {
+            "viewport": 1440,
+            "documentWidth": 1440,
+            "bodyWidth": 1440,
+            "offenders": [
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "advisory-trap",
+                "left": -10000,
+                "right": -9999
+              },
+              {
+                "tag": "LABEL",
+                "id": "",
+                "className": "",
+                "left": -10000,
+                "right": -9999
+              },
+              {
+                "tag": "INPUT",
+                "id": "advisory-website",
+                "className": "",
+                "left": -10000,
+                "right": -9972
+              }
+            ]
+          }
+        },
+        {
+          "name": "zero-optional-provider-SDK-or-collection-attempts",
+          "passed": true
+        },
+        {
+          "name": "zero-non-GET-requests",
+          "passed": true
+        },
+        {
+          "name": "zero-missing-local-resources",
+          "passed": true,
+          "detail": []
+        },
+        {
+          "name": "no-page-JavaScript-errors",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "measurement": {
+        "enabled": true,
+        "analyticsReady": true,
+        "replayReady": true,
+        "analyticsConsented": false,
+        "replayConsented": false,
+        "analyticsActive": false,
+        "replayStarted": false,
+        "replayUrlAllowed": true,
+        "stopped": false
+      },
+      "trafficSummary": {
+        "total": 31,
+        "localStatic": 31,
+        "local503Fixtures": 0,
+        "externalAborted": [],
+        "optionalProviderAttempts": 0,
+        "realNetworkContinues": 0
+      },
+      "pageErrors": []
+    },
+    {
+      "page": "agenda-asesoria.html",
+      "width": 1440,
+      "javaScriptEnabled": false,
+      "h1": "Asesoría para comprar o invertir",
+      "passed": true,
+      "checks": [
+        {
+          "name": "canonical-apex-exact",
+          "passed": true
+        },
+        {
+          "name": "one-main-H1",
+          "passed": true
+        },
+        {
+          "name": "corporate-brand-and-service-in-main",
+          "passed": true
+        },
+        {
+          "name": "official-domain-visible-in-main",
+          "passed": true
+        },
+        {
+          "name": "official-domain-link-exact",
+          "passed": true,
+          "detail": {
+            "href": "https://sollahms.cl/"
+          }
+        },
+        {
+          "name": "official-domain-readable",
+          "passed": true
+        },
+        {
+          "name": "one-existing-advisory-form",
+          "passed": true
+        },
+        {
+          "name": "form-provider-action-and-method-preserved",
+          "passed": true
+        },
+        {
+          "name": "form-controls-enabled-only-with-JS",
+          "passed": true,
+          "detail": {
+            "disabled": true,
+            "controls": [
+              {
+                "type": "text",
+                "name": "website",
+                "disabled": true
+              },
+              {
+                "type": "text",
+                "name": "nombre",
+                "disabled": true
+              },
+              {
+                "type": "text",
+                "name": "rut",
+                "disabled": true
+              },
+              {
+                "type": "email",
+                "name": "correo",
+                "disabled": true
+              },
+              {
+                "type": "tel",
+                "name": "telefono",
+                "disabled": true
+              },
+              {
+                "type": "select-one",
+                "name": "objetivo",
+                "disabled": true
+              },
+              {
+                "type": "textarea",
+                "name": "mensaje",
+                "disabled": true
+              },
+              {
+                "type": "checkbox",
+                "name": "consent",
+                "disabled": true
+              },
+              {
+                "type": "submit",
+                "name": "",
+                "disabled": true
+              }
+            ]
+          }
+        },
+        {
+          "name": "required-form-control:advisory-name",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-rut",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-email",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-phone",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-consent",
+          "passed": true
+        },
+        {
+          "name": "privacy-link-present",
+          "passed": true
+        },
+        {
+          "name": "JS-off-contact-fallback-visible",
+          "passed": true
+        },
+        {
+          "name": "no-global-horizontal-overflow",
+          "passed": true,
+          "detail": {
+            "viewport": 1440,
+            "documentWidth": 1440,
+            "bodyWidth": 1440,
+            "offenders": [
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "advisory-trap",
+                "left": -10000,
+                "right": -9999
+              },
+              {
+                "tag": "LABEL",
+                "id": "",
+                "className": "",
+                "left": -10000,
+                "right": -9999
+              },
+              {
+                "tag": "INPUT",
+                "id": "advisory-website",
+                "className": "",
+                "left": -10000,
+                "right": -9972
+              }
+            ]
+          }
+        },
+        {
+          "name": "zero-optional-provider-SDK-or-collection-attempts",
+          "passed": true
+        },
+        {
+          "name": "zero-non-GET-requests",
+          "passed": true
+        },
+        {
+          "name": "zero-missing-local-resources",
+          "passed": true,
+          "detail": []
+        },
+        {
+          "name": "no-page-JavaScript-errors",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "measurement": null,
+      "trafficSummary": {
+        "total": 15,
+        "localStatic": 15,
+        "local503Fixtures": 0,
+        "externalAborted": [],
+        "optionalProviderAttempts": 0,
+        "realNetworkContinues": 0
+      },
+      "pageErrors": []
+    },
+    {
+      "page": "agenda-asesoria.html",
+      "width": 390,
+      "javaScriptEnabled": true,
+      "h1": "Asesoría para comprar o invertir",
+      "passed": true,
+      "checks": [
+        {
+          "name": "canonical-apex-exact",
+          "passed": true
+        },
+        {
+          "name": "one-main-H1",
+          "passed": true
+        },
+        {
+          "name": "corporate-brand-and-service-in-main",
+          "passed": true
+        },
+        {
+          "name": "official-domain-visible-in-main",
+          "passed": true
+        },
+        {
+          "name": "official-domain-link-exact",
+          "passed": true,
+          "detail": {
+            "href": "https://sollahms.cl/"
+          }
+        },
+        {
+          "name": "official-domain-readable",
+          "passed": true
+        },
+        {
+          "name": "official-link-keyboard-focusable",
+          "passed": true
+        },
+        {
+          "name": "one-existing-advisory-form",
+          "passed": true
+        },
+        {
+          "name": "form-provider-action-and-method-preserved",
+          "passed": true
+        },
+        {
+          "name": "form-controls-enabled-only-with-JS",
+          "passed": true,
+          "detail": {
+            "disabled": false,
+            "controls": [
+              {
+                "type": "text",
+                "name": "website",
+                "disabled": false
+              },
+              {
+                "type": "text",
+                "name": "nombre",
+                "disabled": false
+              },
+              {
+                "type": "text",
+                "name": "rut",
+                "disabled": false
+              },
+              {
+                "type": "email",
+                "name": "correo",
+                "disabled": false
+              },
+              {
+                "type": "tel",
+                "name": "telefono",
+                "disabled": false
+              },
+              {
+                "type": "select-one",
+                "name": "objetivo",
+                "disabled": false
+              },
+              {
+                "type": "textarea",
+                "name": "mensaje",
+                "disabled": false
+              },
+              {
+                "type": "checkbox",
+                "name": "consent",
+                "disabled": false
+              },
+              {
+                "type": "submit",
+                "name": "",
+                "disabled": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "required-form-control:advisory-name",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-rut",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-email",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-phone",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-consent",
+          "passed": true
+        },
+        {
+          "name": "privacy-link-present",
+          "passed": true
+        },
+        {
+          "name": "mobile-menu-keyboard-opens",
+          "passed": true
+        },
+        {
+          "name": "mobile-menu-Escape-restores-focus",
+          "passed": true
+        },
+        {
+          "name": "no-global-horizontal-overflow",
+          "passed": true,
+          "detail": {
+            "viewport": 390,
+            "documentWidth": 390,
+            "bodyWidth": 390,
+            "offenders": [
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "advisory-trap",
+                "left": -10000,
+                "right": -9999
+              },
+              {
+                "tag": "LABEL",
+                "id": "",
+                "className": "",
+                "left": -10000,
+                "right": -9999
+              },
+              {
+                "tag": "INPUT",
+                "id": "advisory-website",
+                "className": "",
+                "left": -10000,
+                "right": -9972
+              }
+            ]
+          }
+        },
+        {
+          "name": "zero-optional-provider-SDK-or-collection-attempts",
+          "passed": true
+        },
+        {
+          "name": "zero-non-GET-requests",
+          "passed": true
+        },
+        {
+          "name": "zero-missing-local-resources",
+          "passed": true,
+          "detail": []
+        },
+        {
+          "name": "no-page-JavaScript-errors",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "measurement": {
+        "enabled": true,
+        "analyticsReady": true,
+        "replayReady": true,
+        "analyticsConsented": false,
+        "replayConsented": false,
+        "analyticsActive": false,
+        "replayStarted": false,
+        "replayUrlAllowed": true,
+        "stopped": false
+      },
+      "trafficSummary": {
+        "total": 31,
+        "localStatic": 31,
+        "local503Fixtures": 0,
+        "externalAborted": [],
+        "optionalProviderAttempts": 0,
+        "realNetworkContinues": 0
+      },
+      "pageErrors": []
+    },
+    {
+      "page": "agenda-asesoria.html",
+      "width": 390,
+      "javaScriptEnabled": false,
+      "h1": "Asesoría para comprar o invertir",
+      "passed": true,
+      "checks": [
+        {
+          "name": "canonical-apex-exact",
+          "passed": true
+        },
+        {
+          "name": "one-main-H1",
+          "passed": true
+        },
+        {
+          "name": "corporate-brand-and-service-in-main",
+          "passed": true
+        },
+        {
+          "name": "official-domain-visible-in-main",
+          "passed": true
+        },
+        {
+          "name": "official-domain-link-exact",
+          "passed": true,
+          "detail": {
+            "href": "https://sollahms.cl/"
+          }
+        },
+        {
+          "name": "official-domain-readable",
+          "passed": true
+        },
+        {
+          "name": "one-existing-advisory-form",
+          "passed": true
+        },
+        {
+          "name": "form-provider-action-and-method-preserved",
+          "passed": true
+        },
+        {
+          "name": "form-controls-enabled-only-with-JS",
+          "passed": true,
+          "detail": {
+            "disabled": true,
+            "controls": [
+              {
+                "type": "text",
+                "name": "website",
+                "disabled": true
+              },
+              {
+                "type": "text",
+                "name": "nombre",
+                "disabled": true
+              },
+              {
+                "type": "text",
+                "name": "rut",
+                "disabled": true
+              },
+              {
+                "type": "email",
+                "name": "correo",
+                "disabled": true
+              },
+              {
+                "type": "tel",
+                "name": "telefono",
+                "disabled": true
+              },
+              {
+                "type": "select-one",
+                "name": "objetivo",
+                "disabled": true
+              },
+              {
+                "type": "textarea",
+                "name": "mensaje",
+                "disabled": true
+              },
+              {
+                "type": "checkbox",
+                "name": "consent",
+                "disabled": true
+              },
+              {
+                "type": "submit",
+                "name": "",
+                "disabled": true
+              }
+            ]
+          }
+        },
+        {
+          "name": "required-form-control:advisory-name",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-rut",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-email",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-phone",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-consent",
+          "passed": true
+        },
+        {
+          "name": "privacy-link-present",
+          "passed": true
+        },
+        {
+          "name": "JS-off-contact-fallback-visible",
+          "passed": true
+        },
+        {
+          "name": "no-global-horizontal-overflow",
+          "passed": true,
+          "detail": {
+            "viewport": 390,
+            "documentWidth": 390,
+            "bodyWidth": 390,
+            "offenders": [
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "advisory-trap",
+                "left": -10000,
+                "right": -9999
+              },
+              {
+                "tag": "LABEL",
+                "id": "",
+                "className": "",
+                "left": -10000,
+                "right": -9999
+              },
+              {
+                "tag": "INPUT",
+                "id": "advisory-website",
+                "className": "",
+                "left": -10000,
+                "right": -9972
+              }
+            ]
+          }
+        },
+        {
+          "name": "zero-optional-provider-SDK-or-collection-attempts",
+          "passed": true
+        },
+        {
+          "name": "zero-non-GET-requests",
+          "passed": true
+        },
+        {
+          "name": "zero-missing-local-resources",
+          "passed": true,
+          "detail": []
+        },
+        {
+          "name": "no-page-JavaScript-errors",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "measurement": null,
+      "trafficSummary": {
+        "total": 15,
+        "localStatic": 15,
+        "local503Fixtures": 0,
+        "externalAborted": [],
+        "optionalProviderAttempts": 0,
+        "realNetworkContinues": 0
+      },
+      "pageErrors": []
+    },
+    {
+      "page": "agenda-asesoria.html",
+      "width": 320,
+      "javaScriptEnabled": true,
+      "h1": "Asesoría para comprar o invertir",
+      "passed": true,
+      "checks": [
+        {
+          "name": "canonical-apex-exact",
+          "passed": true
+        },
+        {
+          "name": "one-main-H1",
+          "passed": true
+        },
+        {
+          "name": "corporate-brand-and-service-in-main",
+          "passed": true
+        },
+        {
+          "name": "official-domain-visible-in-main",
+          "passed": true
+        },
+        {
+          "name": "official-domain-link-exact",
+          "passed": true,
+          "detail": {
+            "href": "https://sollahms.cl/"
+          }
+        },
+        {
+          "name": "official-domain-readable",
+          "passed": true
+        },
+        {
+          "name": "official-link-keyboard-focusable",
+          "passed": true
+        },
+        {
+          "name": "one-existing-advisory-form",
+          "passed": true
+        },
+        {
+          "name": "form-provider-action-and-method-preserved",
+          "passed": true
+        },
+        {
+          "name": "form-controls-enabled-only-with-JS",
+          "passed": true,
+          "detail": {
+            "disabled": false,
+            "controls": [
+              {
+                "type": "text",
+                "name": "website",
+                "disabled": false
+              },
+              {
+                "type": "text",
+                "name": "nombre",
+                "disabled": false
+              },
+              {
+                "type": "text",
+                "name": "rut",
+                "disabled": false
+              },
+              {
+                "type": "email",
+                "name": "correo",
+                "disabled": false
+              },
+              {
+                "type": "tel",
+                "name": "telefono",
+                "disabled": false
+              },
+              {
+                "type": "select-one",
+                "name": "objetivo",
+                "disabled": false
+              },
+              {
+                "type": "textarea",
+                "name": "mensaje",
+                "disabled": false
+              },
+              {
+                "type": "checkbox",
+                "name": "consent",
+                "disabled": false
+              },
+              {
+                "type": "submit",
+                "name": "",
+                "disabled": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "required-form-control:advisory-name",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-rut",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-email",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-phone",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-consent",
+          "passed": true
+        },
+        {
+          "name": "privacy-link-present",
+          "passed": true
+        },
+        {
+          "name": "mobile-menu-keyboard-opens",
+          "passed": true
+        },
+        {
+          "name": "mobile-menu-Escape-restores-focus",
+          "passed": true
+        },
+        {
+          "name": "no-global-horizontal-overflow",
+          "passed": true,
+          "detail": {
+            "viewport": 320,
+            "documentWidth": 320,
+            "bodyWidth": 320,
+            "offenders": [
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "advisory-trap",
+                "left": -10000,
+                "right": -9999
+              },
+              {
+                "tag": "LABEL",
+                "id": "",
+                "className": "",
+                "left": -10000,
+                "right": -9999
+              },
+              {
+                "tag": "INPUT",
+                "id": "advisory-website",
+                "className": "",
+                "left": -10000,
+                "right": -9972
+              }
+            ]
+          }
+        },
+        {
+          "name": "zero-optional-provider-SDK-or-collection-attempts",
+          "passed": true
+        },
+        {
+          "name": "zero-non-GET-requests",
+          "passed": true
+        },
+        {
+          "name": "zero-missing-local-resources",
+          "passed": true,
+          "detail": []
+        },
+        {
+          "name": "no-page-JavaScript-errors",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "measurement": {
+        "enabled": true,
+        "analyticsReady": true,
+        "replayReady": true,
+        "analyticsConsented": false,
+        "replayConsented": false,
+        "analyticsActive": false,
+        "replayStarted": false,
+        "replayUrlAllowed": true,
+        "stopped": false
+      },
+      "trafficSummary": {
+        "total": 31,
+        "localStatic": 31,
+        "local503Fixtures": 0,
+        "externalAborted": [],
+        "optionalProviderAttempts": 0,
+        "realNetworkContinues": 0
+      },
+      "pageErrors": []
+    },
+    {
+      "page": "agenda-asesoria.html",
+      "width": 320,
+      "javaScriptEnabled": false,
+      "h1": "Asesoría para comprar o invertir",
+      "passed": true,
+      "checks": [
+        {
+          "name": "canonical-apex-exact",
+          "passed": true
+        },
+        {
+          "name": "one-main-H1",
+          "passed": true
+        },
+        {
+          "name": "corporate-brand-and-service-in-main",
+          "passed": true
+        },
+        {
+          "name": "official-domain-visible-in-main",
+          "passed": true
+        },
+        {
+          "name": "official-domain-link-exact",
+          "passed": true,
+          "detail": {
+            "href": "https://sollahms.cl/"
+          }
+        },
+        {
+          "name": "official-domain-readable",
+          "passed": true
+        },
+        {
+          "name": "one-existing-advisory-form",
+          "passed": true
+        },
+        {
+          "name": "form-provider-action-and-method-preserved",
+          "passed": true
+        },
+        {
+          "name": "form-controls-enabled-only-with-JS",
+          "passed": true,
+          "detail": {
+            "disabled": true,
+            "controls": [
+              {
+                "type": "text",
+                "name": "website",
+                "disabled": true
+              },
+              {
+                "type": "text",
+                "name": "nombre",
+                "disabled": true
+              },
+              {
+                "type": "text",
+                "name": "rut",
+                "disabled": true
+              },
+              {
+                "type": "email",
+                "name": "correo",
+                "disabled": true
+              },
+              {
+                "type": "tel",
+                "name": "telefono",
+                "disabled": true
+              },
+              {
+                "type": "select-one",
+                "name": "objetivo",
+                "disabled": true
+              },
+              {
+                "type": "textarea",
+                "name": "mensaje",
+                "disabled": true
+              },
+              {
+                "type": "checkbox",
+                "name": "consent",
+                "disabled": true
+              },
+              {
+                "type": "submit",
+                "name": "",
+                "disabled": true
+              }
+            ]
+          }
+        },
+        {
+          "name": "required-form-control:advisory-name",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-rut",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-email",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-phone",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-consent",
+          "passed": true
+        },
+        {
+          "name": "privacy-link-present",
+          "passed": true
+        },
+        {
+          "name": "JS-off-contact-fallback-visible",
+          "passed": true
+        },
+        {
+          "name": "no-global-horizontal-overflow",
+          "passed": true,
+          "detail": {
+            "viewport": 320,
+            "documentWidth": 320,
+            "bodyWidth": 320,
+            "offenders": [
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "advisory-trap",
+                "left": -10000,
+                "right": -9999
+              },
+              {
+                "tag": "LABEL",
+                "id": "",
+                "className": "",
+                "left": -10000,
+                "right": -9999
+              },
+              {
+                "tag": "INPUT",
+                "id": "advisory-website",
+                "className": "",
+                "left": -10000,
+                "right": -9972
+              }
+            ]
+          }
+        },
+        {
+          "name": "zero-optional-provider-SDK-or-collection-attempts",
+          "passed": true
+        },
+        {
+          "name": "zero-non-GET-requests",
+          "passed": true
+        },
+        {
+          "name": "zero-missing-local-resources",
+          "passed": true,
+          "detail": []
+        },
+        {
+          "name": "no-page-JavaScript-errors",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "measurement": null,
+      "trafficSummary": {
+        "total": 15,
+        "localStatic": 15,
+        "local503Fixtures": 0,
+        "externalAborted": [],
+        "optionalProviderAttempts": 0,
+        "realNetworkContinues": 0
+      },
+      "pageErrors": []
+    },
+    {
+      "page": "contacto.html",
+      "width": 1440,
+      "javaScriptEnabled": true,
+      "h1": "Contacto para tu próxima propiedad",
+      "passed": true,
+      "checks": [
+        {
+          "name": "canonical-apex-exact",
+          "passed": true
+        },
+        {
+          "name": "one-main-H1",
+          "passed": true
+        },
+        {
+          "name": "corporate-brand-and-service-in-main",
+          "passed": true
+        },
+        {
+          "name": "official-domain-visible-in-main",
+          "passed": true
+        },
+        {
+          "name": "official-domain-link-exact",
+          "passed": true,
+          "detail": {
+            "href": "https://sollahms.cl/"
+          }
+        },
+        {
+          "name": "official-domain-readable",
+          "passed": true
+        },
+        {
+          "name": "official-link-keyboard-focusable",
+          "passed": true
+        },
+        {
+          "name": "one-existing-advisory-form",
+          "passed": true
+        },
+        {
+          "name": "form-provider-action-and-method-preserved",
+          "passed": true
+        },
+        {
+          "name": "form-controls-enabled-only-with-JS",
+          "passed": true,
+          "detail": {
+            "disabled": false,
+            "controls": [
+              {
+                "type": "text",
+                "name": "website",
+                "disabled": false
+              },
+              {
+                "type": "text",
+                "name": "nombre",
+                "disabled": false
+              },
+              {
+                "type": "text",
+                "name": "rut",
+                "disabled": false
+              },
+              {
+                "type": "email",
+                "name": "correo",
+                "disabled": false
+              },
+              {
+                "type": "tel",
+                "name": "telefono",
+                "disabled": false
+              },
+              {
+                "type": "select-one",
+                "name": "objetivo",
+                "disabled": false
+              },
+              {
+                "type": "textarea",
+                "name": "mensaje",
+                "disabled": false
+              },
+              {
+                "type": "checkbox",
+                "name": "consent",
+                "disabled": false
+              },
+              {
+                "type": "submit",
+                "name": "",
+                "disabled": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "required-form-control:advisory-name",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-rut",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-email",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-phone",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-consent",
+          "passed": true
+        },
+        {
+          "name": "privacy-link-present",
+          "passed": true
+        },
+        {
+          "name": "no-global-horizontal-overflow",
+          "passed": true,
+          "detail": {
+            "viewport": 1440,
+            "documentWidth": 1440,
+            "bodyWidth": 1440,
+            "offenders": [
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "advisory-trap",
+                "left": -10000,
+                "right": -9999
+              },
+              {
+                "tag": "LABEL",
+                "id": "",
+                "className": "",
+                "left": -10000,
+                "right": -9999
+              },
+              {
+                "tag": "INPUT",
+                "id": "advisory-website",
+                "className": "",
+                "left": -10000,
+                "right": -9972
+              }
+            ]
+          }
+        },
+        {
+          "name": "zero-optional-provider-SDK-or-collection-attempts",
+          "passed": true
+        },
+        {
+          "name": "zero-non-GET-requests",
+          "passed": true
+        },
+        {
+          "name": "zero-missing-local-resources",
+          "passed": true,
+          "detail": []
+        },
+        {
+          "name": "no-page-JavaScript-errors",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "measurement": {
+        "enabled": true,
+        "analyticsReady": true,
+        "replayReady": true,
+        "analyticsConsented": false,
+        "replayConsented": false,
+        "analyticsActive": false,
+        "replayStarted": false,
+        "replayUrlAllowed": true,
+        "stopped": false
+      },
+      "trafficSummary": {
+        "total": 31,
+        "localStatic": 31,
+        "local503Fixtures": 0,
+        "externalAborted": [],
+        "optionalProviderAttempts": 0,
+        "realNetworkContinues": 0
+      },
+      "pageErrors": []
+    },
+    {
+      "page": "contacto.html",
+      "width": 1440,
+      "javaScriptEnabled": false,
+      "h1": "Contacto para tu próxima propiedad",
+      "passed": true,
+      "checks": [
+        {
+          "name": "canonical-apex-exact",
+          "passed": true
+        },
+        {
+          "name": "one-main-H1",
+          "passed": true
+        },
+        {
+          "name": "corporate-brand-and-service-in-main",
+          "passed": true
+        },
+        {
+          "name": "official-domain-visible-in-main",
+          "passed": true
+        },
+        {
+          "name": "official-domain-link-exact",
+          "passed": true,
+          "detail": {
+            "href": "https://sollahms.cl/"
+          }
+        },
+        {
+          "name": "official-domain-readable",
+          "passed": true
+        },
+        {
+          "name": "one-existing-advisory-form",
+          "passed": true
+        },
+        {
+          "name": "form-provider-action-and-method-preserved",
+          "passed": true
+        },
+        {
+          "name": "form-controls-enabled-only-with-JS",
+          "passed": true,
+          "detail": {
+            "disabled": true,
+            "controls": [
+              {
+                "type": "text",
+                "name": "website",
+                "disabled": true
+              },
+              {
+                "type": "text",
+                "name": "nombre",
+                "disabled": true
+              },
+              {
+                "type": "text",
+                "name": "rut",
+                "disabled": true
+              },
+              {
+                "type": "email",
+                "name": "correo",
+                "disabled": true
+              },
+              {
+                "type": "tel",
+                "name": "telefono",
+                "disabled": true
+              },
+              {
+                "type": "select-one",
+                "name": "objetivo",
+                "disabled": true
+              },
+              {
+                "type": "textarea",
+                "name": "mensaje",
+                "disabled": true
+              },
+              {
+                "type": "checkbox",
+                "name": "consent",
+                "disabled": true
+              },
+              {
+                "type": "submit",
+                "name": "",
+                "disabled": true
+              }
+            ]
+          }
+        },
+        {
+          "name": "required-form-control:advisory-name",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-rut",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-email",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-phone",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-consent",
+          "passed": true
+        },
+        {
+          "name": "privacy-link-present",
+          "passed": true
+        },
+        {
+          "name": "JS-off-contact-fallback-visible",
+          "passed": true
+        },
+        {
+          "name": "no-global-horizontal-overflow",
+          "passed": true,
+          "detail": {
+            "viewport": 1440,
+            "documentWidth": 1440,
+            "bodyWidth": 1440,
+            "offenders": [
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "advisory-trap",
+                "left": -10000,
+                "right": -9999
+              },
+              {
+                "tag": "LABEL",
+                "id": "",
+                "className": "",
+                "left": -10000,
+                "right": -9999
+              },
+              {
+                "tag": "INPUT",
+                "id": "advisory-website",
+                "className": "",
+                "left": -10000,
+                "right": -9972
+              }
+            ]
+          }
+        },
+        {
+          "name": "zero-optional-provider-SDK-or-collection-attempts",
+          "passed": true
+        },
+        {
+          "name": "zero-non-GET-requests",
+          "passed": true
+        },
+        {
+          "name": "zero-missing-local-resources",
+          "passed": true,
+          "detail": []
+        },
+        {
+          "name": "no-page-JavaScript-errors",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "measurement": null,
+      "trafficSummary": {
+        "total": 15,
+        "localStatic": 15,
+        "local503Fixtures": 0,
+        "externalAborted": [],
+        "optionalProviderAttempts": 0,
+        "realNetworkContinues": 0
+      },
+      "pageErrors": []
+    },
+    {
+      "page": "contacto.html",
+      "width": 390,
+      "javaScriptEnabled": true,
+      "h1": "Contacto para tu próxima propiedad",
+      "passed": true,
+      "checks": [
+        {
+          "name": "canonical-apex-exact",
+          "passed": true
+        },
+        {
+          "name": "one-main-H1",
+          "passed": true
+        },
+        {
+          "name": "corporate-brand-and-service-in-main",
+          "passed": true
+        },
+        {
+          "name": "official-domain-visible-in-main",
+          "passed": true
+        },
+        {
+          "name": "official-domain-link-exact",
+          "passed": true,
+          "detail": {
+            "href": "https://sollahms.cl/"
+          }
+        },
+        {
+          "name": "official-domain-readable",
+          "passed": true
+        },
+        {
+          "name": "official-link-keyboard-focusable",
+          "passed": true
+        },
+        {
+          "name": "one-existing-advisory-form",
+          "passed": true
+        },
+        {
+          "name": "form-provider-action-and-method-preserved",
+          "passed": true
+        },
+        {
+          "name": "form-controls-enabled-only-with-JS",
+          "passed": true,
+          "detail": {
+            "disabled": false,
+            "controls": [
+              {
+                "type": "text",
+                "name": "website",
+                "disabled": false
+              },
+              {
+                "type": "text",
+                "name": "nombre",
+                "disabled": false
+              },
+              {
+                "type": "text",
+                "name": "rut",
+                "disabled": false
+              },
+              {
+                "type": "email",
+                "name": "correo",
+                "disabled": false
+              },
+              {
+                "type": "tel",
+                "name": "telefono",
+                "disabled": false
+              },
+              {
+                "type": "select-one",
+                "name": "objetivo",
+                "disabled": false
+              },
+              {
+                "type": "textarea",
+                "name": "mensaje",
+                "disabled": false
+              },
+              {
+                "type": "checkbox",
+                "name": "consent",
+                "disabled": false
+              },
+              {
+                "type": "submit",
+                "name": "",
+                "disabled": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "required-form-control:advisory-name",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-rut",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-email",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-phone",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-consent",
+          "passed": true
+        },
+        {
+          "name": "privacy-link-present",
+          "passed": true
+        },
+        {
+          "name": "mobile-menu-keyboard-opens",
+          "passed": true
+        },
+        {
+          "name": "mobile-menu-Escape-restores-focus",
+          "passed": true
+        },
+        {
+          "name": "no-global-horizontal-overflow",
+          "passed": true,
+          "detail": {
+            "viewport": 390,
+            "documentWidth": 390,
+            "bodyWidth": 390,
+            "offenders": [
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "advisory-trap",
+                "left": -10000,
+                "right": -9999
+              },
+              {
+                "tag": "LABEL",
+                "id": "",
+                "className": "",
+                "left": -10000,
+                "right": -9999
+              },
+              {
+                "tag": "INPUT",
+                "id": "advisory-website",
+                "className": "",
+                "left": -10000,
+                "right": -9972
+              }
+            ]
+          }
+        },
+        {
+          "name": "zero-optional-provider-SDK-or-collection-attempts",
+          "passed": true
+        },
+        {
+          "name": "zero-non-GET-requests",
+          "passed": true
+        },
+        {
+          "name": "zero-missing-local-resources",
+          "passed": true,
+          "detail": []
+        },
+        {
+          "name": "no-page-JavaScript-errors",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "measurement": {
+        "enabled": true,
+        "analyticsReady": true,
+        "replayReady": true,
+        "analyticsConsented": false,
+        "replayConsented": false,
+        "analyticsActive": false,
+        "replayStarted": false,
+        "replayUrlAllowed": true,
+        "stopped": false
+      },
+      "trafficSummary": {
+        "total": 31,
+        "localStatic": 31,
+        "local503Fixtures": 0,
+        "externalAborted": [],
+        "optionalProviderAttempts": 0,
+        "realNetworkContinues": 0
+      },
+      "pageErrors": []
+    },
+    {
+      "page": "contacto.html",
+      "width": 390,
+      "javaScriptEnabled": false,
+      "h1": "Contacto para tu próxima propiedad",
+      "passed": true,
+      "checks": [
+        {
+          "name": "canonical-apex-exact",
+          "passed": true
+        },
+        {
+          "name": "one-main-H1",
+          "passed": true
+        },
+        {
+          "name": "corporate-brand-and-service-in-main",
+          "passed": true
+        },
+        {
+          "name": "official-domain-visible-in-main",
+          "passed": true
+        },
+        {
+          "name": "official-domain-link-exact",
+          "passed": true,
+          "detail": {
+            "href": "https://sollahms.cl/"
+          }
+        },
+        {
+          "name": "official-domain-readable",
+          "passed": true
+        },
+        {
+          "name": "one-existing-advisory-form",
+          "passed": true
+        },
+        {
+          "name": "form-provider-action-and-method-preserved",
+          "passed": true
+        },
+        {
+          "name": "form-controls-enabled-only-with-JS",
+          "passed": true,
+          "detail": {
+            "disabled": true,
+            "controls": [
+              {
+                "type": "text",
+                "name": "website",
+                "disabled": true
+              },
+              {
+                "type": "text",
+                "name": "nombre",
+                "disabled": true
+              },
+              {
+                "type": "text",
+                "name": "rut",
+                "disabled": true
+              },
+              {
+                "type": "email",
+                "name": "correo",
+                "disabled": true
+              },
+              {
+                "type": "tel",
+                "name": "telefono",
+                "disabled": true
+              },
+              {
+                "type": "select-one",
+                "name": "objetivo",
+                "disabled": true
+              },
+              {
+                "type": "textarea",
+                "name": "mensaje",
+                "disabled": true
+              },
+              {
+                "type": "checkbox",
+                "name": "consent",
+                "disabled": true
+              },
+              {
+                "type": "submit",
+                "name": "",
+                "disabled": true
+              }
+            ]
+          }
+        },
+        {
+          "name": "required-form-control:advisory-name",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-rut",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-email",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-phone",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-consent",
+          "passed": true
+        },
+        {
+          "name": "privacy-link-present",
+          "passed": true
+        },
+        {
+          "name": "JS-off-contact-fallback-visible",
+          "passed": true
+        },
+        {
+          "name": "no-global-horizontal-overflow",
+          "passed": true,
+          "detail": {
+            "viewport": 390,
+            "documentWidth": 390,
+            "bodyWidth": 390,
+            "offenders": [
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "advisory-trap",
+                "left": -10000,
+                "right": -9999
+              },
+              {
+                "tag": "LABEL",
+                "id": "",
+                "className": "",
+                "left": -10000,
+                "right": -9999
+              },
+              {
+                "tag": "INPUT",
+                "id": "advisory-website",
+                "className": "",
+                "left": -10000,
+                "right": -9972
+              }
+            ]
+          }
+        },
+        {
+          "name": "zero-optional-provider-SDK-or-collection-attempts",
+          "passed": true
+        },
+        {
+          "name": "zero-non-GET-requests",
+          "passed": true
+        },
+        {
+          "name": "zero-missing-local-resources",
+          "passed": true,
+          "detail": []
+        },
+        {
+          "name": "no-page-JavaScript-errors",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "measurement": null,
+      "trafficSummary": {
+        "total": 15,
+        "localStatic": 15,
+        "local503Fixtures": 0,
+        "externalAborted": [],
+        "optionalProviderAttempts": 0,
+        "realNetworkContinues": 0
+      },
+      "pageErrors": []
+    },
+    {
+      "page": "contacto.html",
+      "width": 320,
+      "javaScriptEnabled": true,
+      "h1": "Contacto para tu próxima propiedad",
+      "passed": true,
+      "checks": [
+        {
+          "name": "canonical-apex-exact",
+          "passed": true
+        },
+        {
+          "name": "one-main-H1",
+          "passed": true
+        },
+        {
+          "name": "corporate-brand-and-service-in-main",
+          "passed": true
+        },
+        {
+          "name": "official-domain-visible-in-main",
+          "passed": true
+        },
+        {
+          "name": "official-domain-link-exact",
+          "passed": true,
+          "detail": {
+            "href": "https://sollahms.cl/"
+          }
+        },
+        {
+          "name": "official-domain-readable",
+          "passed": true
+        },
+        {
+          "name": "official-link-keyboard-focusable",
+          "passed": true
+        },
+        {
+          "name": "one-existing-advisory-form",
+          "passed": true
+        },
+        {
+          "name": "form-provider-action-and-method-preserved",
+          "passed": true
+        },
+        {
+          "name": "form-controls-enabled-only-with-JS",
+          "passed": true,
+          "detail": {
+            "disabled": false,
+            "controls": [
+              {
+                "type": "text",
+                "name": "website",
+                "disabled": false
+              },
+              {
+                "type": "text",
+                "name": "nombre",
+                "disabled": false
+              },
+              {
+                "type": "text",
+                "name": "rut",
+                "disabled": false
+              },
+              {
+                "type": "email",
+                "name": "correo",
+                "disabled": false
+              },
+              {
+                "type": "tel",
+                "name": "telefono",
+                "disabled": false
+              },
+              {
+                "type": "select-one",
+                "name": "objetivo",
+                "disabled": false
+              },
+              {
+                "type": "textarea",
+                "name": "mensaje",
+                "disabled": false
+              },
+              {
+                "type": "checkbox",
+                "name": "consent",
+                "disabled": false
+              },
+              {
+                "type": "submit",
+                "name": "",
+                "disabled": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "required-form-control:advisory-name",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-rut",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-email",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-phone",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-consent",
+          "passed": true
+        },
+        {
+          "name": "privacy-link-present",
+          "passed": true
+        },
+        {
+          "name": "mobile-menu-keyboard-opens",
+          "passed": true
+        },
+        {
+          "name": "mobile-menu-Escape-restores-focus",
+          "passed": true
+        },
+        {
+          "name": "no-global-horizontal-overflow",
+          "passed": true,
+          "detail": {
+            "viewport": 320,
+            "documentWidth": 320,
+            "bodyWidth": 320,
+            "offenders": [
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "advisory-trap",
+                "left": -10000,
+                "right": -9999
+              },
+              {
+                "tag": "LABEL",
+                "id": "",
+                "className": "",
+                "left": -10000,
+                "right": -9999
+              },
+              {
+                "tag": "INPUT",
+                "id": "advisory-website",
+                "className": "",
+                "left": -10000,
+                "right": -9972
+              }
+            ]
+          }
+        },
+        {
+          "name": "zero-optional-provider-SDK-or-collection-attempts",
+          "passed": true
+        },
+        {
+          "name": "zero-non-GET-requests",
+          "passed": true
+        },
+        {
+          "name": "zero-missing-local-resources",
+          "passed": true,
+          "detail": []
+        },
+        {
+          "name": "no-page-JavaScript-errors",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "measurement": {
+        "enabled": true,
+        "analyticsReady": true,
+        "replayReady": true,
+        "analyticsConsented": false,
+        "replayConsented": false,
+        "analyticsActive": false,
+        "replayStarted": false,
+        "replayUrlAllowed": true,
+        "stopped": false
+      },
+      "trafficSummary": {
+        "total": 31,
+        "localStatic": 31,
+        "local503Fixtures": 0,
+        "externalAborted": [],
+        "optionalProviderAttempts": 0,
+        "realNetworkContinues": 0
+      },
+      "pageErrors": []
+    },
+    {
+      "page": "contacto.html",
+      "width": 320,
+      "javaScriptEnabled": false,
+      "h1": "Contacto para tu próxima propiedad",
+      "passed": true,
+      "checks": [
+        {
+          "name": "canonical-apex-exact",
+          "passed": true
+        },
+        {
+          "name": "one-main-H1",
+          "passed": true
+        },
+        {
+          "name": "corporate-brand-and-service-in-main",
+          "passed": true
+        },
+        {
+          "name": "official-domain-visible-in-main",
+          "passed": true
+        },
+        {
+          "name": "official-domain-link-exact",
+          "passed": true,
+          "detail": {
+            "href": "https://sollahms.cl/"
+          }
+        },
+        {
+          "name": "official-domain-readable",
+          "passed": true
+        },
+        {
+          "name": "one-existing-advisory-form",
+          "passed": true
+        },
+        {
+          "name": "form-provider-action-and-method-preserved",
+          "passed": true
+        },
+        {
+          "name": "form-controls-enabled-only-with-JS",
+          "passed": true,
+          "detail": {
+            "disabled": true,
+            "controls": [
+              {
+                "type": "text",
+                "name": "website",
+                "disabled": true
+              },
+              {
+                "type": "text",
+                "name": "nombre",
+                "disabled": true
+              },
+              {
+                "type": "text",
+                "name": "rut",
+                "disabled": true
+              },
+              {
+                "type": "email",
+                "name": "correo",
+                "disabled": true
+              },
+              {
+                "type": "tel",
+                "name": "telefono",
+                "disabled": true
+              },
+              {
+                "type": "select-one",
+                "name": "objetivo",
+                "disabled": true
+              },
+              {
+                "type": "textarea",
+                "name": "mensaje",
+                "disabled": true
+              },
+              {
+                "type": "checkbox",
+                "name": "consent",
+                "disabled": true
+              },
+              {
+                "type": "submit",
+                "name": "",
+                "disabled": true
+              }
+            ]
+          }
+        },
+        {
+          "name": "required-form-control:advisory-name",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-rut",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-email",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-phone",
+          "passed": true
+        },
+        {
+          "name": "required-form-control:advisory-consent",
+          "passed": true
+        },
+        {
+          "name": "privacy-link-present",
+          "passed": true
+        },
+        {
+          "name": "JS-off-contact-fallback-visible",
+          "passed": true
+        },
+        {
+          "name": "no-global-horizontal-overflow",
+          "passed": true,
+          "detail": {
+            "viewport": 320,
+            "documentWidth": 320,
+            "bodyWidth": 320,
+            "offenders": [
+              {
+                "tag": "DIV",
+                "id": "",
+                "className": "advisory-trap",
+                "left": -10000,
+                "right": -9999
+              },
+              {
+                "tag": "LABEL",
+                "id": "",
+                "className": "",
+                "left": -10000,
+                "right": -9999
+              },
+              {
+                "tag": "INPUT",
+                "id": "advisory-website",
+                "className": "",
+                "left": -10000,
+                "right": -9972
+              }
+            ]
+          }
+        },
+        {
+          "name": "zero-optional-provider-SDK-or-collection-attempts",
+          "passed": true
+        },
+        {
+          "name": "zero-non-GET-requests",
+          "passed": true
+        },
+        {
+          "name": "zero-missing-local-resources",
+          "passed": true,
+          "detail": []
+        },
+        {
+          "name": "no-page-JavaScript-errors",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "measurement": null,
+      "trafficSummary": {
+        "total": 15,
+        "localStatic": 15,
+        "local503Fixtures": 0,
+        "externalAborted": [],
+        "optionalProviderAttempts": 0,
+        "realNetworkContinues": 0
+      },
+      "pageErrors": []
+    }
+  ],
+  "captures": [
+    {
+      "path": "/private/tmp/sollahms-identity-geo-20261125/docs/identity-geo-20261125/browser-index-1440-js-on.png",
+      "page": "index.html",
+      "width": 1440,
+      "javaScriptEnabled": true,
+      "selector": "#preguntas-frecuentes",
+      "captureViewportHeight": 1389,
+      "sha256": "e454aaeab703c604f44799f0a99b84e1e6b1ce70cc3acff918106e4db2b1df26"
+    },
+    {
+      "path": "/private/tmp/sollahms-identity-geo-20261125/docs/identity-geo-20261125/browser-index-390-js-on.png",
+      "page": "index.html",
+      "width": 390,
+      "javaScriptEnabled": true,
+      "selector": "#preguntas-frecuentes",
+      "captureViewportHeight": 2217,
+      "sha256": "891e913926f5dcfaa32d33daac5d3c3a232222846ed3710c55c265050fb6d756"
+    },
+    {
+      "path": "/private/tmp/sollahms-identity-geo-20261125/docs/identity-geo-20261125/browser-agenda-asesoria-1440-js-on.png",
+      "page": "agenda-asesoria.html",
+      "width": 1440,
+      "javaScriptEnabled": true,
+      "selector": ".advisory-page-heading",
+      "captureViewportHeight": 576,
+      "sha256": "b5396dce8bf743aafb2fe7f00a5c5531312fd73fc26c065794329db89e85f263"
+    },
+    {
+      "path": "/private/tmp/sollahms-identity-geo-20261125/docs/identity-geo-20261125/browser-agenda-asesoria-390-js-on.png",
+      "page": "agenda-asesoria.html",
+      "width": 390,
+      "javaScriptEnabled": true,
+      "selector": ".advisory-page-heading",
+      "captureViewportHeight": 614,
+      "sha256": "3f513eb15d4382c8fd635b800f4577759ec7e39b963c4555366c6c2ef5a2b076"
+    },
+    {
+      "path": "/private/tmp/sollahms-identity-geo-20261125/docs/identity-geo-20261125/browser-contacto-1440-js-on.png",
+      "page": "contacto.html",
+      "width": 1440,
+      "javaScriptEnabled": true,
+      "selector": ".advisory-page-heading",
+      "captureViewportHeight": 645,
+      "sha256": "fc0a0d6dbd4fc371f8b16b388f0c6624865dd5b058a4e229288af17d410f7e07"
+    },
+    {
+      "path": "/private/tmp/sollahms-identity-geo-20261125/docs/identity-geo-20261125/browser-contacto-390-js-on.png",
+      "page": "contacto.html",
+      "width": 390,
+      "javaScriptEnabled": true,
+      "selector": ".advisory-page-heading",
+      "captureViewportHeight": 645,
+      "sha256": "a199ad35f81777ae2ff144e17ea89e55c1fc8296502ae0dc948d5cae25380aa2"
+    }
+  ],
+  "routePolicy": "Every context request is intercepted and fulfilled only from the frozen static artifact or an explicit local503 API fixture; every external and non-GET request is aborted. route.continue/route.fetch never used.",
+  "accountOrSharedChromeUsed": false,
+  "commercialFormsSubmitted": 0,
+  "optionalProviderSDKRequests": 0,
+  "realNetworkContinues": 0,
+  "limitations": [
+    "Isolated local browser UI and preserved-form smoke only; production HTTPS, SSO and deployed byte integrity are separate checks.",
+    "Existing external requests are aborted; available local fonts/fallbacks render. No external map, tile or API provider is tested.",
+    "No personal or financial data entered; no forms or measurement provider events sent.",
+    "No ranking, crawling, indexation, AI citation, real analytics collection or commercial delivery result is inferred."
+  ]
+}

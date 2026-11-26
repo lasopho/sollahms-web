@@ -5,56 +5,123 @@
     "index.html": {
       "type": "WebPage",
       "alignHomepageMetadata": true,
-      "faviconPng": "/assets/branding/favicon.png"
+      "faviconPng": "/assets/branding/favicon.png",
+      "identityCopy": {
+        "description": "Sollahms ofrece asesoría inmobiliaria en Chile a personas, empresas e inversionistas para comprar una vivienda o invertir. Ayuda a comparar propiedades, ubicaciones y condiciones según tus objetivos.",
+        "catalogue": "El catálogo de proyectos es un punto de partida para explorar alternativas. La asesoría ayuda a comparar sus características y antecedentes antes de decidir."
+      },
+      "identityGraph": {
+        "Organization": {
+          "description": "Sollahms ofrece asesoría inmobiliaria en Chile a personas, empresas e inversionistas para comprar una vivienda o invertir, comparando propiedades y ubicaciones según sus objetivos."
+        },
+        "WebSite": {
+          "description": "Sitio web oficial de Sollahms, con información y herramientas para comparar propiedades y solicitar asesoría inmobiliaria en Chile."
+        },
+        "Service": {
+          "serviceType": "Asesoría para comprar o invertir en propiedades en Chile",
+          "description": "Comparación de propiedades, ubicaciones, características y condiciones según objetivos de vivienda, patrimonio o diversificación."
+        }
+      }
     },
     "centro-orientacion.html": {
       "type": "WebPage",
-      "topics": ["Orientación para comprar una vivienda en Chile", "Presupuesto, financiamiento y proceso de compra"],
-      "related": ["/guia-hipotecaria.html", "/comparador-hipotecario.html", "/agenda-asesoria.html"]
+      "topics": [
+        "Orientación para comprar una vivienda en Chile",
+        "Presupuesto, financiamiento y proceso de compra"
+      ],
+      "related": [
+        "/guia-hipotecaria.html",
+        "/comparador-hipotecario.html",
+        "/agenda-asesoria.html"
+      ]
     },
     "entorno-desarrollo-urbano.html": {
       "type": "WebPage",
       "socialImage": "https://sollahms.cl/assets/branding/og-sollahms.png",
       "socialImageWidth": "1200",
       "socialImageHeight": "630",
-      "topics": ["Obras e infraestructura urbana en Chile", "Estado y fuentes de obras públicas"],
-      "related": ["/centro-orientacion.html", "/contacto.html"]
+      "topics": [
+        "Obras e infraestructura urbana en Chile",
+        "Estado y fuentes de obras públicas"
+      ],
+      "related": [
+        "/centro-orientacion.html",
+        "/contacto.html"
+      ]
     },
     "contacto.html": {
-      "type": "ContactPage", "fragment": "#contact",
+      "type": "ContactPage",
+      "fragment": "#contact",
       "description": "Contacta a Sollahms para consultar por una propiedad o recibir orientación inmobiliaria en Chile. Cuéntanos tu interés y coordinaremos el siguiente paso.",
-      "topics": ["Consultas inmobiliarias en Chile"], "service": true
+      "topics": [
+        "Consultas inmobiliarias en Chile"
+      ],
+      "service": true,
+      "identityCopy": {
+        "description": "Contacta a Sollahms para consultar por una propiedad, aclarar tus dudas o pedir orientación para comprar o invertir en Chile. Completa tus datos para que podamos responder tu solicitud."
+      }
     },
     "agenda-asesoria.html": {
-      "type": "ContactPage", "fragment": "#contact",
+      "type": "ContactPage",
+      "fragment": "#contact",
       "description": "Solicita asesoría para comprar o invertir en propiedades en Chile. Revisa con Sollahms tus objetivos, ubicaciones y alternativas antes de decidir.",
-      "topics": ["Asesoría para comprar o invertir en propiedades en Chile"], "service": true
+      "topics": [
+        "Asesoría para comprar o invertir en propiedades en Chile"
+      ],
+      "service": true,
+      "identityCopy": {
+        "description": "Solicita una conversación con Sollahms para comparar propiedades y ubicaciones en Chile según tus objetivos de vivienda, patrimonio o diversificación."
+      }
     },
     "guia-hipotecaria.html": {
       "type": "WebPage",
       "title": "Guía hipotecaria en Chile: pie, dividendo y costos | Sollahms",
-      "topics": ["Crédito hipotecario en Chile", "Pie y dividendo", "Tasas, CAE, seguros y gastos operacionales"],
-      "related": ["/comparador-hipotecario.html", "/cuando-comprar-propiedad.html"]
+      "topics": [
+        "Crédito hipotecario en Chile",
+        "Pie y dividendo",
+        "Tasas, CAE, seguros y gastos operacionales"
+      ],
+      "related": [
+        "/comparador-hipotecario.html",
+        "/cuando-comprar-propiedad.html"
+      ]
     },
     "comparador-hipotecario.html": {
       "type": "WebPage",
       "title": "Comparador hipotecario en UF: estima tu dividendo | Sollahms",
       "description": "Estima tu dividendo hipotecario en UF y compara escenarios de pie, tasa y plazo. Herramienta educativa para evaluar financiamiento en Chile, sin aprobación bancaria.",
-      "topics": ["Simulación de dividendos hipotecarios en UF", "Comparación de escenarios de financiamiento"],
-      "related": ["/guia-hipotecaria.html", "/agenda-asesoria.html"]
+      "topics": [
+        "Simulación de dividendos hipotecarios en UF",
+        "Comparación de escenarios de financiamiento"
+      ],
+      "related": [
+        "/guia-hipotecaria.html",
+        "/agenda-asesoria.html"
+      ]
     },
     "cuando-comprar-propiedad.html": {
       "type": "WebPage",
-      "topics": ["Compra de vivienda en blanco, en verde y con entrega inmediata en Chile"],
-      "related": ["/guia-hipotecaria.html", "/contacto.html"]
+      "topics": [
+        "Compra de vivienda en blanco, en verde y con entrega inmediata en Chile"
+      ],
+      "related": [
+        "/guia-hipotecaria.html",
+        "/contacto.html"
+      ]
     },
     "trabaja-con-nosotros.html": {
       "type": "ContactPage",
       "title": "Colabora con Sollahms: inmobiliarias y postulaciones",
-      "topics": ["Colaboración comercial con inmobiliarias", "Postulaciones espontáneas"]
+      "topics": [
+        "Colaboración comercial con inmobiliarias",
+        "Postulaciones espontáneas"
+      ]
     },
     "privacidad.html": {
-      "type": "WebPage", "topics": ["Privacidad y tratamiento de datos personales en Sollahms"]
+      "type": "WebPage",
+      "topics": [
+        "Privacidad y tratamiento de datos personales en Sollahms"
+      ]
     }
   }
 }
