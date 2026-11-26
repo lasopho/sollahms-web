@@ -35,7 +35,7 @@
       <article class="stat"><p>Promociones vencidas</p><strong id="stat-expired">—</strong><span>Reconfirmar antes de ofrecer</span></article>
     </section>
     <div class="source-note"><span class="source-dot" aria-hidden="true"></span><p><strong>Consulta manual en Iris.</strong> Recargar lee las verificaciones guardadas. Las promociones se confirman en la ficha individual; un descuento no acredita bono pie.</p></div>
-    <nav class="payment-section-nav" aria-label="Secciones del panel"><a href="#inventory-title">Bonos pie</a><a href="#payment-title">Planes de pago</a></nav>
+    <nav class="payment-section-nav" aria-label="Secciones del panel"><a href="#inventory-title">Bonos pie</a><a href="#payment-title">Planes de pago</a><a href="#mortgage-title">Dividendo estimado</a></nav>
     <section class="inventory" aria-labelledby="inventory-title">
       <div class="section-heading"><div><p class="eyebrow">Inventario de proyectos</p><h2 id="inventory-title">Encontrar un beneficio</h2></div><button class="button secondary" id="export" type="button" disabled><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3v12m-4-4 4 4 4-4M5 15v5h14v-5"/></svg>Exportar CSV</button></div>
       <form class="filters" id="filters" role="search" aria-label="Filtrar proyectos">
@@ -92,6 +92,22 @@
           <div class="payment-assumptions" id="payment-assumptions"></div>
           <div class="payment-schedule-wrap" tabindex="0" role="region" aria-label="Calendario de pagos, tabla desplazable"><table class="payment-schedule"><caption>Calendario de pagos en UF</caption><thead><tr><th scope="col">Pago</th><th scope="col">Mes</th><th scope="col">Monto (UF)</th></tr></thead><tbody id="payment-schedule-rows"></tbody></table></div>
           <p class="payment-meta">Calendario mensual, sin días de pago asignados. La última cuota incorpora el ajuste de centésimas.</p>
+        </section>
+        <section class="mortgage-estimate" aria-labelledby="mortgage-title">
+            <div class="mortgage-heading"><div><p class="eyebrow">Crédito hipotecario</p><h3 id="mortgage-title">Dividendo estimado</h3><p>Personaliza el monto, la tasa y el plazo para estimar el pago mensual del crédito.</p></div><span class="payment-mode">Simulación</span></div>
+            <form id="mortgage-form" novalidate>
+              <div class="mortgage-fields">
+                <label>Monto del crédito (UF)<input id="mortgage-principal" type="number" min="0" max="1000000" step="0.01" inputmode="decimal" placeholder="Sin verificar" aria-describedby="mortgage-principal-source"></label>
+                <label>Tasa anual (%)<input id="mortgage-rate" type="number" min="0" max="100" step="any" inputmode="decimal" placeholder="Ingresa una tasa"></label>
+                <label>Plazo del crédito (años)<input id="mortgage-years" type="number" min="1" max="40" step="1" inputmode="numeric" placeholder="Ingresa el plazo"></label>
+                <label>Tipo de tasa anual<select id="mortgage-convention"><option value="">Seleccionar tipo de tasa</option><option value="nominal">Nominal (anual ÷ 12)</option><option value="effective">Efectiva (equiv. mensual)</option></select></label>
+              </div>
+              <div class="mortgage-source"><p class="payment-meta" id="mortgage-principal-source">Ingresa el monto del crédito o usa el saldo de un plan de pago calculado.</p><button type="button" class="text-button" id="mortgage-use-balance" disabled>Usar saldo por financiar del plan</button></div>
+              <p class="field-help">Nominal: se divide la tasa anual entre 12. Efectiva: se usa su equivalente mensual. Ingresa la tasa y el tipo que quieras evaluar.</p>
+              <div class="mortgage-submit"><p>Estimación de capital e intereses a tasa fija, sin seguros ni gastos. No constituye oferta ni aprobación bancaria. Los valores se calculan en este dispositivo y no se guardan.</p><button type="submit" class="button primary" id="mortgage-calculate" disabled>Estimar dividendo</button></div>
+            </form>
+            <div id="mortgage-validation" class="payment-validation" role="status" aria-live="polite" hidden></div>
+            <div id="mortgage-result" class="mortgage-result" role="status" aria-live="polite" hidden><div><p>Dividendo mensual estimado</p><strong id="mortgage-monthly"></strong><span>Capital e intereses · sin seguros ni gastos</span></div><p id="mortgage-result-context"></p></div>
         </section>
       </div>
     </section>

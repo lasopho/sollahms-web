@@ -233,3 +233,82 @@ export function calculatePaymentPlan(input) {
     breakdownCents: Object.fromEntries(Object.entries(cents).map(([key, value]) => [key, Number(value)]))
   };
 }
+
+/**
+ * Estimated fixed monthly mortgage payment, principal and interest only.
+ * The caller supplies the remaining price to finance, not the buyer's pie.
+ * All inputs, including the annual-rate convention, must be explicit numbers.
+ * This does not include insurance, fees, taxes, CAE/CTC or a credit decision.
+ */
+export function calculateMortgageEstimate(input) {
+  const errors = [];
+  const error = (field, code, message) => errors.push({field, code, message});
+  const failed = () => ({ok: false, errors, monthlyPaymentUf: null, monthlyPaymentUnroundedUf: null,
+    interestAndPrincipalOnly: true});
+  if (!isRecord(input)) {
+    error('input', 'invalid_input', 'Ingresa capital, tasa anual, plazo y convención de la tasa.');
+    return failed();
+  }
+  function decimal(value, field, precision, maximum) {
+    if (isBlank(value)) {
+      error(field, 'required', 'Falta un valor explícito; ingresa cero si corresponde.');
+      return null;
+    }
+    if (typeof value !== 'number' || !Number.isFinite(value)) {
+      error(field, 'invalid_number', 'Ingresa un número finito.');
+      return null;
+    }
+    if (value < 0 || value > maximum) {
+      error(field, 'out_of_range', `El valor debe estar entre 0 y ${maximum}.`);
+      return null;
+    }
+    const text = String(value);
+    const fraction = (text.split('.')[1] ?? '').replace(/0+$/, '');
+    if (!/^\d+(?:\.\d+)?$/.test(text) || fraction.length > precision) {
+      error(field, 'precision', `El valor admite hasta ${precision} decimales.`);
+      return null;
+    }
+    return value;
+  }
+  const principal = decimal(input.principalUf, 'principalUf', 2, 1_000_000);
+  const annual = decimal(input.annualRatePercentage, 'annualRatePercentage', 6, 100);
+  let years = null;
+  if (isBlank(input.termYears)) {
+    error('termYears', 'required', 'Indica el plazo del crédito en años.');
+  } else if (typeof input.termYears !== 'number' || !Number.isInteger(input.termYears)) {
+    error('termYears', 'invalid_integer', 'El plazo debe ser un número entero de años.');
+  } else if (input.termYears < 1 || input.termYears > 40) {
+    error('termYears', 'out_of_range', 'El plazo debe estar entre 1 y 40 años.');
+  } else years = input.termYears;
+  const convention = input.rateConvention;
+  if (convention !== 'nominal' && convention !== 'effective') {
+    error('rateConvention', 'required_convention', 'Indica si la tasa anual es nominal o efectiva.');
+  }
+  if (errors.length) return failed();
+
+  const months = years * 12;
+  const annualFraction = annual / 100;
+  const monthlyRate = convention === 'nominal'
+    ? annualFraction / 12
+    : Math.expm1(Math.log1p(annualFraction) / 12);
+  // Stable near a zero rate; no positive-power overflow for long terms.
+  const unrounded = monthlyRate === 0
+    ? principal / months
+    : principal * monthlyRate / -Math.expm1(-months * Math.log1p(monthlyRate));
+  let payment;
+  if (monthlyRate === 0) {
+    // At zero interest the cent input is an exact rational division. This
+    // preserves half-up rounding for e.g. 1.26 UF / 12 = 0.105 UF.
+    const [whole, fraction = ''] = String(principal).split('.');
+    const cents = BigInt(whole) * 100n + BigInt(fraction.padEnd(2, '0'));
+    payment = Number((cents + BigInt(months / 2)) / BigInt(months)) / 100;
+  } else payment = Math.round((unrounded + Number.EPSILON * unrounded) * 100) / 100;
+  if (!Number.isFinite(unrounded) || !Number.isFinite(payment) || payment < 0) {
+    error('input', 'calculation_out_of_range', 'El escenario supera el rango del cálculo.');
+    return failed();
+  }
+  return {ok: true, errors, principalUf: principal, annualRatePercentage: annual, termYears: years,
+    months, rateConvention: convention, monthlyRate, monthlyPaymentUf: payment,
+    monthlyPaymentUnroundedUf: unrounded, interestAndPrincipalOnly: true,
+    fixedRate: true, paymentTiming: 'end_of_month', rounding: '0.01 UF'};
+}

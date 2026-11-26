@@ -1,0 +1,123 @@
+{
+  "passed": true,
+  "syntheticOnly": true,
+  "checkedAtUTC": "2026-11-26T01:35:39.815652+00:00",
+  "harness": "http://127.0.0.1:47832/bonos-pie",
+  "checks": [
+    {
+      "name": "always_visible_independent_credit",
+      "passed": true,
+      "detail": "Mortgage form visible with payment-results hidden; explicit manual capital1000UF,5%nominal,20years returns6.60UF without a payment plan."
+    },
+    {
+      "name": "unknowns_remain_blank",
+      "passed": true,
+      "detail": "Capital,rate,years and rateConvention initially empty; estimate action reports four required fields; no market rate or financing percentage inserted."
+    },
+    {
+      "name": "rate_personalization_and_stale_result",
+      "passed": true,
+      "detail": "Editing5%→6% hides former result;1000UF20years gives7.16UF nominal and7.07UF effective."
+    },
+    {
+      "name": "explicit_zero_interest_and_zero_principal",
+      "passed": true,
+      "detail": "1200UF/10years/0% returns10.00UF; explicit0UF principal returns0.00UF."
+    },
+    {
+      "name": "tiny_amount_and_rate_precision",
+      "passed": true,
+      "detail": "0.01UF/40years/0.000001% displays Menos de0,01UF and context preserves all six rate decimals."
+    },
+    {
+      "name": "plan_financing_balance_without_double_bonus",
+      "passed": true,
+      "detail": "Synthetic price3000UF,20%required pie,5%bonus yields2400UF credit,450UF buyer pie. Bonus reduces buyer contribution and is not deducted twice from credit."
+    },
+    {
+      "name": "linked_credit_estimate",
+      "passed": true,
+      "detail": "Derived2400UF credit,4.5%nominal,25years returns13.34UF; source context identifies financing balance."
+    },
+    {
+      "name": "derived_capital_invalidated",
+      "passed": true,
+      "detail": "Editing payment price clears derived capital and hides dividend; disables balance button; preserves user-selected rate/plazo."
+    },
+    {
+      "name": "manual_capital_independent",
+      "passed": true,
+      "detail": "Manual1000UF remains after changing pie, while its old dividend is hidden. Context says independent from payment plan."
+    },
+    {
+      "name": "restore_balance_button",
+      "passed": true,
+      "detail": "Manual2500UF identified as custom; use-balance restores2400UF and clears former dividend."
+    },
+    {
+      "name": "csv_current_mortgage_and_payment_schedule",
+      "passed": true,
+      "detail": "Actual browser click downloaded synthetic1349byte CSV; capital2400,annual4.5,years25,monthly13.34 and original12*30UF schedule all verified in file."
+    },
+    {
+      "name": "csv_stale_mortgage_omitted",
+      "passed": true,
+      "detail": "After changing rate without recalculation, actual downloaded1034byte CSV omitted mortgage result while preserving pie schedule."
+    },
+    {
+      "name": "private_navigation_anchor",
+      "passed": true,
+      "detail": "Private navigation link Dividendo estimado goes to #mortgage-title; no public navigation files edited."
+    },
+    {
+      "name": "responsive_desktop_mobile",
+      "passed": true,
+      "viewports": [
+        {
+          "width": 1440,
+          "height": 1000,
+          "documentWidth": 1425
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "documentWidth": 375,
+          "overflowControls": []
+        },
+        {
+          "width": 320,
+          "height": 800,
+          "documentWidth": 305,
+          "overflowControls": []
+        }
+      ],
+      "detail": "Mortgage inputs/selects/buttons and private navigation stay within viewport; screenshots visually inspected at mobile320/390."
+    },
+    {
+      "name": "strict_csp_and_no_console_errors",
+      "passed": true,
+      "detail": "Synthetic harness self-only scripts/styles/CSP; Chrome console error log empty. Scenarios stay local, no persistence/new network calls introduced."
+    },
+    {
+      "name": "browser_cleanup",
+      "passed": true,
+      "detail": "Viewport reset; only synthetic tab1642523332 closed; real panel1642523312 untouched; completion_summary issued."
+    }
+  ],
+  "artifacts": "/Users/luissandoval/.codex/visualizations/2026/11/25/01a21480-b379-7b73-849a-49478c60920d/bonos-pie-private-20261125/mortgage/qa",
+  "screenshots": [
+    "desktop-synthetic.png",
+    "mobile-390-synthetic.png",
+    "mobile-320-synthetic.png",
+    "mobile-320-result.png"
+  ],
+  "sourceSha256": {
+    "panel.html": "7b4e423691bd86add41af23eb7285258f91f6c3aa134cfece33d787974f712b4",
+    "panel.css": "ca32375878bce81484a8386228f84283a1edf825cdfc347cb4b84514f1ba59fb",
+    "payment-ui.js": "d68d049624e212d151f9ed287b78155099f154cf6c4ab50569646e0a9245c03f"
+  },
+  "limitations": [
+    "All browser input and source rows were fictitious. Production authentication/access is verified by parent.",
+    "CUA download-event wait timed out after click; the actual Chrome download was independently located, confirmed synthetic, and parsed. Subsequent download clicks verified through their resulting files."
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "passed": true,
+  "reviewedAtUTC": "2026-11-26T01:31:48.090355+00:00",
+  "reviewScope": "Read-only independent financial arithmetic, UI code and release-preservation review; only this aggregate report was written.",
+  "commercialDataIncluded": false,
+  "credentialsAccessed": false,
+  "deploymentOrDataMutations": false,
+  "arithmetic": {
+    "method": "Independent Python Decimal direct annuity formula at 70 digits; JavaScript results compared to half-up cent rounding.",
+    "cases": 150,
+    "roundedCentMatches": 150,
+    "maximumUnroundedDifferenceUF": "1.67208405627351510234303881783148414810044754003636936E-11",
+    "coverage": [
+      "zero and near-zero interest",
+      "nominal and effective annual conventions",
+      "1,20,40 year terms",
+      "small and maximum principal boundaries"
+    ],
+    "bonusIntegration": "Price minus total required down payment defines financing balance; a developer bonus only reduces buyer down payment and is not deducted twice.",
+    "referenceSyntheticCase": {
+      "priceUF": 3000,
+      "downPaymentPercentage": 20,
+      "developerBonusPercentage": 5,
+      "buyerDownPaymentUF": 450,
+      "mortgagePrincipalUF": 2400
+    }
+  },
+  "sourceReview": {
+    "bankRateOrTermDefaults": false,
+    "rateConventionExplicit": true,
+    "fixedRateCapitalAndInterestOnly": true,
+    "excludedInsuranceAndCostsClearlyLabelled": true,
+    "offerOrCreditApprovalClaimed": false,
+    "noLiveBankOrEligibilityQueries": true
+  },
+  "uiCodeReview": {
+    "passed": true,
+    "independentManualPrincipalAvailable": true,
+    "planBalanceControlRequiresValidPlan": true,
+    "capitalSourceVisibleAndEditable": true,
+    "editingPlanClearsPriorEstimate": true,
+    "editingMortgageParametersClearsPriorEstimate": true,
+    "planDerivedPrincipalClearedWhenPlanChanges": true,
+    "mortgageCsvOnlyIncludesCurrentEstimate": true,
+    "nominalAndEffectiveConventionsLabelled": true,
+    "rateContextPreservesSixDecimals": true,
+    "positiveSubcentPaymentLabelledBelowPrecision": true,
+    "noScenarioPersistenceOrNetworkTransmission": true,
+    "browserFunctionalAndResponsiveEvidenceOwnedByUIAgent": true
+  },
+  "releaseReview": {
+    "baselineDeployment": "dpl_9M5yUF3GzFK2aWy34Qn4en7y8tA7",
+    "baselineFiles": 1741,
+    "functions": 8,
+    "publicStaticFilesToPreserve": 1672,
+    "otherFunctionSourceFilesToPreserve": 57,
+    "newBuildAndVerificationUseCurrentBaseline": true,
+    "artifactChangesRestrictedToExistingPrivateHandler": true,
+    "routesMustStayByteIdentical": true,
+    "priorEvidenceUnmodified": true,
+    "publicationRequiresParentRemoteAndRuntimeVerification": true
+  },
+  "sources": [
+    {
+      "url": "https://www.cmfchile.cl/educa/621/w3-article-27374.html",
+      "supports": "Insurance and operational costs are distinct from bare capital/interest payment."
+    },
+    {
+      "url": "https://www.cmfchile.cl/educa/621/w3-article-1111.html",
+      "supports": "A simulated or quoted rate is a reference; contracted rate is agreed in the deed."
+    },
+    {
+      "url": "https://servicios.cmfchile.cl/simuladorhipotecario/aplicacion?indice=101.2.1",
+      "supports": "Informational UF fixed-rate simulation is not a credit assessment; source states annual overdue rate on 360-day basis."
+    }
+  ],
+  "formulaAttribution": "Panel calculation is its own mathematical implementation, not a CMF bank quote or offer.",
+  "openBlockingFindings": [],
+  "sourceSHA256": {
+    "internal/bonos-pie/payment-plan.mjs": "bb40e02bb111b4185119fc7b2e39c68453480c7a71c7f47e8d091282bedebf3f",
+    "internal/bonos-pie/ui/panel.html": "8d30b7a34315dc7ac4571c4ebf95aa88e94522bb0165dc9b59764d461deecd89",
+    "internal/bonos-pie/ui/payment-ui.js": "d68d049624e212d151f9ed287b78155099f154cf6c4ab50569646e0a9245c03f"
+  }
+}

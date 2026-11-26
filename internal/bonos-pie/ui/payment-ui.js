@@ -1,8 +1,9 @@
 const endpoint = '/api/interno-bonos-pie';
 const $ = id => document.getElementById(id);
-const state = { projects: [], project: null, unit: null, dirty: true, result: null, calculate: null, loading: false };
+const state = { projects: [], project: null, unit: null, dirty: true, result: null, calculate: null, calculateMortgage: null, mortgageResult: null, mortgagePrincipalSource: 'manual', loading: false };
 const fmt = new Intl.NumberFormat('es-CL', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 const percentFmt = new Intl.NumberFormat('es-CL', { maximumFractionDigits: 4 });
+const mortgageRateFmt = new Intl.NumberFormat('es-CL', { maximumFractionDigits: 6 });
 const dateFmt = new Intl.DateTimeFormat('es-CL', { dateStyle: 'medium', timeZone: 'America/Santiago' });
 const monthFmt = new Intl.DateTimeFormat('es-CL', { month: 'long', year: 'numeric', timeZone: 'UTC' });
 const fields = ['price', 'down-payment', 'bonus', 'bonus-kind', 'reservation', 'reservation-treatment', 'initial', 'initial-kind', 'installments', 'start-month', 'delivery-month', 'balloon', 'balloon-kind'];
@@ -25,13 +26,16 @@ function readNumber(id) { const input = $(`payment-${id}`); return input.value.t
 function setNumber(id, value) { $(`payment-${id}`).value = numeric(value) === null ? '' : String(value); }
 function setComponent(id, percentage, amountUf) { const useAmount = numeric(amountUf) !== null; $(`payment-${id}-kind`).value = useAmount ? 'amountUf' : 'percentage'; setNumber(id, useAmount ? amountUf : percentage); }
 function readComponent(id) { return { [$(`payment-${id}-kind`).value]: readNumber(id) }; }
-function hideResult() { state.result = null; $('payment-results').hidden = true; $('payment-validation').hidden = true; $('payment-validation').replaceChildren(); }
+function clearMortgageResult() { state.mortgageResult = null; $('mortgage-result').hidden = true; $('mortgage-validation').hidden = true; $('mortgage-validation').replaceChildren(); for (const id of ['principal', 'rate', 'years', 'convention']) $(`mortgage-${id}`).removeAttribute('aria-invalid'); }
+function updateMortgageControls() { $('mortgage-calculate').disabled = !state.calculateMortgage; $('mortgage-use-balance').disabled = !state.result; }
+function hideResult() { state.result = null; clearMortgageResult(); if (state.mortgagePrincipalSource === 'plan') { $('mortgage-principal').value = ''; state.mortgagePrincipalSource = 'manual'; $('mortgage-principal-source').textContent = 'El plan cambió. Vuelve a calcularlo para usar su saldo o ingresa un monto de crédito independiente.'; } updateMortgageControls(); $('payment-results').hidden = true; $('payment-validation').hidden = true; $('payment-validation').replaceChildren(); }
 function updateFormMode() {
   const sourced = state.unit && !state.dirty;
   $('payment-form-title').textContent = sourced ? 'Condiciones de la unidad' : 'Simulación personalizada';
   $('payment-form-context').textContent = sourced ? 'Valores de la fuente consultada. Los campos sin información permanecen «Sin verificar». Si cambias un valor, el resultado será una simulación.' : 'Ingresa los valores que quieras evaluar. Un campo vacío significa «Sin verificar»; escribe 0 cuando corresponda.';
   $('payment-restore').disabled = !state.unit;
   $('payment-calculate').disabled = !state.calculate;
+  updateMortgageControls();
   updateMonthAction();
 }
 function monthCount() { const start = $('payment-start-month').value, delivery = $('payment-delivery-month').value; if (!monthValid(start) || !monthValid(delivery)) return null; const [sy, sm] = start.split('-').map(Number), [dy, dm] = delivery.split('-').map(Number); const count = (dy - sy) * 12 + dm - sm + 1; return count > 0 && count <= 600 ? count : null; }
@@ -144,6 +148,10 @@ function renderResult(result, input) {
   const rows = $('payment-schedule-rows'); rows.replaceChildren();
   for (const item of result.schedule || []) { const row = el('tr'); const kind = `${paymentNames[item.kind] || 'Pago'}${item.kind === 'installment' ? ` ${item.number}` : ''}`; for (const [label, value] of [['Pago', kind], ['Mes', month(item.month)], ['Monto (UF)', fmt.format(item.amountUf)]]) { const td = el('td', '', value); td.dataset.label = label; row.append(td); } rows.append(row); }
   state.result = { result, input, context: title || 'Escenario personalizado', verified }; $('payment-results').hidden = false;
+  $('mortgage-principal').value = String(b.financingBalanceUf);
+  state.mortgagePrincipalSource = 'plan';
+  $('mortgage-principal-source').textContent = `Saldo del precio por financiar del plan: ${uf(b.financingBalanceUf)}. Puedes cambiar el monto para evaluar otro crédito.`;
+  updateMortgageControls();
 }
 function calculate(event) {
   event?.preventDefault(); hideResult(); for (const id of fields) $(`payment-${id}`).removeAttribute('aria-invalid');
@@ -152,12 +160,34 @@ function calculate(event) {
   catch { renderValidation([{ message: 'No se pudo calcular este escenario. Revisa los valores y vuelve a intentarlo.' }]); }
 }
 function csvCell(value) { const cell = text(value); return `"${(/^[\s]*[=+@\-\t\r]/.test(cell) ? "'" : '') + cell.replace(/"/g, '""')}"`; }
+function readMortgageNumber(id) { const value = $(`mortgage-${id}`).value; return value.trim() === '' ? null : Number(value); }
+function calculateMortgage(event) {
+  event?.preventDefault(); clearMortgageResult();
+  if (!state.calculateMortgage) return;
+  const input = { principalUf: readMortgageNumber('principal'), annualRatePercentage: readMortgageNumber('rate'), termYears: readMortgageNumber('years'), rateConvention: $('mortgage-convention').value };
+  const result = state.calculateMortgage(input);
+  if (!result.ok) {
+    const fields = { principalUf: ['principal', 'Monto del crédito'], annualRatePercentage: ['rate', 'Tasa anual'], termYears: ['years', 'Plazo'], rateConvention: ['convention', 'Tipo de tasa'] };
+    const box = $('mortgage-validation'), list = el('ul'); box.replaceChildren(el('strong', '', 'Completa los datos para estimar el dividendo.'));
+    for (const error of result.errors || []) { const field = fields[error.field]; if (field) $(`mortgage-${field[0]}`).setAttribute('aria-invalid', 'true'); list.append(el('li', '', `${field ? `${field[1]}: ` : ''}${messageText(error)}`)); }
+    box.append(list); box.hidden = false; return;
+  }
+  $('mortgage-monthly').textContent = result.monthlyPaymentUf === 0 && result.monthlyPaymentUnroundedUf > 0 ? 'Menos de 0,01 UF' : uf(result.monthlyPaymentUf);
+  const convention = input.rateConvention === 'nominal' ? 'nominal anual, dividida entre 12' : 'efectiva anual, con su equivalente mensual';
+  const fromPlan = state.result && state.mortgagePrincipalSource === 'plan' && input.principalUf === state.result.result.breakdown.financingBalanceUf;
+  $('mortgage-result-context').textContent = `${uf(input.principalUf)} de crédito · tasa ${mortgageRateFmt.format(input.annualRatePercentage)} % ${convention} · ${input.termYears} años (${result.months} pagos mensuales).${fromPlan ? ' Monto tomado del saldo por financiar del plan.' : ' Monto personalizado, independiente del plan de pago.'}`;
+  state.mortgageResult = { input, result }; $('mortgage-result').hidden = false;
+}
 function exportSchedule() {
   if (!state.result) return;
   const { result, input, context, verified } = state.result;
   const unitLabel = value => Object.hasOwn(value, 'amountUf') ? 'UF' : '% del precio';
   const rows = [['Tipo de cálculo', verified ? 'Cálculo con datos de fuente' : 'Simulación'], ['Referencia', context], ['Precio UF', input.priceUf], ['Pie requerido % del precio', input.requiredDownPaymentPercentage], ['Bono', unitLabel(input.developerBonus), Object.values(input.developerBonus)[0]], ['Reserva UF', input.reservationUf, treatmentNames[input.reservationTreatment]], ['Inicial', unitLabel(input.initialPayment), Object.values(input.initialPayment)[0]], ['Cuotón', unitLabel(input.balloon), Object.values(input.balloon)[0]], ['Cuotas solicitadas', input.installments], ['Mes de inicio', input.startMonth || 'Sin verificar'], ['Mes de entrega', input.deliveryMonth || 'Sin verificar'], [], ['Pago', 'Número', 'Mes', 'Monto UF']];
   for (const item of result.schedule || []) rows.push([paymentNames[item.kind] || 'Pago', item.number ?? '', item.month || 'Sin verificar', Number(item.amountUf).toFixed(2)]);
+  if (state.mortgageResult) {
+    const mortgage = state.mortgageResult;
+    rows.push([], ['Dividendo estimado - simulación'], ['Monto del crédito UF', mortgage.input.principalUf], ['Tasa anual %', mortgage.input.annualRatePercentage], ['Tipo de tasa anual', mortgage.input.rateConvention === 'nominal' ? 'Nominal (anual / 12)' : 'Efectiva (equivalencia mensual)'], ['Plazo años', mortgage.input.termYears], ['Pagos mensuales', mortgage.result.months], ['Dividendo mensual UF - capital e intereses', mortgage.result.monthlyPaymentUf], ['No incluye seguros ni gastos. No constituye oferta ni aprobación bancaria.']);
+  }
   rows.push([], ['Supuestos']); for (const assumption of result.assumptions || []) rows.push([messageText(assumption)]); for (const warning of result.warnings || []) rows.push([messageText(warning)]);
   const blob = new Blob(['\ufeff', rows.map(row => row.map(csvCell).join(';')).join('\r\n')], { type: 'text/csv;charset=utf-8' }), url = URL.createObjectURL(blob), anchor = el('a'); anchor.href = url; anchor.download = 'sollahms-plan-de-pago.csv'; document.body.append(anchor); anchor.click(); anchor.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
@@ -180,7 +210,7 @@ async function loadData() {
     if (wasDirty) { for (const [field, value] of Object.entries(formValues)) $(`payment-${field}`).value = value; state.dirty = true; hideResult(); } else restoreSource();
     renderSource();
     status(state.projects.length ? `Información privada cargada${data.updatedAt ? ` · actualización: ${date(data.updatedAt)}` : ''}. Los datos no confirmados se muestran como «Sin verificar».` : 'Aún no hay proyectos con información de entrega. Puedes crear una simulación personalizada.');
-    try { const engine = await import('/api/interno-bonos-pie?op=asset&file=payment-plan.mjs'); if (typeof engine.calculatePaymentPlan !== 'function') throw new Error('engine'); state.calculate = engine.calculatePaymentPlan; } catch { status('La información está disponible, pero no se pudo cargar el cálculo. Recarga los planes para volver a intentarlo.', 'error'); }
+    try { const engine = await import('/api/interno-bonos-pie?op=asset&file=payment-plan.mjs'); if (typeof engine.calculatePaymentPlan !== 'function' || typeof engine.calculateMortgageEstimate !== 'function') throw new Error('engine'); state.calculate = engine.calculatePaymentPlan; state.calculateMortgage = engine.calculateMortgageEstimate; } catch { status('La información está disponible, pero no se pudo cargar el cálculo. Recarga los planes para volver a intentarlo.', 'error'); }
   } catch { status('No pudimos cargar los planes de pago. Intenta recargar los planes.', 'error'); }
   finally { state.loading = false; $('payment-reload').disabled = false; updateFormMode(); }
 }
@@ -197,5 +227,9 @@ $('payment-new').addEventListener('click', () => { blankForm(); $('payment-price
 $('payment-use-months').addEventListener('click', () => { const count = monthCount(); if (count === null) return; $('payment-installments').value = String(count); state.dirty = true; hideResult(); updateFormMode(); });
 $('payment-reload').addEventListener('click', loadData);
 $('payment-export').addEventListener('click', exportSchedule);
-$('logout').addEventListener('click', () => { state.projects = []; state.project = null; state.unit = null; blankForm(); renderSource(); $('payment-project').replaceChildren(option('', 'Sesión terminada')); $('payment-unit').replaceChildren(option('', 'Sin unidades')); });
+$('mortgage-form').addEventListener('submit', calculateMortgage);
+$('mortgage-form').addEventListener('input', event => { clearMortgageResult(); if (event.target.id === 'mortgage-principal') { state.mortgagePrincipalSource = 'manual'; $('mortgage-principal-source').textContent = 'Monto personalizado para este escenario; no depende del plan de pago.'; } });
+$('mortgage-form').addEventListener('change', clearMortgageResult);
+$('mortgage-use-balance').addEventListener('click', () => { if (!state.result) return; $('mortgage-principal').value = String(state.result.result.breakdown.financingBalanceUf); state.mortgagePrincipalSource = 'plan'; $('mortgage-principal-source').textContent = `Saldo del precio por financiar del plan: ${uf(state.result.result.breakdown.financingBalanceUf)}. Puedes cambiar el monto para evaluar otro crédito.`; clearMortgageResult(); });
+$('logout').addEventListener('click', () => { state.projects = []; state.project = null; state.unit = null; blankForm(); for (const id of ['principal', 'rate', 'years', 'convention']) $(`mortgage-${id}`).value = ''; renderSource(); $('payment-project').replaceChildren(option('', 'Sesión terminada')); $('payment-unit').replaceChildren(option('', 'Sin unidades')); });
 updateFormMode(); loadData();

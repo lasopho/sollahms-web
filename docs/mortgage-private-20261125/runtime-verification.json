@@ -1,0 +1,112 @@
+{
+  "passed": true,
+  "testedAtUTC": "2026-11-26T01:31:55.329937+00:00",
+  "testsPassed": 56,
+  "mortgageTestsPassed": 11,
+  "compiledSmokePassed": true,
+  "mortgageAssetCalculationVerified": true,
+  "anonymousCompiledEndpointsBlocked": 3,
+  "candidateInventorySHA256": "b34ed84dba65b0215e3747fc106f5da4319397bc3b992cf6333c6f945d217d5a",
+  "sourceFiles": [
+    {
+      "path": "internal/bonos-pie/build-mortgage.mjs",
+      "bytes": 3711,
+      "sha256": "1d8f1f2c39f48ad7a53b3c3d79913bd7c8039b8a0c740aa60841ff1afe483a1c"
+    },
+    {
+      "path": "internal/bonos-pie/inventory.json",
+      "bytes": 58519,
+      "sha256": "e74a26c064aa582f7585057f2e13ded08a44095510e8ba642338c99847024950"
+    },
+    {
+      "path": "internal/bonos-pie/package-lock.json",
+      "bytes": 27165,
+      "sha256": "e5770b6df479da6e6ddda12ee28799d55960aa278143e6479789d1c5276d759f"
+    },
+    {
+      "path": "internal/bonos-pie/package.json",
+      "bytes": 272,
+      "sha256": "9f169440927d53f1c89d9344a6bae32c60339614f92a7013a9de05d59b19026e"
+    },
+    {
+      "path": "internal/bonos-pie/payment-data.mjs",
+      "bytes": 5051,
+      "sha256": "a50fd64f7c2806a8fd8702f89cda403d34f918d1ba1c77a34ad9f0de32662583"
+    },
+    {
+      "path": "internal/bonos-pie/payment-plan.mjs",
+      "bytes": 16640,
+      "sha256": "bb40e02bb111b4185119fc7b2e39c68453480c7a71c7f47e8d091282bedebf3f"
+    },
+    {
+      "path": "internal/bonos-pie/server.mjs",
+      "bytes": 22185,
+      "sha256": "ae7d46cec0ac6a6b871d66f32332140c5c45c0e24ed3a701879e09485513f905"
+    },
+    {
+      "path": "internal/bonos-pie/tests/mortgage-estimate.test.mjs",
+      "bytes": 7071,
+      "sha256": "8ed2df93e474cf82dce84924bc80696929ac5c92a28d5992c2e4ffe0bb641cde"
+    },
+    {
+      "path": "internal/bonos-pie/tests/payment-data.test.mjs",
+      "bytes": 6156,
+      "sha256": "5ebc5e6285a8bfa48348301be89b7bc686786e5c5da2a0169928dfe248f08b1c"
+    },
+    {
+      "path": "internal/bonos-pie/tests/payment-plan.test.mjs",
+      "bytes": 16202,
+      "sha256": "dfe99717256af7a668dae0f618e8858bbf138e2aa1d15498581c3fe0be7bc629"
+    },
+    {
+      "path": "internal/bonos-pie/tests/security.test.mjs",
+      "bytes": 13391,
+      "sha256": "64d98f20a5e6bdcfad3ccde9a9819648af7efa4265e219016d9b9485dd5b5f17"
+    },
+    {
+      "path": "internal/bonos-pie/ui/login.css",
+      "bytes": 6136,
+      "sha256": "db3c44d2bdcbe6f35ea3d711a7da68515045664993753dd378ab1bee9184e6c2"
+    },
+    {
+      "path": "internal/bonos-pie/ui/login.html",
+      "bytes": 3069,
+      "sha256": "97b479a3f8b814c3110eba81f1e1f82287fd1336d12861cfbb3dbe549a493188"
+    },
+    {
+      "path": "internal/bonos-pie/ui/login.js",
+      "bytes": 4785,
+      "sha256": "10b663ede1465464488fadbe9003b7cfa2f22d58a0ca0ebd36ffe3ef327367e8"
+    },
+    {
+      "path": "internal/bonos-pie/ui/panel.css",
+      "bytes": 33604,
+      "sha256": "ca32375878bce81484a8386228f84283a1edf825cdfc347cb4b84514f1ba59fb"
+    },
+    {
+      "path": "internal/bonos-pie/ui/panel.html",
+      "bytes": 18944,
+      "sha256": "7b4e423691bd86add41af23eb7285258f91f6c3aa134cfece33d787974f712b4"
+    },
+    {
+      "path": "internal/bonos-pie/ui/panel.js",
+      "bytes": 24447,
+      "sha256": "503c333ea38109ce30ec6fc0efdbc787beb449799c43b3f0792dca2908b11658"
+    },
+    {
+      "path": "internal/bonos-pie/ui/payment-ui.js",
+      "bytes": 32016,
+      "sha256": "d68d049624e212d151f9ed287b78155099f154cf6c4ab50569646e0a9245c03f"
+    }
+  ],
+  "noDefaultBankRateOrTerm": true,
+  "privateRecordsBundled": false,
+  "publicFilesByteIdentical": true,
+  "otherFunctionFilesByteIdentical": true,
+  "authenticationServerByteIdentical": true,
+  "privateDatasetsChanged": false,
+  "verifiedAtUTC": "2026-11-26T01:36:05.984684+00:00",
+  "syntheticUIQASHA256": "462f89af688026dfdf6dec595280f49a30b5070a9aed7fc51281e1220b08b18a",
+  "independentReviewSHA256": "4dd166701a5efa77d673dceb74156d8c6ccddf598db51a08505562bb42b07390",
+  "postArithmeticTestChanges": "UI text and select label adjustments only; UI final hashes covered by synthetic browser QA."
+}
