@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="referrer" content="no-referrer">
+  <title>Acceso privado · Bonos pie Sollahms</title>
+  <link rel="icon" href="/assets/branding/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/api/interno-bonos-pie?op=asset&amp;file=login.css">
+  <script src="/api/interno-bonos-pie?op=asset&amp;file=login.js" defer></script>
+</head>
+<body class="login-page">
+  <main class="login-layout">
+    <section class="login-story"><a class="brand" href="/" aria-label="Sollahms, inicio"><img src="/assets/branding/sollahms-logo-light.svg" width="150" height="29" alt="Sollahms"></a><div class="login-story-copy"><p class="eyebrow">Gestión comercial privada</p><h1>La información que necesitas.<br>En un solo lugar.</h1><p>Consulta bonos pie, porcentajes y condiciones verificadas de los proyectos de Sollahms.</p><span class="story-rule" aria-hidden="true"></span></div><p class="story-footer">Sollahms · Uso interno</p></section>
+    <section class="login-entry" aria-labelledby="login-title"><div class="login-card"><span class="private-label"><span class="lock-mark" aria-hidden="true"></span>Acceso exclusivo</span><h2 id="login-title">Panel de bonos pie</h2><p class="login-description">Ingresa con tu correo de Sollahms. Te enviaremos un código de un solo uso para confirmar el acceso.</p><form id="request-form"><label for="email">Correo electrónico<input id="email" name="email" type="email" autocomplete="username" inputmode="email" autocapitalize="none" spellcheck="false" value="" placeholder="Tu correo de Sollahms" required aria-describedby="email-help"></label><p class="field-help" id="email-help">Acceso exclusivo para la cuenta administradora de Sollahms.</p><button type="submit" class="button primary wide" id="request-code">Enviar código de acceso <span aria-hidden="true">→</span></button></form><form id="verify-form" hidden><label for="code">Código de acceso<input id="code" name="code" type="text" inputmode="numeric" pattern="[0-9]{8}" minlength="8" maxlength="8" autocomplete="one-time-code" placeholder="00000000" required aria-describedby="code-help"></label><p class="field-help" id="code-help">Revisa <span id="code-email">tu correo de Sollahms</span> e ingresa los ocho dígitos. El código vence en 10 minutos.</p><button type="submit" class="button primary wide" id="verify-code">Ingresar al panel <span aria-hidden="true">→</span></button><button class="text-button resend-button" type="button" id="resend-code">Enviar otro código</button></form><p class="login-status" id="login-status" role="status" aria-live="polite"></p><div class="login-security"><span class="lock-mark" aria-hidden="true"></span><p>La información comercial se muestra únicamente después de verificar el acceso.</p></div></div><p class="login-copyright">© Sollahms. Información comercial interna.</p></section>
+  </main>
+</body>
+</html>

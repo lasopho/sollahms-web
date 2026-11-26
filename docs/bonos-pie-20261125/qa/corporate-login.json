@@ -1,0 +1,19 @@
+{
+  "syntheticOnly": true,
+  "providerCalls": 0,
+  "checks": [
+    "email field and autocomplete username",
+    "trim and lower-case email in request payload",
+    "recipient displayed after successful request",
+    "resend remains bound to requested email",
+    "eight digit code and canonical redirect",
+    "invalid email produces no request",
+    "unauthorized account leaves a usable form"
+  ],
+  "checkedFiles": [
+    "ui/login.html",
+    "ui/login.js",
+    "ui/login.css"
+  ],
+  "syntaxAndDiffPassed": true
+}

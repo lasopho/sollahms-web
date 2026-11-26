@@ -52,6 +52,26 @@ Se ejecutó una sola pregunta neutral real, igual a la del 19/11, en conversaci�
 
 La opción Pro del registro anterior estaba limitada y la UI actual usó GPT-6/Medium con funciones reducidas. No es una comparación equivalente y no se calcula una tendencia o efecto SEO a partir de ella. Fue una observación previa al nuevo cambio, no una prueba de procesamiento posterior. [Observación sanitizada](chatgpt-observation.json).
 
+### Prueba adicional por nombre de marca: 25/11, 22:04–22:07 de Santiago
+
+Se ejecutó una pregunta nueva en ChatGPT real, temporal y sin personalización: «Busca en la web ¿Qué es Sollahms y qué asesoría inmobiliaria ofrece en Chile?». La UI mostró GPT-6/Medium y funciones reducidas. La respuesta terminó y mostró fuentes LinkedIn y Urbani; no se capturó por separado un estado de actividad de búsqueda. [Registro de esta prueba](chatgpt-brand-observation.json).
+
+La respuesta **sí nombró Sollahms**, asociándola con gestión de inmuebles comerciales, pero para «Sitio web oficial» indicó **«No encontré uno verificable»** y remitió a un perfil personal. No enlazó al dominio propio. Es una respuesta a la marca suministrada, no una recomendación espontánea para compradores ni una mejora comparable con la pregunta de Concepción. Las afirmaciones de fundador/formación de esa respuesta no están verificadas y no se trasladan al sitio.
+
+La revisión independiente de Inicio, Agenda y Contacto confirmó HTML público legible y la cobertura ya publicada, incluida Concepción. Encontró dos pendientes del estudio: identificar al responsable con respaldo y concretar el alcance/resultado real de la asesoría. VCAA comprador y Hualpén asesoría, dos enlaces ordinarios de la respuesta neutral anterior, existen y describen tareas/etapas; no se copian sus servicios ni se presume por qué ChatGPT los eligió.
+
+| Prioridad | Cambio fundamentado | Cómo comprobarlo |
+| --- | --- | --- |
+| Identidad propia | Completar nombre, función y antecedentes respaldados del responsable en las páginas existentes | Repetir diagnóstico de marca y observar si identifica y enlaza el dominio oficial |
+| Asesoría concreta | Precisar en Agenda qué revisión se realiza, qué recibe el cliente y qué queda fuera | Validar los hechos con el titular y revisar respuestas a intención de compra, junto a solicitudes reales |
+| Medición diferenciada | Conservar la pregunta neutral y separar pruebas por nombre de marca | Registrar condiciones y distinguir mención, enlace propio, cita y recomendación; sin tasas inventadas |
+
+Nombre/cargo publicables y entregable real se solicitaron al titular: no se inventan. Estas acciones son hipótesis editoriales y de medición; todavía no se publicó contenido nuevo a partir de ellas. Catálogo, fichas, Centro documental, perfiles externos, preferencias de entrenamiento y seguimiento existente quedan conservados.
+
+La comprobación técnica actual confirma permiso explícito a OAI-SearchBot en robots. Una lectura CDN acotada a doce rutas entre 21:08–22:08 de Santiago no devolvió solicitudes con ese User-Agent; una hora sin coincidencias no demuestra ausencia histórica de rastreo ni un bloqueo. El agente declarado tampoco acreditaría por sí solo origen legítimo. No hay fundamento comprobado para modificar el firewall. [Comprobación técnica y límites](chatgpt-access-check.json).
+
+La [documentación oficial de OpenAI](https://developers.openai.com/api/docs/bots) distingue búsqueda y entrenamiento y recomienda permitir el rastreador de búsqueda y sus rangos publicados. Las aproximadamente 24 horas citadas allí corresponden a cambios de robots; no son un plazo prometido para aparecer. No se crea otro tracker, automatización, archivo IA ni campaña en perfiles externos. [Evaluación de acciones y alternativas](chatgpt-actions-review.json).
+
 ## Bing / Microsoft Copilot
 
 **Acceso operativo verificado después de la publicación:** la sesión existente permite consultar https://sollahms.cl/ con lsandoval@sollahms.cl, administrador verificado por DNS. El proveedor Google/Microsoft no está expuesto en esa sesión; se conservó la autenticación que funciona. El rechazo anterior sigue documentado como antecedente y no representa el acceso actual. [Acceso y procedimiento](../../operations/2026-11-25-bing-access/README.md).

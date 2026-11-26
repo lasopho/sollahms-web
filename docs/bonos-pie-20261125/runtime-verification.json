@@ -1,0 +1,79 @@
+{
+  "observedAtUTC": "2026-11-26T00:47:47.121309+00:00",
+  "passed": true,
+  "sourceHeadAtVerification": "b45c069eb0caf3856201ee7717902f606193542a",
+  "sourceFiles": [
+    {
+      "path": "internal/bonos-pie/build.mjs",
+      "bytes": 5459,
+      "sha256": "39b38a43c3c72fcc61d82669ea6a7594fb3b59762321ec5dfbb1b3eaa7b5118a"
+    },
+    {
+      "path": "internal/bonos-pie/inventory.json",
+      "bytes": 58519,
+      "sha256": "e74a26c064aa582f7585057f2e13ded08a44095510e8ba642338c99847024950"
+    },
+    {
+      "path": "internal/bonos-pie/package-lock.json",
+      "bytes": 27165,
+      "sha256": "e5770b6df479da6e6ddda12ee28799d55960aa278143e6479789d1c5276d759f"
+    },
+    {
+      "path": "internal/bonos-pie/package.json",
+      "bytes": 272,
+      "sha256": "9f169440927d53f1c89d9344a6bae32c60339614f92a7013a9de05d59b19026e"
+    },
+    {
+      "path": "internal/bonos-pie/server.mjs",
+      "bytes": 21620,
+      "sha256": "70c6351a88612bd5652205e8fe043e3dca0b83f0e218e85390522123646ddc4b"
+    },
+    {
+      "path": "internal/bonos-pie/tests/security.test.mjs",
+      "bytes": 13391,
+      "sha256": "64d98f20a5e6bdcfad3ccde9a9819648af7efa4265e219016d9b9485dd5b5f17"
+    },
+    {
+      "path": "internal/bonos-pie/ui/login.css",
+      "bytes": 6136,
+      "sha256": "db3c44d2bdcbe6f35ea3d711a7da68515045664993753dd378ab1bee9184e6c2"
+    },
+    {
+      "path": "internal/bonos-pie/ui/login.html",
+      "bytes": 3069,
+      "sha256": "97b479a3f8b814c3110eba81f1e1f82287fd1336d12861cfbb3dbe549a493188"
+    },
+    {
+      "path": "internal/bonos-pie/ui/login.js",
+      "bytes": 4785,
+      "sha256": "10b663ede1465464488fadbe9003b7cfa2f22d58a0ca0ebd36ffe3ef327367e8"
+    },
+    {
+      "path": "internal/bonos-pie/ui/panel.css",
+      "bytes": 19984,
+      "sha256": "b1c3e68df1020821694c4028f4339f366ebacb1326feb15a1352f37d3ff16b7a"
+    },
+    {
+      "path": "internal/bonos-pie/ui/panel.html",
+      "bytes": 8620,
+      "sha256": "c44b60312e22bb853f7aa7bc8032d0cfc548a376f00e711c11de7d1325988fcf"
+    },
+    {
+      "path": "internal/bonos-pie/ui/panel.js",
+      "bytes": 24447,
+      "sha256": "503c333ea38109ce30ec6fc0efdbc787beb449799c43b3f0792dca2908b11658"
+    }
+  ],
+  "compiledSourceMatchesArtifact": true,
+  "candidateInventorySHA256": "fd19adf95f66af9730f738d01cd8efec8b08f2717f2179afaf71635c10d122cb",
+  "securityTests": {
+    "passed": 9,
+    "failed": 0,
+    "providerCalls": 0,
+    "sessions": "synthetic memory store only",
+    "command": "node --test internal/bonos-pie/tests/security.test.mjs",
+    "addedRegression": "Corporate email allowlist, normalization, administrator-bound challenges, legacy challenge rejection and prior-session revocation"
+  },
+  "sourceWorkingTreeChanges": true,
+  "verificationScope": "Corporate email login candidate; administrator address explicitly supplied and configured"
+}

@@ -30,9 +30,19 @@ def meta_pattern(attr, key):
     return r'<meta\b(?=[^>]*\b' + attr + r'="' + re.escape(key) + r'")[^>]*>'
 
 
-def align_homepage_graph(html, title, description):
-    """Keep the existing identity graph; align only its own WebPage label."""
+def align_homepage_graph(html, title, description, identity=None):
+    """Align verified descriptions without replacing the existing identity graph."""
     found = 0
+    identity = identity or {}
+    allowed = {
+        'Organization': ('/#organization', {'description'}),
+        'WebSite': ('/#website', {'description'}),
+        'Service': ('/#asesoria-inmobiliaria', {'serviceType', 'description'}),
+    }
+    for kind, fields in identity.items():
+        if kind not in allowed or set(fields) - allowed[kind][1]:
+            raise ValueError('Unsupported homepage identity fields: ' + kind)
+    identity_found = {kind: 0 for kind in identity}
 
     def align(match):
         nonlocal found
@@ -46,6 +56,13 @@ def align_homepage_graph(html, title, description):
                     node['name'] = title
                     node['description'] = description
                     changed = True
+            kind = node.get('@type')
+            if isinstance(kind, str) and kind in identity and node.get('@id') == ORIGIN + allowed[kind][0]:
+                identity_found[kind] += 1
+                for key, value in identity[kind].items():
+                    if node.get(key) != value:
+                        node[key] = value
+                        changed = True
         if not changed:
             return match[0]
         return '<script type="application/ld+json">\n' + json.dumps(payload, ensure_ascii=False, indent=2) + '\n</script>'
@@ -53,6 +70,29 @@ def align_homepage_graph(html, title, description):
     result = re.sub(r'<script type="application/ld\+json">(.*?)</script>', align, html, flags=re.S)
     if found != 1:
         raise ValueError('Expected exactly one existing homepage WebPage identity')
+    if any(count != 1 for count in identity_found.values()):
+        raise ValueError('Expected one existing node for each homepage identity update')
+    return result
+
+
+def align_identity_copy(html, filename, copy):
+    """Reuse the existing FAQ or introductory paragraph; no new sections/forms."""
+    if not copy:
+        return html
+    official = ' El sitio web oficial de Sollahms es <a href="' + ORIGIN + '/">sollahms.cl</a>.'
+    paragraph = '<p>' + escape(copy['description']) + official + '</p>'
+    if filename == 'index.html':
+        paragraph += '<p>' + escape(copy['catalogue']) + ' Puedes <a href="/agenda-asesoria.html">solicitar asesoría</a> para conversar sobre lo que necesitas evaluar.</p>'
+        pattern = r'(<details open><summary>¿Qué hace Sollahms\?</summary>).*?(</details>)'
+        replacement = lambda match: match[1] + paragraph + match[2]
+    elif filename in ('agenda-asesoria.html', 'contacto.html'):
+        pattern = r'(<section class="advisory-page-heading"><div>.*?<h1>.*?</h1>)<p>.*?</p>'
+        replacement = lambda match: match[1] + paragraph
+    else:
+        raise ValueError('Identity copy outside its three-page scope: ' + filename)
+    result, count = re.subn(pattern, replacement, html, flags=re.S)
+    if count != 1:
+        raise ValueError('Expected one existing identity copy location: ' + filename)
     return result
 
 
@@ -80,6 +120,7 @@ def apply_corporate_seo(html, filename):
     if filename not in config['pages']:
         raise ValueError('Page outside the corporate SEO allowlist: ' + filename)
     page = config['pages'][filename]
+    html = align_identity_copy(html, filename, page.get('identityCopy'))
     align_homepage = filename == 'index.html' and page.get('alignHomepageMetadata', False)
     metadata = Metadata(html).values
     if filename == 'comparador-hipotecario.html' and 'id="corporate-seo-layout"' not in html:
@@ -126,7 +167,7 @@ def apply_corporate_seo(html, filename):
     if filename == 'index.html':
         # The homepage is the authoritative Organization/WebSite/Service graph.
         if align_homepage:
-            html = align_homepage_graph(html, title, description)
+            html = align_homepage_graph(html, title, description, page.get('identityGraph'))
         if page.get('faviconPng'):
             html = add_homepage_png_favicon(html, page['faviconPng'])
         return html

@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUTC": "2026-11-26T01:11:45.876226+00:00",
+  "scopeId": "corporate-education-v3",
+  "basis": [
+    "../../STRATEGY-v3.md",
+    "../../../home-seo-20261025/research-and-decisions.md",
+    "../../../seo-corporate-20261029/README.md"
+  ],
+  "observations": [
+    "chatgpt-observation.json",
+    "chatgpt-brand-observation.json",
+    "chatgpt-access-check.json"
+  ],
+  "verdict": "Current branded response names the brand from external references but does not identify its official domain; earlier neutral response did not recommend it. Need entity/service clarity and separate diagnostic measurements, not an assumption of universal absence or an invented deadline.",
+  "priorities": [
+    {
+      "action": "Complete the responsible person/team and substantiated role on existing Inicio/Agenda/Contacto",
+      "observedProblem": "Current three corporate pages do not identify the responsible person/team and verifiable background; branded response relied on a personal external profile and did not verify the official site",
+      "studyCriterion": "Clear identity and real, supported credentials; never invented offices, experience or endorsements",
+      "inputsRequiredFromOwner": [
+        "Publicly authorized name and role",
+        "Verifiable professional background, if it is to be published"
+      ],
+      "expectedBenefitAsHypothesis": "Improve clarity of brand/service responsibility and the consistency of the owned source; no promise of ChatGPT inclusion",
+      "verification": "Review exact public facts, then repeat the branded question under recorded comparable conditions and check identification/link/citation to the official domain",
+      "platforms": {
+        "OpenAI": "Branded identification/link/citation would be measured directly",
+        "Google": "Owned identity clarity is an editorial objective; ranking benefit not established",
+        "Bing": "Owned identity clarity is an editorial objective; index/ranking/citation benefit not established"
+      }
+    },
+    {
+      "action": "Specify the actual scope and outcome of the advisory engagement in Agenda",
+      "observedProblem": "Agenda describes the conversation and comparison but not a concrete verified deliverable or explicit engagement limits",
+      "studyCriterion": "Useful own content and a clear educational path towards a genuine advisory request",
+      "primaryPagesCompared": [
+        "https://sollahms.cl/agenda-asesoria.html",
+        "https://vcaa.cl/comprador",
+        "https://hualpenpropiedades.cl/asesoria"
+      ],
+      "inputsRequiredFromOwner": [
+        "What review the service actually performs",
+        "What the client receives",
+        "What is outside that engagement"
+      ],
+      "expectedBenefitAsHypothesis": "Make the service easier to understand and evaluate; no inferred causal explanation of competitor selection",
+      "verification": "Validate facts with the owner, check clarity and use in the next controlled buyer-intent observations",
+      "platforms": {
+        "OpenAI": "Evaluate buyer-intent answers and eligible owned citations separately from branded identification",
+        "Google": "Observe impressions/clicks for exact included URL after any authorized change",
+        "Bing": "Observe its own index/performance and AI sample separately"
+      }
+    },
+    {
+      "action": "Keep branded diagnosis separate from the existing neutral weekly question and add controlled buyer-intent questions only as planned observations",
+      "observedProblem": "Most saved checks repeated one Concepcion question; this new branded question is a different cell and cannot establish a neutral trend",
+      "studyCriterion": "Explicit prompts, conditions, sources and distinct mention/link/citation/recommendation outcomes",
+      "expectedBenefitAsHypothesis": "Determine whether the gap is identification, source discovery or competitive recommendation, before choosing another change",
+      "verification": "Preserve the earlier neutral question, label brand probes separately, use the same conditions when possible and mark reduced-function/model/location differences. No invented percentage from one response.",
+      "existingWeeklyFollowupUnchanged": true
+    }
+  ],
+  "otherChecked": [
+    {
+      "candidate": "Repeat robots or firewall changes",
+      "decision": "No current robots exclusion demonstrated; one-hour no-match logs cannot justify a firewall change or prove historical crawl absence"
+    },
+    {
+      "candidate": "Repeat geographic coverage or create commune pages",
+      "decision": "Coverage34communes/10regions already present; no new observed need or verified local offices"
+    },
+    {
+      "candidate": "Optimize LinkedIn or other external profiles",
+      "decision": "Excluded by user scope; references only recorded as observed answer sources"
+    },
+    {
+      "candidate": "Create new AI files/schema or paid trackers",
+      "decision": "No established need; reuse existing corporate pages and consumer measurement protocol; no paid setup started"
+    }
+  ],
+  "currentOwnedPageEvidence": {
+    "method": "Independent read-only review: ordinary GET200 with readable HTML on Inicio,Agenda,Contacto; general web reader could not open those URLs, a limitation not proof of OAI-SearchBot blocking",
+    "coverageAlreadyPublished": true,
+    "competitorPagesExistedAndWereRead": true,
+    "competitorServicesOrClaimsCopied": false
+  },
+  "currentOfficialGuidance": [
+    {
+      "url": "https://developers.openai.com/api/docs/bots",
+      "checkedDate": "2026-11-25",
+      "applied": "OAI-SearchBot search control and published ranges; separate training control preserved. The approximately24-hour robots-policy adjustment is not an appearance deadline."
+    }
+  ],
+  "publicChangesMade": false,
+  "productionDeployments": 0,
+  "newTrackerOrAutomation": false,
+  "businessFactsPendingOwnerResponse": true,
+  "noRankingOrCitationGuarantee": true
+}

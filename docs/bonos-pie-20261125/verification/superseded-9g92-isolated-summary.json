@@ -1,0 +1,203 @@
+{
+  "observedAtUTC": "2026-11-25T21:18:44.539232+00:00",
+  "phase": "isolated",
+  "passed": true,
+  "methods": [
+    "GET"
+  ],
+  "mutations": 0,
+  "rawProviderResponsesStored": false,
+  "environmentValuesReadOrStored": false,
+  "authBypassCreated": false,
+  "deployment": {
+    "id": "dpl_9g92sC2Az5HRD6SssmUbSVtH6EHQ",
+    "url": "project-wrapp-dy326uwr0-lsandoval2-8260s-projects.vercel.app",
+    "readyState": "READY",
+    "state": null,
+    "target": "production",
+    "source": "cli",
+    "createdAt": 1795641415400,
+    "ready": 1795641422865,
+    "prebuilt": true,
+    "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+    "ownerId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+    "meta": {
+      "githubCommitSha": "c652c72df7b6013d31bf80f07ef17b6b7cbf96ea",
+      "githubCommitRef": "codex/bonos-pie-privado-20261125",
+      "githubOrg": "lasopho",
+      "githubRepo": "sollahms-web",
+      "candidateInventorySHA256": "21c47002c34cc053dbff31aa7d154b375b156e1c7fab2d24314879ff09d34741",
+      "baselineDeployment": "dpl_4tBq9YFz3BKoiXiJE5G5hBjPXMwW"
+    }
+  },
+  "aliasesBefore": [
+    {
+      "alias": "sollahms.cl",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": null,
+      "redirectStatusCode": null,
+      "updatedAt": 1795641095881,
+      "deploymentId": "dpl_4tBq9YFz3BKoiXiJE5G5hBjPXMwW"
+    },
+    {
+      "alias": "www.sollahms.cl",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": "sollahms.cl",
+      "redirectStatusCode": 308,
+      "updatedAt": 1795641095884,
+      "deploymentId": "dpl_4tBq9YFz3BKoiXiJE5G5hBjPXMwW"
+    }
+  ],
+  "aliasesAfter": [
+    {
+      "alias": "sollahms.cl",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": null,
+      "redirectStatusCode": null,
+      "updatedAt": 1795641095881,
+      "deploymentId": "dpl_4tBq9YFz3BKoiXiJE5G5hBjPXMwW"
+    },
+    {
+      "alias": "www.sollahms.cl",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": "sollahms.cl",
+      "redirectStatusCode": 308,
+      "updatedAt": 1795641095884,
+      "deploymentId": "dpl_4tBq9YFz3BKoiXiJE5G5hBjPXMwW"
+    }
+  ],
+  "projectSettings": {
+    "id": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+    "name": "project-wrapp",
+    "accountId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+    "live": false,
+    "ssoProtection": {
+      "deploymentType": "all_except_custom_domains"
+    },
+    "passwordProtection": null,
+    "trustedIps": null,
+    "autoAssignCustomDomains": false,
+    "previewDeploymentsDisabled": true,
+    "autoExposeSystemEnvs": true,
+    "gitProviderOptions": {
+      "createDeployments": "enabled"
+    },
+    "buildCommand": null,
+    "outputDirectory": null,
+    "installCommand": null,
+    "rootDirectory": null,
+    "framework": null,
+    "nodeVersion": "24.x",
+    "repository": {
+      "org": "lasopho",
+      "repo": "sollahms-web",
+      "productionBranch": "main"
+    }
+  },
+  "environmentMetadata": [
+    {
+      "name": "BLOB_READ_WRITE_TOKEN",
+      "targets": [
+        "development",
+        "preview",
+        "production"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "name": "BONOS_ADMIN_EMAIL",
+      "targets": [
+        "production"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "name": "BONOS_AUTH_SECRET",
+      "targets": [
+        "production"
+      ],
+      "type": "sensitive"
+    },
+    {
+      "name": "BONOS_STORE_ID",
+      "targets": [
+        "production"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "name": "BOOKING_BACKEND_URL",
+      "targets": [
+        "development",
+        "preview",
+        "production"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "name": "BOOKING_SECRET",
+      "targets": [
+        "development"
+      ],
+      "type": "sensitive"
+    },
+    {
+      "name": "BOOKING_SECRET",
+      "targets": [
+        "preview"
+      ],
+      "type": "sensitive"
+    },
+    {
+      "name": "BOOKING_SECRET",
+      "targets": [
+        "production"
+      ],
+      "type": "sensitive"
+    },
+    {
+      "name": "CONTACT_DELIVERY_MODE",
+      "targets": [
+        "preview"
+      ],
+      "type": "plain"
+    },
+    {
+      "name": "CONTACT_DELIVERY_MODE",
+      "targets": [
+        "production"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "name": "RESEND_API_KEY",
+      "targets": [
+        "development",
+        "preview",
+        "production"
+      ],
+      "type": "sensitive"
+    }
+  ],
+  "candidateInventorySHA256": "21c47002c34cc053dbff31aa7d154b375b156e1c7fab2d24314879ff09d34741",
+  "baselineDeployment": "dpl_4tBq9YFz3BKoiXiJE5G5hBjPXMwW",
+  "fullInventory": {
+    "expected": 1739,
+    "matched": 1739,
+    "missing": [],
+    "extra": [],
+    "differentUID": [],
+    "functionFiles": 66,
+    "functionBundles": 8,
+    "configurationMatched": true,
+    "sourceUIDAlgorithm": "SHA1 of the complete uploaded source; local SHA256/bytes certified by manifest"
+  },
+  "existingPublicStaticFilesUnchanged": 1672,
+  "existingFunctionFilesUnchanged": 57,
+  "originalRoutesPreserved": true,
+  "configSHA256": "dd07c9399fd567a09179de0ae9e5868a838d303508f2aefa1dc291e76c580c95",
+  "sourceComparisonsSHA256": "ef274eb74f8a5cc9a18b198f58fa1213e7c9cb511259f5213f772374f2d96a36",
+  "runtimeVerificationSHA256": "0e96905e24f785198f0ce16db9d9ff8bc9ea2a0be50a23867f356690e49bf983",
+  "syntheticQASHA256": "2e113716a59f7608460ead8590a5a2b4351642a77e9c477c51cf7f5121dc86b7",
+  "authenticationBoundary": "This proves deployment/source preservation. Real OTP, private Blob data and anonymous HTTP behavior require separate runtime evidence."
+}

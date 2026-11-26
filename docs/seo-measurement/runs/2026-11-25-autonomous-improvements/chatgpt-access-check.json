@@ -1,0 +1,99 @@
+{
+  "scopeId": "corporate-education-v3",
+  "robots": {
+    "observedAtUTC": "2026-11-26T01:07:03.383106+00:00",
+    "source": "Ordinary direct public GET, not an OpenAI-origin request",
+    "url": "https://sollahms.cl/robots.txt",
+    "status": 200,
+    "finalURL": "https://sollahms.cl/robots.txt",
+    "sha256": "530066fb3c652698511499f3d7aa60c5b1142bd1de5b47f05862983d5c9b6bba",
+    "bytes": 160,
+    "groups": [
+      {
+        "agents": [
+          "*"
+        ],
+        "rules": [
+          {
+            "directive": "allow",
+            "path": "/"
+          }
+        ]
+      },
+      {
+        "agents": [
+          "OAI-SearchBot"
+        ],
+        "rules": [
+          {
+            "directive": "allow",
+            "path": "/"
+          }
+        ]
+      }
+    ],
+    "actualOpenAICrawlEstablished": false,
+    "settingsChanged": false
+  },
+  "scopedCDNRead": {
+    "recordedAtUTC": "2026-11-26T01:08:03.015960+00:00",
+    "source": "Official Vercel CLI65.16 CDN requests, not runtime function logs",
+    "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+    "scopeId": "corporate-education-v3",
+    "corporatePaths": 12,
+    "hostname": "sollahms.cl",
+    "environment": "production",
+    "lookbackRequested": "1h",
+    "userAgentFilter": "clientUserAgent:*OAI-SearchBot*",
+    "requestLimit": 100,
+    "query": "requestHostname:\"sollahms.cl\" AND clientUserAgent:*OAI-SearchBot* AND requestPath:(\"/\" OR \"/agenda-asesoria.html\" OR \"/beneficios-tributarios-inmobiliarios.html\" OR \"/centro-orientacion.html\" OR \"/comparador-hipotecario.html\" OR \"/contacto.html\" OR \"/cuando-comprar-propiedad.html\" OR \"/entorno-desarrollo-urbano.html\" OR \"/guia-hipotecaria.html\" OR \"/inversion-inmobiliaria-empresas.html\" OR \"/privacidad.html\" OR \"/trabaja-con-nosotros.html\")",
+    "mutations": 0,
+    "rawRequestsOrIPsOrTokensOrHeadersStored": false,
+    "officialOpenAIIdentityVerified": false,
+    "limitations": [
+      "User-agent alone cannot verify OpenAI origin.",
+      "This short retained window does not establish historical crawling, indexation, or ChatGPT recommendation."
+    ],
+    "exitCode": 0,
+    "status": "read_succeeded",
+    "returnedEventRows": 0,
+    "eventTypes": {},
+    "safeEventSchemaKeys": [],
+    "summary": {
+      "recordsReturned": 0,
+      "timeRange": {
+        "start": "2026-11-26T00:08:03.000Z",
+        "end": "2026-11-26T01:08:03.000Z"
+      },
+      "pagination": {
+        "hasMore": false,
+        "next": null
+      },
+      "excludedIntervals": []
+    },
+    "routeStatusCounts": []
+  },
+  "conclusion": {
+    "closedAtUTC": "2026-11-26T01:08:44.776560+00:00",
+    "scope": "Read-only current robots and one short scoped CDN log query",
+    "robotsHTTP": 200,
+    "OAI_SearchBotAllowedExplicitly": true,
+    "GPTBotSpecificRule": false,
+    "GPTBotFallsBackToGeneralAllow": true,
+    "robotsSameHashAsPublished25Nov": true,
+    "publishedRobotsHash": "530066fb3c652698511499f3d7aa60c5b1142bd1de5b47f05862983d5c9b6bba",
+    "cdnQueryStatus": "read_succeeded",
+    "cdnFilteredRows": 0,
+    "observedTimeRange": {
+      "start": "2026-11-26T00:08:03.000Z",
+      "end": "2026-11-26T01:08:03.000Z"
+    },
+    "cdnExcludedIntervals": [],
+    "openAIGenuineCrawlProven": false,
+    "negativeHourDoesNotMeanNoHistoricalOpenAICrawl": true,
+    "searchEligibilityNotVisibilityGuarantee": true,
+    "newSettingsOrFirewallOrDeployments": 0,
+    "visitorOrAuthDataSaved": false,
+    "conclusion": "No current robots exclusion for OAI-SearchBot found. Narrow one-hour CDN query returned no matching declared-UA requests; cannot prove or disprove historical legitimate OpenAI crawling, locate an access barrier, or infer a cause of missing official-domain citations."
+  }
+}
