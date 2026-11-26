@@ -13,11 +13,14 @@ DOCS = Path(__file__).resolve().parent
 ROOT = DOCS.parents[1]
 PRIVATE = Path('/Users/luissandoval/.codex/visualizations/2026/11/19/01a1f34f-7346-7b03-850e-9f941c675b6c/sollahms-identity-geo-20261125')
 OUTPUT = PRIVATE / 'candidate/.vercel/output'
-BASE = 'dpl_AraH5152864kmJWKpNjbe2ovaJa7'
-BASE_SOURCE = '14d99d8fb286950a211b254f5d738b0abe18217e'
-BASE_PIN = 'fd19adf95f66af9730f738d01cd8efec8b08f2717f2179afaf71635c10d122cb'
+BASE = 'dpl_9M5yUF3GzFK2aWy34Qn4en7y8tA7'
+BASE_SOURCE = '2327ed4324b0d56af04d9f6db8f50b4f54ca33b4'
+BASE_PIN = '001fdacf9410338353d7a5867231b599aff89592e1eeb7e8c29f5055f6d1e1f3'
+EXPECTED_FILES = 1741
+EXPECTED_FUNCTION_FILES = 68
+ALLOWED_STATIC = ['static/agenda-asesoria.html', 'static/contacto.html', 'static/index.html', 'static/sitemap.xml']
 BASE_CONFIG = 'e1cba5f87d73032fd8b31545a03d7cafd129801566213304764c49f493bb5089'
-BASE_MANIFEST = ROOT / 'docs/bonos-pie-20261125/candidate-manifest.json'
+BASE_MANIFEST = ROOT / 'docs/payment-plans-20261125/candidate-manifest.json'
 PROJECT = 'prj_URomRRU0MAy4etGKP5gWv3Qv4DGH'
 TEAM = 'team_A9VNIW2f2K1IJpd2pGdvDmEN'
 SCOPE = 'lsandoval2-8260s-projects'
@@ -202,22 +205,25 @@ def manifest_rows(manifest):
 def baseline_rows():
     durable = DOCS / 'baseline-manifest.json'
     manifest = read(durable if durable.exists() else BASE_MANIFEST)
-    require(manifest['inventorySHA256'] == BASE_PIN, 'Baseline must be the complete Ara artifact')
+    require(manifest['inventorySHA256'] == BASE_PIN, 'Baseline must be the complete latest 9M artifact')
     rows = manifest_rows(manifest)
-    require(len(rows) == 1739, 'Ara baseline must have 1739 files')
+    require(len(rows) == EXPECTED_FILES, 'Latest baseline file count differs')
     return rows
 
 
 def local_candidate():
     manifest = read(PRIVATE / 'candidate-manifest.json')
+    require(manifest.get('baselineDeployment') == BASE, 'Candidate manifest baseline is stale')
     rows = manifest_rows(manifest)
     previous = {row['path']: row for row in baseline_rows()}
     expected = {row['path']: row for row in rows}
-    require(len(rows) == 1739 and set(expected) == set(previous), 'Candidate must preserve all 1739 Ara paths')
+    require(len(rows) == EXPECTED_FILES and set(expected) == set(previous), 'Candidate must preserve every latest production path')
+    require(sorted(path for path in expected if expected[path] != previous[path]) == ALLOWED_STATIC,
+            'Only the four reviewed public static paths may differ')
     require(expected['config.json']['sha256'] == previous['config.json']['sha256'] == BASE_CONFIG,
-            'Ara routing/configuration changed')
+            'Latest production routing/configuration changed')
     functions = [row for row in rows if row['path'].startswith('functions/')]
-    require(len(functions) == 66 and all(row == previous[row['path']] for row in functions),
+    require(len(functions) == EXPECTED_FUNCTION_FILES and all(row == previous[row['path']] for row in functions),
             'One of the eight existing function bundles changed')
     actual = {}
     for path in OUTPUT.rglob('*'):
@@ -255,6 +261,6 @@ def remote_inventory(tree, rows):
                 (observed[path].get('size') is None or observed[path]['size'] == row['bytes'])
                 for path, row in expected.items()), 'Remote source content-address comparison failed')
     require(sorted(functions) == sorted('out/api/' + name for name in FUNCTIONS), 'Registered function set differs')
-    return {'expected': 1739, 'matched': len(expected), 'missing': [], 'extra': [], 'differentUID': [],
-            'functionFiles': 66, 'functionBundles': 8, 'configurationMatched': True,
+    return {'expected': EXPECTED_FILES, 'matched': len(expected), 'missing': [], 'extra': [], 'differentUID': [],
+            'functionFiles': EXPECTED_FUNCTION_FILES, 'functionBundles': 8, 'configurationMatched': True,
             'sourceUIDAlgorithm': 'SHA1 of all uploaded sources; local bytes/SHA256 certified by manifest'}

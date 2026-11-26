@@ -1,4 +1,4 @@
-"""Verify identity changes against the actual Ara source and complete artifact."""
+"""Verify identity changes against the published public source and current9M artifact and complete artifact."""
 import hashlib, importlib.util, json, re
 from pathlib import Path
 from urllib.parse import urlsplit, unquote
@@ -68,10 +68,10 @@ for a,b in zip(oldentries,entries):
     check('sitemap entry '+url,b.findtext('s:lastmod',namespaces=ns)=='2026-11-25' if url in changed else ET.tostring(a)==ET.tostring(b))
 manifest=json.loads((PRIVATE/'candidate-manifest.json').read_text());baseline=json.loads((PRIVATE/'baseline-manifest.json').read_text())
 before={r['path']:r for r in baseline['inventory']};after={r['path']:r for r in manifest['inventory']}
-check('complete1739file namespace preserved',len(after)==1739 and set(before)==set(after))
+check('complete1741file namespace preserved',len(after)==1741 and set(before)==set(after))
 check('only four output files changed',{p for p in before if before[p]!=after[p]}=={'static/index.html','static/agenda-asesoria.html','static/contacto.html','static/sitemap.xml'})
-check('all66function files and configuration unchanged',sum(p.startswith('functions/') for p in after)==66 and all(before[p]==after[p] for p in after if p.startswith('functions/') or p=='config.json'))
+check('all68function files and configuration unchanged',sum(p.startswith('functions/') for p in after)==68 and all(before[p]==after[p] for p in after if p.startswith('functions/') or p=='config.json'))
 check('robots unchanged',hashlib.sha256((ROOT/'robots.txt').read_bytes()).hexdigest()==after['static/robots.txt']['sha256'])
-report={'passed':True,'checks':checks,'sourceBaseline':'14d99d8fb286950a211b254f5d738b0abe18217e','candidateInventorySHA256':manifest['inventorySHA256'],'realNetworkRequests':0,'formsSubmitted':0,'scope':'Three corporate pages and sitemap; preservation checks do not optimize excluded pages.'}
+report={'passed':True,'checks':checks,'sourceBaseline':'2327ed4324b0d56af04d9f6db8f50b4f54ca33b4','publicSourceUnchangedSince':'14d99d8fb286950a211b254f5d738b0abe18217e','candidateInventorySHA256':manifest['inventorySHA256'],'realNetworkRequests':0,'formsSubmitted':0,'scope':'Three corporate pages and sitemap; preservation checks do not optimize excluded pages.'}
 (DOC/'content-verification.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
-print(json.dumps({'passed':True,'checks':len(checks),'outputFilesChanged':4,'functionsUnchanged':66}))
+print(json.dumps({'passed':True,'checks':len(checks),'outputFilesChanged':4,'functionsUnchanged':68}))

@@ -4,7 +4,7 @@ from pathlib import Path
 from datetime import datetime, timezone
 from unittest.mock import patch
 DOC=Path(__file__).resolve().parent
-BASE='dpl_AraH5152864kmJWKpNjbe2ovaJa7'
+BASE='dpl_9M5yUF3GzFK2aWy34Qn4en7y8tA7'
 PRIVATE=Path('/Users/luissandoval/.codex/visualizations/2026/11/19/01a1f34f-7346-7b03-850e-9f941c675b6c/sollahms-identity-geo-20261125')
 def require(v,m):
     if not v:raise ValueError(m)
@@ -30,7 +30,7 @@ def simulate():
         state={'current':validate(s),'files':candidate['inventory'],'baselineFiles':baseline['inventory']}
         tests.append({'name':'Promote exact validated ID in memory','passed':state['current']==s['validatedCandidate']})
         state=recover(state,s['validatedCandidate'])
-        tests.append({'name':'Restore complete Ara inventory/config/functions in memory','passed':state['current']==BASE and state['files']==baseline['inventory']})
+        tests.append({'name':'Restore complete9M inventory/config/functions in memory','passed':state['current']==BASE and state['files']==baseline['inventory']})
         for key,value in [('current','later-production'),('target','preview'),('prebuilt',False),('candidate','different-id'),('inventory','changed'),('functionsPreserved',False),('configPreserved',False),('settingsPreserved',False),('environmentPreserved',False),('rollbackEligible',False),('httpPassed',False)]:
             invalid=copy.deepcopy(s);invalid[key]=value
             try:validate(invalid)
@@ -46,7 +46,7 @@ def gate():
     before=read('production-before.json');stage=read('staged-verification.json');http=read('staged-http.json');content=read('content-verification.json');qa=read('browser-qa.json');review=read('independent-review.json');recovery=read('recovery-readiness.json');simulation=read('release-simulation.json')
     require(simulation['passed'],'Simulation incomplete')
     age=(datetime.now(timezone.utc)-datetime.fromisoformat(stage['observedAtUTC'])).total_seconds();require(0<=age<180,'Fresh staged audit required')
-    snapshot={'current':stage['aliasesAfter'][0]['deploymentId'],'target':stage['deployment']['target'],'prebuilt':stage['deployment']['prebuilt'],'candidate':stage['deployment']['id'],'validatedCandidate':http['deploymentId'],'inventory':stage['candidateInventorySHA256'],'validatedInventory':content['candidateInventorySHA256'],'functionsPreserved':stage['fullInventory']['functionFiles']==66 and stage['fullInventory']['functionBundles']==8,'configPreserved':stage['fullInventory']['configurationMatched'],'settingsPreserved':stage['projectSettingsUnchanged'],'environmentPreserved':stage['environmentMetadataMatchesFrozenExpectedState'],'owner':recovery['ownerRoleConfirmed'],'rollbackEligible':recovery['isRollbackCandidate'] is True,'httpPassed':http['passed'],'contentPassed':content['passed'],'browserPassed':qa['failedCases']==0 and qa['completedCases']==18,'reviewPassed':review['passed']}
+    snapshot={'current':stage['aliasesAfter'][0]['deploymentId'],'target':stage['deployment']['target'],'prebuilt':stage['deployment']['prebuilt'],'candidate':stage['deployment']['id'],'validatedCandidate':http['deploymentId'],'inventory':stage['candidateInventorySHA256'],'validatedInventory':content['candidateInventorySHA256'],'functionsPreserved':stage['fullInventory']['functionFiles']==68 and stage['fullInventory']['functionBundles']==8,'configPreserved':stage['fullInventory']['configurationMatched'],'settingsPreserved':stage['projectSettingsUnchanged'],'environmentPreserved':stage['environmentMetadataMatchesFrozenExpectedState'],'owner':recovery['ownerRoleConfirmed'],'rollbackEligible':recovery['isRollbackCandidate'] is True,'httpPassed':http['passed'],'contentPassed':content['passed'],'browserPassed':qa['failedCases']==0 and qa['completedCases']==18,'reviewPassed':review['passed']}
     candidate=validate(snapshot)
     require(before['aliasesAfter']==stage['aliasesAfter'],'Baseline alias metadata changed')
     record={'validatedAtUTC':datetime.now(timezone.utc).isoformat(),'candidate':candidate,'inventorySHA256':stage['candidateInventorySHA256'],'baseline':BASE,'passed':True,'mutations':0}
