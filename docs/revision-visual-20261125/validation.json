@@ -1,0 +1,43 @@
+{
+  "scope": "Visual review and authorized responsive corrections",
+  "authorization": "Owner requested review, correction and publication of visual design, effects and framing on 2026-11-25 America/Santiago",
+  "baselineDeployment": "dpl_A2FBrKLLThsUXojdrt2MDReVoYoT",
+  "baselineRuntimeCommit": "69d6a132a3039186587cde2297bcd35192bec057",
+  "runtimeFilesChanged": ["index.html", "assets/css/advisory.css", "contacto.html", "agenda-asesoria.html"],
+  "changes": [
+    {
+      "objective": "Readable featured properties and useful image framing on tablets",
+      "observedProblem": "Three columns at 768px left about 149px of inner card width and compressed property facts and images",
+      "studyCriterion": "Preserve established branding and make comparison and the path to consultation understandable",
+      "verification": "One column below 700px, two from 700px, three from 1024px; aligned content, 32px second-row separation and decoded original images"
+    },
+    {
+      "objective": "Readable property metadata and clear price hierarchy",
+      "observedProblem": "Featured-card metadata used 10px text and prices had the same size as secondary facts",
+      "studyCriterion": "Maintain information legibility and contrast without changing commercial claims",
+      "verification": "Metadata at least 12px; price 18px; all original text, media and prices preserved"
+    },
+    {
+      "objective": "Usable contact forms and coherent keyboard navigation",
+      "observedProblem": "Tablet form fields were about 118px wide; Contact and Agenda displayed the form before preceding DOM content on mobile",
+      "studyCriterion": "Preserve the consultation journey, static controls, required identity fields and consent",
+      "verification": "Single form-layout column through 1023px; two identity-field columns from 768px; form first in DOM and visually on Contact and Agenda; keyboard sequence name, RUT, email, phone"
+    }
+  ],
+  "continuity": "docs/seo-measurement/STRATEGY-v3.md and linked studies of 2026-10-25 and 2026-10-29, active policy and current production records",
+  "validation": {
+    "focusedBrowserChecksPassed": 185,
+    "widths": [320, 390, 768, 820, 1024, 1440],
+    "baselinePublicScreens": 32,
+    "formsScriptsHeadersFootersAndCommercialContentPreserved": true,
+    "authoringHelperIdempotent": true,
+    "reducedMotionVerified": true,
+    "realFormsSubmitted": 0,
+    "functionsByteIdentical": true,
+    "routingByteIdentical": true,
+    "completeRuntimeFiles": 1741,
+    "functionBundles": 8,
+    "candidateInventorySHA256": "78394ebd658f2d406bfcf85f0150a090f9a2f831183c3401934115021f2324f5"
+  },
+  "searchOutcomes": {"Google": "Not measured by visual QA", "OpenAI_ChatGPT_Search": "Not measured by visual QA", "Bing_Microsoft_Copilot": "Not measured by visual QA"}
+}

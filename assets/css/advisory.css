@@ -1,6 +1,7 @@
 /* Shared first-contact flow. No external assets or layout framework. */
 .advisory-section{background:var(--s-section);color:var(--s-green);padding:5rem 2rem}
 .advisory-layout{max-width:1160px;margin:auto;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:6rem;align-items:start}
+.advisory-page .advisory-layout{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)}
 .advisory-copy h2,.advisory-page-heading h1{font-family:Manrope,sans-serif;font-size:clamp(2rem,3.4vw,3.5rem);line-height:1.1;font-weight:600;letter-spacing:-.045em;max-width:18ch;margin:1rem 0 1.5rem}
 .advisory-copy>p:not(.advisory-eyebrow){max-width:43ch;color:var(--s-muted);line-height:1.8}
 .advisory-eyebrow{font-size:.7rem;font-weight:700;letter-spacing:.18em;color:var(--s-gold-ink)}
@@ -45,7 +46,8 @@
 .advisory-page-heading h1{max-width:22ch;font-size:clamp(2.5rem,4.4vw,4rem)}
 .advisory-page-heading>div>p:last-of-type{max-width:60ch;color:var(--s-muted);line-height:1.8;font-size:1.05rem}
 .advisory-jump{display:inline-block;margin-top:1.5rem;text-decoration:underline;text-underline-offset:.3rem;font-size:.9rem;font-weight:600}
-@media(max-width:767px){.advisory-section{padding:2.5rem 1.25rem}.advisory-layout{grid-template-columns:1fr;gap:2.5rem}.advisory-panel{padding:1.5rem}.advisory-page-heading{padding:2.5rem 1.5rem 2rem}.advisory-page .advisory-panel{grid-row:1}.advisory-page .advisory-copy{grid-row:2}.advisory-copy h2{max-width:23ch}.advisory-options{gap:.3rem 1rem}.advisory-page header nav>a{flex-shrink:0}.advisory-page header nav>div>a{font-size:.7rem}.advisory-section :focus-visible{outline-offset:2px}}
+@media(max-width:1023px){.advisory-layout,.advisory-page .advisory-layout{grid-template-columns:minmax(0,1fr);gap:2.5rem}}
+@media(max-width:767px){.advisory-section{padding:2.5rem 1.25rem}.advisory-panel{padding:1.5rem}.advisory-page-heading{padding:2.5rem 1.5rem 2rem}.advisory-copy h2{max-width:23ch}.advisory-options{gap:.3rem 1rem}.advisory-page header nav>a{flex-shrink:0}.advisory-page header nav>div>a{font-size:.7rem}.advisory-section :focus-visible{outline-offset:2px}}
 
 /* Four visible identification/contact fields; one column on mobile. */
 .advisory-identity{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:1rem}

@@ -464,15 +464,24 @@
 <link rel="stylesheet" href="/assets/css/sollahms-brand.css?v=20261026-1">
 <script src="/assets/js/image-parallax.js?v=20261027-1" defer></script>
 <style id="featured-card-alignment">
+#portfolio .featured-cards-grid{grid-template-columns:minmax(0,1fr)}
 #portfolio .featured-card{display:flex;flex-direction:column}
 #portfolio .featured-card-content{display:grid;grid-template-rows:auto auto auto minmax(3.5rem,auto) minmax(9rem,auto) auto auto;flex:1}
 #portfolio .featured-card-content>div.flex{min-width:0}
 #portfolio .featured-card-content>div.flex>div{min-width:0}
 #portfolio .featured-card-content>p.leading-relaxed{overflow-wrap:break-word}
-@media(min-width:768px){
-  #portfolio .featured-cards-grid{row-gap:0}
+#portfolio [class~="text-[10px]"]{font-size:.75rem;line-height:1.5}
+#portfolio .featured-card-content>div.border-t .font-mono{font-size:1.125rem;line-height:1.4}
+@media(min-width:700px){
+  #portfolio .featured-cards-grid{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:0}
   #portfolio .featured-card{display:grid;grid-template-rows:subgrid;grid-row:span 8}
   #portfolio .featured-card-content{display:grid;grid-template-rows:subgrid;grid-row:span 7;row-gap:0}
+}
+@media(min-width:700px) and (max-width:1023px){
+  #portfolio .featured-card:nth-child(n+3){margin-top:2rem}
+}
+@media(min-width:1024px){
+  #portfolio .featured-cards-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
 </style>
 <link rel="stylesheet" href="/assets/css/expertise-navigation.css"><script defer src="/assets/js/expertise-navigation.js"></script><link rel="stylesheet" href="/assets/css/corporate-footer.css">
