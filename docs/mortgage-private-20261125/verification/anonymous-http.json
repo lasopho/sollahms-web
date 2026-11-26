@@ -1,0 +1,56 @@
+{
+  "passed": true,
+  "observedAtUTC": "2026-11-26T01:43:34.535835+00:00",
+  "authenticated": false,
+  "noCookiesOrBypass": true,
+  "checks": [
+    {
+      "path": "/bonos-pie",
+      "status": 303,
+      "bytes": 0,
+      "location": "/bonos-pie/acceso",
+      "cacheControl": "private, no-store, max-age=0",
+      "robots": "noindex, nofollow, noarchive, nosnippet"
+    },
+    {
+      "path": "/bonos-pie/acceso",
+      "status": 200,
+      "bytes": 3069,
+      "location": null,
+      "cacheControl": "private, no-store, max-age=0",
+      "robots": "noindex, nofollow, noarchive, nosnippet"
+    },
+    {
+      "path": "/api/interno-bonos-pie?op=payment-data",
+      "status": 401,
+      "bytes": 51,
+      "location": null,
+      "cacheControl": "private, no-store, max-age=0",
+      "robots": "noindex, nofollow, noarchive, nosnippet"
+    },
+    {
+      "path": "/api/interno-bonos-pie?op=asset&file=payment-ui.js",
+      "status": 401,
+      "bytes": 27,
+      "location": null,
+      "cacheControl": "private, no-store, max-age=0",
+      "robots": "noindex, nofollow, noarchive, nosnippet"
+    },
+    {
+      "path": "/api/interno-bonos-pie?op=asset&file=payment-plan.mjs",
+      "status": 401,
+      "bytes": 27,
+      "location": null,
+      "cacheControl": "private, no-store, max-age=0",
+      "robots": "noindex, nofollow, noarchive, nosnippet"
+    },
+    {
+      "path": "/api/interno-bonos-pie?op=data",
+      "status": 401,
+      "bytes": 51,
+      "location": null,
+      "cacheControl": "private, no-store, max-age=0",
+      "robots": "noindex, nofollow, noarchive, nosnippet"
+    }
+  ]
+}

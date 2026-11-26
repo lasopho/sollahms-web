@@ -1,0 +1,174 @@
+{
+  "passed": true,
+  "observedAtUTC": "2026-11-26T01:41:26.408970+00:00",
+  "sourceCommit": "3a7537ce34f403a439665a6ae3df9ee39a8a79aa",
+  "candidateInventorySHA256": "ed1a616d3a57cf887dcfc6a982aba1d1e48e80a13980c06a12f4296f8c342658",
+  "baselineDeployment": "dpl_ARisoRo2JVFfigUyeRphXCxtJu32",
+  "completeRemoteBaseline": {
+    "expected": 1741,
+    "matched": 1741,
+    "missing": [],
+    "extra": [],
+    "differentUID": [],
+    "functionFiles": 68,
+    "functionBundles": 8,
+    "configurationMatched": true,
+    "sourceUIDAlgorithm": "SHA1 of the complete uploaded source; local SHA256/bytes certified by manifest"
+  },
+  "projectSettings": {
+    "id": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+    "name": "project-wrapp",
+    "accountId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+    "live": false,
+    "ssoProtection": {
+      "deploymentType": "all_except_custom_domains"
+    },
+    "passwordProtection": null,
+    "trustedIps": null,
+    "autoAssignCustomDomains": false,
+    "previewDeploymentsDisabled": true,
+    "autoExposeSystemEnvs": true,
+    "gitProviderOptions": {
+      "createDeployments": "enabled"
+    },
+    "buildCommand": null,
+    "outputDirectory": null,
+    "installCommand": null,
+    "rootDirectory": null,
+    "framework": null,
+    "nodeVersion": "24.x",
+    "repository": {
+      "org": "lasopho",
+      "repo": "sollahms-web",
+      "productionBranch": "main"
+    }
+  },
+  "environmentMetadata": [
+    {
+      "name": "BLOB_READ_WRITE_TOKEN",
+      "targets": [
+        "development",
+        "preview",
+        "production"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "name": "BONOS_ADMIN_EMAIL",
+      "targets": [
+        "production"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "name": "BONOS_AUTH_SECRET",
+      "targets": [
+        "production"
+      ],
+      "type": "sensitive"
+    },
+    {
+      "name": "BONOS_STORE_ID",
+      "targets": [
+        "production"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "name": "BOOKING_BACKEND_URL",
+      "targets": [
+        "development",
+        "preview",
+        "production"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "name": "BOOKING_SECRET",
+      "targets": [
+        "development"
+      ],
+      "type": "sensitive"
+    },
+    {
+      "name": "BOOKING_SECRET",
+      "targets": [
+        "preview"
+      ],
+      "type": "sensitive"
+    },
+    {
+      "name": "BOOKING_SECRET",
+      "targets": [
+        "production"
+      ],
+      "type": "sensitive"
+    },
+    {
+      "name": "CONTACT_DELIVERY_MODE",
+      "targets": [
+        "preview"
+      ],
+      "type": "plain"
+    },
+    {
+      "name": "CONTACT_DELIVERY_MODE",
+      "targets": [
+        "production"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "name": "RESEND_API_KEY",
+      "targets": [
+        "development",
+        "preview",
+        "production"
+      ],
+      "type": "sensitive"
+    }
+  ],
+  "aliases": [
+    {
+      "alias": "sollahms.cl",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": null,
+      "redirectStatusCode": null,
+      "updatedAt": 1795656835964,
+      "deploymentId": "dpl_ARisoRo2JVFfigUyeRphXCxtJu32"
+    },
+    {
+      "alias": "www.sollahms.cl",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": "sollahms.cl",
+      "redirectStatusCode": 308,
+      "updatedAt": 1795656835967,
+      "deploymentId": "dpl_ARisoRo2JVFfigUyeRphXCxtJu32"
+    },
+    {
+      "alias": "sollhams.cl",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": "sollahms.cl",
+      "redirectStatusCode": 308,
+      "updatedAt": 1795656835965,
+      "deploymentId": "dpl_ARisoRo2JVFfigUyeRphXCxtJu32"
+    },
+    {
+      "alias": "project-wrapp.vercel.app",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": null,
+      "redirectStatusCode": null,
+      "updatedAt": 1795656835965,
+      "deploymentId": "dpl_ARisoRo2JVFfigUyeRphXCxtJu32"
+    },
+    {
+      "alias": "project-wrapp-lsandoval2-8260s-projects.vercel.app",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": null,
+      "redirectStatusCode": null,
+      "updatedAt": 1795656835966,
+      "deploymentId": "dpl_ARisoRo2JVFfigUyeRphXCxtJu32"
+    }
+  ],
+  "environmentValuesReadOrStored": false
+}
