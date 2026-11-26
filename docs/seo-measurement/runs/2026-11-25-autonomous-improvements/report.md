@@ -54,7 +54,27 @@ La opción Pro del registro anterior estaba limitada y la UI actual usó GPT-6/M
 
 ## Bing / Microsoft Copilot
 
-No se recuperaron métricas privadas nuevas: la sesión estaba cerrada y la revisión automática rechazó elegir Google para iniciar sesión porque la cuenta/método no estaban suficientemente especificados. No se reintentó por otro proveedor ni con APIs privadas. El aviso público IndexNow de las dos URL modificadas recibió **HTTP 202: validación de la prueba pública pendiente**. Ese acuse no acredita rastreo, indexación, posición ni citas de Copilot y no sustituye las métricas privadas. [Recibo del aviso](../../../seo-geo-20261125/indexnow-submission.json). Los datos ausentes permanecen desconocidos.
+**Acceso operativo verificado después de la publicación:** la sesión existente permite consultar https://sollahms.cl/ con lsandoval@sollahms.cl, administrador verificado por DNS. El proveedor Google/Microsoft no está expuesto en esa sesión; se conservó la autenticación que funciona. El rechazo anterior sigue documentado como antecedente y no representa el acceso actual. [Acceso y procedimiento](../../operations/2026-11-25-bing-access/README.md).
+
+Las tablas de páginas y consultas corresponden sólo a **Web**, aunque el selector general dice «Web and Chat». Los totales de esa gráfica incluyen rutas excluidas y no se usan como total corporativo. No se dispone de zona nativa verificada. [Datos y procedencia UI](bing-comparison.json).
+
+| Página | Impresiones 11–17/11 | Impresiones 18–24/11 | Clics anteriores → recientes | Posición media anterior → reciente |
+| --- | ---: | --- | --- | --- |
+| Inicio | 5 | Sin fila devuelta | 0 → desconocido | 1,2 → desconocida |
+| Contacto | 1 | Sin fila devuelta | 0 → desconocido | 3 → desconocida |
+| Otras diez corporativas | Sin fila devuelta | Sin fila devuelta | Desconocidos | Desconocida |
+
+La primera ventana reproduce la lectura del 19/11. En la segunda no aparece ninguna de las doce URL; eso no demuestra cero impresiones o cero clics. Aunque se seleccionaron dos ventanas de siete días, la tabla diaria reciente sólo muestra 18–23/11: falta 24/11 y no se calcula crecimiento. Google conserva su comparación de seis días; no se fabrica una equivalencia entre motores o posiciones. Todos estos períodos son anteriores a T0 del 25/11.
+
+**Marca a secas:** el detalle nativo de «sollahms» muestra, para 11–17, Inicio 1 impresión/0 clics/posición 1 y Contacto 1/0/posición 3. La cifra general de la consulta incluye rutas excluidas y no se presenta como corporativa ni se reconstruye sumando páginas. Sollams, Solams, Solamp y Solamps a secas no devuelven filas; tampoco las cinco formas en la ventana reciente. «solams inmobiliaria chile» y «solamp inmobiliaria chile» son consultas compuestas y se mantienen aparte, sin atribuir sus cifras a páginas incluidas sin el desglose correspondiente.
+
+**Indexación y rastreo:** Inicio figura indexada. Entorno está descubierta desde 11/11 y Centro desde 02/11, ambas sin rastrear según Bing Index. No se envió otra solicitud de indexación. El sitemap existente tiene estado Success, 144 URL descubiertas,0 errores y 0 advertencias; su último rastreo mostrado es 22/11. Ese estado no acredita que todas sus URL estén indexadas ni que Bing haya procesado el cambio del 25/11.
+
+**IndexNow:** el aviso original de dos URL recibió HTTP 202, validación de propiedad pendiente. La comprobación actual devuelve 200 y confirma que la prueba pública coincide con la enviada; el portal muestra «Get Started» y aún no ofrece un historial verificable del aviso. No se repitió el envío. Recepción, validación de propiedad, rastreo e indexación son etapas distintas conforme al [protocolo oficial](https://www.indexnow.org/documentation). [Recibo original](../../../seo-geo-20261125/indexnow-submission.json) y [comprobación actual](../../operations/2026-11-25-bing-access/indexnow-public-proof.json).
+
+**AI Performance:** selección 3M, Microsoft Copilots and Partners: muestra 0 citas, promedio 0 páginas citadas y ninguna fila de consultas de fundamentación. Es una muestra del dominio, sin filtro nativo de las doce URL; no demuestra ausencia universal ni sustituye una prueba de ChatGPT Search. Se conserva la observación real de ChatGPT anterior a T0, sin repetirla.
+
+El seguimiento existente de los jueves a las 10:00 de Santiago usa la política actualizada y estos registros. Las lecturas autenticadas se repitieron satisfactoriamente al navegar entre informes. Una sesión puede vencer y requerir autenticación humana; no se creó una credencial ni se promete acceso desatendido permanente. No hay intervención humana pendiente para la sesión actual.
 
 ## Visitas y solicitudes
 
@@ -70,6 +90,6 @@ Se contrastaron publicación, estado posterior de producción y política activa
 
 ## How this report was made
 
-Informe local preparado por Codex con la guía [OpenSEO SEO Report](https://openseo.so/docs/skills/seo-report) el 25/11/2026, reutilizando el formato del 19/11. No se repitieron consultas ni auditorías para generarlo. El guardado privado en OpenSEO se registra aparte; no se habilita un enlace público.
+Informe local preparado por Codex con la guía [OpenSEO SEO Report](https://openseo.so/docs/skills/seo-report) el 25/11/2026, reutilizando el formato del 19/11. Se reutilizaron las lecturas previas de Google, GA4 y ChatGPT; la ampliación añade únicamente observaciones autenticadas de Bing y no inicia otra auditoría. El guardado privado en OpenSEO se registra aparte; no se habilita un enlace público. La ampliación de Bing reutiliza el mismo informe y añade observaciones autenticadas UI, no exportaciones CSV ni nuevas lecturas de Google, GA4 o ChatGPT.
 
 Se reutilizan las lecturas gratuitas de GSC por URL exacta y fecha, inspecciones de cinco URL, una respuesta real de ChatGPT y las lecturas nativas de GA4 ya registradas. Las tablas se contrastan con los JSON del mismo directorio. Alcance: doce URL corporativas v3; catálogo, fichas, Centro documental y perfiles externos quedan fuera de las cifras y optimización del segmento.
