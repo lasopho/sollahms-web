@@ -1,0 +1,267 @@
+{
+  "observedAtUTC": "2026-11-26T01:34:13.509396+00:00",
+  "timezone": "America/Santiago",
+  "phase": "after",
+  "methods": [
+    "GET"
+  ],
+  "mutations": 0,
+  "rawProviderResponsesStored": false,
+  "environmentValuesReadOrStored": false,
+  "authBypassCreated": false,
+  "baselineDeployment": "dpl_9M5yUF3GzFK2aWy34Qn4en7y8tA7",
+  "baselineSourceCommit": "2327ed4324b0d56af04d9f6db8f50b4f54ca33b4",
+  "deployment": {
+    "id": "dpl_ARisoRo2JVFfigUyeRphXCxtJu32",
+    "url": "project-wrapp-o6fs91afa-lsandoval2-8260s-projects.vercel.app",
+    "readyState": "READY",
+    "target": "production",
+    "source": "cli",
+    "createdAt": 1795656733886,
+    "ready": 1795656741444,
+    "prebuilt": true,
+    "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+    "ownerId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+    "productionUrl": null,
+    "isRollbackCandidate": null,
+    "meta": {
+      "githubCommitSha": "7c5247f3f74724e9d09f3f03974fd8d63ab3e729",
+      "githubCommitRef": "codex/seo-geo-20261125",
+      "githubOrg": "lasopho",
+      "githubRepo": "sollahms-web",
+      "candidateInventorySHA256": "a7bd204f1e11868d3b77748612361d1d82f639ce12928e6cbaa04f912c869027",
+      "baselineDeployment": "dpl_9M5yUF3GzFK2aWy34Qn4en7y8tA7"
+    }
+  },
+  "aliasesBefore": [
+    {
+      "alias": "sollahms.cl",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": null,
+      "redirectStatusCode": null,
+      "updatedAt": 1795656835964,
+      "createdAt": 1790309292830,
+      "deploymentId": "dpl_ARisoRo2JVFfigUyeRphXCxtJu32"
+    },
+    {
+      "alias": "www.sollahms.cl",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": "sollahms.cl",
+      "redirectStatusCode": 308,
+      "updatedAt": 1795656835967,
+      "createdAt": 1792966021159,
+      "deploymentId": "dpl_ARisoRo2JVFfigUyeRphXCxtJu32"
+    },
+    {
+      "alias": "sollhams.cl",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": "sollahms.cl",
+      "redirectStatusCode": 308,
+      "updatedAt": 1795656835965,
+      "createdAt": 1778007732492,
+      "deploymentId": "dpl_ARisoRo2JVFfigUyeRphXCxtJu32"
+    },
+    {
+      "alias": "project-wrapp.vercel.app",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": null,
+      "redirectStatusCode": null,
+      "updatedAt": 1795656835965,
+      "createdAt": 1777497563537,
+      "deploymentId": "dpl_ARisoRo2JVFfigUyeRphXCxtJu32"
+    },
+    {
+      "alias": "project-wrapp-lsandoval2-8260s-projects.vercel.app",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": null,
+      "redirectStatusCode": null,
+      "updatedAt": 1795656835966,
+      "createdAt": 1777497563537,
+      "deploymentId": "dpl_ARisoRo2JVFfigUyeRphXCxtJu32"
+    }
+  ],
+  "projectSettings": {
+    "id": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+    "name": "project-wrapp",
+    "accountId": "team_A9VNIW2f2K1IJpd2pGdvDmEN",
+    "live": false,
+    "ssoProtection": {
+      "deploymentType": "all_except_custom_domains"
+    },
+    "autoAssignCustomDomains": false,
+    "previewDeploymentsDisabled": true,
+    "autoExposeSystemEnvs": true,
+    "gitProviderOptions": {
+      "createDeployments": "enabled"
+    },
+    "buildCommand": null,
+    "outputDirectory": null,
+    "installCommand": null,
+    "rootDirectory": null,
+    "framework": null,
+    "nodeVersion": "24.x",
+    "repository": {
+      "org": "lasopho",
+      "repo": "sollahms-web",
+      "productionBranch": "main"
+    },
+    "passwordProtectionConfigured": false,
+    "trustedIpsConfigured": false
+  },
+  "environmentMetadata": [
+    {
+      "name": "BLOB_READ_WRITE_TOKEN",
+      "targets": [
+        "development",
+        "preview",
+        "production"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "name": "BONOS_ADMIN_EMAIL",
+      "targets": [
+        "production"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "name": "BONOS_AUTH_SECRET",
+      "targets": [
+        "production"
+      ],
+      "type": "sensitive"
+    },
+    {
+      "name": "BONOS_STORE_ID",
+      "targets": [
+        "production"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "name": "BOOKING_BACKEND_URL",
+      "targets": [
+        "development",
+        "preview",
+        "production"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "name": "BOOKING_SECRET",
+      "targets": [
+        "development"
+      ],
+      "type": "sensitive"
+    },
+    {
+      "name": "BOOKING_SECRET",
+      "targets": [
+        "preview"
+      ],
+      "type": "sensitive"
+    },
+    {
+      "name": "BOOKING_SECRET",
+      "targets": [
+        "production"
+      ],
+      "type": "sensitive"
+    },
+    {
+      "name": "CONTACT_DELIVERY_MODE",
+      "targets": [
+        "preview"
+      ],
+      "type": "plain"
+    },
+    {
+      "name": "CONTACT_DELIVERY_MODE",
+      "targets": [
+        "production"
+      ],
+      "type": "encrypted"
+    },
+    {
+      "name": "RESEND_API_KEY",
+      "targets": [
+        "development",
+        "preview",
+        "production"
+      ],
+      "type": "sensitive"
+    }
+  ],
+  "automaticBranchDeploymentGuard": {
+    "branch": "codex/seo-geo-20261125",
+    "enabled": false
+  },
+  "candidateInventorySHA256": "a7bd204f1e11868d3b77748612361d1d82f639ce12928e6cbaa04f912c869027",
+  "inventoryManifestFileSHA256": "5a1c6252c04e323659139ed8ac52636e9c0115f19ce33791786a447258862178",
+  "fullInventory": {
+    "expected": 1741,
+    "matched": 1741,
+    "missing": [],
+    "extra": [],
+    "differentUID": [],
+    "functionFiles": 68,
+    "functionBundles": 8,
+    "configurationMatched": true,
+    "sourceUIDAlgorithm": "SHA1 of all uploaded sources; local bytes/SHA256 certified by manifest"
+  },
+  "projectSettingsUnchanged": true,
+  "environmentMetadataMatchesFrozenExpectedState": true,
+  "aliasConfigurationsAndCreationDatesPreserved": true,
+  "sameVerifiedDeploymentPromoted": true,
+  "t0AmericaSantiago": "2026-11-25T22:33:55.964000-03:00",
+  "t0UTC": "2026-11-26T01:33:55.964000+00:00",
+  "aliasesAfter": [
+    {
+      "alias": "sollahms.cl",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": null,
+      "redirectStatusCode": null,
+      "updatedAt": 1795656835964,
+      "createdAt": 1790309292830,
+      "deploymentId": "dpl_ARisoRo2JVFfigUyeRphXCxtJu32"
+    },
+    {
+      "alias": "www.sollahms.cl",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": "sollahms.cl",
+      "redirectStatusCode": 308,
+      "updatedAt": 1795656835967,
+      "createdAt": 1792966021159,
+      "deploymentId": "dpl_ARisoRo2JVFfigUyeRphXCxtJu32"
+    },
+    {
+      "alias": "sollhams.cl",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": "sollahms.cl",
+      "redirectStatusCode": 308,
+      "updatedAt": 1795656835965,
+      "createdAt": 1778007732492,
+      "deploymentId": "dpl_ARisoRo2JVFfigUyeRphXCxtJu32"
+    },
+    {
+      "alias": "project-wrapp.vercel.app",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": null,
+      "redirectStatusCode": null,
+      "updatedAt": 1795656835965,
+      "createdAt": 1777497563537,
+      "deploymentId": "dpl_ARisoRo2JVFfigUyeRphXCxtJu32"
+    },
+    {
+      "alias": "project-wrapp-lsandoval2-8260s-projects.vercel.app",
+      "projectId": "prj_URomRRU0MAy4etGKP5gWv3Qv4DGH",
+      "redirect": null,
+      "redirectStatusCode": null,
+      "updatedAt": 1795656835966,
+      "createdAt": 1777497563537,
+      "deploymentId": "dpl_ARisoRo2JVFfigUyeRphXCxtJu32"
+    }
+  ],
+  "passed": true
+}

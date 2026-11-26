@@ -113,3 +113,48 @@ Se contrastaron publicación, estado posterior de producción y política activa
 Informe local preparado por Codex con la guía [OpenSEO SEO Report](https://openseo.so/docs/skills/seo-report) el 25/11/2026, reutilizando el formato del 19/11. Se reutilizaron las lecturas previas de Google, GA4 y ChatGPT; la ampliación añade únicamente observaciones autenticadas de Bing y no inicia otra auditoría. El guardado privado en OpenSEO se registra aparte; no se habilita un enlace público. La ampliación de Bing reutiliza el mismo informe y añade observaciones autenticadas UI, no exportaciones CSV ni nuevas lecturas de Google, GA4 o ChatGPT.
 
 Se reutilizan las lecturas gratuitas de GSC por URL exacta y fecha, inspecciones de cinco URL, una respuesta real de ChatGPT y las lecturas nativas de GA4 ya registradas. Las tablas se contrastan con los JSON del mismo directorio. Alcance: doce URL corporativas v3; catálogo, fichas, Centro documental y perfiles externos quedan fuera de las cifras y optimización del segmento.
+
+
+## Corrección de identidad publicada el 25/11 a las 22:33
+
+La corrección está publicada y verificada en Production dpl_ARisoRo2JVFfigUyeRphXCxtJu32, fuente 7c5247f3f74724e9d09f3f03974fd8d63ab3e729. T0: **25/11/2026 22:33:55.964 America/Santiago**. [Cierre e integridad](../../../identity-geo-20261125/publication.json).
+
+El hallazgo comprobado era la falta de una identificación explícita del dominio oficial en el cuerpo de Inicio, Agenda y Contacto, junto a una descripción estructurada centrada sólo en inversión. Los identificadores, canonical y nombre ya eran correctos; no se demostró un bloqueo técnico de OpenAI ni una causa única de la selección de fuentes de ChatGPT. La prueba anterior por marca sigue siendo evidencia distinta del control neutral de compradores.
+
+Se enriqueció la FAQ existente de Inicio, se aclararon las introducciones de Asesoría y Contacto y se alinearon las descripciones Organization/WebSite/Service con compra para vivir o invertir. La configuración y el helper conservan estos cambios al regenerar. Se mantienen nombre, IDs, logo, contactos, H1, cabeceras, pies, formularios, consentimiento, cobertura y preferencias de entrenamiento. No se añadió identidad profesional, credenciales, perfiles personales ni promesas sin respaldo. [Diagnóstico y archivos](../../../identity-geo-20261125/README.md).
+
+Antes de crear Production, la guarda detectó una publicación posterior del panel privado y detuvo el intento sin emitir un deployment. Se incorporó íntegramente 9M/2327 y se reaplicaron sólo tres HTML y el sitemap: **1.741 archivos, ocho funciones, 68 archivos de función; 1.737 archivos idénticos**. Catálogo, 152 fichas, Centro documental, panel privado y planes de pago, CRM, privacidad, analítica, SSO y dominios quedaron preservados. Se promovió el mismo ID prebuilt validado. Pasaron revisión independiente, 18 casos de navegador aislado, inventario remoto completo, 16 respuestas públicas, doce canonical y cuatro redirecciones. La reversión a 9M se revalidó y se probó sólo en memoria, sin formularios ni envíos reales.
+
+### Observaciones reales posteriores: marca y descubrimiento por separado
+
+Se repitieron dos preguntas exactas en chats temporales nuevos, sin personalización, con búsqueda seleccionada, GPT-6 Medium y aviso visible de funciones reducidas. Los originales y capturas permanecen privados; se versionan sólo observaciones saneadas y hashes. No se ejecutaron APIs de generación ni consultas pagadas.
+
+| Indicador | Prueba por marca anterior | Prueba por marca posterior |
+| --- | --- | --- |
+| Pregunta | Qué es Sollahms y qué asesoría ofrece en Chile | Misma pregunta exacta |
+| Mención de la marca suministrada | Sí | Sí |
+| Identifica/enlaza el dominio oficial | No observado | No observado |
+| Remite a perfil personal | Sí | Sí |
+| Cita propia elegible, inventario completo | Desconocida | Desconocida |
+| Recomendación espontánea | No la mide esta pregunta | No la mide esta pregunta |
+
+La nueva respuesta todavía dice que no pudo verificar el sitio corporativo oficial. No se convierten sus afirmaciones sobre el fundador o sus servicios en hechos de Sollahms. [Observación por marca posterior](../../../identity-geo-20261125/chatgpt-brand-postpublication.json).
+
+En el **control neutral de Concepción**, tanto la muestra previa del 25/11 como la posterior completaron respuestas sin mención, recomendación corporativa ni enlace ordinario a Sollahms. El inventario completo de citas sigue desconocido. La respuesta posterior enumera empresas externas. Esto no certifica ausencia global, tendencia ni efecto de la publicación hecha minutos antes. La referencia del 19/11 usa otras condiciones de modelo y permanece separada. [Control posterior](../../../identity-geo-20261125/chatgpt-neutral-postpublication.json).
+
+### Indexación y próxima comparación
+
+IndexNow recibió **HTTP 200** para exactamente Inicio, Agenda y Contacto después de verificar su prueba de propiedad y bytes públicos; se hizo un envío, sin duplicar las dos notificaciones anteriores. [Acuse](../../../identity-geo-20261125/indexnow-submission.json). Google muestra las tres páginas indexadas en su estado almacenado y aceptó una solicitud individual de nuevo rastreo por cada una de las tres URL; ese estado no acredita que haya procesado esta versión. [Solicitudes de Google](../../../identity-geo-20261125/google-indexing-requests.json).
+
+No existe aún evidencia de rastreo/indexación de estos nuevos bytes, mejora de recomendaciones o resultado comercial atribuible. Las métricas Google, Bing, GA4 y Clarity de los apartados anteriores conservan sus fechas y límites; no se vuelven a consultar ni se reetiquetan como efecto de esta publicación.
+
+La automatización existente de los **jueves a las 10:00, America/Santiago**, quedó ampliada sin duplicarse. [Doce consultas exactas planificadas](../../../identity-geo-20261125/identity-query-plan.json) separan identificación institucional y recomendación espontánea; mantienen el control neutral anterior. Las nuevas doce consultas no se consideran ejecutadas por haber registrado estas dos pruebas existentes. Google, Bing, ChatGPT Search y, cuando esté disponible, Copilot conservan registros independientes. Se medirá mención, enlace al dominio oficial, cita que sustenta la respuesta, recomendación, confusión con perfil personal y prominencia descriptiva; la posición dentro de una respuesta no es ranking.
+
+La próxima revisión debe comprobar primero reconocimiento del dominio y nuevas fuentes, conservar condiciones comparables y contrastar solicitudes pertinentes con la medición consentida. No se propone otro cambio masivo ni una nueva arquitectura a partir de la muestra inmediata. Los antecedentes profesionales y el entregable real de la asesoría siguen pendientes de respaldo del titular. Según la [guía oficial de OpenAI](https://developers.openai.com/api/docs/bots), acceso de búsqueda y entrenamiento son controles distintos; no hay una garantía de aparición por permitir un bot ni un plazo de inclusión acreditado.
+
+
+### Producción posterior que conserva la corrección
+
+Después de T0 se publicó una mejora privada en **dpl_8bs5Zs78MVhN4ErYAt78Xy2UNrTR**, runtime **3a7537ce34f403a439665a6ae3df9ee39a8a79aa**, partiendo de ARiso/7c5247f. Se verificaron de nuevo inventario remoto completo, ocho funciones, cinco alias, entorno y HTTP. Sus **1.672 archivos estáticos son idénticos** a los de la corrección de identidad, incluidos los cuatro modificados. No se volvió a desplegar ni se repitieron solicitudes de indexación. El T0 corporativo sigue siendo **22:33:55.964**; el movimiento de alias posterior a las22:43 corresponde al cambio privado. [Preservación posterior](../../../identity-geo-20261125/later-production-preservation.json).
+
+La reversión histórica a9M no debe ejecutarse sobre esta producción posterior: las dos pruebas del guard rechazaron ese reemplazo sin modificar estado. Una eventual recuperación selectiva debe partir del artefacto completo vigente y conservar los avances privados posteriores. No se ejecutó ninguna reversión real.

@@ -1,6 +1,6 @@
 # Identidad institucional y dominio oficial — 25/11/2026
 
-Estado inicial de este registro: candidato implementado y validado; la publicación y sus acuses se registran por separado al ejecutarlos. Autorización expresa del titular en [authorization.json](authorization.json). Alcance: Inicio, Agenda y Contacto dentro de las doce URL v3; sitemap limitado a sus tres entradas existentes.
+Estado: **publicado y verificado** el 25/11/2026 a las **22:33:55.964 America/Santiago**. Fuente Git: 7c5247f3f74724e9d09f3f03974fd8d63ab3e729. Production: dpl_ARisoRo2JVFfigUyeRphXCxtJu32. Se promovió el mismo ID validado sin reconstruir. [Cierre](publication.json). Autorización expresa del titular en [authorization.json](authorization.json). Alcance: Inicio, Agenda y Contacto dentro de las doce URL v3; sitemap limitado a sus tres entradas existentes.
 
 ## Diagnóstico demostrado y límites
 
@@ -31,7 +31,7 @@ Sólo cambian cuatro salidas: tresHTML y el sitemap. Los otros1737archivos, conf
 
 Se ejecutan verificaciones de contenido/preservación y18casos de navegador aislado (trespáginas,1440/390/320px,JSactivo/inactivo), revisión visual, mismo inventario remoto y pruebasHTTP del candidato. Production se crea prebuilt con--skip-domain; sólo tras superar esas comprobaciones se promueve el mismoID. Las lecturas frescas deben rechazar publicaciones concurrentes. Reversión dirigida a9M, con rol/elegibilidad comprobados y simulaciónsinred; no se ejecuta un rollback real para probarlo.
 
-El cierre posterior contendrá SHA completo,ID, T0America/Santiago, comparación de cincoalias y bytes públicos, canonical, sitemap/directivas e indexación. Publicar es distinto de ser rastreado o recomendado.
+El cierre contiene SHA, ID, T0 America/Santiago, cinco alias preservados y 16 respuestas públicas coincidentes, doce canonical, sitemap/directivas y cuatro redirecciones permanentes. Una redirección existente relativa a / es válida y se resuelve contra el origen; no se cambió la configuración productiva. Publicar es distinto de ser rastreado o recomendado.
 
 ## Indexación y medición
 
@@ -42,3 +42,11 @@ La línea base Google/Bing y el test neutral deConcepción conservan sus fechas 
 La automatización existente seguimiento-semanal-seo-geo-de-sollahms se actualizó, sin duplicarla, para los jueves10:00America/Santiago. [Doce consultas exactas](identity-query-plan.json) separan identificación institucional y recomendación espontánea; se conserva también el control neutral19/11. Medir dominiooficial, perfilpersonal/confusión, mención, enlace ordinario, cita, recomendación y prominencia descriptiva por plataforma. Las variantes son consultas, no aliascorporativos verificados. Lo no ejecutado permanece no realizado; no se habilitanAPIpagadas ni tracker nuevo.
 
 La [conciliación concurrente](baseline-reconciliation.json) preserva el intento detenido y la publicaciónposterior; no se descartó código delpanel ni se reutilizó elcandidatoAra obsoleto. Los1672estáticos públicos de9M sonidénticos aAra: laQA deidentidad mantiene validez, con inventario remotonuevo y reversión nueva.
+
+IndexNow recibió la notificación única de las tres URL con **HTTP200**, sin indexación acreditada. Google aceptó una solicitud por cada una de las tres URL: [acuses](google-indexing-requests.json). Su estado almacenado ya las mostraba indexadas y no acredita procesamiento de esta versión. Las dos respuestas posteriores de ChatGPT permanecen sin enlace al dominio: la consulta por marca remite a un perfil personal y el control neutral no menciona Sollahms. [Marca](chatgpt-brand-postpublication.json), [control neutral](chatgpt-neutral-postpublication.json). No se ha demostrado una mejora. Las validaciones acreditan entrega e integridad, no una mejora de recomendaciones ni de solicitudes comerciales.
+
+## Producción vigente al cierre
+
+La publicación privada posterior **8bs / 3a7537c** partió de nuestra producción ARiso/7c5247f y preservó los **1.672 estáticos** sin diferencias. Se verificaron de nuevo los1.741archivos remotos, ocho funciones, cinco alias, entorno y16respuestasHTTP. [Recibo](later-production-preservation.json). ElT0 de identidad permanece22:33:55.964; no se repitieron publicación corporativa ni avisos. La política activa apunta al deployment vigente y mantiene aparte este T0 y su fuente original.
+
+El target9M es una referencia histórica de recuperación de esta intervención, no una orden de sustituir8bs: la guarda rechaza esa operación en simulación. Toda recuperación futura debe partir del artefacto completo vigente y conservar los cambios privados posteriores.

@@ -4,6 +4,7 @@ from pathlib import Path
 from datetime import datetime, timezone
 from urllib.request import Request, urlopen, build_opener, HTTPRedirectHandler
 from urllib.error import HTTPError
+from urllib.parse import urljoin
 from xml.etree import ElementTree as ET
 
 ROOT=Path(__file__).resolve().parents[2]
@@ -75,8 +76,8 @@ def main():
                 build_opener(NoRedirect).open(Request(url,headers={'User-Agent':'SollahmsIdentityReleaseVerification/1.0'}),timeout=25)
                 raise RuntimeError('Expected permanent redirect: '+url)
             except HTTPError as error:
-                require(error.code==308 and error.headers.get('Location')==ORIGIN+'/','Redirect mismatch: '+url)
-                redirects.append({'url':url,'status':error.code,'location':error.headers.get('Location')})
+                require(error.code==308 and urljoin(url,error.headers.get('Location') or '')==ORIGIN+'/','Redirect mismatch: '+url)
+                redirects.append({'url':url,'status':error.code,'location':error.headers.get('Location'),'resolvedLocation':urljoin(url,error.headers.get('Location') or '')})
     report={'observedAtUTC':datetime.now(timezone.utc).isoformat(),'phase':a.phase,'deploymentId':a.deployment_id,'sourceCommit':a.source_sha,'passed':True,'corporateURLs':12,'checked':len(rows),'rows':rows,'redirects':redirects,'formsSubmitted':0,'applicationAPIsCalled':0,'SDKsExecuted':0,'protectionChanged':False,'rawAuthenticatedBodiesOrHeadersStored':False,'limit':'Delivery and indexability only; no proof of crawl, indexing, AI citation, ranking or commercial results.'}
     (DOC/(a.phase+'-http.json')).write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
     print(json.dumps({'passed':True,'phase':a.phase,'checked':len(rows),'canonicals':12,'redirects':len(redirects)}))

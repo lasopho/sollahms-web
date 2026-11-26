@@ -15,8 +15,8 @@
   "legacy_plans_status": "historical_not_for_new_executions",
   "project_fiche_handoffs_allowed": false,
   "inventory_confirmation_required_for_seo": false,
-  "production_record": "../seo-geo-20261125/publication.json",
-  "production_deployment_id": "dpl_4tBq9YFz3BKoiXiJE5G5hBjPXMwW",
+  "production_record": "../mortgage-private-20261125/publication.json",
+  "production_deployment_id": "dpl_8bs5Zs78MVhN4ErYAt78Xy2UNrTR",
   "production_inferred_from_main": false,
   "candidate_status": "published_and_verified",
   "historical_seo_publication": {
@@ -29,9 +29,9 @@
   },
   "historical_scope": "scope-v2.json",
   "scope_comparison_rule": "Reimport original page-level or exact-native-filter data with identical v3 URLs; v2 domain totals include catalogue and cannot measure v3 impact.",
-  "publication_t0": "2026-11-25T18:11:35.881000-03:00",
+  "publication_t0": "2026-11-25T22:43:13.984-03:00",
   "publication_timezone": "America/Santiago",
-  "publication_authorized_commit": "3f02788b971c2691afbe5c21e269077f00c1ce14",
+  "publication_authorized_commit": "3a7537ce34f403a439665a6ae3df9ee39a8a79aa",
   "current_gsc_measurement": "runs/2026-11-25-autonomous-improvements/google-summary.json",
   "current_indexation_record": "runs/2026-11-25-autonomous-improvements/google-summary.json",
   "google_search_console": {
@@ -85,9 +85,10 @@
     "qualifiedLeadsVerified": false,
     "publicConsentAndWithdrawalVerified": true,
     "publicConsentVerification": "../measurement-20261119/publication/public-consent-verification.json",
-    "currentProductionDeploymentId": "dpl_4tBq9YFz3BKoiXiJE5G5hBjPXMwW",
+    "currentProductionDeploymentId": "dpl_8bs5Zs78MVhN4ErYAt78Xy2UNrTR",
     "preservedByCoverageRelease": true,
-    "preservedBy25NovRelease": true
+    "preservedBy25NovRelease": true,
+    "preservedByIdentityRelease": true
   },
   "comparison_rule": {
     "requestedBefore": [
@@ -123,9 +124,9 @@
     "authorized_commit": "df78d77f31c8da946623e586634998e151ed237e",
     "description": "Four corporate improvements published07:54; preserved by the later measurement/appearance release"
   },
-  "publication_executed_commit": "3f02788b971c2691afbe5c21e269077f00c1ce14",
-  "publication_execution_precision": "../seo-geo-20261125/publication.json",
-  "latest_public_technical_verification": "../seo-geo-20261125/public-http-verification.json",
+  "publication_executed_commit": "3a7537ce34f403a439665a6ae3df9ee39a8a79aa",
+  "publication_execution_precision": "../identity-geo-20261125/later-production-preservation.json",
+  "latest_public_technical_verification": "../identity-geo-20261125/public-http.json",
   "previous_measurement_publication": {
     "production_record": "../measurement-20261119/publication/publication.json",
     "production_deployment_id": "dpl_Dbd8TFEozqMgfFZ7DsGwq4efWKXC",
@@ -152,7 +153,7 @@
     "sourceCommit": "db45afc2518b354bb14b108172d75d3aacb8d643",
     "t0": "2026-11-19T15:50:03.998-03:00"
   },
-  "current_change_followup": "../seo-geo-20261125/README.md",
+  "current_change_followup": "../identity-geo-20261125/README.md",
   "previous_chatgpt_observation": "runs/2026-11-19-weekly-comparison/chatgpt-observation.json",
   "previous_coverage_publication": {
     "production_record": "../service-coverage-20261119/publication.json",
@@ -197,8 +198,8 @@
     "chatgptHistoricalReference": "narrated_12Nov_original_not_recovered",
     "causalEffectOf19NovPublicationMeasured": false
   },
-  "current_google_submission_record": "../seo-geo-20261125/google-indexing-requests.json",
-  "current_bing_public_notification_record": "../seo-geo-20261125/indexnow-submission.json",
+  "current_google_submission_record": "../identity-geo-20261125/google-indexing-requests.json",
+  "current_bing_public_notification_record": "../identity-geo-20261125/indexnow-submission.json",
   "previous_bing_access_observation_25Nov": "runs/2026-11-25-autonomous-improvements/browser-analytics-summary.json",
   "bing_webmaster_tools": {
     "accessStatus": "operational_authenticated_UI",
@@ -221,19 +222,43 @@
     "productionDeploymentRequired": false
   },
   "current_bing_indexnow_verification": "operations/2026-11-25-bing-access/indexnow-public-proof.json",
-  "current_chatgpt_brand_observation": "runs/2026-11-25-autonomous-improvements/chatgpt-brand-observation.json",
+  "current_chatgpt_brand_observation": "../identity-geo-20261125/chatgpt-brand-postpublication.json",
   "current_chatgpt_actions_review": "runs/2026-11-25-autonomous-improvements/chatgpt-actions-review.json",
   "current_chatgpt_access_check": "runs/2026-11-25-autonomous-improvements/chatgpt-access-check.json",
   "chatgpt_measurement_rule": "Keep neutral buyer-intent discovery and supplied-brand diagnostics in separate cells. Do not replace current_chatgpt_observation or infer a trend from a brand-supplied answer.",
   "current_identity_review": "../identity-geo-20261125/README.md",
   "current_identity_query_plan": "../identity-geo-20261125/identity-query-plan.json",
   "identity_release_20261125": {
-    "status": "validated_candidate_prepublication",
+    "status": "published_and_preserved_by_later_verified_production",
     "authorization": "../identity-geo-20261125/authorization.json",
     "baselineDeployment": "dpl_9M5yUF3GzFK2aWy34Qn4en7y8tA7",
     "baselineRuntimeCommit": "2327ed4324b0d56af04d9f6db8f50b4f54ca33b4",
     "artifactProof": "../identity-geo-20261125/artifact-proof.json",
     "effectMeasured": false,
-    "concurrentProductionPreserved": true
-  }
+    "concurrentProductionPreserved": true,
+    "sourceCommit": "7c5247f3f74724e9d09f3f03974fd8d63ab3e729",
+    "deploymentId": "dpl_ARisoRo2JVFfigUyeRphXCxtJu32",
+    "publicationT0": "2026-11-25T22:33:55.964-03:00",
+    "publicationRecord": "../identity-geo-20261125/publication.json",
+    "indexNowReceipt": "../identity-geo-20261125/indexnow-submission.json",
+    "googleRequestsAcknowledged": 3,
+    "indexNowHTTPStatus": 200,
+    "postPublicationChatGPTTests": 2,
+    "officialDomainImprovementEstablished": false,
+    "currentProductionDeploymentId": "dpl_8bs5Zs78MVhN4ErYAt78Xy2UNrTR",
+    "currentProductionRuntimeCommit": "3a7537ce34f403a439665a6ae3df9ee39a8a79aa",
+    "laterPreservationRecord": "../identity-geo-20261125/later-production-preservation.json"
+  },
+  "previous_seo_geo_publication_25Nov": {
+    "production_record": "../seo-geo-20261125/publication.json",
+    "deploymentId": "dpl_4tBq9YFz3BKoiXiJE5G5hBjPXMwW",
+    "publicationT0": "2026-11-25T18:11:35.881000-03:00",
+    "sourceCommit": "3f02788b971c2691afbe5c21e269077f00c1ce14"
+  },
+  "previous_chatgpt_brand_observation": "runs/2026-11-25-autonomous-improvements/chatgpt-brand-observation.json",
+  "current_chatgpt_postpublication_observations": [
+    "../identity-geo-20261125/chatgpt-brand-postpublication.json",
+    "../identity-geo-20261125/chatgpt-neutral-postpublication.json"
+  ],
+  "current_chatgpt_neutral_postpublication_observation": "../identity-geo-20261125/chatgpt-neutral-postpublication.json"
 }
