@@ -18,8 +18,8 @@ function setup() {
   const store = new MemoryStore(), messages = [];
   let time = Date.parse('2026-11-25T20:00:00Z');
   const project = { projectId: 'example', name: 'Proyecto de prueba', developer: 'Prueba', commune: 'Santiago', region: 'Metropolitana', publicUrl: 'https://sollahms.cl/example.html' };
-  const handler = createHandler({ store, clock: () => time,
-    env: { BONOS_AUTH_SECRET: 'synthetic-test-secret-is-at-least-forty-characters', BONOS_ADMIN_EMAIL: 'admin@example.test' },
+  const env = { BONOS_AUTH_SECRET: 'synthetic-test-secret-is-at-least-forty-characters', BONOS_ADMIN_EMAIL: 'admin@example.test' };
+  const handler = createHandler({ store, clock: () => time, env,
     inventory: { observedAtUtc: new Date(time).toISOString(), deploymentId: 'synthetic', projects: [project] },
     asset: async file => file.startsWith('panel') ? 'PRIVATE PANEL' : 'LOGIN', sendMail: async value => messages.push(value) });
   async function request(op = '', { method = 'GET', cookie = '', csrf = null, origin = 'https://sollahms.cl', path = '/api/interno-bonos-pie', body = {}, headers = {} } = {}) {
@@ -38,7 +38,7 @@ function setup() {
     return res;
   }
   async function login() {
-    const sent = await request('op=request-code', { method: 'POST' });
+    const sent = await request('op=request-code', { method: 'POST', body: { email: 'admin@example.test' } });
     assert.equal(sent.statusCode, 200);
     const challenge = sent.cookie('__Host-sollahms-bonos-challenge');
     const verified = await request('op=verify-code', { method: 'POST', cookie: challenge, body: { code: messages.at(-1).code } });
@@ -47,7 +47,7 @@ function setup() {
     const data = await request('op=data', { cookie });
     return { cookie, csrf: data.json().csrfToken, data: data.json(), challenge, code: messages.at(-1).code };
   }
-  return { request, login, store, messages, advance(ms) { time += ms; }, time: () => time };
+  return { request, login, store, messages, env, advance(ms) { time += ms; }, time: () => time };
 }
 const record = () => ({ id: 'example', status: 'conditional', percentage: 20, amountUf: null,
   irisUrl: 'https://iris.yapo.cl/proyecto/999999999?operation=Venta', checkedAt: '2026-11-25T19:00:00Z',
@@ -75,7 +75,11 @@ test('anonymous visitors cannot read page, data, scripts, or mutate records', as
 
 test('OTP is server-only, exclusive, expiring and consumed once under concurrency', async () => {
   const s = setup();
-  const sent = await s.request('op=request-code', { method: 'POST', body: { email: 'attacker@example.test' } });
+  const rejected = await s.request('op=request-code', { method: 'POST', body: { email: 'attacker@example.test' } });
+  assert.equal(rejected.statusCode, 403);
+  assert.equal(s.messages.length, 0);
+  assert.equal(s.store.rows.size, 0);
+  const sent = await s.request('op=request-code', { method: 'POST', body: { email: ' Admin@Example.Test ' } });
   assert.equal(sent.statusCode, 200);
   assert.ok(!sent.body.includes(s.messages[0].code));
   assert.ok(!JSON.stringify([...s.store.rows]).includes(s.messages[0].code));
@@ -88,14 +92,14 @@ test('OTP is server-only, exclusive, expiring and consumed once under concurrenc
 
 test('OTP limits attempts, expiry and request volume in persistent storage', async () => {
   const s = setup();
-  const sent = await s.request('op=request-code', { method: 'POST' });
+  const sent = await s.request('op=request-code', { method: 'POST', body: { email: 'admin@example.test' } });
   const cookie = sent.cookie('__Host-sollahms-bonos-challenge');
   const wrong = s.messages[0].code === '00000000' ? '99999999' : '00000000';
   for (let i = 0; i < 5; i++) assert.equal((await s.request('op=verify-code', { method: 'POST', cookie, body: { code: wrong } })).statusCode, 401);
   assert.equal((await s.request('op=verify-code', { method: 'POST', cookie, body: { code: s.messages[0].code } })).statusCode, 401);
-  assert.equal((await s.request('op=request-code', { method: 'POST' })).statusCode, 429);
+  assert.equal((await s.request('op=request-code', { method: 'POST', body: { email: 'admin@example.test' } })).statusCode, 429);
   s.advance(61_000);
-  const another = await s.request('op=request-code', { method: 'POST' });
+  const another = await s.request('op=request-code', { method: 'POST', body: { email: 'admin@example.test' } });
   s.advance(600_001);
   assert.equal((await s.request('op=verify-code', { method: 'POST', cookie: another.cookie('__Host-sollahms-bonos-challenge'), body: { code: s.messages.at(-1).code } })).statusCode, 401);
 });
@@ -168,4 +172,32 @@ test('private storage preserves a strong ETag for atomic updates and refuses com
   const weak = createBlobStore({ getBlob: async () => ({ statusCode: 200,
     stream: new Response('{}').body, blob: { etag: 'W/"weak-version"' } }) });
   await assert.rejects(() => weak.read('data.json'), /Strong private storage version required/);
+});
+
+test('administrator changes revoke previous challenges and sessions, including legacy unbound codes', async () => {
+  const s = setup();
+  const first = await s.request('op=request-code', { method: 'POST', body: { email: 'admin@example.test' } });
+  const challenge = first.cookie('__Host-sollahms-bonos-challenge');
+  const firstCode = s.messages[0].code;
+  s.env.BONOS_ADMIN_EMAIL = 'contacto@sollahms.example';
+  const prior = await s.request('op=verify-code', { method: 'POST', cookie: challenge, body: { code: firstCode } });
+  assert.equal(prior.statusCode, 401);
+  assert.equal([...s.store.rows.keys()].filter(key => key.startsWith('auth/session-')).length, 0);
+  assert.equal((await s.request('op=request-code', { method: 'POST', body: { email: 'admin@example.test' } })).statusCode, 403);
+  s.advance(61_000);
+  const fresh = await s.request('op=request-code', { method: 'POST', body: { email: 'contacto@sollahms.example' } });
+  assert.equal(fresh.statusCode, 200);
+  const freshCookie = fresh.cookie('__Host-sollahms-bonos-challenge');
+  const good = await s.request('op=verify-code', { method: 'POST', cookie: freshCookie, body: { code: s.messages.at(-1).code } });
+  assert.equal(good.statusCode, 200);
+  const session = good.cookie('__Host-sollahms-bonos-session');
+  assert.equal((await s.request('op=data', { cookie: session })).json().adminEmail, 'contacto@sollahms.example');
+  s.env.BONOS_ADMIN_EMAIL = 'another-admin@example.test';
+  assert.equal((await s.request('op=data', { cookie: session })).statusCode, 401);
+
+  const legacy = setup();
+  const old = await legacy.request('op=request-code', { method: 'POST', body: { email: 'admin@example.test' } });
+  for (const [key, row] of legacy.store.rows) if (key.startsWith('auth/challenge-')) delete row.value.adminEmail;
+  assert.equal((await legacy.request('op=verify-code', { method: 'POST',
+    cookie: old.cookie('__Host-sollahms-bonos-challenge'), body: { code: legacy.messages[0].code } })).statusCode, 401);
 });

@@ -1,7 +1,7 @@
 {
-  "observedAtUTC": "2026-11-26T00:37:10.458404+00:00",
+  "observedAtUTC": "2026-11-26T00:43:36.828260+00:00",
   "passed": true,
-  "sourceHeadAtVerification": "324dab5a214a778da4867dc4207ecc11385b3164",
+  "sourceHeadAtVerification": "b45c069eb0caf3856201ee7717902f606193542a",
   "sourceFiles": [
     {
       "path": "internal/bonos-pie/build.mjs",
@@ -25,28 +25,28 @@
     },
     {
       "path": "internal/bonos-pie/server.mjs",
-      "bytes": 21224,
-      "sha256": "3a0f444c935983bd5c38d889a5e14d75b1fe64d4a9c5cb05754cb68c47f72c23"
+      "bytes": 21620,
+      "sha256": "70c6351a88612bd5652205e8fe043e3dca0b83f0e218e85390522123646ddc4b"
     },
     {
       "path": "internal/bonos-pie/tests/security.test.mjs",
-      "bytes": 10997,
-      "sha256": "6cf535bc551a012dc2b6a110a50d557d58f16db5b0352cdcfc6729dc4b04dfef"
+      "bytes": 13391,
+      "sha256": "64d98f20a5e6bdcfad3ccde9a9819648af7efa4265e219016d9b9485dd5b5f17"
     },
     {
       "path": "internal/bonos-pie/ui/login.css",
-      "bytes": 5990,
-      "sha256": "375d0d02a80dcb10e49a6953f2599571229ac9a028d6211d3f075eeaf726cc1a"
+      "bytes": 6136,
+      "sha256": "db3c44d2bdcbe6f35ea3d711a7da68515045664993753dd378ab1bee9184e6c2"
     },
     {
       "path": "internal/bonos-pie/ui/login.html",
-      "bytes": 2645,
-      "sha256": "9ff3651424dec27e98e7b4ae65a3516edd9427b484f1a54981e14c83f15b13cb"
+      "bytes": 3052,
+      "sha256": "2c7c3e8cb1a287cf6767a1c0f5f2703f34a4cc7e9fe0378f0d8583278bf17301"
     },
     {
       "path": "internal/bonos-pie/ui/login.js",
-      "bytes": 4093,
-      "sha256": "495df3ff563f8f29b81bcc2174c9bc5d117f1681cd2288aeff0ffd645c0099b4"
+      "bytes": 4785,
+      "sha256": "10b663ede1465464488fadbe9003b7cfa2f22d58a0ca0ebd36ffe3ef327367e8"
     },
     {
       "path": "internal/bonos-pie/ui/panel.css",
@@ -65,15 +65,15 @@
     }
   ],
   "compiledSourceMatchesArtifact": true,
-  "candidateInventorySHA256": "f011316833dd40dbc4ecbc7bf72e6a29297a2b6b6c5a54c0ea356936851854b9",
+  "candidateInventorySHA256": "d43f69ba94507f4bc5d2a3390a622b784d5f54a4f538538b2e974812872f5e39",
   "securityTests": {
-    "passed": 8,
+    "passed": 9,
     "failed": 0,
     "providerCalls": 0,
     "sessions": "synthetic memory store only",
     "command": "node --test internal/bonos-pie/tests/security.test.mjs",
-    "addedRegression": "Private Blob reads request identity encoding and reject weak ETags before conditional writes"
+    "addedRegression": "Corporate email allowlist, normalization, administrator-bound challenges, legacy challenge rejection and prior-session revocation"
   },
   "sourceWorkingTreeChanges": true,
-  "verificationScope": "Local friendly URL candidate; not yet deployed"
+  "verificationScope": "Local corporate login candidate; admin assignment and deployment pending"
 }

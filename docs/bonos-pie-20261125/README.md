@@ -63,3 +63,9 @@ Documentación primaria aplicada: [Blob privado](https://vercel.com/docs/vercel-
 Se preparó `/bonos-pie`, con `/bonos-pie/acceso` para el acceso existente. Los enlaces anteriores `/interno/bonos-pie` siguen funcionando como alias. Los ocho controles de seguridad y la reconstrucción aprobaron; 1.672 archivos públicos y 57 fuentes de funciones previas permanecen intactos. La opción de recordar dispositivos no se añadió. Este cambio está preparado localmente y no se ha desplegado: queda pendiente aclarar si el titular quiere retirar toda autenticación, permitiendo el acceso a cualquiera que conozca o descubra la dirección. No se interpreta una URL oculta como acceso exclusivo.
 
 El deployment B2ux y sus pruebas históricas describen la versión anterior. El manifiesto y snapshot actuales corresponden al candidato local de dirección corta; no deben presentarse como una verificación remota de ese deployment. Véase `route-change.json`.
+
+## Acceso con correo de Sollahms preparado
+
+El titular eligió inicio de sesión con correo de Sollahms. La pantalla propone `contacto@sollahms.cl`, dirección corporativa existente, y solicita un código de un solo uso. No se añadió recordar dispositivos ni contraseña nueva. El servidor valida el correo permitido antes de leer presupuesto o enviar mensajes; cada desafío guarda su administrador y no puede convertirse en una sesión para una cuenta distinta. Los desafíos antiguos sin administrador quedan rechazados. Las nueve pruebas de seguridad y siete comprobaciones sintéticas de UI aprobaron.
+
+La revisión automática rechazó actualizar la variable de administrador porque el titular no indicó explícitamente la dirección completa. No se aplicó el cambio ni se envió correo. La asignación de `contacto@sollahms.cl` está pendiente de confirmación expresa; la ruta corta y el nuevo acceso permanecen preparados y sin publicar. Véase `verification/corporate-admin-assignment-pending.json`.

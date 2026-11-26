@@ -241,7 +241,11 @@ export function createHandler({ store = blobStore, clock = Date.now, env = proce
       if (method === 'OPTIONS') throw new HttpError(405, 'Método no permitido.');
       if (op === 'request-code') {
         if (method !== 'POST') throw new HttpError(405, 'Método no permitido.');
-        sameOrigin(req, env); await body(req);
+        sameOrigin(req, env);
+        const input = await body(req);
+        const requestedEmail = typeof input?.email === 'string' ? input.email.trim().toLowerCase() : '';
+        if (!equal(requestedEmail, env.BONOS_ADMIN_EMAIL.trim().toLowerCase()))
+          throw new HttpError(403, 'Cuenta no autorizada para este panel.');
         const now = clock();
         const budget = await store.read('auth/login-budget.json');
         const active = budget?.value.windowStart > now - 3600_000;
@@ -251,7 +255,8 @@ export function createHandler({ store = blobStore, clock = Date.now, env = proce
           count: active ? budget.value.count + 1 : 1, lastSent: now }, budget?.etag, true);
         const challenge = random(), value = code();
         const key = 'auth/challenge-' + digest(challenge) + '.json';
-        await store.write(key, { codeHash: hashCode(challenge, value), expiresAt: now + 600_000, attempts: 0, used: false }, null, true);
+        await store.write(key, { adminEmail: env.BONOS_ADMIN_EMAIL, codeHash: hashCode(challenge, value),
+          expiresAt: now + 600_000, attempts: 0, used: false }, null, true);
         await mail({ code: value, requestId: digest(challenge) });
         res.setHeader('Set-Cookie', cookie(CHALLENGE, challenge, 600));
         return send(res, 200, { ok: true, message: 'Código enviado a la cuenta administradora autorizada.' });
@@ -263,7 +268,8 @@ export function createHandler({ store = blobStore, clock = Date.now, env = proce
         if (!/^[A-Za-z0-9_-]{43}$/.test(challenge ?? '') || !/^\d{8}$/.test(input.code ?? ''))
           throw new HttpError(401, 'Código inválido o vencido.');
         const key = 'auth/challenge-' + digest(challenge) + '.json', row = await store.read(key);
-        if (!row || row.value.expiresAt <= clock() || row.value.used || row.value.attempts >= 5)
+        if (!row || !equal(row.value.adminEmail, env.BONOS_ADMIN_EMAIL) ||
+            row.value.expiresAt <= clock() || row.value.used || row.value.attempts >= 5)
           throw new HttpError(401, 'Código inválido o vencido.');
         const valid = equal(hashCode(challenge, input.code), row.value.codeHash);
         await store.write(key, { ...row.value, attempts: row.value.attempts + 1, used: valid }, row.etag, true);

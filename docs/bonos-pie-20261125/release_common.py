@@ -225,7 +225,7 @@ def validate_source_and_qa():
     require(qa.get('syntheticOnly') and len(qa.get('checks', [])) >= 10 and
             [row['width'] for row in qa['widths']] == [1440, 1024, 768, 390, 320], 'Responsive/function QA missing')
     require(all(row['body'] <= row['width'] for row in qa['widths']), 'Responsive page overflow detected')
-    require(snapshot.get('securityTests', {}).get('passed') == 8 and
+    require(snapshot.get('securityTests', {}).get('passed') == 9 and
             snapshot.get('compiledSourceMatchesArtifact') is True, 'Security tests/compiled source verification missing')
     require(snapshot.get('candidateInventorySHA256') == read(DOCS / 'candidate-manifest.json')['inventorySHA256'],
             'Runtime verification belongs to a different candidate artifact')

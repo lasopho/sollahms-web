@@ -6,11 +6,14 @@
   const requestButton = document.getElementById('request-code');
   const verifyButton = document.getElementById('verify-code');
   const resendButton = document.getElementById('resend-code');
+  const emailInput = document.getElementById('email');
+  const codeEmail = document.getElementById('code-email');
   const codeInput = document.getElementById('code');
   const status = document.getElementById('login-status');
   let sending = false;
   let waitUntil = 0;
   let timer;
+  let requestedEmail = '';
   function message(text, error = false) {
     status.textContent = text;
     status.classList.toggle('error', error);
@@ -19,7 +22,7 @@
     const response = await fetch(`${endpoint}?op=${op}`, { method: 'POST', credentials: 'same-origin', cache: 'no-store', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(body) });
     const result = await response.json().catch(() => ({}));
     if (!response.ok) {
-      const error = new Error(response.status === 429 ? 'Se alcanzó el límite de intentos. Espera unos minutos antes de volver a intentar.' : response.status === 401 || response.status === 400 ? 'El código no es válido o ha vencido. Revísalo o solicita uno nuevo.' : 'No pudimos completar el acceso. Inténtalo nuevamente en unos minutos.');
+      const error = new Error(response.status === 429 ? 'Se alcanzó el límite de intentos. Espera unos minutos antes de volver a intentar.' : response.status === 403 && op === 'request-code' ? 'Este correo no está autorizado para el panel. Usa la cuenta administradora de Sollahms.' : response.status === 401 || response.status === 400 ? 'El código no es válido o ha vencido. Revísalo o solicita uno nuevo.' : 'No pudimos completar el acceso. Inténtalo nuevamente en unos minutos.');
       error.status = response.status;
       throw error;
     }
@@ -34,18 +37,27 @@
   async function requestCode(event) {
     event?.preventDefault();
     if (sending || Date.now() < waitUntil) return;
+    const email = requestedEmail || emailInput.value.trim().toLowerCase();
+    if (!requestedEmail) {
+      emailInput.value = email;
+      if (!emailInput.reportValidity()) return;
+    }
     sending = true;
+    emailInput.disabled = true;
     requestButton.disabled = true;
     resendButton.disabled = true;
     requestButton.setAttribute('aria-busy', 'true');
-    message('Enviando un código a la cuenta administradora…');
+    message(`Enviando un código a ${email}…`);
     try {
-      await post('request-code', {});
+      await post('request-code', { email });
+      requestedEmail = email;
+      emailInput.readOnly = true;
+      codeEmail.textContent = email;
       requestForm.hidden = true;
       verifyForm.hidden = false;
       codeInput.value = '';
       codeInput.focus();
-      message('Código enviado. Revisa el correo de la cuenta administradora.');
+      message(`Código enviado a ${email}.`);
       waitUntil = Date.now() + 60_000;
       if (timer) clearInterval(timer);
       timer = setInterval(cooldown, 1000);
@@ -53,6 +65,7 @@
       message(error.status === 400 || error.status === 401 ? 'No pudimos enviar el código de acceso. Inténtalo nuevamente.' : error.message || 'No hay conexión. Inténtalo nuevamente.', true);
     } finally {
       sending = false;
+      emailInput.disabled = false;
       requestButton.disabled = false;
       requestButton.removeAttribute('aria-busy');
       cooldown();
@@ -60,6 +73,7 @@
   }
   requestForm.addEventListener('submit', requestCode);
   resendButton.addEventListener('click', requestCode);
+  emailInput.addEventListener('input', () => { emailInput.removeAttribute('aria-invalid'); });
   codeInput.addEventListener('input', () => { codeInput.value = codeInput.value.replace(/[^0-9]/g, '').slice(0, 8); codeInput.removeAttribute('aria-invalid'); });
   verifyForm.addEventListener('submit', async event => {
     event.preventDefault();
