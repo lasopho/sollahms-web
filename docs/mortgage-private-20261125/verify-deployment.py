@@ -10,8 +10,9 @@ sys.path.insert(0, str(DOCS.parent / 'bonos-pie-20261125'))
 from release_common import (PROJECT, HOSTS, FUNCTIONS, BRANCH, OUTPUT, api, fetch_all,
     require, read, save, sha, now, manifest_rows, selected_alias, selected_deployment, remote_inventory, validate_project)
 
-BASE = 'dpl_9M5yUF3GzFK2aWy34Qn4en7y8tA7'
+BASE = 'dpl_ARisoRo2JVFfigUyeRphXCxtJu32'
 PRIVATE = 'functions/api/interno-bonos-pie.func/'
+HOSTS = ['sollahms.cl', 'www.sollahms.cl', 'sollhams.cl', 'project-wrapp.vercel.app', 'project-wrapp-lsandoval2-8260s-projects.vercel.app']
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
@@ -45,7 +46,7 @@ def main():
     aliases = [selected_alias(before[host]) for host in HOSTS]
     expected_alias = BASE if args.phase == 'isolated' else args.deployment_id
     require(all(row['deploymentId'] == expected_alias and row['projectId'] == PROJECT for row in aliases), 'Unexpected domain assignment')
-    require(aliases[0]['redirect'] is None and aliases[1]['redirect'] == 'sollahms.cl' and aliases[1]['redirectStatusCode'] == 308, 'Domain redirects changed')
+    require(aliases[0]['redirect'] is None and aliases[1]['redirect'] == aliases[2]['redirect'] == 'sollahms.cl' and aliases[1]['redirectStatusCode'] == aliases[2]['redirectStatusCode'] == 308 and aliases[3]['redirect'] is None and aliases[4]['redirect'] is None, 'Domain redirects changed')
     deployment = selected_deployment(before['deployment'])
     require(deployment['id'] == args.deployment_id and deployment['target'] == 'production' and deployment['readyState'] == 'READY', 'Candidate not READY Production')
     meta = deployment['meta']

@@ -10,8 +10,9 @@ DOCS = Path(__file__).resolve().parent
 sys.path.insert(0, str(DOCS.parent / 'bonos-pie-20261125'))
 from release_common import (ROOT, STAGE, OUTPUT, SOURCE, PROJECT, TEAM, SCOPE, BRANCH, NODE, CLI, ENV, HOSTS, FUNCTIONS,
     require, read, save, sha, now, git, fetch_all, api, selected_alias, validate_project, manifest_rows, remote_inventory)
-BASE = 'dpl_9M5yUF3GzFK2aWy34Qn4en7y8tA7'
+BASE = 'dpl_ARisoRo2JVFfigUyeRphXCxtJu32'
 PRIVATE = 'functions/api/interno-bonos-pie.func/'
+HOSTS = ['sollahms.cl', 'www.sollahms.cl', 'sollhams.cl', 'project-wrapp.vercel.app', 'project-wrapp-lsandoval2-8260s-projects.vercel.app']
 
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--expected-commit', required=True)
@@ -24,6 +25,7 @@ binding = read(STAGE / '.vercel/project.json')
 require(binding['projectId'] == PROJECT and binding['orgId'] == TEAM, 'Wrong linked stage')
 manifest = read(DOCS / 'candidate-manifest.json')
 candidate, baseline = manifest_rows(manifest), manifest_rows(read(DOCS / 'baseline-manifest.json'))
+require(git('merge-base', '--is-ancestor', manifest['baselineCommit'], args.expected_commit) == '', 'Reviewed source must include current production source')
 expected = {r['path']: r for r in candidate}
 actual = {}
 for path in OUTPUT.rglob('*'):
@@ -47,6 +49,7 @@ response = fetch_all({'project': '/v9/projects/' + PROJECT, **{h: '/v4/aliases/'
 settings, metadata = validate_project(response['project'])
 aliases = [selected_alias(response[h]) for h in HOSTS]
 require(all(r['deploymentId'] == BASE and r['projectId'] == PROJECT for r in aliases), 'Production advanced; reconcile first')
+require(aliases[0]['redirect'] is None and aliases[1]['redirect'] == aliases[2]['redirect'] == 'sollahms.cl' and aliases[1]['redirectStatusCode'] == aliases[2]['redirectStatusCode'] == 308 and aliases[3]['redirect'] is None and aliases[4]['redirect'] is None, 'Existing domain redirects changed')
 full, _ = remote_inventory(api('/v6/deployments/' + BASE + '/files'), baseline, FUNCTIONS)
 require(aliases == [selected_alias(api('/v4/aliases/' + h)) for h in HOSTS], 'Aliases changed during preflight')
 save(DOCS / 'preflight-connected.json', {'passed': True, 'observedAtUTC': now(), 'sourceCommit': args.expected_commit,
